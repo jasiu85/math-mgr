@@ -1,0 +1,75 @@
+\section{Definicja}
+
+Na potrzeby niniejszej pracy wprowadzamy
+następującą definicję krzywej eliptycznej.
+
+\begin{definition}\label{elliptic_curve_definition}
+Dane jest ciało $\K$ oraz dwa jego elementy $A, B \in \K$.
+Wówczas \emph{krzywa eliptyczna nad ciałem $\K$ o parametrach $A$ oraz $B$},
+oznaczana $E_{A,B}(\K)$ (w skrócie $E(\K)$ lub $E$),
+to zbiór składający się
+ze wszystkich par $(x, y) \in \K \times \K$, które spełniają równość
+\begin{equation}\label{elliptic_curve_equation}
+y^2 = x^3 + Ax + B
+\end{equation}
+oraz jednego dodatkowego elementu oznaczanego symbolem $\ecident$.
+Element $\ecident$ zwany jest
+\emph{punktem w nieskończoności} lub \emph{identycznością},
+a pozostałe elementy krzywej -- \emph{punktami skończonymi}.
+Równanie \ref{elliptic_curve_equation} zwane jest \emph{równaniem krzywej}.
+\end{definition}
+
+\begin{definition}
+Dany jest punkt skończony $P = (a, b)$ na krzywej eliptycznej.
+\emph{Punkt sprzężony do punktu $P$}, oznaczany $\overline{P}$,
+to punkt $(a, -b)$.
+\end{definition}
+
+\begin{definition}
+Dana jest krzywa eliptyczna.
+\emph{Punkt rzędu dwa} na tej krzywej
+to punkt skończony postaci $(a, 0)$.
+\end{definition}
+
+Pochodzenie określeń
+,,punkt w nieskończoności'', ,,identyczność'' oraz ,,punkt rzędu dwa''
+stanie się jasne w dalszej części pracy.
+
+W definicji \ref{elliptic_curve_definition} ciało $\K$ może być dowolne,
+w szczególności może być skończone lub nie
+oraz może mieć dowolną charakterystykę.
+Charakterystyka równa $2$ lub $3$ jest źródłem wielu trudności,
+np. już sama definicja krzywej eliptycznej
+nie jest odpowiednia w takiej sytuacji.
+
+\begin{remark}
+Zakładamy odtąd, o ile nie będzie zaznaczone inaczej,
+że charakterystyka ciała $\K$, nad którym rozważamy krzywwe eliptyczne,
+jest różna od $2$ oraz $3$.
+\end{remark}
+
+Jest jeszcze jedno źródło trudności,
+którym nie będziemy zajmować się w niniejszej pracy.
+
+\begin{definition}
+Krzywa eliptyczna $E_{A,B}(\K)$ jest \emph{zdegenerowana},
+jeżeli wielomian
+$$x^3 + Ax + B$$
+ma w domknięciu algebraicznym $\overline{\K}$ ciała $\K$
+pierwiastek wielokrotny.
+Jeżeli krzywa nie jest zdegenerowana,
+to mówimy, że jest \emph{niezdegenerowana}.
+\end{definition}
+
+\begin{remark}
+Zakładamy odtąd, o ile nie będzie zaznaczone inaczej,
+że krzywwe eliptyczne, które rozpatrujemy,
+są niezdegenerowane.
+\end{remark}
+
+\begin{fact}
+Jeżeli charakterystyka ciała $\K$ nie jest równa $2$ ani $3$,
+to krzywa eliptyczna nad ciałem $\K$ o parametrach $A$ oraz $B$
+jest zdegenerowana wtedy i tylko wtedy,
+gdy $\frac{A^3}{27} + \frac{B^2}{4} = 0$.
+\end{fact}

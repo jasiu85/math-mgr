@@ -1,7 +1,49 @@
-\theoremstyle{definition}
-\newtheorem*{definition}{Definicja}
-\newtheorem*{theorem}{Twierdzenie}
-
-\newcommand{\todo}[1]{TODO: #1. \lipsum}
-
+% define values of constants/counters/spaces etc.
 \setlipsumdefault{1-2}
+
+% define AMS theorems
+\numberwithin{equation}{section}
+
+\theoremstyle{plain}
+\newtheorem{theorem}[equation]{Twierdzenie}
+\newtheorem{lemma}[equation]{Lemat}
+\newtheorem{corollary}[equation]{Wniosek}
+
+\theoremstyle{definition}
+\newtheorem{definition}[equation]{Definicja}
+\newtheorem{example}[equation]{Przykład}
+
+\theoremstyle{remark}
+\newtheorem{remark}[equation]{Uwaga}
+\newtheorem{fact}[equation]{Fakt}
+
+% define AMS operators
+
+\DeclareMathOperator{\Div}{Div}
+\DeclareMathOperator{\Prin}{Prin}
+\DeclareMathOperator{\Pic}{Pic}
+\DeclareMathOperator{\ord}{ord}
+\DeclareMathOperator{\rdiv}{div}
+
+% define new commands
+\newcommand{\todo}[1]{TODO: #1}
+\newcommand{\todolipsum}[1]{TODO: #1 \lipsum}
+
+\newcommand{\ecident}{\mathcal{O}}
+\newcommand{\K}{\mathbb{K}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\abs}[1]{\lvert#1\rvert}
+\newcommand{\norm}[1]{\lVert#1\rVert}
+\newcommand{\divi}[1]{\langle#1\rangle}
+
+\newcommand{\fundeftwo}[4]
+{\left\{
+\begin{array}{ll}
+#1 & \mbox{gdy }#2\mbox{,} \\
+#3 & \mbox{gdy }#4\mbox{.}
+\end{array}
+\right. }

@@ -1,9 +1,9 @@
 .DS_Store
 
 *.pyc
+*.pdf
 
 doc/mgr/mgr.aux
 doc/mgr/mgr.log
-doc/mgr/mgr.pdf
 doc/mgr/mgr.toc
 

@@ -1,9 +1,225 @@
 \section{Dywizory}
 
+Rozmieszczenie miejsc zerowych i biegunów
+funkcji wymiernych nad krzywą eliptyczną
+wykazuje wiele regularności.
+Narzędziem, które pozwoli nam je badać, są dywizory.
+
+Na potrzeby tej sekcji pracy przyjmujemy,
+że krzywe eliptyczne są rozpatrywane nad ciałem algebraicznie domkniętym.
+
 \subsection*{Definicja}
 
-\todo{Definicja}
+Aby móc zdefiniować dywizor,
+przypomnijmy, czym jest abelowa grupa wolna.
 
-\subsection*{Własności}
+\begin{definition}
 
-\todo{Własności}
+Dany jest zbiór $S$.
+\emph{Suma formalna nad zbiorem $S$} to wyrażenie w postaci
+\begin{equation*}
+\sum_{k=1}^n a_k\divi{s_k}
+\end{equation*}
+gdzie $a_k \in \Z$ oraz $s_k \in S$ dla $k = 1, 2, \ldots, n$.
+
+\emph{Abelowa grupa wolna generowana przez zbiór $S$}
+to zbiór złożony ze wszystich sum formalnych nad zbiorem $S$
+wyposażony w działanie polegające na formalnym dodaniu dwóch sum
+i pogrupowaniu składników ze względu na elementy zbioru $S$.
+\end{definition}
+
+\begin{definition}
+Dana jest krzywa eliptyczna $E$.
+\emph{Dywizor na krzywej eliptycznej $E$}
+to element abelowej grupy wolnej generowanej przez punkty krzywej $E$.
+Grupę wszystkich dywizorów na krzywej $E$ oznaczamy $\Div(E)$.
+\end{definition}
+
+\begin{remark}
+Dywizory na krzywej eliptycznej $E$ będziemy zapisywać w postaci
+\begin{equation*}
+\sum_{P \in E} a(P)\divi{P}
+\end{equation*}
+mimo, że postać ta nie sugeruje,
+że dywizor jest kombinacją skończonej liczby składników.
+\end{remark}
+
+\subsection*{Dywizory funkcji wymiernych}
+
+Przydatność dywizorów polega na tym, że można za ich pomocą
+zakodować informacje
+o wszystkich miejscach zerowych i biegunach funkcji wymiernej
+oraz ich krotnościach.
+
+\begin{definition}
+Dana jest funkcja wymierna $r$ nad krzywą eliptyczną $E$.
+\emph{Dywizor funkcji $r$},
+oznaczany $\rdiv(r)$,
+to dywizor określony następującym wzorem:
+\begin{equation}\label{function_divisor_equation}
+\rdiv(r) = \sum_{P \in E} \ord_P(r)\divi{P}
+\end{equation}
+\end{definition}
+
+Sumowanie we wzorze \ref{function_divisor_equation}
+odbywa się po potencjalnie nieskończonej ilości składników.
+Okazuje się jednak,
+że funkcja wymierna ma niezerowy rząd
+tylko w skończonej ilości punktów.
+
+\begin{lemma}\label{function_order_sum_zero_lemma}
+Dana jest funkcja wymierna $r$ nad krzywą eliptyczną $E$.
+Wówczas
+\begin{equation*}
+\sum_{P \in E} \ord_P(r) = 0
+\end{equation*}
+\end{lemma}
+
+\begin{corollary}
+Dana jest funkcja wymierna $r$ nad krzywą eliptyczną $E$.
+Wówczas
+\begin{equation*}
+\ord_\ecident(r) = -\sum_{P \in E \setminus \ecident} \ord_P(r)
+\end{equation*}
+\end{corollary}
+
+\begin{corollary}
+Dana jest funkcja wymierna $r$ nad krzywą eliptyczną $E$.
+Zbiór punktów krzywej $E$,
+w których funkcja $r$ ma niezerowy rząd,
+jest skończony.
+\end{corollary}
+
+Dywizor niesie w sobie informację
+o miejscach zerowych i biegunach funkcji wymiernej.
+Okazuje się, że w ten sposób wyznacza ją niemalże jednoznacznie.
+
+\begin{theorem}
+Dane są dwie funkcje wymierne nad krzywą eliptyczną $r$ oraz $s$ takie,
+że $\rdiv(r) = \rdiv(s)$.
+Wówczas iloraz $\frac{r}{s}$ jest stały.
+\end{theorem}
+
+\begin{corollary}
+Funkcja wymierna nad krzywą eliptyczną nie ma miejsca zerowego ani bieguna,
+wtedy i tylko wtedy, gdy jest stała.
+\end{corollary}
+
+\subsection*{Własności dywizorów}
+
+Dla dywizorów określamy stopień oraz normę.
+
+\begin{definition}
+Dany jest dywizor $\Delta$ na krzywej eliptycznej $E$.
+\emph{Stopień dywizora $\Delta$},
+oznaczany $\deg(\Delta)$,
+to suma współczynników
+stojących przy punktach krzywej wchodzących w jego skład,
+to znaczy, gdy dywizor $\Delta$ dany jest wzorem
+\begin{equation*}
+\Delta = \sum_{P \in E} a(P)\divi{P}
+\end{equation*}
+to jego stopień dany jest wzorem
+\begin{equation*}
+\deg(\Delta) = \sum_{P \in E} a(P)
+\end{equation*}
+\end{definition}
+
+\begin{definition}
+Dany jest dywizor $\Delta$ na krzywej eliptycznej $E$.
+\emph{Norma dywizora $\Delta$},
+oznaczana $\abs{\Delta}$,
+to suma wartości bezwzględnych współczynników
+stojących przy wszytkich punktach krzywej wchodzących w jego skład
+z wyjątkiem punktu w nieskończoności,
+to znaczy, gdy dywizor $\Delta$ dany jest wzorem
+\begin{equation*}
+\Delta = \sum_{P \in E} a(P)\divi{P}
+\end{equation*}
+to jego norma dana jest wzorem
+\begin{equation*}
+\abs{\Delta} = \sum_{P \in E \setminus \ecident} \abs{a(P)}
+\end{equation*}
+\end{definition}
+
+Zwróćmy uwagę, że w związku z lematem \ref{function_order_sum_zero_lemma}
+dywizor funkcji wymiernej ma stopień równy zero.
+
+\begin{definition}
+Dywizor na krzywej eliptycznej jest \emph{główny},
+jeśli jest on dywizorem pewnej funkcji wymiernej nad tą krzywą.
+\end{definition}
+
+\begin{fact}
+Każdy dywizor główny ma stopień równy zero.
+\end{fact}
+
+Dywizory główne spełniają następującą ważną zależność.
+
+\begin{theorem}
+Dane są funkcje wymierne $r$ oraz $s$ nad krzywą eliptyczną.
+Wówczas $\rdiv(rs) = \rdiv(r) + \rdiv(s)$.
+\end{theorem}
+
+\begin{corollary}
+Dywizory główne na krzywej eliptycznej $E$ tworzą grupę,
+oznaczaną $\Prin(E)$.
+Jest to podgrupa grupy $\Div(E)$.
+\end{corollary}
+
+Dywizory główne pozwalają zdefiniować ważną relację równoważności.
+
+\begin{definition}
+Dywizory $\Delta_1$ oraz $\Delta_2$ są \emph{równoważne},
+co zapisujemy $\Delta_1 \sim \Delta_2$,
+jeśli ich różnica $\Delta_1 - \Delta_2$ jest dywizorem głównym.
+\end{definition}
+
+\begin{lemma}\label{divisor_linear_reduction_lemma}
+Dla każdego dywizora $\Delta$ istnieje dywizor $\tilde{\Delta}$ taki,
+że $\Delta \sim \tilde{\Delta}$, $\deg(\Delta) = \deg(\tilde{\Delta})$
+oraz $\abs{\tilde{\Delta}} \leq 1$.
+\end{lemma}
+
+\subsection*{Grupy dywizorów}
+
+Pojęcie równoważności dywizorów prowadzi do definicji kilku grup,
+które obrazują strukturę
+możliwych miejsc zerowych i biegunów funkcji wymiernych nad krzywą eliptyczną.
+
+\begin{definition}
+Dana jest krzywa eliptyczna $E$.
+\emph{Grupa Picarda krzywej $E$},
+oznaczana $\Pic(E)$,
+to grupa ilorazowa $\Div(E)/\Prin(E)$.
+\end{definition}
+
+\begin{definition}
+Dana jest krzywa eliptyczna $E$.
+\emph{Grupa zerowych dywizorów krzywej $E$},
+oznaczana $\Div^0(E)$,
+to podgrupa grupy $\Div(E)$ składająca się
+z dywizorów o zerowym stopniu.
+\end{definition}
+
+\begin{definition}
+Dana jest krzywa eliptyczna $E$.
+\emph{Zerowa grupa Picarda krzywej $E$},
+oznaczana $\Pic^0(E)$,
+to grupa ilorazowa $\Div^0(E)/\Prin(E)$.
+\end{definition}
+
+Z grupą zerowych dywizorów oraz zerową grupą Picarda
+powiązane są następujące bardzo istotne wyniki.
+
+\begin{theorem}
+Dana jest krzywa eliptyczna $E$ oraz dywizor $\Delta \in \Div^0(E)$.
+Wówczas istnieje taki punkt krzywej $P \in E$,
+że $\Delta \sim \divi{P} - \divi{\ecident}$.
+\end{theorem}
+
+\begin{corollary}
+Dana jest krzywa eliptyczna $E$.
+Istnieje wzajemna jednoznaczność między punktami krzywej $E$,
+a jej zerową grupą Picarda $\Pic^0(E)$.
+\end{corollary}

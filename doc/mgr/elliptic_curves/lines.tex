@@ -1,9 +1,63 @@
 \section{Linie}
 
+Specyficzną klasą wielomianów nad krzywą eliptyczną
+są odpowiedniki wielomianów liniowych dwóch zmiennych.
+Stanowią one algebraiczny odpowiednik
+geometrycznego pojęcia linii prostej.
+
 \subsection*{Definicja}
 
-\todo{Definicja}
+Przyjmujemy następującą definicję linii.
+
+\begin{definition}
+Dana jest krzywa eliptyczna $E(\overline{\K})$.
+\emph{Linia nad krzywą $E$}
+to wielomian $l$ w postaci $l(x, y) = ax + by +c$,
+gdzie $a, b, c \in \K$ oraz $a$ i $b$ nie są jednocześnie równe zero.
+\end{definition}
+
+\begin{definition}
+Dana jest krzywa eliptyczna $E$ oraz linia $l$ nad tą krzywą.
+Mówimy, że \emph{linia $l$ przecina krzywą $E$ w punkcie $P$},
+jeśli $l(P) = 0$.
+\end{definition}
 
 \subsection*{Własności}
 
-\todo{Własności}
+Następujące własności są to po prostu podane wcześniej fakty
+zastosowane do przypadku linii.
+
+\begin{fact}
+Dana jest linia $l = ax + by + c$.
+Jej stopień wynosi $3$, gdy $b \neq 0$
+oraz $2$, gdy $b = 0$.
+\end{fact}
+
+\begin{fact}\label{line_divisor_norm}
+Dana jest linia $l$.
+Wówczas $\abs{\rdiv(l)} \in \{2,3\}$.
+\end{fact}
+
+Następująca własność jest istotnym uściśleniem faktu \ref{line_divisor_norm}.
+
+\begin{theorem}
+Dana jest linia $l$ nad krzywą eliptyczną $E$.
+Niech $P$, $Q$ oraz $R$ oznaczają dowolne trzy parami różne punkty krzywej $E$.
+Wówczas jej dywizor $\rdiv{l}$ może mieć jedną z następujących postaci:
+\begin{itemize}
+\item $\rdiv{l} = \divi{P} + \divi{Q} + \divi{R} - 3\divi{\ecident}$;
+\item $\rdiv{l} = 2\divi{P} + \divi{Q} - 3\divi{\ecident}$;
+\item $\rdiv{l} = 3\divi{P} - 3\divi{\ecident}$;
+\item $\rdiv{l} = \divi{P} + \divi{Q} - 2\divi{\ecident}$;
+\item $\rdiv{l} = 2\divi{P} - 2\divi{\ecident}$.
+\end{itemize}
+Wszystkie wymienione przypadki zdarzają się.
+\end{theorem}
+
+\begin{corollary}
+Przez dowolne dwa punkty skończone krzywej eliptycznej
+można przeprowadzić linię.
+\end{corollary}
+
+Wniosek ten daje podstawę, na której można zdefiniować
+działanie grupowe na krzywej eliptycznej.
