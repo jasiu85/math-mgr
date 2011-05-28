@@ -1,5 +1,137 @@
 \section{Definicja}
 
-\subsection*{Definicja działania}
+Zdefiniujemy teraz działanie grupowe na zbiorze punktów krzywej eliptycznej.
 
-\todolipsum{Definicja działania.}
+\begin{definition}\label{ec_groupop_def}
+Dana jest krzywa eliptyczna $E$.
+Na zbiorze jej punktów określamy działanie grupowe,
+oznaczane symbolem $+$,
+w następujący sposób.
+\begin{enumerate}
+
+\item\label{ec_groupop_neutral}
+Elementem neutralnym działania jest punkt $\ecident$.
+\begin{equation}
+P + \ecident = \ecident = \ecident + P
+\end{equation}
+\item\label{ec_groupop_inverse}
+Elementem przeciwnym do punktu $P \neq \ecident$,
+oznaczanym $-P$,
+jest punkt $\overline{P}$.
+\begin{equation}
+P + \overline{P} = \ecident = \overline{P} + P
+\end{equation}
+\item\label{ec_groupop_add_generic}
+Suma dwóch punktów skończonych $P = (a, b)$ oraz $Q = (c, d)$,
+przy czym $Q \neq \overline{P}$, to punkt $R = (e, f)$,
+którego współrzędne są określone następującymi wzorami:
+\begin{eqnarray}\label{ec_groupop_add_generic_eqn}
+e & = & \lambda^2 - a - c \\
+f & = & -\lambda(e - a) - b
+\end{eqnarray}
+Współczynnik $\lambda$ jest określony następująco:
+\begin{enumerate}
+\item\label{ec_groupop_add_generic_chord}
+jeżeli $a \neq c$, to:
+\begin{equation}\label{ec_groupop_add_generic_lambda_chord_eqn}
+\lambda = \frac{d-b}{c-a}
+\end{equation}
+\item\label{ec_groupop_add_generic_tangent}
+jeżeli $a = c$, to:
+\begin{equation}\label{ec_groupop_add_generic_lambda_tangent_eqn}
+\lambda = \frac{3a^2+A}{2b}
+\end{equation}
+\end{enumerate}
+\end{enumerate}
+\end{definition}
+
+\begin{remark}
+Nie wprowadzamy nowego określenia na grupę z tak zdefiniowanym działaniem.
+Będziemy ją po prostu nazywać ,,krzywa eliptyczna''
+i oznaczać tak samo, jak oznaczamy krzywe.
+\end{remark}
+
+\begin{remark}
+W podanej definicji w punkcie \ref{ec_groupop_add_generic}
+suma dwóch punktów $P$ i $Q$
+nie jest określona, gdy $Q = \overline{P}$
+lub gdy jeden z punktów jest nieskończony.
+Wynik dodawania jest wówczas określony
+na podstawie zależności podanych w punkcie
+\ref{ec_groupop_neutral} lub \ref{ec_groupop_inverse}.
+\end{remark}
+
+\begin{remark}
+Przypadek opisany w punkcie \ref{ec_groupop_add_generic_tangent}
+zachodzi wtedy,
+gdy próbujemy dodać punkt skończony niebędący punktem rzędu dwa
+do samego siebie.
+\end{remark}
+
+Jak widać, dodanie do siebie dwóch dowolnych punktów krzywej
+nie wymaga skomplikowanych obliczeń.
+W każdym przypadku współrzędne punktu będącego wynikiem dodawania
+są określone za pomocą wyrażeń wymiernych.
+
+\begin{fact}
+Dana jest krzywa eliptyczna $E(\fieldL)$ oraz ciało $\K \subset \fieldL$.
+Wówczas element odwrotny do punktu $\K$-wymiernego
+jest $\K$-wymierny,
+jak również suma dwóch $\K$-wymiernych jest $\K$-wymierna.
+\end{fact}
+
+Wiemy więc, że działanie grupowe nie wyprowadza poza zbiór $E(\K)$.
+Pokażemy, teraz, że faktycznie zadaje ono grupę,
+tzn. że spełnia prawa grupowe.
+Sprawdzenie łączności bezpośrednio z definicji jest bardzo żmudne.
+Na szczęście można zrobić to inaczej.
+
+\begin{lemma}
+Przez punkty $P$, $Q$ oraz $R$ na krzywej eliptycznej $E$
+przechodzi jedna linia wtedy i tylko wtedy,
+gdy $P + Q + R = \ecident$.
+\end{lemma}
+
+\begin{proof}
+W ogólnym przypadku dodanie dwóch punktów krzywej $P$ i $Q$ polega na:
+poprowadzeniu przez $P$ i $Q$ linii,
+znalezieniu trzeciego punktu przecięcia $R$ tej linii z krzywą
+oraz wzięciu jego sprzężenia $\overline{R}$.
+Widzimy to, porównując wzory
+\ref{ec_groupop_add_generic_eqn},
+\ref{ec_groupop_add_generic_lambda_chord_eqn}
+i \ref{ec_groupop_add_generic_lambda_tangent_eqn}
+z wzorami
+\ref{chord_line_third_point_x_eqn},
+\ref{chord_line_third_point_y_eqn},
+\ref{tangent_line_third_point_x_eqn}
+i \ref{tangent_line_third_point_y_eqn}.
+Stąd $P + Q = \overline{R}$.
+Ale $\overline{R} = -R$, stąd $P + Q + R = \ecident$.
+\end{proof}
+
+Konsekwencje tego lematu stają się jasne,
+gdy zestawimy go razem z twierdzeniami
+\ref{divisor_linear_reduction_theorem}
+oraz \ref{zerodeg_divisor_linear_reduction_theorem},
+wnioskami \ref{piczero_curvepts_bijection_corollary}
+oraz \ref{piczero_representants_coro}
+i z uwagą \ref{piczero_addition_remark}.
+
+\begin{theorem}
+Niech $\pi \colon E \to \Pic^0(E)$
+będzie bijekcją zdefiniowaną w dowodzie wniosku
+\ref{piczero_curvepts_bijection_corollary}.
+Wówczas dla dowolnych punktów $P, Q \in E$
+zachodzi $\pi(P + Q) = \pi(P) + \pi(Q)$.
+\end{theorem}
+
+\begin{proof}
+Natychmiastowy.
+\end{proof}
+
+\begin{corollary}
+Krzywa eliptyczna $E$ wraz z działaniem określonym w definicji
+\ref{ec_groupop_def} tworzy grupę abelową.
+Grupa ta jest izomorficzna z grupą $\Pic^0(E)$.
+\end{corollary}
