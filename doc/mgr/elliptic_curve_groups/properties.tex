@@ -1,0 +1,55 @@
+\section{Własności}
+
+Przytoczymy teraz bez dowodu najważniejsze własności
+grup na krzywych eliptycznych.
+
+Zaczniemy od scharakteryzowania wielkości grupy na krzywej eliptycznej.
+
+\begin{fact}
+Grupa na krzywej eliptycznej nad ciałem algebraicznie domkniętym
+ma nieskończenie wiele elementów.
+\end{fact}
+
+W przypadku ciał skończonych sytuacja wygląda zupełnie inaczej.
+
+\begin{theorem}[Hasse]
+Rząd grupy na dowolnej krzywej eliptycznej $E$
+nad dowolnym ciałem skończonym $\GF_q$,
+gdzie $q = p^n$ oraz $p$ jest liczbą pierwszą,
+spełnia następującą nierówność:
+\begin{equation}
+q + 1 - 2\sqrt{q} \leq \abs{E} \leq q + 1 + 2\sqrt{q}
+\end{equation}
+\end{theorem}
+
+Dowód tego twierdzenia można znaleźć np. w pracy \cite{ecintro1},
+zaś intuicyjne wyjaśnienie jest następujące.
+Jeżeli potraktujemy wielomian charakterystyczny $\kappa$ krzywej eliptycznej
+jak funkcję różnowartościową,
+to wówczas dla mniej-więcej połowy elementów $a \in \GF_q$
+można z wartości $\kappa(a)$ wyciągnąć pierwiastek kwadratowy.
+Zatem krzywa ma około $2\frac{q}{2}$ punktów skończonych.
+Doliczając punkt w nieskończoności otrzymujemy około $q + 1$ punktów.
+
+Chociaż nie ma jawnego wzoru
+na rząd grupy na krzywej eliptycznej nad ciałem skończonym,
+istnieje efektywny algorytm, który pozwala go obliczyć.
+
+\begin{theorem}[Shoof]
+Istnieje algorytm, który pozwala obliczyć rząd grupy na krzywej eliptycznej $E$
+nad ciałem $\GF_q$ za pomocą $O(\log^8 q)$ operacji na bitach.
+\end{theorem}
+
+Algorytm ten został opublikowany w pracy \cite{schoof}.
+
+Struktura grupy na krzywej eliptycznej nad ciałem skończonym
+również jest znana.
+
+\begin{theorem}
+Grupa na krzywej eliptycznej $E$ nad ciałem $\GF_q$
+jest izomorficzna z grupą $(\Z/m\Z) \times (\Z/n\Z)$,
+przy czym $n \mid \gcd(m, q-1)$.
+\end{theorem}
+
+Dowód tego twierdzenia można odnaleźć w ksiażce \cite{silverman}.
+

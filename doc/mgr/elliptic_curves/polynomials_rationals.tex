@@ -1,6 +1,6 @@
 \section{Wielomiany i funkcje wymierne}
 
-Wielomiany i funkcje wymierne nad krzywymi eliptycznymi
+Wielomiany i funkcje wymierne na krzywych eliptycznych
 różnią się pod pewnymi względami od swoich klasycznych odpowiedników.
 Ponieważ nasze rozważania w dalszej części pracy
 będą nieustannie dotyczyć wielomianów i funkcji wymiernych,
@@ -9,10 +9,10 @@ przeanalizujemy teraz te pojęcia.
 \subsection*{Definicja wyrażenia wielomianowego}
 
 Przyjmujemy następującą definicję
-wyrażenia wielomianowego nad krzywą eliptyczną.
+wyrażenia wielomianowego na krzywej eliptycznej.
 
 \begin{definition}
-\emph{Wyrażenie wielomianowe nad krzywą eliptyczną $E(\K)$}
+\emph{Wyrażenie wielomianowe na krzywej eliptycznej $E(\K)$}
 to element pierścienia ilorazowego
 $\K[x,y]/(\kappa - y^2)$.
 \end{definition}
@@ -29,7 +29,7 @@ dadzą tę samą funkcję wielomianową.
 Stąd pierścień $\K[x,y]$ dzielimy przez ideał $(\kappa- y^2)$
 i uzyskujemy pierścień ilorazowy $K[x,y]/(\kappa - y^2)$.
 
-Wyrażenie wielomianowe nad krzywą eliptyczną
+Wyrażenie wielomianowe na krzywej eliptycznej
 jest w takim razie klasą abstrakcji
 pewnej relacji równoważności na zbiorze wielomianów dwóch zmiennych.
 Nie jest wygodnie myśleć o wyrażeniach wielomianowych w ten sposób.
@@ -38,7 +38,6 @@ w jaki sposób wybrać reprezentantów klas abstrakcji
 do dalszych rozważań.
 
 \begin{theorem}
-Dana jest krzywa eliptyczna $E(\K)$.
 Niech $f \in \K[x,y]$
 będzie wielomianem dwóch zmiennych nad ciałem $\K$.
 Wówczas istnieje taki wielomian $g \in \K[x,y]$,
@@ -48,7 +47,7 @@ Ponadto, wielomian $g$ jest wyznaczony jednoznacznie.
 \end{theorem}
 
 \begin{remark}
-Pierścień wyrażeń wielomianowych nad krzywą eliptyczną $E(\K)$
+Pierścień wyrażeń wielomianowych na krzywej eliptycznej $E(\K)$
 będziemy odtąd utożsamiać ze zbiorem
 złożonym z wielomianów postaci $u + yv$,
 gdzie $u, v \in \K[x]$.
@@ -59,7 +58,7 @@ Zwróćmy uwagę, że zbiór $(1 + y)\K[x]$ nie ma struktury pierścienia,
 ponieważ nie jest określone mnożenie.
 Nie jest to problem,
 ponieważ z kontekstu zawsze będzie wynikało,
-nad jaką krzywą rozpatrywane są wyrażenia wielomianowe.
+na jakiej krzywej rozpatrywane są wyrażenia wielomianowe.
 Co więcej, czasami wystarczy,
 że w miejsce powstałego podczas mnożenia czynnika $y^2$
 będziemy podstawiać symbol $\kappa$
@@ -68,33 +67,34 @@ i nie będzie nam potrzebna dokładna znajomość parametrów krzywej $A$ oraz $
 \begin{remark}
 W zależności od kontekstu wielomian charakterystyczny krzywej eliptycznej
 będziemy traktować jak wielomian jednej zmiennej, wielomian dwóch zmiennych
-lub jak wyrażenie wielomianowe nad krzywą eliptyczną.
+lub jak wyrażenie wielomianowe na krzywej eliptycznej.
 \end{remark}
 
 \subsection*{Definicja wyrażenia wymiernego}
 
 Przyjmujemy następującą definicję
-wyrażenia wymiernego nad krzywą eliptyczną.
+wyrażenia wymiernego na krzywej eliptycznej.
 
 \begin{definition}
-\emph{Wyrażenie wymierne nad krzywą eliptyczną}
-to element ciała ułamków pierścienia wyrażeń wielomianowych nad tą krzywą.
+\emph{Wyrażenie wymierne na krzywej eliptycznej $E(\K)$}
+to element ciała ułamków pierścienia wyrażeń wielomianowych na tej krzywej.
 \end{definition}
 
 Sens tej definicji jest taki sam,
 jak w przypadku każdego innego ciała ułamków --
 bierzemy zbiór ułamków formalnych $\frac{f}{g}$,
-gdzie $f$ i $g$ to wyrażenia wielomianowe nad krzywą eliptyczną,
+gdzie $f$ i $g$ to wyrażenia wielomianowe na krzywej eliptycznej,
 po czym utożsamiamy ułamki $\frac{f_1}{g_1}$ oraz $\frac{f_2}{g_2}$,
 jeżeli zachodzi równość wyrażeń $f_1g_2 = f_2g_1$.
 
 \begin{fact}
-Zbiór wyrażeń wielomianowych można zanużyć w zbiorze wyrażeń wymiernych,
+Zbiór wyrażeń wielomianowych na krzywej eliptycznej
+można zanurzyć w zbiorze wyrażeń wymiernych na tej krzywej,
 przypisując wyrażeniu wielomianowemu $f$ wyrażenie wymierne $\frac{f}{1}$
 \end{fact}
 
 \begin{remark}
-Wyrażenia wielomianowe nad krzywą eliptyczną
+Wyrażenia wielomianowe na krzywej eliptycznej
 będziemy odtąd utożsamiać z odpowiadającymi im wyrażeniami wymiernymi.
 \end{remark}
 
@@ -103,14 +103,14 @@ wyrażenia wymierne są klasami abstrakcji pewnej relacji równoważności,
 co nie jest wygodne.
 
 \begin{theorem}
-Niech $r$ będzie wyrażeniem wymiernym nad krzywą eliptyczną $E(\K)$.
+Niech $r$ będzie wyrażeniem wymiernym na krzywej eliptycznej $E(\K)$.
 Wówczas istnieją wyrażenia wymierne $u, v \in \K(x)$ takie,
 że $r = u + yv$.
 Wyrażenia te są wyznaczone jednoznacznie.
 \end{theorem}
 
 \begin{remark}
-Ciało funkcji wymiernych nad krzywą eliptyczną $E(\K)$
+Ciało funkcji wymiernych na krzywej eliptycznej $E(\K)$
 będziemy odtąd utożsamiać ze zbiorem
 złożonym z wyrażeń wymiernych postaci $u + yv$,
 gdzie $u,v \in \K(x)$.
@@ -123,15 +123,13 @@ ale zawsze albo będą dane parametry krzywej eliptycznej,
 albo w miejsce powstałego podczas mnożenia lub dzielenia czynnika $y^2$
 będziemy podstawiać symbol $\kappa$.
 
-Wyrażenia wymierne będziemy również przedstawiać w postaci ilorazu
+Wyrażenia wymierne możemy również przedstawiać w postaci ilorazu
 elementów zbioru $(1 + y)\K[x]$.
 
 \begin{theorem}
-Dane jest wyrażenie wymierne $r$ nad krzywą eliptyczną $E(\K)$.
+Dane jest wyrażenie wymierne $r$ na krzywej eliptycznej $E(\K)$.
 Wówczas $r = \frac{f}{g}$,
-gdzie $f$ i $g$ to wyrażenia wielomianowe nad krzywą $E(\K)$ takie,
-że $f = u_1 + yv_1$ oraz $g = u_2 + yv_2$,
-gdzie $u_1, v_1, u_2, v_2 \in \K$.
+gdzie $f, g \in (1 + y)\K[x]$ to wyrażenia wielomianowe na krzywej $E(\K)$.
 \end{theorem}
 
 \subsection*{Funkcje wielomianowe i wymierne}
@@ -157,9 +155,8 @@ w dowolnym punkcie skończonym krzywej.
 Jedyna niejasność związana jest z ewentualnym dzieleniem przez zero.
 
 \begin{definition}
-Dana jest funkcja wymierna $r$ nad krzywą eliptyczną
-oraz punkt $P$ na tej krzywej.
-Jeżeli istnieje taka reprezentacja $\frac{f}{g}$ funkcji $r$
+Niech $r = \frac{f}{g}$ będzie funkcją wymierną na krzywej eliptycznej.
+Jeżeli $P$ jest takim punktem skończonym krzywej,
 że $f(P) \neq 0$ oraz $g(P) = 0$,
 to mówimy, że funkcja wymierna $r$ ma w punkcie $P$
 wartość \emph{nieskończoną},
@@ -167,56 +164,47 @@ co zapisujemy $r(P) = \infty$.
 \end{definition}
 
 \begin{theorem}
-Dana jest funkcja wymierna $r = \frac{f}{g}$ nad krzywą eliptyczną $E$.
-Jeżeli $P$ jest punktem skończonym krzywej $E$ oraz $r(P) = \infty$,
-to $g(P) = 0$ niezależnie od reprezentacji $\frac{f}{g}$.
+Niech $r = \frac{f}{g}$ będzie funkcją wymierną na krzywej eliptycznej.
+Jeżeli $P$ jest takim punktem skończonym krzywej,
+że $r(P) = \infty$,
+to $g(P) = 0$ niezależnie od wyboru wielomianów $f$ oraz $g$.
 \end{theorem}
 
 \subsection*{Sprzężenie i norma}
 
 Następujące dwa pojęcia są bardzo przydatne,
 ponieważ pozwalają sprowadzić
-zagadnienie dotyczące wielomianów i funkcji wymiernych nad krzywą eliptyczną
+zagadnienie dotyczące wielomianów i funkcji wymiernych na krzywej eliptycznej
 do przypadku wyrażeń jednej zmiennej.
 
 \begin{definition}
-Dana jest funkcja wymierna $r = u + yv$ nad krzywą eliptyczną.
+Dana jest funkcja wymierna $r = u + yv$ na krzywej eliptycznej.
 \emph{Funkcja wymierna sprzężona do funkcji $f$}
 to funkcja $\overline{r} = u - yv$.
 \end{definition}
 
 \begin{definition}
-Dana jest funkcja wymierna $r = u + yv$ nad krzywą eliptyczną.
+Dana jest funkcja wymierna $r = u + yv$ na krzywej eliptycznej.
 \emph{Norma funkcji wymiernej $r$}
 to funkcja wymierna $N(r) = r\overline{r} = u^2 - \kappa v^2$.
 \end{definition}
 
 \begin{fact}
-Dane są funkcje wymierne $r$ oraz $s$ nad krzywą eliptyczną.
+Dane są funkcje wymierne $r$ oraz $s$ na krzywej eliptycznej.
 Wówczas $\overline{rs} = \overline{r}\,\overline{s}$
 oraz $N(rs) = N(r)N(s)$.
 \end{fact}
 
 \subsection*{Stopień wielomianu i funkcji wymiernej}
 
-Przyjmujemy następującą definicję stopnia wielomianu nad krzywą eliptyczną.
+Przyjmujemy następującą definicję stopnia wielomianu na krzywej eliptycznej.
 
 \begin{definition}
-Dany jest wielomian $f$ nad krzywą eliptyczną.
+Dany jest wielomian $f$ na krzywej eliptycznej.
 \emph{Stopień wielomianu $f$},
 oznaczany $\deg(f)$,
 to stopień jego normy $N(f)$ traktowanej jak wielomian jednej zmiennej.
 \end{definition}
-
-Sens tej definicji jest następujący. Stopień wielomianu jednej zmiennej
-to po prostu wykładnik najwyższej potęgi, w której występuje ta zmienna.
-Podobnie rzecz ma się z wielomianami dwóch zmiennych.
-Tę koncepcję przenosimy na wielomiany nad krzywą eliptyczną,
-ale w taki sposób, żeby uwzględnić równanie krzywej.
-Dlatego zmiennej $x$ przypisujemy stopień $2$,
-a zmiennej $y$ -- stopień $3$.
-Nieprzypadkowo, stopień liczony w ten sposób
-jest równy stopniowi normy.
 
 \begin{remark}
 Aby uniknąć nieporozumień,
@@ -225,28 +213,39 @@ oznaczać będziemy przez $\deg_x$.
 \end{remark}
 
 \begin{fact}
-Niech $f = u + yv$ będzie wielomianem nad krzywą eliptyczną.
+Niech $f = u + yv$ będzie wielomianem na krzywej eliptycznej.
 Wówczas $\deg(f) = \max(2\deg_x(u), 3 + 2\deg_x(v))$.
 \end{fact}
+
+Sens tej definicji jest następujący. Stopień wielomianu jednej zmiennej
+to po prostu wykładnik najwyższej potęgi, w której występuje ta zmienna.
+Podobnie rzecz ma się z wielomianami dwóch zmiennych.
+Tę koncepcję przenosimy na wielomiany na krzywej eliptycznej,
+ale w taki sposób, żeby uwzględnić równanie krzywej.
+Dlatego zmiennej $x$ przypisujemy stopień $2$,
+a zmiennej $y$ -- stopień $3$.
+Nieprzypadkowo, stopień liczony w ten sposób
+jest równy stopniowi normy.
+Jak się również okaże,
+taka definicja stopnia ma związek z ilością miejsc zerowych wielomianu.
 
 Dysponując stopniem wielomianu, możemy określić stopień funkcji wymiernej.
 
 \begin{definition}
-Dana jest funkcja wymierna $r = \frac{f}{g}$ nad krzywą eliptyczną.
+Dana jest funkcja wymierna $r = \frac{f}{g}$ na krzywej eliptycznej.
 \emph{Stopień funkcji wymiernej $r$},
 oznaczany $\deg(r)$,
 to różnica $\deg(f) - \deg(g)$.
 \end{definition}
 
-Na stopnie wielomianów i funkcji wymiernych nad krzywą eliptyczną
+Na stopnie wielomianów i funkcji wymiernych na krzywej eliptycznej
 przenosi się zasadnicza własność znana z teorii wyrażeń jednej zmiennej.
 
 \begin{theorem}
-Niech $r$ oraz $s$ będą dwoma funkcjami wymiernymi nad krzywą eliptyczną.
+Niech $r$ oraz $s$ będą dwoma funkcjami wymiernymi na krzywej eliptycznej.
 Wówczas $\deg(rs) = \deg(r) + \deg(s)$.
 Ponadto, jeśli funkcja $s$ nie jest tożsamościowo równa zero,
-to $\deg(\frac{r}{s}) = \deg(r) - \deg(s)$
-oraz $\deg(\frac{1}{s}) = -\deg(s)$.
+to $\deg(\frac{r}{s}) = \deg(r) - \deg(s)$.
 \end{theorem}
 
 \subsection*{Wartość funkcji wymiernej w punkcie w nieskończoności}
@@ -256,12 +255,14 @@ w punkcie w nieskończoności.
 W przypadku funkcji wymiernych nad ciałem liczb rzeczywistych
 obliczamy po prostu granicę wartości funkcji,
 gdy argument dąży do nieskończoności.
-Następująca definicja określa
-wartość funkcji wymiernej w punkcie w nieskończoności w sposób,
-który ma wiele cech wspólnych ze wspomnianym przejściem granicznym.
+Jak się okazuje, uzyskana w ten sposób granica, jeśli jest skończona,
+jest po prostu ilorazem współczynników stojących przy najwyższych potęgach
+w mianowniku i liczniku.
+Dzięki tej obserwacji możemy w analogiczny sposób określić
+wartość funkcji wymiernej w punkcie w nieskończoności.
 
 \begin{definition}
-Dana jest funkcja wymierna $r$ nad krzywą eliptyczną.
+Dana jest funkcja wymierna $r$ na krzywej eliptycznej.
 Wartość funkcji $r$ w punkcie w nieskończoności $\ecident$
 ustalamy następująco:
 \begin{itemize}
@@ -272,11 +273,11 @@ to przedstawiamy funkcję $r$ w postaci $\frac{f}{g}$,
 gdzie $f = u_1 + yv_1$ oraz $g = u_2 + yv_2$
 i wówczas:
 \begin{itemize}
-\item stopnie wielomianów $f$ i $g$ są parzyste,
-ich wiodące składniki mają postać odpowiednio $ax^d$ i $bx^d$,
+\item jeśli stopnie wielomianów $f$ i $g$ są parzyste,
+to ich wiodące składniki mają postać odpowiednio $ax^d$ i $bx^d$,
 wówczas $r(\ecident) = \frac{a}{b}$;
-\item stopnie wielomianów $f$ i $g$ są nieparzyste,
-ich wiodące składniki mają postać odpowiednio $ayx^d$ i $byx^d$,
+\item jeśli stopnie wielomianów $f$ i $g$ są nieparzyste,
+to ich wiodące składniki mają postać odpowiednio $ayx^d$ i $byx^d$,
 wówczas również $r(\ecident) = \frac{a}{b}$.
 \end{itemize}
 \end{itemize}
@@ -298,22 +299,24 @@ to $(\frac{r}{s})(\ecident) = \frac{r(\ecident)}{s(\ecident)}$.
 \subsection*{Miejsca zerowe i bieguny}
 
 Przyjmujemy następującą definicję
-miejsca zerowego oraz bieguna funkcji wymiernej nad krzywą eliptyczną.
+miejsca zerowego oraz bieguna funkcji wymiernej na krzywej eliptycznej.
 
 \begin{definition}
-Dana jest funkcja wymierna $r$ nad krzywą eliptyczną.
+Dana jest funkcja wymierna $r$ na krzywej eliptycznej.
 \emph{Miejsce zerowe funkcji $r$} (odpowiednio, \emph{biegun funkcji $f$})
 to taki punkt $P$ krzywej, że $r(P) = 0$ (odpowiednio, $r(P) = \infty$).
 \end{definition}
 
 \begin{fact}
-Jeżeli punkt $P$ jest miejscem zerowym (biegunem) funkcji wymiernej $r$,
-to punkt $\overline{P}$ jest miejscem zerowym funkcji wymiernej $\overline{r}$.
+Jeżeli punkt $P$
+jest miejscem zerowym (biegunem) funkcji wymiernej $r$,
+to punkt $\overline{P}$
+jest miejscem zerowym (biegunem) funkcji wymiernej $\overline{r}$.
 \end{fact}
 
 \begin{fact}\label{zero_of_norm_fact}
-Punkt $P = (a, b)$ jest miejscem zerowym wielomianu $f$ wtedy i tylko wtedy,
-gdy liczba $a$ jest miejscem zerowym wielomianu $N(f)$.
+Jeżeli $P = (a, b)$ jest miejscem zerowym wielomianu $f$,
+to liczba $a$ jest miejscem zerowym wielomianu $N(f)$.
 \end{fact}
 
 \begin{fact}
@@ -324,7 +327,7 @@ ma dokładnie trzy punkty rzędu dwa.
 \end{fact}
 
 Podczas badania miejsc zerowych i biegunów
-funkcji wymiernych nad krzywą eliptyczną
+funkcji wymiernych na krzywej eliptycznej
 będziemy chcieli uwolnić się od konieczności pilnowania,
 czy ciało, nad którym zdefiniowana jest krzywa,
 jest algebraicznie domknięte czy nie.
@@ -358,9 +361,10 @@ Podobnie jak w przypadku funkcji wymiernych jednej zmiennej,
 chcemy wprowadzić pojęcie krotności miejsca zerowego i bieguna.
 
 \begin{theorem}\label{uniformizer_existence_theorem}
-Dla każdego punktu $P = (a, b)$ na krzywej eliptycznej
+Dla każdego punktu $P = (a, b)$ na krzywej eliptycznej $E$
 istnieje funkcja wymierna $u$ taka, że $u(P) = 0$
-oraz każdą funkcję wymierną $r$ można zapisać w postaci $r = u^ds$,
+oraz każdą funkcję wymierną $r$ na krzywej $E$
+można przedstawić w postaci $r = u^ds$,
 gdzie $d \in \Z$ oraz $s$ jest funkcją wymierną taką, że $s(P) \neq 0$.
 
 Przykładowymi funkcjami, które spełniają powyższy warunek, są:
@@ -374,7 +378,7 @@ Wartość wykładnika $d$ nie zależy od wyboru funkcji $u$.
 \end{theorem}
 
 Twierdzenie to ukazuje pewną wspólną cechę
-funkcji wymiernych nad krzywą eliptyczną
+funkcji wymiernych na krzywej eliptycznej
 oraz zwykłych funkcji wymiernych,
 dzięki czemu może posłużyć przeniesienia na krzywe eliptyczne
 pojęcia krotności miejsca zerowego lub bieguna.
@@ -387,7 +391,7 @@ spełniająca warunki podane w twierdzeniu \ref{uniformizer_existence_theorem}.
 \end{definition}
 
 \begin{definition}
-Dana jest funkcja wymierna $r$ nad krzywą eliptyczną,
+Dana jest funkcja wymierna $r$ na krzywej eliptycznej,
 punkt $P$ na tej krzywej oraz unifikator $u$ w tym punkcie.
 \emph{Rząd funkcji $r$ w punkcie $P$},
 oznaczany $\ord_P(r)$,
@@ -408,7 +412,7 @@ Możemy teraz wyrazić szereg ważnych własności
 wielomianów i funkcji wymiernych.
 
 \begin{theorem}
-Dany jest wielomian $f$ nad krzywą eliptyczną $E$.
+Dany jest wielomian $f$ na krzywej eliptycznej $E$.
 Wówczas
 \begin{equation*}
 \sum_{P \in E\setminus \{\ecident\}} \ord_P(f) = \deg(f)
@@ -416,7 +420,7 @@ Wówczas
 \end{theorem}
 
 \begin{corollary}\label{function_order_sum_zero_corollary}
-Dana jest funkcja wymierna $r$ nad krzywą eliptyczną $E$. Wówczas
+Dana jest funkcja wymierna $r$ na krzywej eliptycznej $E$. Wówczas
 \begin{equation*}
 \sum_{P \in E} \ord_P(r) = 0
 \end{equation*}

@@ -4,11 +4,11 @@ Zdefiniujemy teraz działanie grupowe na zbiorze punktów krzywej eliptycznej.
 
 \begin{definition}\label{ec_groupop_def}
 Dana jest krzywa eliptyczna $E$.
-Na zbiorze jej punktów określamy działanie grupowe,
-oznaczane symbolem $+$,
-w następujący sposób.
+\emph{Grupa na krzywej eliptycznej $E$}
+składa się ze zbioru punktów krzywej $E$
+oraz działania, oznaczanego symbolem $+$,
+określonego w następujący sposób.
 \begin{enumerate}
-
 \item\label{ec_groupop_neutral}
 Elementem neutralnym działania jest punkt $\ecident$.
 \begin{equation}
@@ -25,8 +25,10 @@ P + \overline{P} = \ecident = \overline{P} + P
 Suma dwóch punktów skończonych $P = (a, b)$ oraz $Q = (c, d)$,
 przy czym $Q \neq \overline{P}$, to punkt $R = (e, f)$,
 którego współrzędne są określone następującymi wzorami:
-\begin{eqnarray}\label{ec_groupop_add_generic_eqn}
+\begin{eqnarray}
+\label{ec_groupop_add_generic_eqn_x}
 e & = & \lambda^2 - a - c \\
+\label{ec_groupop_add_generic_eqn_y}
 f & = & -\lambda(e - a) - b
 \end{eqnarray}
 Współczynnik $\lambda$ jest określony następująco:
@@ -46,9 +48,8 @@ jeżeli $a = c$, to:
 \end{definition}
 
 \begin{remark}
-Nie wprowadzamy nowego określenia na grupę z tak zdefiniowanym działaniem.
-Będziemy ją po prostu nazywać ,,krzywa eliptyczna''
-i oznaczać tak samo, jak oznaczamy krzywe.
+Nie wprowadzamy nowego oznaczenia na grupę na krzywej eliptycznej --
+będziemy ją oznaczać tak samo, jak oznaczamy krzywe.
 \end{remark}
 
 \begin{remark}
@@ -69,15 +70,13 @@ do samego siebie.
 \end{remark}
 
 Jak widać, dodanie do siebie dwóch dowolnych punktów krzywej
-nie wymaga skomplikowanych obliczeń.
-W każdym przypadku współrzędne punktu będącego wynikiem dodawania
-są określone za pomocą wyrażeń wymiernych.
+nie wymaga skomplikowanych obliczeń --
+w każdym przypadku współrzędne punktu będącego wynikiem dodawania
+są określone jako funkcje wymierne od współrzędnych dodawanych punktów.
 
 \begin{fact}
 Dana jest krzywa eliptyczna $E(\fieldL)$ oraz ciało $\K \subset \fieldL$.
-Wówczas element odwrotny do punktu $\K$-wymiernego
-jest $\K$-wymierny,
-jak również suma dwóch $\K$-wymiernych jest $\K$-wymierna.
+Wówczas suma dwóch punktów $\K$-wymiernych jest punktem $\K$-wymiernym.
 \end{fact}
 
 Wiemy więc, że działanie grupowe nie wyprowadza poza zbiór $E(\K)$.
@@ -86,48 +85,33 @@ tzn. że spełnia prawa grupowe.
 Sprawdzenie łączności bezpośrednio z definicji jest bardzo żmudne.
 Na szczęście można zrobić to inaczej.
 
-\begin{lemma}
-Przez punkty $P$, $Q$ oraz $R$ na krzywej eliptycznej $E$
-przechodzi jedna linia wtedy i tylko wtedy,
-gdy $P + Q + R = \ecident$.
-\end{lemma}
-
-\begin{proof}
-W ogólnym przypadku dodanie dwóch punktów krzywej $P$ i $Q$ polega na:
-poprowadzeniu przez $P$ i $Q$ linii,
-znalezieniu trzeciego punktu przecięcia $R$ tej linii z krzywą
-oraz wzięciu jego sprzężenia $\overline{R}$.
-Widzimy to, porównując wzory
-\ref{ec_groupop_add_generic_eqn},
-\ref{ec_groupop_add_generic_lambda_chord_eqn}
-i \ref{ec_groupop_add_generic_lambda_tangent_eqn}
-z wzorami
-\ref{chord_line_third_point_x_eqn},
-\ref{chord_line_third_point_y_eqn},
-\ref{tangent_line_third_point_x_eqn}
-i \ref{tangent_line_third_point_y_eqn}.
-Stąd $P + Q = \overline{R}$.
-Ale $\overline{R} = -R$, stąd $P + Q + R = \ecident$.
-\end{proof}
-
-Konsekwencje tego lematu stają się jasne,
-gdy zestawimy go razem z twierdzeniami
-\ref{divisor_linear_reduction_theorem}
-oraz \ref{zerodeg_divisor_linear_reduction_theorem},
-wnioskami \ref{piczero_curvepts_bijection_corollary}
-oraz \ref{piczero_representants_coro}
-i z uwagą \ref{piczero_addition_remark}.
-
 \begin{theorem}
 Niech $\pi \colon E \to \Pic^0(E)$
 będzie bijekcją zdefiniowaną w dowodzie wniosku
 \ref{piczero_curvepts_bijection_corollary}.
-Wówczas dla dowolnych punktów $P, Q \in E$
-zachodzi $\pi(P + Q) = \pi(P) + \pi(Q)$.
+Wówczas dla dowolnych punktów $P, Q \in E$:
+\begin{itemize}
+\item $\pi(P + Q) = \pi(P) + \pi(Q)$;
+\item
+$\pi^{-1}\left(
+\divi{P} - \divi{\ecident}
++ \divi{Q} - \divi{\ecident}
+\right)
+=
+\pi^{-1}(\divi{P} - \divi{\ecident})
++
+\pi^{-1}(\divi{Q} - \divi{\ecident})$.
+\end{itemize}
 \end{theorem}
 
 \begin{proof}
-Natychmiastowy.
+Natychmiastowy na podstawie
+twierdzeń
+\ref{divisor_linear_reduction_theorem}
+i \ref{zerodeg_divisor_linear_reduction_theorem},
+wniosków \ref{piczero_curvepts_bijection_corollary}
+i \ref{piczero_representants_coro}
+oraz faktu \ref{piczero_addition_fact}.
 \end{proof}
 
 \begin{corollary}

@@ -1,6 +1,6 @@
 \section{Dowody niezbędnych stwierdzeń}
 
-Definicja grupy na krzywej eliptycznej
+Definicja operacji grupowej na punktach krzywej eliptycznej
 opiera się na wielu własnościach krzywych eliptycznych
 podanych w poprzednim rozdziale.
 Nie sposób dokładnie zrozumieć strukturę grupy na krzywej eliptycznej,
@@ -10,7 +10,7 @@ Dlatego udowodnimy teraz kluczowe lematy, twierdzenia i wnioski.
 \subsection*{Obliczanie współczynników linii}
 
 Kluczową operacją, która posłuży do zdefiniowania działania grupowego
-na krzywej eliptycznej,
+na punktach krzywej eliptycznej,
 jest wyznaczanie współczynników
 linii przechodzącej przez dwa zadane różne punkty krzywej
 lub stycznej do krzywej w zadanym punkcie.
@@ -27,16 +27,16 @@ Oznaczmy $P = (a, b)$ oraz $Q = (c, d)$.
 
 Jeżeli $P = \overline{Q}$,
 to rozpatrujemy linię
-\begin{equation*}
+\begin{equation}
 l(x, y) = x - a
-\end{equation*}
+\end{equation}
 Jak nietrudno sprawdzić, $l(P) = 0$ oraz $l(Q) = 0$.
 
 Jeżeli $P \neq \overline{Q}$,
 to rozpatrujemy linię
-\begin{equation*}
+\begin{equation}
 l(x, y) = \left(\frac{d-b}{c-a}\right)(x - a) - (y - b)
-\end{equation*}
+\end{equation}
 Ponownie, $l(P) = 0$ oraz $l(Q) = 0$.
 \end{proof}
 
@@ -49,35 +49,39 @@ i gdzie jest trzeci punkt.
 \begin{theorem}
 Dana jest krzywa eliptyczna $E$
 oraz dwa różne punkty skończone $P$ oraz $Q$ na tej krzywej.
-Wówczas linia $l$ przechodząca przez punkty $P$ i $Q$
-ma dywizor $\rdiv(l)$ równy $\divi{P} + \divi{Q} - 2\divi{\ecident}$,
-jeśli $P = \overline{Q}$
-lub $\divi{P} + \divi{Q} + \divi{R} - 2\divi{\ecident}$,
+Niech $l$ oznacza linię przechodzącą przez punkty $P$ i $Q$.
+Wówczas:
+\begin{itemize}
+\item $\rdiv(l) = \divi{P} + \divi{Q} - 2\divi{\ecident}$,
+gdy $P = \overline{Q}$;
+\item $\rdiv(l) = \divi{P} + \divi{Q} + \divi{R} - 3\divi{\ecident}$,
 gdy $P \neq \overline{Q}$.
+\end{itemize}
 Punkt $R$ jest skończony,
 może zdarzyć się, że $R = P$ lub $R = Q$.
 \end{theorem}
 
 \begin{proof}
-Oznaczmy $P = (a, b)$ oraz $Q = (a, -b)$
+Oznaczmy $P = (a, b)$ oraz $Q = (c, d)$
 i rozważmy dwa przypadki.
 
 Jeżeli $P = \overline{Q}$,
 to stopień linii $l$ jest równy $2$,
-zatem nie może ona mieć miejsc zerowych innych niż $P$ i $Q$,
+zatem $P$ i $Q$ to jej wszystkie miejsca zerowe,
 a jej dywizor to $\divi{P} + \divi{Q} - 2\divi{\ecident}$.
 
 Jeżeli $P \neq \overline{Q}$,
 to stopień linii $l$ jest równy $3$,
 zatem jej dywizor ma postać
-$\divi{P} + \divi{Q} + \divi{R} - 3\divi{\ecident}$.
+$\divi{P} + \divi{Q} + \divi{R} - 3\divi{\ecident}$,
 gdzie $R$ jest punktem skończonym krzywej,
 trzecim punktem przecięcia linii z krzywą,
 być może równym $P$ lub $Q$.
 Oznaczmy $R = (e, f)$.
 Norma $N(l)$ jest równa:
 \begin{equation*}
-N(l)(x) = \left(\left(\frac{d-b}{c-a}\right) + b\right)^2 - x^3 - Ax - B
+N(l)(x) =
+\left(\left(\frac{d-b}{c-a}\right)(x-a) + b\right)^2 - x^3 - Ax - B
 \end{equation*}
 Zgodnie z faktem \ref{zero_of_norm_fact}
 ma ona pierwiastki $a$, $c$ oraz $e$.
@@ -106,9 +110,9 @@ Oznaczmy $P = (a, b)$.
 
 Jeżeli $P$ jest punktem podwójnym,
 to rozpatrujemy linię
-\begin{equation*}
+\begin{equation}
 l(x, y) = x - a
-\end{equation*}
+\end{equation}
 Ma ona stopień równy $2$,
 zatem ma dywizor postaci $\divi{P} + \divi{\overline{P}} - 2\divi{\ecident}$.
 Skoro $P$ jest punktem podwójnym, to dywizor ten jest w takim razie równy
@@ -117,19 +121,20 @@ zatem linia $l$ jest styczna do krzywej w punkcie $P$.
 
 Jeżeli $P$ nie jest punktem podwójnym,
 to rozpatrujemy linię
-\begin{equation*}
+\begin{equation}
 l(x, y) = \left(\frac{3a^2 + A}{2b}\right)(x - a) - (y - b)
-\end{equation*}
+\end{equation}
+Linia $l$ ma w punkcie $P$ miejsce zerowe, zatem $\ord_P(l) > 0$.
 Pokażemy, że $\ord_P(l) > 1$.
 W tym celu wykażemy, że jeśli $l = ur$,
 gdzie $u$ jest unifikatorem w punkcie $P$,
-a $r$ jest funkcją wymierną,
-to $r(P) = 0$.
+a $s$ jest funkcją wymierną,
+to $s(P) = 0$.
 Ponieważ punkt $P$ nie jest podwójny,
 bierzemy unifikator $u(x, y) = x - a$.
-Wyznaczamy funkcję wymierną $r$.
+Wyznaczamy funkcję wymierną $s$.
 \begin{eqnarray*}
-r
+s
 & = & \frac{l}{u} \\
 & = & \frac{\left(\frac{3a^2+A}{2b}\right)(x-a) - (y-b)}{x-a} \\
 & = & \frac{3a^2+A}{2b} - \frac{y-b}{x-a} \\
@@ -138,7 +143,7 @@ r
 & = & \frac{3a^2+A}{2b} - \frac{(x-a)(x^2+ax+a^2+A)}{(x-a)(y+b)} \\
 & = & \frac{3a^2+A}{2b} - \frac{x^2+ax+a^2+A}{y+b}
 \end{eqnarray*}
-Widzimy teraz, że $r(P) = 0$,
+Widzimy teraz, że $s(P) = 0$,
 czyli $\ord_P(l) > 1$.
 \end{proof}
 
@@ -150,11 +155,14 @@ i jakie są współrzędne tego punktu.
 \begin{theorem}
 Dana jest krzywa eliptyczna $E$
 oraz punkt skończony $P$ na tej krzywej.
-Wówczas linia $l$ styczna do krzywej w punkcie $P$
-ma dywizor $\rdiv(l)$ równy $2\divi{P} - 2\divi{\ecident}$,
-jeśli $P = \overline{P}$
-lub $2\divi{P} + \divi{Q} - 3\divi{\ecident}$,
+Niech $l$ oznacza linię styczną do krzywej w punkcie $P$.
+Wówczas:
+\begin{itemize}
+\item $\rdiv(l) = 2\divi{P} - 2\divi{\ecident}$,
+gdy $P = \overline{P}$
+\item $\rdiv(l) = 2\divi{P} + \divi{Q} - 3\divi{\ecident}$,
 gdy $P \neq \overline{P}$.
+\end{itemize}
 Punkt $Q$ jest skończony,
 może zdarzyć się, że $Q = P$.
 \end{theorem}
@@ -165,7 +173,7 @@ i rozważmy dwa przypadki.
 
 Jeżeli $P = \overline{P}$,
 to stopień linii $l$ jest równy $2$,
-zatem nie może ona mieć miejsc zerowych innych niż $P$,
+zatem $P$ to jej jedyne miejsce zerowe (podwójne),
 a jej dywizor to $2\divi{P} - 2\divi{\ecident}$.
 
 Jeżeli $P \neq \overline{P}$,
@@ -178,7 +186,8 @@ być może równym $P$.
 Oznaczmy $Q = (c, d)$.
 Norma $N(l)$ jest równa:
 \begin{equation*}
-N(l)(x) = \left(\left(\frac{3a^2+A}{2b}\right) + b\right)^2 - x^3 - Ax - B
+N(l)(x) =
+\left(\left(\frac{3a^2+A}{2b}\right)(x-a) + b\right)^2 - x^3 - Ax - B
 \end{equation*}
 Zgodnie z faktem \ref{zero_of_norm_fact}
 ma ona pierwiastki $a$ (podwójny) oraz $c$.
@@ -342,19 +351,20 @@ Przypuśćmy, że istnieje drugi, różny od $P$ punkt $Q$ taki,
 że $\divi{P} - \divi{\ecident} \sim \Delta \sim \divi{Q} - \divi{\ecident}$.
 To oznacza, że $\divi{P} - \divi{Q} \sim 0$,
 czyli $\divi{P} - \divi{Q}$ jest dywizorem głównym.
-Korzystamy ponownie z twierdzenia \ref{divisor_linear_reduction_theorem},
+Korzystamy ponownie z twierdzenia \ref{divisor_linear_reduction_theorem}
 i otrzymujemy, że $\divi{P} - \divi{Q} \sim \divi{S} - n\divi{\ecident}$.
 Ponownie, $\divi{P} - \divi{Q}$ ma stopień równy zero,
 zatem $n = -1$.
 Stąd, $\divi{S} - \divi{\ecident} \sim \divi{P} - \divi{Q} \sim 0$,
-zatem $\divi{S} - \divi{\ecident}$ również jest główny.
+zatem dywizor $\divi{S} - \divi{\ecident}$ również jest główny.
 Istnieje zatem funkcja wymierna $s$,
 której dywizor jest równy $\divi{S} - \divi{\ecident}$.
 Jeżeli $S \neq \ecident$,
-to kształtu dywizora widzimy, że funkcja $s$ nie ma biegunów skończonych,
-zatem jest to wielomian.
-Wielomian zaś, zgodnie z wnioskiem \ref{poly_no_single_zero_corollary}
-nie może mieć jednego jednokrotnego miejsca zerowego.
+to kształtu dywizora widzimy,
+że funkcja $s$ to wielomian,
+który ma tylko jedno miejsce zerowe w punkcie $S$,
+co zgodnie z wnioskiem \ref{poly_no_single_zero_corollary}
+nie jest możliwe.
 Zatem $S = \ecident$, czyli punkt $P$ jest jedyny.
 \end{proof}
 
@@ -370,13 +380,13 @@ punktowi $P$ przyporządkowujemy nie dywizor $\divi{P} - \divi{\ecident}$,
 lecz warstwę, do której należy
 (pamiętamy, że $\Pic^0(E) = \Div^0(E)/\Prin(E)$).
 Funkcja $\pi$ jest różnowartościowa --
-jeśli $\pi(P) = \sigma(Q)$,
+jeśli $\pi(P) = \pi(Q)$,
 to dywizor $\divi{P} - \divi{Q}$ musiałby być główny,
 co nie jest możliwe,
 zgodnie z dowodem twierdzenia \ref{zerodeg_divisor_linear_reduction_theorem}.
-Funkcja sigma jest też ,,na'' --
-ponownie jest to wniosek z twierdzenia
-\ref{zerodeg_divisor_linear_reduction_theorem}.
+Funkcja $\pi$ jest też ,,na'' --
+każda warstwa ma reprezentanta w postaci $\divi{P} - \divi{\ecident}$
+i każdy taki reprezentant pojawia się jako wartość funkcji $\pi$.
 \end{proof}
 
 \begin{corollary}\label{piczero_representants_coro}
@@ -385,31 +395,52 @@ możemy utożsamić ze zbiorem dywizorów postaci $\divi{P} - \divi{\ecident}$,
 gdzie $P \in E$.
 \end{corollary}
 
-Gdy mamy wybranych reprezentantów warstw tworzących zerową grupę Picarda,
-przyjrzyjmy się, jak wygląda działanie grupowe na tych reprezentantach.
+Prześledzimy teraz, jak wygląda dodawanie takich reprezentantów.
 
-\begin{remark}\label{piczero_addition_remark}
-W zerowej grupie Picarda dodawanie wygląda następująco.
-Chcemy dodać do siebie dywizory
-$\divi{P} - \divi{\ecident}$ oraz $\divi{Q} - \divi{\ecident}$.
-Dodajemy je zgodnie z działaniem w grupie $\Div^0(E)$
-i otrzymujemy $\divi{P} + \divi{Q} - 2\divi{\ecident}$.
-Teraz, zgodnie z twierdzeniem \ref{zerodeg_divisor_linear_reduction_theorem}
-redukujemy wynik do postaci $\divi{S} - \divi{\ecident}$.
-W tym celu weźmy linię $l_1$ przechodzącą przez punkty $P$ oraz $Q$.
-Ma ona dywizor $\rdiv(l) = \divi{P} + \divi{Q} + \divi{R} - 3\divi{\ecident}$.
-Mamy
-$\divi{P} + \divi{Q} - 2\divi{\ecident} - \rdiv(l_1) =
--\divi{R} + \divi{\ecident}$.
-Wykonujemy jeszcze jedną redukcję za pomocą linii $l_2$
+\begin{fact}\label{piczero_addition_fact}
+Dodawanie dwóch elementów zerowej grupy Picarda
+$\divi{P} - \divi{\ecident}$ oraz $\divi{Q} - \divi{\ecident}$
+przeprowadzamy następująco:
+\begin{enumerate}
+\item
+Jeżeli $P = \ecident$ (odpowiednio $Q = \ecident$),
+to wynik dodawania jest równy
+$\divi{Q} - \divi{\ecident}$ (odpowiednio $\divi{P} - \divi{\ecident}$).
+\item
+W przeciwnym razie dodajemy dywizory
+$\divi{P} - \divi{\ecident}$ oraz $\divi{Q} - \divi{\ecident}$
+zgodnie z działaniem w grupie $\Div^0(E)$.
+Otrzymujemy:
+\begin{equation*}
+\divi{P} + \divi{Q} - 2\divi{\ecident}
+\end{equation*}
+\item
+Zgodnie z twierdzeniem \ref{zerodeg_divisor_linear_reduction_theorem}
+redukujemy wynik za pomocą linii $l_1$ przechodzącej przez punkty $P$ i $Q$
+(lub stycznej, jeśli $P = Q$).
+Otrzymujemy:
+\begin{eqnarray*}
+\divi{P} + \divi{Q} - 2\divi{\ecident} - \rdiv(l_1)
+& = & \divi{P} + \divi{Q} - 2\divi{\ecident}
+- \divi{P} - \divi{Q} - \divi{R} + 3\divi{\ecident}
+\\ & = &
+-\divi{R} + \divi{\ecident}
+\end{eqnarray*}
+\item
+Jeżeli $P = \overline{Q}$,
+to $R = \ecident$
+i wynik dodawania jest równy $\divi{\ecident} - \divi{\ecident}$.
+\item
+W przeciwnym razie wykonujemy jeszcze jedną redukcję za pomocą linii $l_2$
 przechodzącej przez punkty $R$ oraz $\overline{R}$
-(ma ona dywizor
-$\rdiv(l_2) = \divi{R} + \divi{\overline{R}} - 2\divi{\ecident}$)
-i otrzymujemy
-$-\divi{R} + \divi{\ecident} + \rdiv(l_2) =
-\divi{\overline{R}} - \divi{\ecident}$.
-
-Jest to przypadek ogólny, należy rozważyć jeszcze przypadki,
-kiedy $P = Q$ lub $R = \overline{R}$.
-Należy wówczas dobrać odpowiednie linie styczne.
-\end{remark}
+(lub stycznej, gdy $R = \overline{R}$).
+Otrzymujemy:
+\begin{eqnarray*}
+-\divi{R} + \divi{\ecident} + \rdiv(l_2)
+& = & -\divi{R} + \divi{\ecident}
++ \divi{R} + \divi{\overline{R}} - 2\divi{\ecident}
+\\ & = &
+\divi{\overline{R}} - \divi{\ecident}
+\end{eqnarray*}
+\end{enumerate}
+\end{fact}
