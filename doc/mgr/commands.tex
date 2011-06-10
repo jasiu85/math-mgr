@@ -5,8 +5,9 @@
 \numberwithin{equation}{section}
 
 \theoremstyle{plain}
-\newtheorem{theorem}[equation]{Twierdzenie}
+\newtheorem{fact}[equation]{Fakt}
 \newtheorem{lemma}[equation]{Lemat}
+\newtheorem{theorem}[equation]{Twierdzenie}
 \newtheorem{corollary}[equation]{Wniosek}
 
 \theoremstyle{definition}
@@ -15,7 +16,6 @@
 
 \theoremstyle{remark}
 \newtheorem{remark}[equation]{Uwaga}
-\newtheorem{fact}[equation]{Fakt}
 
 % define AMS operators
 
@@ -46,7 +46,16 @@
 \newcommand{\fundeftwo}[4]
 {\left\{
 \begin{array}{ll}
-#1 & \mbox{gdy }#2\mbox{,} \\
-#3 & \mbox{gdy }#4\mbox{.}
+#1 & \textrm{gdy }#2\textrm{,} \\
+#3 & \textrm{gdy }#4\textrm{.}
+\end{array}
+\right. }
+
+\newcommand{\fundefthree}[6]
+{\left\{
+\begin{array}{ll}
+#1 & \textrm{gdy }#2\textrm{,} \\
+#3 & \textrm{gdy }#4\textrm{,} \\
+#5 & \textrm{gdy }#6\textrm{.}
 \end{array}
 \right. }
