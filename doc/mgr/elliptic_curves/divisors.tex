@@ -37,7 +37,6 @@ tylko skończoną ilość razy.
 Dana jest krzywa eliptyczna $E$.
 \emph{Dywizor na krzywej eliptycznej $E$}
 to element abelowej grupy wolnej generowanej przez punkty krzywej $E$.
-Grupę wszystkich dywizorów na krzywej $E$ oznaczamy $\Div(E)$.
 \end{definition}
 
 \begin{remark}
@@ -87,7 +86,7 @@ to jego norma dana jest wzorem
 \end{equation*}
 \end{definition}
 
-\subsection*{Dywizory funkcji wymiernych}
+\subsection*{Dywizory i funkcje wymierne}
 
 Przydatność dywizorów polega na tym, że można za ich pomocą
 reprezentować informacje
@@ -104,19 +103,8 @@ to dywizor określony następującym wzorem:
 \end{equation*}
 \end{definition}
 
-\begin{definition}
-Dywizor na krzywej eliptycznej jest \emph{główny},
-jeśli jest on dywizorem pewnej funkcji wymiernej na tej krzywej.
-\end{definition}
-
-Następująca ważna cecha dywizorów głównych
-jest konsekwencją wniosku \ref{function_order_sum_zero_corollary}.
-
-\begin{fact}
-Dywizor główny ma stopień równy zero.
-\end{fact}
-
-Dywizor główny niemal jednoznacznie wyznacza funkcję wymierną.
+Okazuje się, że dywizor niosący informacje o miejscach zerowych i biegunach
+funkcji wymiernej wyznacza ją niemalże jednoznacznie.
 
 \begin{fact}
 Dwie funkcje wymierne różniące się o czynnik stały mają taki sam dywizor.
@@ -135,90 +123,4 @@ wtedy i tylko wtedy, gdy jest stała i nie jest zerowa.
 
 \begin{corollary}
 Dywizor wyznacza funkcję wymierną z dokładnością do stałego czynnika.
-\end{corollary}
-
-Dywizory główne pozwalają zdefiniować ważną relację równoważności.
-
-\begin{definition}
-Dywizory $\Delta_1$ oraz $\Delta_2$ są \emph{równoważne},
-co zapisujemy $\Delta_1 \sim \Delta_2$,
-jeśli ich różnica $\Delta_1 - \Delta_2$ jest dywizorem głównym.
-\end{definition}
-
-\subsection*{Szczególne grupy dywizorów}
-
-Dywizory główne spełniają zależność
-podobną do tej, którą spełniają stopnie funkcji wymiernych.
-
-\begin{theorem}\label{fun_mul_divi_add_theorem}
-Dane są funkcje wymierne $r$ oraz $s$ na krzywej eliptycznej.
-Wówczas $\rdiv(rs) = \rdiv(r) + \rdiv(s)$.
-\end{theorem}
-
-\begin{corollary}
-Zbiór dywizorów głównych na krzywej eliptycznej tworzy grupę,
-która jest podgrupą grupy $\Div(E)$.
-\end{corollary}
-
-\begin{definition}
-\emph{Grupę dywizorów głównych} na krzywej eliptycznej $E$
-oznaczamy $\Prin(E)$.
-\end{definition}
-
-Pojęcie równoważności dywizorów prowadzi do definicji kolejnych grup.
-
-\begin{definition}
-Dana jest krzywa eliptyczna $E$.
-\emph{Grupa Picarda krzywej $E$},
-oznaczana $\Pic(E)$,
-to grupa ilorazowa $\Div(E)/\Prin(E)$.
-\end{definition}
-
-Następujące twierdzenie obrazuje strukturę grupy Picarda.
-
-\begin{theorem}\label{divisor_linear_reduction_theorem}
-Dana jest krzywa eliptyczna $E$.
-Dla każdego dywizora $\Delta \in \Div(E)$
-istnieje dywizor $\tilde{\Delta} \in \Div(E)$ taki,
-że $\Delta \sim \tilde{\Delta}$, $\deg(\Delta) = \deg(\tilde{\Delta})$
-oraz $\tilde{\Delta} = \divi{P} + n\divi{\ecident}$.
-\end{theorem}
-
-Grupa Picarda daje pewną intuicję,
-jak wyglądają dywizory główne na krzywej eliptycznej,
-ponieważ obrazuje zależność między grupą dywizorów głównych $\Prin(E)$,
-a grupą $\Div(E)$, która jest abelową grupą wolną,
-ma zatem dosyć prostą strukturę.
-Warto porównać grupę $\Prin(E)$ z inną grupą,
-która jest mniejsza od grupy $\Div(E)$,
-lecz również ma prostą strukturę.
-
-\begin{definition}
-Dana jest krzywa eliptyczna $E$.
-\emph{Grupa dywizorów stopnia zero na krzywej $E$},
-oznaczana $\Div^0(E)$,
-to podgrupa grupy $\Div(E)$ składająca się
-z dywizorów o zerowym stopniu.
-\end{definition}
-
-\begin{definition}
-Dana jest krzywa eliptyczna $E$.
-\emph{Zerowa grupa Picarda krzywej $E$},
-oznaczana $\Pic^0(E)$,
-to grupa ilorazowa $\Div^0(E)/\Prin(E)$.
-\end{definition}
-
-Strukturę zerowej grupy Picarda obrazuje następujące twierdzenie,
-bardzo podobne do twierdzenia \ref{divisor_linear_reduction_theorem}.
-
-\begin{theorem}\label{zerodeg_divisor_linear_reduction_theorem}
-Dana jest krzywa eliptyczna $E$.
-Dla każdego dywizora $\Delta \in \Div^0(E)$
-istnieje dokładnie jeden punkt krzywej $P \in E$ taki,
-że $\Delta \sim \divi{P} - \divi{\ecident}$.
-\end{theorem}
-
-\begin{corollary}\label{piczero_curvepts_bijection_corollary}
-Istnieje wzajemna jednoznaczność między punktami krzywej eliptycznej $E$,
-a elementami jej zerowej grupy Picarda $\Pic^0(E)$.
 \end{corollary}

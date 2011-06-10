@@ -1,0 +1,332 @@
+\section{Szczególne grupy dywizorów}
+
+Zbadamy teraz kilka ważnych grup dywizorów na krzywej eliptycznej.
+Analiza tych grup doprowadzi nas do definicji
+działania grupowego na krzywej eliptycznej.
+
+\subsection*{Definicje grup}
+
+Największą rozpatrywaną grupą jest oczywiście
+grupa złożona ze wszystkich dywizorów na krzywej eliptycznej.
+
+\begin{definition}
+\emph{Grupa dywizorów na krzywej eliptycznej $E$},
+oznaczana $\Div(E)$,
+jest to abelowa grupa wolna generowana przez punkty krzywej $E$.
+\end{definition}
+
+Spośród wszystkich dywizorów na krzywej eliptycznej
+wyróżnioną pozycję zajmują te,
+które są dywizorami funkcji wymiernych.
+
+\begin{definition}
+Dywizor na krzywej eliptycznej jest \emph{główny},
+jeśli jest on dywizorem pewnej funkcji wymiernej na tej krzywej.
+\end{definition}
+
+Następujące twierdzenie pokazuje, że dywizory główne tworzą grupę.
+
+\begin{theorem}\label{fun_mul_divi_add_theorem}
+Dane są funkcje wymierne $r$ oraz $s$ na krzywej eliptycznej.
+Wówczas $\rdiv(rs) = \rdiv(r) + \rdiv(s)$.
+\end{theorem}
+
+\begin{definition}
+\emph{Grupa dywizorów głównych na krzywej eliptycznej $E$},
+oznaczana $\Prin(E)$,
+składa się ze wszystkich dywizorów głównych na krzywej $E$.
+\end{definition}
+
+Grupa $\Prin(E)$ jest oczywiście podgrupą grupy $\Div(E)$,
+a że obie są abelowe, istnieje ich grupa ilorazowa.
+
+\begin{definition}
+\emph{Grupa Picarda na krzywej eliptycznej $E$},
+oznaczana $\Pic(E)$,
+jest to grupa ilorazowa $\Div(E)/\Prin(E)$.
+\end{definition}
+
+Jak łatwo się przekonać,
+dwa dywizory $\Delta_1$ i $\Delta_2$ należą do tej samej warstwy
+będącej elementem grupy $\Pic(E)$
+wtedy i tylko wtedy, gdy ich różnica jest dywizorem głównym.
+Fakt ten prowadzi nas do następującej definicji.
+
+\begin{definition}
+Dywizory $\Delta_1$ oraz $\Delta_2$ są \emph{równoważne},
+co zapisujemy $\Delta_1 \sim \Delta_2$,
+jeśli ich różnica $\Delta_1 - \Delta_2$ jest dywizorem głównym.
+\end{definition}
+
+Wniosek \ref{function_order_sum_zero_corollary}
+daje następującą częściową charakteryzację dywizorów głównych.
+
+\begin{fact}\label{prin_divi_zero_deg_fact}
+Jeżeli $\Delta$ jest dywizorem głównym,
+to $\deg(\Delta) = 0$.
+\end{fact}
+
+To prowadzi nas do definicji kolejnej wartej uwagi grupy.
+
+\begin{definition}
+\emph{Grupa dywizorów stopnia zero na krzywej eliptycznej $E$},
+oznaczana $\Div^0(E)$,
+to grupa złożona z dywizorów stopnia zero.
+\end{definition}
+
+W związku z faktem \ref{prin_divi_zero_deg_fact}
+zachodzą następujące inkluzje:
+$\Prin(E) \subset \Div^0(E) \subset \Div(E)$.
+Wszystkie wymienione grupy są abelowe,
+więc znowu istnieją grupy ilorazowe.
+Grupa ilorazowa $\Div(E) / \Div^0(E) = \Z$
+nie jest specjalnie interesująca,
+natomiast grupa $\Div^0(E) / \Prin(E)$
+będzie dla nas bardzo ważna.
+
+\begin{definition}
+\emph{Zerowa grupa Picarda na krzywej eliptyzne $E$},
+oznaczana $\Pic^0(E)$,
+jest to grupa ilorazowa $\Div^0(E) / \Prin(E)$.
+\end{definition}
+
+\subsection*{Redukcje liniowe}
+
+Konstrukcja różnych grup na krzywej eliptycznej opiera się
+o równoważność dywizorów. Dwa dywizory są równoważne,
+gdy różnią się o dywizor główny, czyli o dywizor pewnej funkcji wymiernej.
+Jak wskazać funkcję wymierną, która ,,jest różnicą'' między dwoma dywizorami?
+Następujące dwa twierdzenia pokazują, że taką funkcję wymierną
+można opisać jako iloczyn linii.
+
+\begin{theorem}\label{divisor_linear_reduction_theorem}
+Dana jest krzywa eliptyczna $E$.
+Wówczas dla każdego dywizora $\Delta \in \Div(E)$
+istnieje dywizor $\tilde{\Delta} \in \Div(E)$ taki,
+że $\Delta \sim \tilde{\Delta}$, $\deg(\Delta) = \deg(\tilde{\Delta})$
+oraz $\tilde{\Delta} = \divi{P} + n\divi{\ecident}$,
+gdzie $P \in E$.
+\end{theorem}
+
+\begin{proof}
+Niech $\Delta \in \Div(E)$ będzie dowolnym dywizorem.
+Rozważmy składniki, z których składa się dywizor $\Delta$.
+Mogą zajść następujące przypadki:
+\begin{enumerate}
+\item dywizor $\Delta$ zawiera dwa składniki
+$a(P)\divi{P}$ oraz $a(Q)\divi{Q}$,
+gdzie $P$ oraz $Q$ to takie dwa różne punkty skończone krzywej,
+że współczynniki $a(P)$ oraz $a(Q)$ są niezerowe oraz tego samego znaku;
+\item dywizor $\Delta$ zawiera składnik $a(P)\divi{P}$,
+gdzie $P$ to taki punkt skończony krzywej, że $\abs{a(P)} > 1$;
+\item dywizor $\Delta$ ma postać $\divi{P} - \divi{Q} + n\divi{\ecident}$,
+gdzie $P$ oraz $Q$ to punkty skończone krzywej;
+\item dywizor $\Delta$ ma postać $\pm\divi{P} + n\divi{\ecident}$
+lub $n\divi{\ecident}$,
+gdzie $P$ to punkt skończony krzywej.
+\end{enumerate}
+
+Pokażemy, że w każdym przypadku z wyjątkiem ostatniego
+możemy wskazać dywizor $\Delta'$ taki,
+że $\Delta \sim \Delta'$, $\deg(\Delta) = \deg(\Delta')$
+oraz $\abs{\Delta} > \abs{\Delta'}$.
+\begin{enumerate}
+\item Dla ustalenia uwagi przyjmimy,
+że współczynniki $a(P)$ oraz $a(Q)$ są dodatnie.
+Rozważmy dywizor $\Delta' = \Delta - \rdiv(l)$,
+gdzie $l$ to linia przechodząca przez punkty $P$ oraz $Q$,
+ma ona dywizor $\rdiv(l)$ równy
+$\divi{P} + \divi{Q} + \divi{R} - 3\divi{\ecident}$.
+Może zdarzyć się, że punkt $R$ jest równy $P$, $Q$ lub $\ecident$.
+Łatwo sprawdzić, że zawsze $\abs{\Delta} > \abs{\Delta'}$.
+\item Dla ustalenia uwagi przyjmijmy, że współczynnik $a(P)$ jest dodatni.
+Rozważmy dywizor $\Delta' = \Delta - \rdiv(l)$,
+gdzie $l$ jest linią styczną do krzywej w punkcie $P$,
+ma ona dywizor $\rdiv(l)$ równy $2\divi{P} + \divi{R} - 3\divi{\ecident}$.
+Również w tym przypadku $\abs{\Delta} > \abs{\Delta'}$,
+nawet jeśli punkt $R$ jest równy $P$ lub $\ecident$.
+\item Rozważmy linię $l$ przechodzącą przez punkty $P$ oraz $\overline{P}$.
+Ma ona dywizor $\rdiv(l)$ równy
+$\divi{P} + \divi{\overline{P}} - 2\divi{\ecident}$.
+Rozważamy dywizor
+$\Delta' =
+\Delta - \rdiv(l) =
+-\divi{\overline{P}} - \divi{Q} + n'\divi{\ecident}$,
+do którego stosujemy rozumowanie opisane w punkcie pierwszym lub drugim
+(zależnie od tego, czy $\overline{P} = Q$, czy nie)
+i otrzymujemy dywizor $\Delta''$, który ma normę mniejszą niż $\Delta$.
+Zwróćmy uwagę, że rozumowanie w tym kroku jest poprawne również wtedy,
+gdy $P$ jest punktem podwójnym --
+wówczas zamiast linii przechodzącej przez punkty $P$ oraz $\overline{P}$
+bierzemy linię styczną do krzywej w punkcie $P$.
+\end{enumerate}
+
+Teraz konstruujemy ciąg dywizorów
+$\Delta_0, \Delta_1, \Delta_2, \ldots$ taki,
+że $\Delta_0 = \Delta$,
+a dywizor $\Delta_{i+1}$ otrzymujemy
+poprzez zastosowanie do dywizora $\Delta_i$ jednej z opisanych redukcji.
+Widać, że wszystkie dywizory w ciągu są sobie równoważne
+oraz mają taki sam stopień.
+Co więcej, ciąg ten jest skończony,
+bo normy kolejnych dywizorów maleją,
+a nie mogą tego robić w nieskończoność -- są to liczby naturalne.
+Ostatni dywizor w ciągu $\Delta_k$ musi więc mieć postać
+$\pm\divi{P} + n\divi{\ecident}$ lub $n\divi{\ecident}$,
+gdyż w przeciwnym razie można by kontynuować redukcję.
+
+Jeżeli $\Delta_k = \divi{P} + n\divi{\ecident}$,
+to jest to szukany dywizor.
+Jeżeli $\Delta_k = n\divi{\ecident}$,
+to również jest to szukany dywizor --
+zapisujemy go w postaci $\Delta_k = \divi{\ecident} + (n-1)\divi{\ecident}$.
+Jeśli zaś $\Delta_k = -\divi{P} + n\divi{\ecident}$,
+to szukanym dywizorem jest dywizor
+$\Delta_k + \rdiv(l)$,
+gdzie $l$ to linia przechodząca przez punkty $P$ oraz $\overline{P}$
+(lub styczna do krzywej w punkcie $P$, jeżeli jest to punkt podwójny).
+Linia $l$ ma dywizor $\divi{P} + \divi{\overline{P}} - 2\divi{\ecident}$,
+zatem $\Delta_k + \rdiv(l) = \divi{\overline{P}} + (n-2)\divi{\ecident}$.
+Jest to dywizor równoważny dywizorowi $\Delta$ oraz mający taki sam stopień.
+\end{proof}
+
+\begin{lemma}\label{sim_pq_eq_pq_lemma}
+Dane są punkty $P$ i $Q$ na krzywej eliptycznej $E$.
+Jeżeli $\divi{P} \sim \divi{Q}$,
+to $P = Q$.
+\end{lemma}
+
+\begin{proof}
+Rozważmy przypadek, gdy jeden z punktów $P$ i $Q$ jest równy $\ecident$.
+Dla ustalenia uwagi przyjmimy, że jest to punkt $Q$.
+Zatem $\divi{P} - \divi{\ecident} \sim 0$,
+czyli istnieje funkcja wymierna $r$,
+której dywizorem jest $\divi{P} - \divi{\ecident}$.
+Z kształtu dywizora widzimy, że jeżeli $P \neq \ecident$, to funkcja $r$
+jest wielomianem, który ma jedno jednokrotne miejsce zerowe w punkcie $P$.
+Na mocy wniosku \ref{poly_no_single_zero_corollary} nie jest to możliwe,
+zatem $P = \ecident$.
+
+Przyjmijmy więc, że punkty $P$ i $Q$ są skończone
+i weźmy funkcję wymierną $r$, której dywizorem jest $\divi{P} - \divi{Q}$.
+Oznaczmy $P = (a, b)$ i rozważmy dwa przypadki.
+\begin{enumerate}
+\item $P = \overline{P}$.
+Unifikatorem w punkcie $P$ jest funkcja $u(x, y) = y$.
+Widzimy, że $\ord_P(r) = 1$, zatem $r = us$, gdzie $s(P) \neq 0$.
+Wiemy, że $\rdiv(u) = \divi{P} + \divi{P_1} + \divi{P_2} - 3\divi{\ecident}$,
+gdzie $P_1$ i $P_2$ to pozostałe punkty podwójne,
+skąd otrzymujemy, że
+$\rdiv(\frac{1}{s}) = \divi{Q} + \divi{P_1} + \divi{P_2} - 3\divi{\ecident}$.
+Funkcja $\frac{1}{s}$ jest zatem linią.
+Linia przechodząca przez punkty $P_1$ i $P_2$ musi przechodzić również przez
+trzeci punkt podwójny, czyli przez $P$. Zatem $Q = P$.
+\item $P \neq \overline{P}$.
+Unifikatorem w punkcie $P$ jest teraz funkcia $u(x, y) = x - a$.
+Po analogicznych rachunkach otrzymujemy
+$\rdiv(\frac{1}{s}) = \divi{Q} + \divi{\overline{P}} - 2\divi{\ecident}$.
+Funkcja $\frac{1}{s}$ jest tym razem linią pionową,
+skąd $\overline{Q} = \overline{P}$, czyli $Q = P$.
+\end{enumerate}
+\end{proof}
+
+\begin{theorem}\label{zerodeg_divisor_linear_reduction_theorem}
+Dana jest krzywa eliptyczna $E$.
+Wówczas dla każdego dywizora $\Delta \in \Div^0(E)$
+istnieje dokładnie jeden dywizor $\tilde{\Delta} \in \Div^0(E)$ taki,
+że $\Delta \sim \tilde{\Delta}$, $\deg(\Delta) = \deg(\tilde{\Delta})$
+oraz $\tilde{\Delta} = \divi{P} - \divi{\ecident}$,
+gdzie $P \in E$.
+\end{theorem}
+
+\begin{proof}
+Istnienie dywizora $\tilde{\Delta}$ to wniosek z twierdzenia
+\ref{divisor_linear_reduction_theorem} --
+dostajemy z niego, że istnieje żądany dywizor $\tilde{\Delta}$
+z zastrzeżeniem, że ma on postać $\divi{P} + n\divi{\ecident}$.
+Ale ponieważ $\deg(\tilde{\Delta}) = \deg(\Delta) = 0$,
+widzimy, że $n = -1$, czyli $\tilde{\Delta} = \divi{P} - \divi{\ecident}$.
+Jednoznaczność otrzymujemy udowodnionego przed chwilą lematu
+\ref{sim_pq_eq_pq_lemma}.
+\end{proof}
+
+\subsection*{Zerowa grupa Picarda}
+
+Dzięki twierdzeniom \ref{divisor_linear_reduction_theorem}
+oraz \ref{zerodeg_divisor_linear_reduction_theorem}
+możemy szczegółowo zanalizować zerową grupę Picarda.
+
+\begin{theorem}\label{piczero_curvepts_bijection_theorem}
+Dana jest krzywa eliptyczna $E$.
+Niech funkcja $\pi\colon E \to \Pic^0(E)$ będzie określona wzorem:
+\begin{equation}
+\pi(P) = [\divi{P} + n\divi{\ecident}]
+\end{equation}
+Wówczas funkcja $\pi$ jest bijekcją.
+\end{theorem}
+
+\begin{proof}
+Funkcja $\pi$ jest różnowartościowa. Jeżeli $\pi(P) = \pi(Q)$,
+to znaczy, że dywizory $\divi{P} - \divi{\ecident}$
+oraz $\divi{Q} - \divi{\ecident}$ są w tej samej warstwie,
+skąd $\divi{P} - \divi{Q} \sim 0$.
+Z lematu \ref{sim_pq_eq_pq_lemma} dostajemy $P = Q$.
+
+Funkcja $\pi$ jest ,,na''. Weźmy dowolną warstwę będącą elementem
+zerowej grupy Picarda i wybierzmy z niej dowolny dywizor $\Delta$.
+Jest on równoważny pewnemu dywizorowi $\divi{P} - \divi{\ecident}$.
+Wówczas $\pi(P)$ jest właśnie tą warstwą.
+\end{proof}
+
+Zerową grupę Picarda możemy zatem utożsamić
+ze zbiorem punktów krzywej eliptycznej
+wybierając z każdej warstwy reprezentanta postaci $\divi{P} - \divi{\ecident}$.
+Zobaczmy, jak wygląda dodawanie takich reprezentantów.
+
+\begin{fact}\label{piczero_addition_fact}
+Dodawanie dwóch elementów zerowej grupy Picarda
+$\divi{P} - \divi{\ecident}$ oraz $\divi{Q} - \divi{\ecident}$
+przeprowadzamy następująco.
+\begin{enumerate}
+\item
+Jeżeli $P = \ecident$ (odpowiednio $Q = \ecident$),
+to wynik dodawania jest równy
+$\divi{Q} - \divi{\ecident}$ (odpowiednio $\divi{P} - \divi{\ecident}$).
+\item
+W przeciwnym razie dodajemy dywizory
+$\divi{P} - \divi{\ecident}$ oraz $\divi{Q} - \divi{\ecident}$
+zgodnie z działaniem w grupie $\Div^0(E)$.
+Otrzymujemy:
+\begin{equation*}
+\divi{P} + \divi{Q} - 2\divi{\ecident}
+\end{equation*}
+\item
+Zgodnie z twierdzeniem \ref{zerodeg_divisor_linear_reduction_theorem}
+redukujemy wynik za pomocą linii $l_1$ przechodzącej przez punkty $P$ i $Q$
+(lub stycznej, jeśli $P = Q$).
+Otrzymujemy:
+\begin{eqnarray*}
+\divi{P} + \divi{Q} - 2\divi{\ecident} - \rdiv(l_1)
+& = & \divi{P} + \divi{Q} - 2\divi{\ecident}
+- \divi{P} - \divi{Q} - \divi{R} + 3\divi{\ecident}
+\\ & = &
+-\divi{R} + \divi{\ecident}
+\end{eqnarray*}
+\item
+Jeżeli $P = \overline{Q}$,
+to $R = \ecident$
+i wynik dodawania jest równy $\divi{\ecident} - \divi{\ecident}$.
+\item
+W przeciwnym razie wykonujemy jeszcze jedną redukcję za pomocą linii $l_2$
+przechodzącej przez punkty $R$ oraz $\overline{R}$
+(lub stycznej, gdy $R = \overline{R}$).
+Otrzymujemy:
+\begin{eqnarray*}
+-\divi{R} + \divi{\ecident} + \rdiv(l_2)
+& = & -\divi{R} + \divi{\ecident}
++ \divi{R} + \divi{\overline{R}} - 2\divi{\ecident}
+\\ & = &
+\divi{\overline{R}} - \divi{\ecident}
+\end{eqnarray*}
+\end{enumerate}
+\end{fact}
