@@ -1,9 +1,83 @@
 \section{Definicja}
 
-\subsection*{Definicja}
+Poznaliśmy już wiele pojęć związanych z krzywymi eliptycznymi,
+wciąż jednak nie wystarczająco dużo,
+aby móc zdefiniować iloczyn Weila.
+Dlatego najpierw podamy definicje kilku pomocniczych pojęć.
 
-\todolipsum{Definicja.}
+\subsection*{Podgrupy $n$-torsyjne}
 
-\subsection*{Równoważne sformułowania}
+Iloczyn Weila określony to operacja dwuargumentowa
+określona na pewnych specyficznych podgrupach
+grupy na krzywej eliptycznej,
+które teraz zdefiniujemy.
 
-\todolipsum{Równoważne sformułowania.}
+\begin{definition}
+Dana jest krzywa eliptyczna $E$.
+\emph{Mnożenie punktu przez liczbę całkowitą $n$}
+to funkcja,
+oznaczana symbolem $[n] \colon E \to E$,
+przyporządkowująca punktowi $P \in E$ punkt, oznaczany $nP$,
+określony następującym wzorem:
+\begin{equation}
+[n](P) =
+\fundefthree
+{nP = \underbrace{P + P + \cdots + P}_{n\textrm{ razy}}}{n > 0}
+{\ecident}{n = 0}
+{-[-n](P)}{n < 0}
+\end{equation}
+\end{definition}
+
+Definicja ta nie zaskakuje -- mnożenie to wielokrotne dodawanie,
+dlatego też ma podstawowe własności analogiczne do mnożenia liczb.
+
+\begin{fact}
+Dana jest krzywa eliptyczna $E$, punkty $P, Q \in E$
+oraz liczby całkowite $m$ i $n$.
+Wówczas:
+\begin{eqnarray*}
+m(P + Q) & = & mP + mQ \\
+(m + n)P & = & mP + nP \\
+m(-P) & = & -(mP) \\
+(-m)P & = & -(mP)
+\end{eqnarray*}
+\end{fact}
+
+Jesteśmy zainteresowani takimi punktami $P$ krzywej,
+które spełniają równanie $nP = 0$.
+Jak nietrudno stwierdzić na podstawie podanych własności mnożenia,
+tworzą one grupę.
+
+\begin{definition}
+Dana jest krzywa eliptyczna $E$
+oraz liczba naturalna $n$.
+\emph{Podgrupa $n$-torsyjna} grupy na krzywej $E$,
+oznaczana $E[n]$,
+to podgrupa złożona z tych punktów $P \in E$,
+które spełniają zależność:
+\begin{equation}
+nP = 0
+\end{equation}
+\end{definition}
+
+Podajemy bez dowodu kilka podstawowych własności podgrup $n$-torsyjnych.
+
+\begin{fact}
+Dana jest krzywa eliptyczna $E$
+oraz liczby naturalne $m$ i $n$.
+Jeżeli $m \mid n$, to $E[m] \subset E[n]$.
+\end{fact}
+
+\begin{theorem}
+Dana jest krzywa eliptyczna $E$ nad ciałem algebraicznie domkniętym
+oraz liczba naturalna $n$.
+Wówczas podgrupa $n$-torsyjna $E[n]$ ma rząd równy $n^2$
+i jest izomorficzna z grupą $(\Z / n\Z)\times(\Z / n\Z)$.
+\end{theorem}
+
+\begin{corollary}
+Dana jest krzywa eliptyczna $E$ nad ciałem algebraicznie domkniętym.
+Podgrupa $E[1]$ jest trywialna -- składa się tylko z punktu $\ecident$.
+Podgrupa $E[2]$ składa się z czterech punktów -- punktu $\ecident$
+oraz trzech punktów rzędu dwa.
+\end{corollary}
