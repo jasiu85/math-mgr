@@ -84,12 +84,13 @@ w jaki sposób linie przecinają się z krzywymi eliptycznymi.
 
 \begin{theorem}\label{line_through_two_points_theorem}
 Przez dowolne dwa różne punkty skończone $P$ i $Q$ krzywej eliptycznej
-można przeprowadzić linię.
+można przeprowadzić dokładnie jedną (z dokładnością do czynnika stałego) linię.
 \end{theorem}
 
 \begin{proof}
 Oznaczmy $P = (a, b), Q = (c, d)$ i rozważmy dwa przypadki.
-
+\begin{enumerate}
+\item
 Jeżeli $P = \overline{Q}$,
 to rozpatrujemy linię:
 \begin{equation}
@@ -97,7 +98,7 @@ l(x, y) = x - a
 \end{equation}
 Jak nietrudno sprawdzić, $l(P) = 0$ oraz $l(Q) = 0$,
 ponieważ $c = a$.
-
+\item
 Jeżeli $P \neq \overline{Q}$,
 to rozpatrujemy linię:
 \begin{equation}
@@ -106,6 +107,12 @@ l(x, y) = \left(\frac{d-b}{c-a}\right)(x - a) - (y - b)
 Ponownie, $l(P) = 0$ oraz $l(Q) = 0$.
 Zauważmy też, że $c \neq a$,
 więc iloraz $\frac{d-b}{c-a}$ jest dobrze określony.
+\end{enumerate}
+W obu przypadkach można pokazać, że inne linie
+przechodzące przez punkty $P$ i $Q$ różnią się od linii $l$ o czynnik stały.
+Wystarczy rozpatrzyć odpowiedni układ równań liniowych
+na współczynniki linii: jedno równanie ma postać $l(P) = 0$,
+a drugie -- $l(Q) = 0$.
 \end{proof}
 
 \begin{theorem}
@@ -124,7 +131,8 @@ i może zdarzyć się, że $R = P$ lub $R = Q$.
 
 \begin{proof}
 Rozważmy dwa przypadki.
-
+\begin{enumerate}
+\item
 Jeżeli $P = \overline{Q}$,
 to na podstawie twierdzeń
 \ref{line_through_two_points_theorem} i \ref{polynomial_ord_deg_theorem}
@@ -133,7 +141,7 @@ oraz faktu \ref{line_deg_fact} widzimy,
 Drugi przypadek jest niemożliwy,
 ponieważ punkty $P$ i $Q$ są jej miejscami zerowymi i są różne.
 Zatem $\rdiv(l) = \divi{P} + \divi{Q} - 2\divi{\ecident}$.
-
+\item
 Jeżeli $P \neq \overline{Q}$,
 to ponownie z twierdzeń
 \ref{line_through_two_points_theorem} i \ref{polynomial_ord_deg_theorem}
@@ -144,6 +152,7 @@ Ostatni przypadek znów jest niemożliwy.
 W pozostałych przypadkach można dobrać punkt skończony $R$
 (być może równy $P$ lub $Q$) taki,
 że $\rdiv(l) = \divi{P} + \divi{Q} + \divi{R} - 3\divi{\ecident}$.
+\end{enumerate}
 \end{proof}
 
 \begin{theorem}
@@ -169,9 +178,9 @@ N(l) = l\overline{l}
 & = & \left(\left(\frac{d-b}{c-a}\right)(x-a) + b\right)^2 - x^3 - Ax - B \\
 & = & -x^3 + \left(\frac{d-b}{c-a}\right)^2x^2 + \cdots
 \end{eqnarray*}
-Zgodnie z faktem \ref{zero_of_norm_fact}
-ma ona pierwiastki $a$, $c$ oraz $e$.
-Wartość pierwiastka $e$ znajdujemy ze wzoru Viete'a na sumę pierwiastków:
+Na mocy wniosku \ref{zero_of_norm_coro}
+jej miejsca zerowe to $a$, $c$ oraz $e$.
+Współrzędną $e$ znajdujemy ze wzoru Viete'a na sumę pierwiastków:
 \begin{eqnarray*}
 a + c + e & = & \left(\frac{d-b}{c-a}\right)^2 \\
         e & = & \left(\frac{d-b}{c-a}\right)^2 - a - c
@@ -185,12 +194,14 @@ f & = & b + \left(\frac{d-b}{c-a}\right)(e-a)
 
 \begin{theorem}\label{line_tangent_at_point_theorem}
 Przez dowolny punkt skończony $P$ krzywej eliptycznej
-można poprowadzić linię styczną do krzywej w tym punkcie.
+można poprowadzić dokładnie jedną (z dokładnością do czynnika stałego)
+linię styczną do krzywej w tym punkcie.
 \end{theorem}
 
 \begin{proof}
 Oznaczmy $P = (a, b)$ i rozważmy dwa przypadki.
-
+\begin{enumerate}
+\item
 Jeżeli $P$ jest punktem podwójnym, tzn. $P = \overline{P}$ i $b = 0$,
 to rozpatrujemy linię:
 \begin{equation}
@@ -202,7 +213,7 @@ ma postać $\divi{P} + \divi{\overline{P}} - 2\divi{\ecident}$.
 Skoro $P$ jest punktem podwójnym, to dywizor ten jest równy
 $2\divi{P} - 2\divi{\ecident}$,
 zatem linia $l$ jest styczna do krzywej w punkcie $P$.
-
+\item
 Jeżeli $P$ nie jest punktem podwójnym,
 to rozpatrujemy linię:
 \begin{equation}
@@ -228,6 +239,12 @@ s = \frac{l}{u}
 \end{eqnarray*}
 Widzimy teraz, że $s(P) = 0$,
 Zatem $\ord_P(l) > 1$, czyli linia $l$ jest styczna do krzywej w punkcie $P$.
+\end{enumerate}
+Ponownie, to, że inne linie styczne w punkcie $P$ różnią się od linii $l$
+o czynnik stały, wynika z rozpatrzenia odpowiedniego układu równań liniowych.
+Jedno równanie ma postać $l(P) = 0$, a drugie --
+$s(P) = (\frac{l}{u})(P) = 0$
+(można je przekształcić do postaci równania liniowego na współczynniki linii).
 \end{proof}
 
 \begin{theorem}
@@ -246,7 +263,8 @@ i może zdarzyć się, że $Q = P$.
 
 \begin{proof}
 Rozważmy dwa przypadki.
-
+\begin{enumerate}
+\item
 Jeżeli $P = \overline{P}$,
 to na podstawie twierdzeń
 \ref{line_tangent_at_point_theorem} i \ref{polynomial_ord_deg_theorem}
@@ -255,7 +273,7 @@ oraz faktu \ref{line_deg_fact} widzimy,
 Pierwszy przypadek jest niemożliwy,
 ponieważ punkt $P$ jest jej podwójnym miejscem zerowym.
 Zatem $\rdiv(l) = 2\divi{P} - 2\divi{\ecident}$.
-
+\item
 Jeżeli $P \neq \overline{P}$,
 to ponownie z twierdzeń
 \ref{line_tangent_at_point_theorem} i \ref{polynomial_ord_deg_theorem}
@@ -266,6 +284,7 @@ Pierwszy przypadek znów jest niemożliwy.
 W pozostałych przypadkach można dobrać punkt skończony $Q$
 (być może równy $P$) taki,
 że $\rdiv{l} = 2\divi{P} + \divi{Q} - 3\divi{\ecident}$.
+\end{enumerate}
 \end{proof}
 
 \begin{theorem}
@@ -293,9 +312,9 @@ N(l) = l\overline{l}
 & = & \left(\left(\frac{3a^2+A}{2b}\right)(x-a) + b\right)^2 - x^3 - Ax - B \\
 & = & -x^3 + \left(\frac{3a^2+A}{2b}\right)^2x^2 + \cdots
 \end{eqnarray*}
-Zgodnie z faktem \ref{zero_of_norm_fact}
-ma ona pierwiastki $a$ (podwójny) oraz $c$.
-Wartość pierwiastka $c$ znajdujemy ze wzorów Viete'a na sumę pierwiastków:
+Na mocy wniosku \ref{zero_of_norm_coro}
+jej miejsca zerowe to $a$ (podwójne) oraz $c$.
+Współrzędną $c$ znajdujemy ze wzorów Viete'a na sumę pierwiastków:
 \begin{eqnarray*}
 2a + c & = & \left(\frac{3a^2+A}{2b}\right)^2 \\
      c & = & \left(\frac{3a^2+A}{2b}\right)^2 - 2a

@@ -69,48 +69,41 @@ gdy próbujemy dodać punkt skończony niebędący punktem rzędu dwa
 do samego siebie.
 \end{remark}
 
-Jak widać, dodanie do siebie dwóch dowolnych punktów krzywej
-nie wymaga skomplikowanych obliczeń --
-w każdym przypadku współrzędne punktu będącego wynikiem dodawania
-są określone jako funkcje wymierne od współrzędnych dodawanych punktów.
-
-\begin{fact}
-Dana jest krzywa eliptyczna $E(\fieldL)$ oraz ciało $\K \subset \fieldL$.
-Wówczas suma dwóch punktów $\K$-wymiernych jest punktem $\K$-wymiernym.
-\end{fact}
-
-Wiemy więc, że działanie grupowe nie wyprowadza poza zbiór $E(\K)$.
-Pokażemy, teraz, że faktycznie zadaje ono grupę,
-tzn. że spełnia prawa grupowe.
-Sprawdzenie łączności bezpośrednio z definicji jest bardzo żmudne.
-Na szczęście można zrobić to inaczej.
+Aby nabrać intuicji, jak zachowuje się opisane działanie,
+przyjrzyjmy się przypadkowi opisanemu w punkcie \ref{ec_groupop_add_generic}.
+Aby dodać punkty $P$ i $Q$ przeprowadzamy przez nie linię,
+odnajdujemy trzeci punkt $R$,
+w którym przecina się ona z krzywą,
+po czym za wynik dodawania uznajemy punkt $\overline{R}$.
+Jest to operacja analogiczna do dodawania w zerowej grupie Picarda.
 
 \begin{theorem}
 Niech $\pi \colon E \to \Pic^0(E)$
-będzie bijekcją zdefiniowaną w dowodzie wniosku
-\ref{piczero_curvepts_bijection_corollary}.
+będzie bijekcją określoną wzorem
+\ref{piczero_bijection_eqn}.
 Wówczas dla dowolnych punktów $P, Q \in E$:
 \begin{itemize}
 \item $\pi(P + Q) = \pi(P) + \pi(Q)$;
 \item
 $\pi^{-1}\left(
-\divi{P} - \divi{\ecident}
-+ \divi{Q} - \divi{\ecident}
-\right)
-=
-\pi^{-1}(\divi{P} - \divi{\ecident})
+[\divi{P} - \divi{\ecident}]
 +
-\pi^{-1}(\divi{Q} - \divi{\ecident})$.
+[\divi{Q} - \divi{\ecident}]\right
+)
+=
+\pi^{-1}([\divi{P} - \divi{\ecident}])
++
+\pi^{-1}([\divi{Q} - \divi{\ecident}])$.
 \end{itemize}
 \end{theorem}
 
 \begin{proof}
 Natychmiastowy na podstawie
 twierdzeń
-\ref{divisor_linear_reduction_theorem}
-i \ref{zerodeg_divisor_linear_reduction_theorem},
-wniosków \ref{piczero_curvepts_bijection_corollary}
-i \ref{piczero_representants_coro}
+\ref{divisor_linear_reduction_theorem},
+\ref{zerodeg_divisor_linear_reduction_theorem}
+i \ref{piczero_curvepts_bijection_theorem},
+wniosku \ref{piczero_representants_coro}
 oraz faktu \ref{piczero_addition_fact}.
 \end{proof}
 
@@ -119,3 +112,16 @@ Krzywa eliptyczna $E$ wraz z działaniem określonym w definicji
 \ref{ec_groupop_def} tworzy grupę abelową.
 Grupa ta jest izomorficzna z grupą $\Pic^0(E)$.
 \end{corollary}
+
+Udało się nam sprawdzić, że zdefiniowana operacja faktycznie
+jest działaniem grupowym.
+Weryfikacja praw grupowych bezpośrednio z podanej definicji
+byłaby dosyć żmudna.
+Co więcej, zobaczyliśmy też powód,
+dla którego działanie na krzywej eliptycznej jest zdefiniowane
+właśnie w taki sposób.
+Jest to o tyle cenne, że często działanie
+definiuje się po prostu poprzez podanie odpowiednich wzorów
+i ewentualne skomentowanie faktu,
+że we wzorach tych chodzi o ,,znalezienie trzeciego punktu
+przecięcia linii z krzywą i odbicie go''.

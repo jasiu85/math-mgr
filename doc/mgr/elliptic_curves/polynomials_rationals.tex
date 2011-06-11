@@ -62,7 +62,7 @@ na jakiej krzywej rozpatrywane są wyrażenia wielomianowe.
 Co więcej, czasami wystarczy,
 że w miejsce powstałego podczas mnożenia czynnika $y^2$
 będziemy podstawiać symbol $\kappa$
-i nie będzie nam potrzebna dokładna znajomość parametrów krzywej $A$ oraz $B$.
+i nie będzie nam potrzebna dokładna znajomość parametrów $A$ i $B$ krzywej.
 
 \begin{remark}
 W zależności od kontekstu wielomian charakterystyczny krzywej eliptycznej
@@ -128,8 +128,8 @@ elementów zbioru $(1 + y)\K[x]$.
 
 \begin{theorem}
 Dane jest wyrażenie wymierne $r$ na krzywej eliptycznej $E(\K)$.
-Wówczas $r = \frac{f}{g}$,
-gdzie $f, g \in (1 + y)\K[x]$ to wyrażenia wielomianowe na krzywej $E(\K)$.
+Wówczas istnieją wyrażenia wielomianowe $f, g \in (1 + y)\K[x]$ takie,
+że $r = \frac{f}{g}$.
 \end{theorem}
 
 \subsection*{Funkcje wielomianowe i wymierne}
@@ -238,6 +238,13 @@ oznaczany $\deg(r)$,
 to różnica $\deg(f) - \deg(g)$.
 \end{definition}
 
+\begin{theorem}
+Stopień funkcji wymiernej $r$ jest dobrze określony,
+tzn. jeśli dane są wielomiany $f_1, g_1, f_2, g_2 \in (1 + y)\K[x]$
+takie, że $\frac{f_1}{g_1} = r = \frac{f_2}{g_2}$,
+to wówczas $\deg(f_1) - \deg(g_1) = \deg(f_2) - \deg(g_2)$.
+\end{theorem}
+
 Na stopnie wielomianów i funkcji wymiernych na krzywej eliptycznej
 przenosi się zasadnicza własność znana z teorii wyrażeń jednej zmiennej.
 
@@ -245,7 +252,7 @@ przenosi się zasadnicza własność znana z teorii wyrażeń jednej zmiennej.
 Niech $r$ oraz $s$ będą dwoma funkcjami wymiernymi na krzywej eliptycznej.
 Wówczas $\deg(rs) = \deg(r) + \deg(s)$.
 Ponadto, jeśli funkcja $s$ nie jest tożsamościowo równa zero,
-to $\deg(\frac{r}{s}) = \deg(r) - \deg(s)$.
+to $\deg(\frac{r}{s}) = \deg(r) - \deg(s)$ oraz $\deg(\frac{1}{s}) = -\deg(s)$.
 \end{theorem}
 
 \subsection*{Wartość funkcji wymiernej w punkcie w nieskończoności}
@@ -269,9 +276,7 @@ ustalamy następująco:
 \item jeżeli $\deg(r) < 0$, to $r(\ecident) = 0$;
 \item jeżeli $\deg(r) > 0$, to $r(\ecident) = \infty$;
 \item jeżeli $\deg(r) = 0$,
-to przedstawiamy funkcję $r$ w postaci $\frac{f}{g}$,
-gdzie $f = u_1 + yv_1$ oraz $g = u_2 + yv_2$
-i wówczas:
+to przedstawiamy funkcję $r$ w postaci $\frac{f}{g}$ i wówczas:
 \begin{itemize}
 \item jeśli stopnie wielomianów $f$ i $g$ są parzyste,
 to ich wiodące składniki mają postać odpowiednio $ax^d$ i $bx^d$,
@@ -293,7 +298,8 @@ Dane są dwie funkcje wymierne $r$ oraz $s$ takie,
 Wówczas $(r \pm s)(\ecident) = r(\ecident) \pm s(\ecident)$
 oraz $(rs)(\ecident) = r(\ecident)s(\ecident)$.
 Co więcej, jeśli $s(\ecident) \neq 0$,
-to $(\frac{r}{s})(\ecident) = \frac{r(\ecident)}{s(\ecident)}$.
+to $(\frac{r}{s})(\ecident) = \frac{r(\ecident)}{s(\ecident)}$
+oraz $(\frac{1}{s})(\ecident) = \frac{1}{s(\ecident)}$.
 \end{theorem}
 
 \subsection*{Miejsca zerowe i bieguny}
@@ -314,10 +320,10 @@ to punkt $\overline{P}$
 jest miejscem zerowym (biegunem) funkcji wymiernej $\overline{r}$.
 \end{fact}
 
-\begin{fact}\label{zero_of_norm_fact}
+\begin{corollary}\label{zero_of_norm_coro}
 Jeżeli $P = (a, b)$ jest miejscem zerowym wielomianu $f$,
 to liczba $a$ jest miejscem zerowym wielomianu $N(f)$.
-\end{fact}
+\end{corollary}
 
 \begin{fact}
 Punkty rzędu dwa na krzywej eliptycznej
@@ -333,9 +339,9 @@ czy ciało, nad którym zdefiniowana jest krzywa,
 jest algebraicznie domknięte czy nie.
 
 \begin{fact}
-Jeżeli dane są dwa ciała $\K$ i $\fieldL$ takie, że $\K \subset \fieldL$
-oraz parametry $A,B \in \K$,
-to $E_{A,B}(\K) \subset E_{A,B}(\fieldL)$.
+Dane są dwa ciała $\K$ i $\fieldL$ takie, że $\K \subset \fieldL$
+oraz parametry $A,B \in \K$.
+Wówczas $E_{A,B}(\K) \subset E_{A,B}(\fieldL)$.
 \end{fact}
 
 Fakt ten pozwala nam uwolnić się od pytania,

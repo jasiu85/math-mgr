@@ -97,7 +97,7 @@ o równoważność dywizorów. Dwa dywizory są równoważne,
 gdy różnią się o dywizor główny, czyli o dywizor pewnej funkcji wymiernej.
 Jak wskazać funkcję wymierną, która ,,jest różnicą'' między dwoma dywizorami?
 Następujące dwa twierdzenia pokazują, że taką funkcję wymierną
-można opisać jako iloczyn linii.
+można skonstruować, mnożąc i dzieląc odpowiednie linie.
 
 \begin{theorem}\label{divisor_linear_reduction_theorem}
 Dana jest krzywa eliptyczna $E$.
@@ -197,7 +197,8 @@ to $P = Q$.
 \end{lemma}
 
 \begin{proof}
-Rozważmy przypadek, gdy jeden z punktów $P$ i $Q$ jest równy $\ecident$.
+Rozważmy najpierw przypadek,
+gdy jeden z punktów $P$ i $Q$ jest równy $\ecident$.
 Dla ustalenia uwagi przyjmimy, że jest to punkt $Q$.
 Zatem $\divi{P} - \divi{\ecident} \sim 0$,
 czyli istnieje funkcja wymierna $r$,
@@ -259,8 +260,8 @@ możemy szczegółowo zanalizować zerową grupę Picarda.
 \begin{theorem}\label{piczero_curvepts_bijection_theorem}
 Dana jest krzywa eliptyczna $E$.
 Niech funkcja $\pi\colon E \to \Pic^0(E)$ będzie określona wzorem:
-\begin{equation}
-\pi(P) = [\divi{P} + n\divi{\ecident}]
+\begin{equation}\label{piczero_bijection_eqn}
+\pi(P) = [\divi{P} - \divi{\ecident}]
 \end{equation}
 Wówczas funkcja $\pi$ jest bijekcją.
 \end{theorem}
@@ -278,9 +279,12 @@ Jest on równoważny pewnemu dywizorowi $\divi{P} - \divi{\ecident}$.
 Wówczas $\pi(P)$ jest właśnie tą warstwą.
 \end{proof}
 
+\begin{corollary}\label{piczero_representants_coro}
 Zerową grupę Picarda możemy zatem utożsamić
 ze zbiorem punktów krzywej eliptycznej
 wybierając z każdej warstwy reprezentanta postaci $\divi{P} - \divi{\ecident}$.
+\end{corollary}
+
 Zobaczmy, jak wygląda dodawanie takich reprezentantów.
 
 \begin{fact}\label{piczero_addition_fact}
