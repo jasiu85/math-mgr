@@ -1,35 +1,39 @@
 \section{Definicja}
 
-Poznaliśmy już wiele pojęć związanych z krzywymi eliptycznymi,
-wciąż jednak nie wystarczająco dużo,
+Mimo tego, że wprowadziliśmy już
+wiele elementów teorii krzywych eliptycznych,
+wciąż jeszcze brakuje nam pewnych wiadomości,
 aby móc zdefiniować iloczyn Weila.
-Dlatego najpierw podamy definicje kilku pomocniczych pojęć.
+Powinny być one przedstawione w poprzednich rozdziałach,
+lecz ze względu na ograniczoną objętość pracy
+przedstawiamy je dopiero teraz
+w bardzo ograniczonym ujęciu.
 
 \subsection*{Podgrupy $n$-torsyjne}
 
-Iloczyn Weila określony to operacja dwuargumentowa
-określona na pewnych specyficznych podgrupach
-grupy na krzywej eliptycznej,
-które teraz zdefiniujemy.
+Zaczniemy od podania dziedziny,
+na której działa iloczyn Weila.
+Są to pewne specyficzne podgrupy
+grupy na krzywej eliptycznej.
 
 \begin{definition}
 Dana jest krzywa eliptyczna $E$.
-\emph{Mnożenie punktu przez liczbę całkowitą $n$}
-to funkcja,
-oznaczana symbolem $[n] \colon E \to E$,
-przyporządkowująca punktowi $P \in E$ punkt, oznaczany $nP$,
-określony następującym wzorem:
+\emph{Mnożenie punktu krzywej przez liczbę całkowitą $n$}
+to funkcja $[n] \colon E \to E$
+określona następującym wzorem:
 \begin{equation}
 [n](P) =
 \fundefthree
-{nP = \underbrace{P + P + \cdots + P}_{n\textrm{ razy}}}{n > 0}
+{\underbrace{P + P + \cdots + P}_{n\textrm{ razy}}}{n > 0}
 {\ecident}{n = 0}
 {-[-n](P)}{n < 0}
 \end{equation}
+Wyrażenie $[n](P)$ zapisujemy skrótowo jako $nP$.
 \end{definition}
 
-Definicja ta nie zaskakuje -- mnożenie to wielokrotne dodawanie,
-dlatego też ma podstawowe własności analogiczne do mnożenia liczb.
+Użycie określenia ,,mnożenie'' oraz skrótowego zapisu $nP$
+motywują własności funkcji $[n]$,
+które przypominają cechy operacji mnożenia liczb całkowitych.
 
 \begin{fact}
 Dana jest krzywa eliptyczna $E$, punkty $P, Q \in E$
@@ -44,7 +48,7 @@ m(-P) & = & -(mP) \\
 \end{fact}
 
 Jesteśmy zainteresowani takimi punktami $P$ krzywej,
-które spełniają równanie $nP = 0$.
+które spełniają równanie $nP = \ecident$.
 Jak nietrudno stwierdzić na podstawie podanych własności mnożenia,
 tworzą one grupę.
 
@@ -56,7 +60,7 @@ oznaczana $E[n]$,
 to podgrupa złożona z tych punktów $P \in E$,
 które spełniają zależność:
 \begin{equation}
-nP = 0
+nP = \ecident
 \end{equation}
 \end{definition}
 
@@ -69,15 +73,270 @@ Jeżeli $m \mid n$, to $E[m] \subset E[n]$.
 \end{fact}
 
 \begin{theorem}
-Dana jest krzywa eliptyczna $E$ nad ciałem algebraicznie domkniętym
+Dana jest krzywa eliptyczna $E$ nad ciałem algebraicznie domkniętym $\K$
 oraz liczba naturalna $n$.
-Wówczas podgrupa $n$-torsyjna $E[n]$ ma rząd równy $n^2$
+Jeżeli $\fieldchar(\K) = 0$ lub $\gcd(n, \fieldchar(\K)) = 1$,
+to podgrupa $n$-torsyjna $E[n]$ ma rząd równy $n^2$
 i jest izomorficzna z grupą $(\Z / n\Z)\times(\Z / n\Z)$.
 \end{theorem}
 
 \begin{corollary}
 Dana jest krzywa eliptyczna $E$ nad ciałem algebraicznie domkniętym.
 Podgrupa $E[1]$ jest trywialna -- składa się tylko z punktu $\ecident$.
-Podgrupa $E[2]$ składa się z czterech punktów -- punktu $\ecident$
-oraz trzech punktów rzędu dwa.
+Podgrupa $E[2]$ składa się z czterech punktów:
+punktu $\ecident$ oraz trzech punktów rzędu dwa.
 \end{corollary}
+
+\subsection*{Pewne szczególne dywizory}
+
+Elementy podgrupy $n$-torsyjnej to rozwiązania równania $nQ = \ecident$.
+Rozważymy teraz bardziej ogólne równanie $nQ = P$.
+Doprowadzi nas to do definicji pewnego rodzaju dywizorów,
+które pojawiają się w definicji iloczynu Weila.
+
+\begin{theorem}
+Dana jest krzywa eliptyczna $E$, jej podgrupa $E[n]$ oraz punkt $P \in E[n]$.
+Wówczas:
+\begin{itemize}
+\item istnieje taki punkt $Q_0 \in E[n^2]$, że $P = nQ_0$;
+\item każdy punkt $Q \in E[n^2]$ spełniający równanie
+$P = nQ$ można przedstawić w postaci $Q = Q_0 + R$,
+gdzie $R \in E[n]$.
+\end{itemize}
+\end{theorem}
+
+\begin{proof}
+Wystarczy przeanalizować sposób, w jaki grupa $(\Z/n\Z)\times(\Z/n\Z)$
+jest zanurzona w grupie $(\Z/n^2\Z)\times(\Z/n^2\Z)$.
+\end{proof}
+
+\begin{corollary}\label{point_division_corollary}
+Jest $n^2$ punktów $Q \in E[n^2]$ spełniających równanie $P = nQ$,
+gdzie $P \in E[n]$.
+Zbiór tych punktów można przedstawić w postaci $\{Q_0 + R \mid R \in E[n]\}$,
+gdzie $Q_0$ jest dowolnym takim punktem.
+\end{corollary}
+
+Rozważania te motywują definicję ,,dzielenia'' punktu.
+Takie dzielenie jest podobne do pierwiastkowania liczb zespolonych --
+jest niejednoznaczne, ale zbiór wszystkich możliwych wyników dzielenia
+przejawia pewną strukturę.
+Zbiór ten będziemy reprezentować za pomocą dywizora.
+
+\begin{definition}
+Dana jest krzywa eliptyczna $E$ nad ciałem algebraicznie domkniętym.
+\emph{Dzielenie punktu krzywej przez liczbę całkowitą $n$}
+to funkcja $[n]^{-1} \colon E[n] \to \Div(E)$
+określona następującym wzorem:
+\begin{equation}
+[n]^{-1}(P) = \sum_{nQ = P} \divi{Q}
+\end{equation}
+\end{definition}
+
+Następujące twierdzenie przedstawia własność tego rodzaju dywizorów,
+która będzie nas najbardziej interesować.
+
+\begin{theorem}\label{point_division_divisor_principle_theorem}
+Dana jest krzywa eliptyczna $E$ oraz punkt $P \in E[n]$.
+Wówczas:
+\begin{eqnarray*}
+[n]^{-1}(P) \sim n^2\divi{\ecident}
+\end{eqnarray*}
+\end{theorem}
+
+Dowód tego twierdzenia poprzedzimy bardzo użytecznym lematem.
+
+\begin{lemma}\label{divi_reduction_lemma}
+Dana jest krzywa eliptyczna $E$ oraz punkty $P, Q \in E$.
+Wówczas dywizor $\divi{P+Q} - \divi{P} - \divi{Q} + \divi{\ecident}$
+jest główny.
+\end{lemma}
+
+\begin{proof}
+Rozważmy funkcję $\frac{f_1}{f_2}$,
+gdzie $f_1$ to linia przechodząca przez punkty $(P+Q)$ i $-(P+Q)$,
+a $f_2$ to linia przechodząca przez punkty $P$, $Q$ i $-(P+Q)$.
+Jak nietrudno sprawdzić,
+$\rdiv(\frac{f_1}{f_2}) = \divi{P+Q} - \divi{P} - \divi{Q} + \divi{\ecident}$
+(również wtedy, gdy $P = Q$, $P = -Q$, $P = \ecident$ lub $Q = \ecident$).
+\end{proof}
+
+\begin{corollary}\label{divi_sum_reduction_coro}
+Dane jest krzywa eliptyczna $E$ oraz punkty $P, Q \in E$.
+Wówczas $\divi{P} + \divi{Q} \sim \divi{P+Q} + \divi{\ecident}$.
+\end{corollary}
+
+Zauważmy, że z pomocą tego lematu i płynącego z niego wniosku
+możemy sformułować metodę redukcji dywizorów
+podobne do twierdzenia \ref{point_division_divisor_principle_theorem}.
+Ograniczymy się jednak do zastosowania tej metody
+do przypadku dywizorów postaci $[n]^{-1}(P)$.
+
+\begin{proof}[Dowód twierdzenia \ref{point_division_divisor_principle_theorem}]
+Niech $\alpha$ i $\beta$ oznaczają generatory grupy $E[n]$.
+Wybierzmy dowolny punkt $Q \in E[n^2]$ taki, że $P = nQ$
+Zgodnie z wnioskiem \ref{point_division_corollary}
+dywizor $[n]^{-1}(P)$ możemy zapisać w postaci:
+\begin{equation*}
+[n]^{-1}(P) = \sum_{k=0}^{n-1} \sum_{l=0}^{n-1} \divi{Q + k\alpha + l\beta}
+\end{equation*}
+Teraz wielokrotnie zastosujemy wniosek \ref{divi_sum_reduction_coro},
+aby zamienić sumę dywizorów na dywizor sumy.
+Najpierw $n-1$ razy redukujemy wewnętrzną sumę i otrzymujemy:
+\begin{eqnarray*}
+\sum_{l=0}^n \divi{Q + k\alpha + l\beta}
+& =    & \divi{Q + k\alpha} + \divi{Q + k\alpha + \beta} +
+         \sum_{l=2}^{n-1} \divi{Q + k\alpha + l\beta} \\
+& \sim & \divi{\ecident} + \divi{2Q + 2k\alpha + \beta} +
+         \divi{Q + k\alpha + 2\beta} +
+         \sum_{l=3}^{n-1} \divi{Q + k\alpha + l\beta} \\
+& \sim & 2\divi{\ecident} + \divi{3Q + 3k\alpha + 3\beta} +
+         \divi{Q + k\alpha + 3\beta} +
+         \sum_{l=4}^{n-1} \divi{Q + k\alpha + l\beta} \\
+& \sim & 3\divi{\ecident} + \divi{4Q + 4k\alpha + 6\beta} +
+         \divi{Q + k\alpha + 4\beta} +
+         \sum_{l=5}^{n-1} \divi{Q + k\alpha + l\beta} \\
+& \sim & \ldots \\
+& \sim & (n-1)\divi{\ecident} + \divi{nQ + nk\alpha + \binom{n}{2}\beta}
+\end{eqnarray*}
+Wynik ten podstawiamy do zewnętrznej sumy,
+po czym w analogiczny sposób redukujemy ją $n-1$ razy.
+Otrzymujemy:
+\begin{eqnarray*}
+\sum_{k=0}^n (n-1)\divi{\ecident} +
+             \divi{nQ + nk\alpha + \binom{n}{2}\beta}
+& \sim & (n^2-1)\divi{\ecident} +
+         \divi{n^2Q + n\binom{n}{2}\alpha + n\binom{n}{2}\beta} \\
+& \sim & (n^2-1)\divi{\ecident} + \divi{n^2Q} \\
+& \sim & n^2\divi{\ecident}
+\end{eqnarray*}
+\end{proof}
+
+\begin{corollary}
+Dywizor $[n]^{-1}(P) - [n]^{-1}(\ecident)$ jest główny.
+\end{corollary}
+
+\subsection*{Iloczyn Weila}
+
+Dysponujemy już wszystkimi niezbędnymi informacjami,
+aby móc podać definicję iloczynu Weila.
+
+\begin{definition}\label{weil_pairing_def}
+Dana jest krzywa eliptyczna $E$ nad ciałem $\K$.
+\emph{Iloczyn Weila} to funkcja
+$w\colon E[n] \times E[n] \to \K$
+określona następującym wzorem:
+\begin{equation}\label{weil_pairing_eqn}
+w(P, Q) = \frac{f_P \circ t_Q}{f_P}(\ecident)
+\end{equation}
+Oznaczenia użyte w podanym wzorze są następujące:
+\begin{itemize}
+\item $f_P$ to dowolna funkcja wymierna taka,
+że $\rdiv(f_P) = [n]^{-1}(P) - [n]^{-1}(\ecident)$;
+\item $t_Q$ to przesunięcie o $Q$, tzn. $t_Q(R) = R+Q$.
+\end{itemize}
+\end{definition}
+
+\begin{remark}
+Zauważmy, że podana definicja określa nie jedną funkcję,
+lecz całą rodzinę funkcji --
+po jednej dla każdej z grup $E[n]$, gdzie $n \in \N$.
+\end{remark}
+
+Sprawdźmy, że iloczyn Weila jest dobrze określony
+
+\begin{lemma}\label{weil_pairing_ignore_const_lemma}
+Wartość iloczynu Weila nie zależy od wyboru funkcji $f_P$.
+\end{lemma}
+
+\begin{proof}
+Na mocy wniosku \ref{fun_divi_equiv_to_const_lemma}
+dwie funkcje wymierne $f_P$ i $f_P'$ o takim samym dywizorze
+różnią się o czynnik stały różny od zera,
+zatem możemy przyjąć $f_P = cf_P'$.
+Podstawiamy tę zależność do wzoru \ref{weil_pairing_eqn} i otrzymujemy:
+\begin{equation*}
+\frac{f_P \circ t_Q}{f_P}(\ecident) =
+\frac{(cf_P') \circ t_Q}{cf_P'}(\ecident) =
+\frac{c(f_P' \circ t_Q)}{cf_P'}(\ecident) =
+\frac{f_P' \circ t_Q}{f_P'}(\ecident)
+\end{equation*}
+Widzimy stąd, że wartość iloczynu Weila pozostanie taka sama
+niezależnie od tego, jakiej funkcji użyjemy,
+ponieważ wszystkie one różnią się o czynnik stały,
+który pojawia się zarówno w liczniku, jak i w mianowniku.
+\end{proof}
+
+\begin{lemma}\label{weil_pairing_same_divi_lemma}
+Funkcje $f_P$ i $f_P \circ t_Q$ mają taki sam dywizor.
+\end{lemma}
+
+\begin{proof}
+Niech $R \in E[n^2]$ będzie dowolnym punktem takim, że $nR = P$.
+Zauważmy, że $f_P(S) = 0$ wtedy i tylko wtedy,
+gdy $(f_P \circ t_Q)(S - Q) = 0$.
+Podobnie, $f_P(R) = \infty$ wtedy i tylko wtedy,
+gdy $(f_P \circ t_Q)(S - Q) = \infty$.
+Wszystkie miejsca zerowe i bieguny funkcji $f_P$ są jednokrotne.
+Dywizor funkcji $f_P \circ t_Q$ możemy w takim razie zapisać
+w następującej postaci:
+\begin{equation*}
+\rdiv(f_P \circ t_Q) =
+\sum_{S \in E[n]} \divi{R + S - Q} - \sum_{S \in E[n]} \divi{S - Q}
+\end{equation*}
+Wykonujemy ,,zamianę zmiennych''. Oznaczmy $S' = S - Q$.
+Zauważmy, że ponieważ $S, Q \in E[n]$, to również $S' \in E[n]$.
+Co więcej, przesunięcie całego zbioru $E[n]$ o $-Q$ nie zmienia go,
+tak więc nie zmienia się zakres wartości zmiennej $S'$.
+Otrzymujemy:
+\begin{eqnarray*}
+\rdiv(f_P \circ t_Q) =
+& = & \sum_{S' \in E[n]} \divi{R + S} - \sum_{S' \in E[n]} \divi{S'} \\
+& = & \rdiv(f_P)
+\end{eqnarray*}
+\end{proof}
+
+\begin{corollary}
+Funkcja $\frac{f_P \circ t_Q}{f_P}$ jest stała i niezerowa.
+\end{corollary}
+
+\begin{proof}
+Stosujemy twierdzenie \ref{fun_mul_divi_add_theorem}
+i udowodniony przed chwilą lemat
+do obliczenia dywizora funkcji $\frac{f_P \circ t_Q}{f_P}$
+i otrzymujemy:
+\begin{equation*}
+\rdiv\left(\frac{f_P \circ t_Q}{f_P}\right) =
+\rdiv(f_P \circ t_Q) - \rdiv(f_P) = 0
+\end{equation*}
+Funkcja mająca zerowy dywizor jest stała i niezerowa,
+zgodnie z wnioskiem \ref{zero_div_const_fun_coro}.
+\end{proof}
+
+\begin{remark}
+Wybór punktu $\ecident$ jako argumentu funkcji $\frac{f_P \circ t_Q}{f_P}$
+we wzorze \ref{weil_pairing_eqn} był dowolny,
+bo funkcja ta i tak jest stała.
+Dlatego też czasem będziemy nadużywać notacji i zapisywać
+iloczyn Weila jako:
+\begin{equation*}
+w(P, Q) = \frac{f_P \circ t_Q}{f_P}
+\end{equation*}
+\end{remark}
+
+\begin{remark}
+Iloczyn Weila nie jest funkcją stałą --
+współczynnik $c$ w tożsamości $f_P \circ t_Q = cf_P$
+może zmieniać się w zależności od punktu $Q$ mimo tego,
+że funkcja $f_P \circ t_Q$ zawsze ma taki sam dywizor jak funkcja $f_P$.
+\end{remark}
+
+\begin{theorem}
+Iloczyn Weila $w(P, Q)$ jest dobrze określony,
+tzn. jego wartość zależy tylko od punktów $P$ i $Q$.
+\end{theorem}
+
+\begin{proof}
+Natychmiastowy na podstawie lematów
+\ref{weil_pairing_ignore_const_lemma} i \ref{weil_pairing_same_divi_lemma}.
+\end{proof}
