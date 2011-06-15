@@ -69,13 +69,18 @@ gdy próbujemy dodać punkt skończony niebędący punktem rzędu dwa
 do samego siebie.
 \end{remark}
 
-Aby nabrać intuicji, jak zachowuje się opisane działanie,
-przyjrzyjmy się przypadkowi opisanemu w punkcie \ref{ec_groupop_add_generic}.
-Aby dodać punkty $P$ i $Q$ przeprowadzamy przez nie linię,
+\begin{fact}
+Jeżeli punkty $P, Q, R \in E$ leżą na jednej linii,
+to $P + Q + R = \ecident$.
+\end{fact}
+
+Fakt ten daje intuicję, na czym tak naprawdę polega działanie
+na punktach krzywej eliptycznej.
+Aby dodać punkty $P$ i $Q$, przeprowadzamy przez nie linię,
 odnajdujemy trzeci punkt $R$,
 w którym przecina się ona z krzywą,
 po czym za wynik dodawania uznajemy punkt $\overline{R}$.
-Jest to operacja analogiczna do dodawania w zerowej grupie Picarda.
+Podobieństwo do działania w zerowej grupie Picarda nie jest przypadkowe.
 
 \begin{theorem}
 Niech $\pi \colon E \to \Pic^0(E)$
@@ -113,11 +118,9 @@ Krzywa eliptyczna $E$ wraz z działaniem określonym w definicji
 Grupa ta jest izomorficzna z grupą $\Pic^0(E)$.
 \end{corollary}
 
-Udało się nam sprawdzić, że zdefiniowana operacja faktycznie
-jest działaniem grupowym.
-Weryfikacja praw grupowych bezpośrednio z podanej definicji
-byłaby dosyć żmudna.
-Co więcej, zobaczyliśmy też powód,
+Udało się nam uniknąć sprawdzania praw grupowych
+bezpośrednio z podanej definicji (co byłoby dosyć żmudne),
+a przy tym zrozumieliśmy powód,
 dla którego działanie na krzywej eliptycznej jest zdefiniowane
 właśnie w taki sposób.
 Jest to o tyle cenne, że często działanie
