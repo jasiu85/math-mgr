@@ -1,3 +1,12 @@
 all:
 	pdflatex -interaction batchmode mgr.tex
-	mv mgr.pdf mj219450.pdf
+	cp mgr.pdf mj219450.pdf
+
+clean:
+	rm -f mgr.log
+	rm -f mgr.aux
+	rm -f mgr.toc
+
+mrproper: clean
+	rm -f mgr.pdf
+	rm -f mj219450.pdf
