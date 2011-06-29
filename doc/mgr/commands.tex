@@ -1,7 +1,10 @@
 % define values of constants/counters/spaces etc.
+
 \setlipsumdefault{1-2}
 
+
 % define AMS theorems
+
 \numberwithin{equation}{section}
 
 \theoremstyle{plain}
@@ -9,6 +12,7 @@
 \newtheorem{lemma}[equation]{Lemat}
 \newtheorem{theorem}[equation]{Twierdzenie}
 \newtheorem{corollary}[equation]{Wniosek}
+\newtheorem{algorithm}[equation]{Algorytm}
 
 \theoremstyle{definition}
 \newtheorem{definition}[equation]{Definicja}
@@ -17,7 +21,20 @@
 \theoremstyle{remark}
 \newtheorem{remark}[equation]{Uwaga}
 
-% define AMS operators
+
+% force normal font in codeboxes
+
+\makeatletter
+\g@addto@macro\code@init\normalfont
+\makeatother
+
+
+% codebox keywords
+
+\newcommand{\Assert}{\kw{assert} }
+
+
+% AMS operators
 
 \DeclareMathOperator{\Div}{Div}
 \DeclareMathOperator{\Prin}{Prin}
@@ -26,25 +43,13 @@
 \DeclareMathOperator{\rdiv}{div}
 \DeclareMathOperator{\fieldchar}{char}
 
-% define new commands
+% TODO commands
+
 \newcommand{\todo}[1]{TODO: #1}
 \newcommand{\todolipsum}[1]{TODO: #1 \lipsum}
 
-\newcommand{\ecident}{\mathcal{O}}
-\newcommand{\F}{\mathbb{F}}
-\newcommand{\G}{\mathbb{G}}
-\newcommand{\GF}{\mathbb{GF}}
-\newcommand{\K}{\mathbb{K}}
-\newcommand{\fieldL}{\mathbb{L}}
-\newcommand{\N}{\mathbb{N}}
-\newcommand{\Z}{\mathbb{Z}}
-\newcommand{\Q}{\mathbb{Q}}
-\newcommand{\R}{\mathbb{R}}
-\newcommand{\C}{\mathbb{C}}
-\newcommand{\abs}[1]{\lvert#1\rvert}
-\newcommand{\norm}[1]{\lVert#1\rVert}
-\newcommand{\divi}[1]{\left\langle#1\right\rangle}
-\newcommand{\lsym}[3]{\left\langle #1 , #2 \right\rangle_{#3}}
+
+% function definitions
 
 \newcommand{\fundeftwo}[4]
 {\left\{
@@ -62,3 +67,22 @@
 #5 & \textrm{gdy }#6\textrm{.}
 \end{array}
 \right.}
+
+
+% various commands
+
+\newcommand{\ecident}{\mathcal{O}}
+\newcommand{\F}{\mathbb{F}}
+\newcommand{\G}{\mathbb{G}}
+\newcommand{\GF}{\mathbb{GF}}
+\newcommand{\K}{\mathbb{K}}
+\newcommand{\fieldL}{\mathbb{L}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\abs}[1]{\lvert#1\rvert}
+\newcommand{\norm}[1]{\lVert#1\rVert}
+\newcommand{\divi}[1]{\left\langle#1\right\rangle}
+\newcommand{\lsym}[3]{\left\langle #1 , #2 \right\rangle_{#3}}
