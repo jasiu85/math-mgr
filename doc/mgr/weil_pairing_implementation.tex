@@ -1,7 +1,22 @@
 \chapter{Implementacja iloczynu Weila}
 
-\input{weil_pairing_implementation/algorithm}
+Znaczenie iloczynu Weila w kryptografii polega na tym,
+że istnieje efektywny algorytm,
+który pozwala obliczać wartości iloczynu.
+Dzięki temu różnego rodzaju konstrukcje teoretyczne --
+systemy i ataki kryptograficzne --
+mogą zostać przełożone na algorytmy i ich implementacje,
+które mogą być zastosowane w praktyce.
 
-\input{weil_pairing_implementation/complexity}
+W rozdziale tym zaprezentujemy algorytm obliczania wartości iloczynu Weila
+opracowany przez Millera.
+Ponadto, opiszemy implementację tego algorytmu,
+która jest częścią niniejszej pracy.
+
+\input{weil_pairing_implementation/base_formula}
+
+\input{weil_pairing_implementation/miller_algorithm}
+
+\input{weil_pairing_implementation/correctness_and_complexity}
 
 \input{weil_pairing_implementation/implementation}

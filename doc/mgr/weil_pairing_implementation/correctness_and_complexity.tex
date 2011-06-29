@@ -1,0 +1,60 @@
+\section{Dowód poprawności i oszacowanie złożoności}
+
+\begin{definition}
+Dana jest krzywa eliptyczna $E$,
+punkt $P \in E[n]$ oraz punkt $R \in E$.
+Rodzina funkcji $f_k$, gdzie $k = 1, 2, \ldots, n$,
+jest określona za pomocą następujących dywizorów:
+\begin{equation}
+\rdiv(f_k) = k\divi{P+R} - k\divi{R} - \divi{kP} + \divi{\ecident}
+\end{equation}
+\end{definition}
+
+Znaczenie tej definicji pokazuje następujący fakt.
+
+\begin{fact}
+Zachodzi następująca zależność:
+\begin{equation}
+\rdiv(\widehat{g_P}) = \rdiv(f_n)
+\end{equation}
+\end{fact}
+
+\begin{lemma}
+Dane są liczby naturalne $1 < k,l < n$.
+Niech $g_{k,l}$ będzie linią przechodzącą przez punkty $kP$ i $lP$,
+a $h_{k+l}$ będzie linią pionową przechodzącą przez punkt $(k+l)P$.
+Wówczas:
+\begin{equation}
+\rdiv(f_{k+l}) = \rdiv(f_k) + \rdiv(f_l) + \rdiv(g_{k,l}) - \rdiv(h_{k+l})
+\end{equation}
+\end{lemma}
+
+\begin{proof}
+Wystarczy sprawdzić dywizory obu stron równości:
+\begin{eqnarray*}
+\rdiv(f_{k+l})
+& = & (k+l)\divi{P+R} - (k+l)\divi{R} - \divi{(k+l)P} + \divi{\ecident} \\
+& = & k\divi{P+R} - k\divi{R} - \divi{kP} + \divi{\ecident} + \\
+&   & l\divi{P+R} - l\divi{R} - \divi{lP} + \divi{\ecident} + \\
+&   & \divi{kP} + \divi{lP} - \divi{(k+l)P} - \divi{\ecident} \\
+& = & \rdiv(f_k) + \rdiv(f_l) +
+      \divi{kP} + \divi{lP} + \divi{-(k+l)P} - 3\divi{\ecident} - \\
+&   & \divi{-(k+l)P} - \divi{(k+l)P} + 2\divi{\ecident} \\
+& = & \rdiv(f_k) + \rdiv(f_l) + \rdiv(g_{k,l}) - \rdiv(h_{k+l})
+\end{eqnarray*}
+\end{proof}
+
+\begin{corollary}
+Zachodzi następująca zależność:
+\begin{equation}
+f_{k+l} = f_k f_l \frac{g_{k,l}}{h_{k+l}}
+\end{equation}
+\end{corollary}
+
+\subsection*{Złożoność czasowa}
+
+\todolipsum{Złożoność czasowa.}
+
+\subsection*{Złożoność pamięciowa}
+
+\todolipsum{Złożoność pamięciowa.}
