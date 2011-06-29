@@ -87,7 +87,7 @@ wartość $l(P)$:
 \begin{codebox}
 \Procname{$\proc{Line-Value-At-Curve-Finite-Point}(E, l, P)$}
 \li
-    \Assert $A \neq \id{identity}[E]$
+    \Assert $P \neq \id{identity}[E]$
 \li
     \Return $a[l]\cdot x[P] + b[l]\cdot y[P] + c[l]$
 \end{codebox}
@@ -99,20 +99,27 @@ dla których wyznaczyliśmy wcześniej odpowiednie wzory.
 
 \begin{algorithm}
 Dana jest krzywa eliptyczna $E$
-oraz punkt skończony $P \in E$.
+oraz punkt $P \in E$.
 Następująca procedura
 na podstawie wartości $E$ i $P$
 oblicza
 linię pionową przechodzącą przez punkt $P$:
 
 \begin{codebox}
-\Procname{$\proc{Vertical-Line-Through-Finite-Point}(E, A)$}
+\Procname{$\proc{Vertical-Line-Through-Curve-Point}(E, P)$}
 \li
-    \Assert $A \neq \id{identity}[E]$
+    $K \gets \id{field}(E)$
 \li
-    $a \gets x[A]$
+    \If $P = \id{identity}[E]$
 \li
-    \Return $\proc{Line-On-Curve}(E, 1, 0, -a)$
+        \Then
+            \Return $\proc{Line-On-Curve}(E, \id{zero}[K], \id{zero}[K], \id{one}[K])$
+\li
+        \Else
+            $a \gets x[P]$
+\li
+            \Return $\proc{Line-On-Curve}(E, \id{one}[K], \id{zero}[K], -a)$
+        \End
 \end{codebox}
 \end{algorithm}
 
@@ -131,6 +138,8 @@ linię przechodzącą przez punkty $P$ i $Q$:
 \li
     \Assert $P \neq Q$
 \li
+    $K \gets \id{field}[E]$
+\li
     $a \gets x[P]$
 \li
     $b \gets y[P]$
@@ -142,12 +151,12 @@ linię przechodzącą przez punkty $P$ i $Q$:
     \If $a = c$
 \li
         \Then
-            \Return $\proc{Line-On-Curve}(E, 1, 0, -a)$
+            \Return $\proc{Line-On-Curve}(E, \id{one}[K], \id{zero}[K], -a)$
 \li
         \Else
             $\lambda \gets (d-b)/(c-a)$
 \li
-            \Return $\proc{Line-On-Curve}(E, \lambda, -1, -(\lambda\cdot a - b))$
+            \Return $\proc{Line-On-Curve}(E, \lambda, -\id{one}[K], -(\lambda\cdot a - b))$
         \End
 \end{codebox}
 \end{algorithm}
@@ -165,19 +174,21 @@ linię styczną do krzywej $E$ przechodzącą przez punkt $P$:
 \li
     \Assert $P \neq \id{identity}[E]$
 \li
+    $K \gets \id{field}[E]$
+\li
     $a \gets x[P]$
 \li
     $b \gets y[P]$
 \li
-    \If $b = 0$
+    \If $b = \id{zero}[K]$
 \li
         \Then
-            \Return $\proc{Line-On-Curve}(E, 1, 0, -a)$
+            \Return $\proc{Line-On-Curve}(E, \id{one}[K], \id{zero}[K], -a)$
 \li
         \Else
-            $\lambda \gets (3\cdot a \cdot a + A[E])/(2\cdot b)$
+            $\lambda \gets (\id{three}[K]\cdot a \cdot a + A[E])/(\id{two}[K]\cdot b)$
 \li
-            \Return $\proc{Line-On-Curve}(E, \lambda, -1, -(\lambda\cdot a - b))$
+            \Return $\proc{Line-On-Curve}(E, \lambda, -\id{one}[K], -(\lambda\cdot a - b))$
         \End
 \end{codebox}
 \end{algorithm}
@@ -187,8 +198,7 @@ procedurę, która wyznacza linię przechodzącą przez dowolne dwa punkty krzyw
 
 \begin{algorithm}
 Dana jest krzywa eliptyczna $E$
-oraz punkty $P, Q \in E$,
-z których co najmniej jeden jest skończony.
+oraz punkty $P, Q \in E$.
 Następująca procedura
 na podstawie wartości $E$, $P$ i $Q$
 oblicza
@@ -198,18 +208,24 @@ linię przechodzącą przez punkty $P$ i $Q$
 \begin{codebox}
 \Procname{$\proc{Line-Through-Curve-Points}(E, P, Q)$}
 \li
-    \Assert $P \neq \id{identity}[E] \kw{ or } Q \neq \id{identity}[E]$
+    $K \gets \id{field}[E]$
+\li
+    \If $P = \id{identity}[E] \kw{ and } Q = \id{identity}[E]$
+\li
+        \Then
+            \Return $\proc{Line-On-Curve}(E, \id{zero}[K], \id{zero}[K], \id{one}[K])$
+        \End
 \li
     \If $P = \id{identity}[E]$
 \li
         \Then
-            \Return $\proc{Vertical-Line-Through-Curve-Finite-Point}(E, Q)$
+            \Return $\proc{Vertical-Line-Through-Curve-Point}(E, Q)$
         \End
 \li
     \If $Q = \id{identity}[E]$
 \li
         \Then
-            \Return $\proc{Vertical-Line-Trough-Curve-Finite-Point}(E, P)$
+            \Return $\proc{Vertical-Line-Trough-Curve-Point}(E, P)$
         \End
 \li
     \If $P \neq Q$
@@ -236,6 +252,8 @@ punkt $P + Q$:
 
 \begin{codebox}
 \Procname{$\proc{Add-Curve-Points}(E, P, Q)$}
+\li
+    $K \gets \id{field}[E]$
 \li
     \If $P = \id{identity}[E]$
 \li
@@ -269,14 +287,14 @@ punkt $P + Q$:
             $\lambda \gets (d - b)/(c - a)$
 \li
         \Else
-            $\lambda \gets (3\cdot a\cdot a + A[E])/(2\cdot b)$
+            $\lambda \gets (\id{three}[K]\cdot a\cdot a + A[E])/(\id{two}[K]\cdot b)$
         \End
 \li
     $e \gets \lambda\cdot\lambda - a - c$
 \li
     $f \gets -\lambda\cdot(e - a) - b$
 \li
-    \Return $\proc{Curve-Finite-Point}(e, f)$
+    \Return $\proc{Curve-Finite-Point}(E, e, f)$
 \end{codebox}
 \end{algorithm}
 
@@ -291,13 +309,15 @@ punkt $nP$:
 \begin{codebox}
 \Procname{$\proc{Multiply-Curve-Point}(E, P, n)$}
 \li
+    $K \gets \id{field}[E]$
+\li
     \If $P = \id{identity}[E]$
 \li
         \Then
             \Return $\id{identity}[E]$
         \End
 \li
-    \If $y[P] = 0$
+    \If $y[P] = \id{zero}[K]$
 \li
         \Then
             \If $n \kw{ mod } 2 = 0$
@@ -330,7 +350,7 @@ punkt $nP$:
     \While $m > 0$
 \li
         \Do
-            \If $m \kw{ mod } 2 = 1$
+            \If $m \kw{ mod } 2 \neq 0$
 \li
                 \Then
                     $R \gets \proc{Add-Curve-Points}(R, P)$
@@ -362,52 +382,41 @@ wybiera losowo z rozkładem jednostajnym
 punkt krzywej $E$:
 
 \begin{codebox}
-\Procname{$\proc{Random-Curve-Point}(E)$}
+\Procname{$\proc{Random-Curve-Finite-Point}(E)$}
 \li
-    $f \gets \id{field}[E]$
+    $K \gets \id{field}[E]$
 \li
-    $c \gets \id{cardinality}[f]$
+    $c \gets \id{cardinality}[K]$
 \li
     \While $\const{true}$
 \li
         \Do
-            $n \gets \proc{Random-Integer}(c + 1)$
+            $a \gets \proc{Random-Finite-Field-Element}(K)$
 \li
-            \If $n = c$
+            $d \gets a \cdot a \cdot a + A[E] \cdot a + B[E]$
+\li
+            \If $d = \id{zero}[K]$
 \li
                 \Then
                     \If $\proc{Random-Integer}(2) = 0$
 \li
                         \Then
-                            \Return $\id{identity}[E]$
+                                    \Return $\proc{Curve-Finite-Point}(E, a, \id{zero}[K])$
                         \End
 \li
                 \Else
-                    $a \gets \proc{Random-Finite-Field-Element}(f)$
+                    $b \gets \proc{Finite-Field-Element-Square-Root}(K, d)$
 \li
-                    \If $a\cdot a\cdot a + A[E]\cdot a + B[E] = 0$
+                    \If $b \neq \const{error}$
 \li
                         \Then
                             \If $\proc{Random-Integer}(2) = 0$
 \li
                                 \Then
-                                    \Return $\proc{Curve-Finite-Point}(a, 0)$
-                                \End
+                                    \Return $\proc{Curve-Finite-Point}(E, a, b)$
 \li
-                        \Else
-                            $b \gets \proc{Finite-Field-Element-Square-Root}(f, a)$
-\li
-                            \If $b \neq \const{error}$
-\li
-                                \Then
-                                    \If $\proc{Random-Integer}(2) = 0$
-\li
-                                        \Then
-                                            \Return $\proc{Curve-Finite-Point}(a, b)$
-\li
-                                        \Else
-                                            \Return $\proc{Curve-Finite-Point}(a, -b)$
-                                        \End
+                                \Else
+                                    \Return $\proc{Curve-Finite-Point}(E, a, -b)$
                                 \End
                         \End
                 \End
@@ -417,62 +426,62 @@ punkt krzywej $E$:
 
 Możemy teraz przejść do opisania algorytmu Millera.
 
-
-Następująca procedura jest przełożeniem lematu \ref{dupa} na pseudokod.
-
 \begin{algorithm}
-Dana jest krzywa eliptyczna $E$ oraz punkt skończony $A \in E$.
-Następująca procedura
-na podstawie wartości $A$, $K = kP$, $L = lP$, $u = f_k(A)$ i $v = f_l(A)$
-przekazuje jako wynik
-wartość $f_{k+l}(P)$:
+Dana jest krzywa eliptyczna $E$,
+liczba całkowita $n$
+oraz punkty $P, Q \in E$ takie, że $nP = \ecident$ i $nQ = \ecident$.
+Następujące procedury
+na podstawie wartości $E$, $n$, $P$ i $Q$
+obliczają
+wartość $w(P, Q)$:
 
 \begin{codebox}
-\Procname{$\proc{Combine-Function-Values}(E, A, K, L, u, v)$}
+\Procname{$\proc{Combine-Partial-Values}(E, A, U, V, u, v)$}
 \li
-    $g \gets \proc{Line-Through-Points}(E, K, L)$
+    $K \gets \id{field}[E]$
 \li
-    $h \gets \proc{Vertical-Line-Through-Point}(\proc{Add-Points}(E, K, L))$
+    $g \gets \proc{Line-Through-Curve-Points}(E, U, V)$
 \li
-    $s \gets \proc{Line-Value-At-Point}(E, g, A)$
+    $h \gets \proc{Vertical-Line-Through-Curve-Point}(\proc{Add-Curve-Points}(E, U, V))$
 \li
-    $t \gets \proc{Line-Value-At-Point}(E, h, A)$
+    $s \gets \proc{Line-Value-At-Curve-Finite-Point}(E, g, A)$
 \li
-    \If $s = 0$ \kw{or} $t = 0$
+    $t \gets \proc{Line-Value-At-Curve-Finite-Point}(E, h, A)$
+\li
+    \If $s = \id{zero}[K]$ \kw{or} $t = \id{zero}[K]$
 \li
         \Then \Return $\const{error}$
     \End
 \li
     \Return $u \cdot v \cdot (s / t)$
 \end{codebox}
-\end{algorithm}
-
-Zastosujemy teraz schemat ,,podwajaj-i-dodawaj'' do procedury \ref{dupa},
-aby otrzymać procedurę obliczającą wartość $f_n(A)$.
-
-\begin{algorithm}
-Dana jest krzywa eliptyczna $E$,
-punkt skończony $A \in E$ oraz liczba naturalna $n$.
-Następująca procedura
-na podstawie wartości $E$, $A$, $P$, $R$ i $n$
-przekazuje jako wynik
-wartość $f_n(A)$:
 
 \begin{codebox}
-\Procname{$\proc{Compute-Function-Value}(E, A, P, R, n)$}
+\Procname{$\proc{Compute-Value}(E, n, P, R, A)$}
 \li
-    $g \gets \proc{Line-Through-Points}(E, P, R)$
+    $K \gets \id{field}[E]$
 \li
-    $h \gets \proc{Vertical-Line-Through-Point}(E, \proc{Add-Points}(E, P, R))$
+    $g \gets \proc{Line-Through-Curve-Points}(E, P, R)$
+\li
+    $h \gets \proc{Vertical-Line-Through-Curve-Point}(E, \proc{Add-Curve-Points}(E, P, R))$
+\li
+    $s \gets \proc{Line-Value-At-Curve-Finite-Point}(E, g, A)$
+\li
+    $t \gets \proc{Line-Value-At-Curve-Finite-Point}(E, h, A)$
+\li
+    \If $s = \id{zero}[K] \kw{ or } t = \id{zero}[K]$
+\li
+    \Then
+        \Return $\const{error}$
+    \End
 \li
     $U \gets \id{identity}[E]$
 \li
     $V \gets P$
 \li
-    $u \gets 1$
+    $u \gets \id{one}[K]$
 \li
-    $v \gets \proc{Line-Value-At-Point}(E, h, A) /
-            \proc{Line-Value-At-Point}(E, g, A)$
+    $v \gets t / s$
 \li
     \While $n > 0$
 \li
@@ -483,12 +492,12 @@ wartość $f_n(A)$:
                     \Return $\const{error}$
                 \End
 \li
-            \If $n \kw{ mod } 2 = 1$
+            \If $n \kw{ mod } 2 \neq 0$
 \li
                 \Then
-                    $u \gets \proc{Combine-Function-Values}(E, A, U, V, u, v)$
+                    $u \gets \proc{Combine-Partial-Values}(E, A, U, V, u, v)$
 \li
-                    $U \gets \proc{Add-Points}(U, V)$
+                    $U \gets \proc{Add-Curve-Points}(U, V)$
 \li
                     \If $u = \const{error}$
 \li
@@ -497,51 +506,58 @@ wartość $f_n(A)$:
                         \End
                 \End
 \li
-            $v \gets \proc{Combine-Function-Values}(E, A, V, V, v, v)$
+            $v \gets \proc{Combine-Partial-Values}(E, A, V, V, v, v)$
 \li
-            $V \gets \proc{Add-Points}(E, V, V)$
+            $V \gets \proc{Add-Curve-Points}(E, V, V)$
 \li
             $n \gets n \kw{ div } 2$
         \End
 \li
     \Return $u$
 \end{codebox}
-\end{algorithm}
-
-\begin{algorithm}
-Dana jest krzywa eliptyczna $E$ oraz punkty $P,Q \in E[n]$.
-Następująca procedura
-na podstawie wartości $E$, $P$, $Q$ i $n$
-oblicza wartość
-$w(P, Q)$:
 
 \begin{codebox}
-\Procname{$\proc{Weil-Pairing}(P, Q, n)$}
+\Procname{$\proc{Weil-Pairing}(E, n, P, Q)$}
+\li
+    \Assert $\proc{MultiplyCurvePoint}(E, P, n) = \id{identity}[E]$
+\li
+    \Assert $\proc{MultiplyCurvePoint}(E, Q, n) = \id{identity}[E]$
+\li
+    $K \gets \id{field}[E]$
+\li
+    \If $P = Q \kw{ or } P = \id{identity}[E] \kw{ or } Q = \id{identity}[E]$
+\li
+        \Then
+            \Return $\id{one}[K]$
+        \End
 \li
     \While $\const{true}$
 \li
         \Do
-            $R \gets \proc{Random-Curve-Point(E)}$
+            $R \gets \proc{Random-Curve-Finite-Point(E)}$
 \li
-            $S \gets \proc{Random-Curve-Point(E)}$
+            $S \gets \proc{Random-Curve-Finite-Point(E)}$
 \li
-            $P' \gets \proc{Add-Curve-Points}(E, P, R)$
+            $R' \gets \proc{Add-Curve-Points}(E, P, R)$
 \li
-            $Q' \gets \proc{Add-Curve-Points}(E, Q, S)$
+            $S' \gets \proc{Add-Curve-Points}(E, Q, S)$
 \li
-            $a \gets \proc{Compute-Function-Value}(E, Q', P, P', n)$
-\li
-            $b \gets \proc{Compute-Function-Value}(E, Q, P, P', n)$
-\li
-            $c \gets \proc{Compute-Function-Value}(E, P', Q, Q', n)$
-\li
-            $d \gets \proc{Compute-Function-Value}(E, P, Q, Q', n)$
-\li
-            \If $a \neq \const{error} \kw{ and } b \neq \const{error} \kw{ and }
-                    c \neq \const{error} \kw{ and } d \neq \const{error}$
+            \If $R' \neq \id{identity}[E] \kw{ and } S' \neq \id{identity}[E]$
 \li
                 \Then
-                    \Return $(a / b)\cdot(d / c)$
+                    $a \gets \proc{Compute--Value}(E, n, P, R, S')$
+\li
+                    $b \gets \proc{Compute--Value}(E, n, P, R, S)$
+\li
+                    $c \gets \proc{Compute--Value}(E, n, Q, S, R')$
+\li
+                    $d \gets \proc{Compute--Value}(E, n, Q, S, R)$
+\li
+                    \If $a \neq \const{error} \kw{ and } b \neq \const{error} \kw{ and } c \neq \const{error} \kw{ and } d \neq \const{error}$
+\li
+                        \Then
+                            \Return $(a / b)\cdot(d / c)$
+                        \End
                 \End
         \End
 \end{codebox}
