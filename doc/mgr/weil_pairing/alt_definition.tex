@@ -14,27 +14,27 @@ Oto alternatywna definicja iloczynu Weila.
 
 \begin{definition}
 Dana jest krzywa eliptyczna $E$ oraz punkty $P, Q \in E[n]$.
-Funkcje wymierne $g_P, g_Q \in K(E)$
+Funkcje wymierne $f_P', f_Q' \in K(E)$
 określamy poprzez podanie ich dywizorów
-w następujący sposób:
+następująco:
 \begin{eqnarray*}
-\rdiv(g_P) & = & n\divi{P} - n\divi{\ecident} \\
-\rdiv(g_Q) & = & n\divi{Q} - n\divi{\ecident}
+\rdiv(f_P') & = & n\divi{P} - n\divi{\ecident} \\
+\rdiv(f_Q') & = & n\divi{Q} - n\divi{\ecident}
 \end{eqnarray*}
 Określamy funkcję $w'(P, Q)\colon E[n] \to \K$
 następującym wzorem:
 \begin{equation}\label{weil_pairing_alt_eqn}
-w'(P, Q) = (-1)^n\frac{g_P(Q)}{g_Q(P)}\frac{g_Q}{g_P}(\ecident)
+w'(P, Q) = (-1)^n\frac{f_P'(Q)}{f_Q'(P)}\frac{f_Q'}{f_P'}(\ecident)
 \end{equation}
 \end{definition}
 
 \begin{remark}
-Funkcje $g_P$ i $g_Q$ są wyznaczone z dokładnością do stałej,
+Funkcje $f_P'$ i $f_Q'$ są wyznaczone z dokładnością do stałej,
 ale nie wpływa to na wartość funkcji $w'(P, Q)$,
 zatem jest ona dobrze określona.
 \end{remark}
 
-\subsection*{Symbol lokalny i uogólnione prawo wzajemności Weila}
+\subsection*{Symbol lokalny i prawo wzajemności Weila}
 
 Aby móc udowodnić równoważność obu definicji,
 wprowadzimy tzw. symbol lokalny
@@ -47,9 +47,9 @@ z których żadna nie jest tożsamościowo równa zero.
 \emph{Symbol lokalny $\lsym{r}{s}{P}$}
 określony jest następującym wzorem:
 \begin{equation}
-\lsym{r}{s}{P} = (-1)^{kl}\left(\frac{r^l}{s^k}\right)(P)
+\lsym{r}{s}{P} =
+(-1)^{\ord_P(r)\ord_P(s)}\left(\frac{r^{\ord_P(s)}}{s^{\ord_P(r)}}\right)(P)
 \end{equation}
-W powyższym wzorze $k = \ord_P(r)$ oraz $l = \ord_P(s)$.
 \end{definition}
 
 Podstawowe własności symbolu lokalnego są następujące.
@@ -58,7 +58,7 @@ Podstawowe własności symbolu lokalnego są następujące.
 Dana jest krzywa eliptyczna $E$, punkt $P \in E$
 oraz funkcje wymierne $r, r_1, r_2, s, s_1, s_2 \in K(E)$,
 z których żadna nie jest tożsamościowo równa zero.
-Wówczas:
+Wówczas zachodzą następujące zależności:
 \begin{itemize}
 \item
 $\lsym{r}{s}{P} \neq 0$;
@@ -88,7 +88,7 @@ jeżeli $\ord_P(1-s) > 0$ oraz $\ord_P(r) \neq 0$, to $\lsym{r}{s}{P} = 1$.
 Oto ważna własność symbolu lokalnego,
 której użyjemy w dowodzie równoważności obu definicji iloczynu Weila.
 
-\begin{theorem}[Uogólnione prawo wzajemności Weila]
+\begin{theorem}[Prawo wzajemności Weila]
 Dana jest krzywa eliptyczna $E$ oraz funkcje wymierne $r, s \in K(E)$.
 Wówczas:
 \begin{equation}
@@ -97,14 +97,15 @@ Wówczas:
 \end{theorem}
 
 Dowód uogólnionego prawa wzajemności Weila znacznie wykracza
-poza zakres niniejszej pracy, dlatego nie podamy go tutaj.
+poza zakres niniejszej pracy, dlatego nie podajemy go.
 
 \subsection*{Równoważność obu definicji}
 
 Udowodnimy teraz, że obie definicje iloczynu Weila są równoważne.
 
 \begin{theorem}
-Dana jest krzywa eliptyczna $E$ oraz punkty $P, Q \in E[n]$.
+Dana jest krzywa eliptyczna $E$ nad ciałem $\K$
+oraz punkty $P, Q \in E[n]$.
 Wówczas:
 \begin{equation}
 w(P, Q) = w'(P, Q)
@@ -120,14 +121,14 @@ z klasycznej definicji iloczynu Weila.
 Poprzez analizę krotności miejsc zerowych i biegunów możemy sprawdzić,
 że następujące dywizory są równe:
 \begin{eqnarray*}
-\rdiv({f_P}^n) & = & \rdiv(g_P \circ [n]) \\
-\rdiv({f_Q}^n) & = & \rdiv(g_Q \circ [n])
+\rdiv({f_P}^n) & = & \rdiv(f_P' \circ [n]) \\
+\rdiv({f_Q}^n) & = & \rdiv(f_Q' \circ [n])
 \end{eqnarray*}
-Przyjmijmy więc, że funkcje $g_P$ i $g_Q$ są wybrane tak,
+Przyjmijmy więc, że funkcje $f_P'$ i $f_Q'$ są wybrane tak,
 aby zachodziły następujące równości:
 \begin{eqnarray*}
-{f_P}^n & = & g_P \circ [n] \\
-{f_Q}^n & = & g_Q \circ [n]
+{f_P}^n & = & f_P' \circ [n] \\
+{f_Q}^n & = & f_Q' \circ [n]
 \end{eqnarray*}
 
 Dalej, przyjmijmy, że $P', Q' \in E$ są takimi punktami,
@@ -138,111 +139,126 @@ Rozważmy następujący dywizor:
 \end{equation*}
 Stosując lemat \ref{divi_reduction_lemma} sprawdzamy,
 że jest to dywizor główny.
-Niech więc $h$ będzie funkcją wymierną o takim dywizorze:
+Niech więc $r \in \K(E)$ będzie funkcją wymierną o takim dywizorze:
 \begin{equation*}
-\rdiv(h) = (n-1)\divi{Q'} + \divi{Q' - Q} - n\divi{\ecident}
+\rdiv(r) = (n-1)\divi{Q'} + \divi{Q' - Q} - n\divi{\ecident}
 \end{equation*}
 
-Stosujemy uogólnione prawo wzajemności Weila do funkcji $f_P$ i $h$:
-\begin{equation}\label{weil_reci_fp_h}
-\prod_{S \in E} \lsym{f_P}{h}{S} = 1
+Stosujemy uogólnione prawo wzajemności Weila do funkcji $f_P$ i $r$:
+\begin{equation}\label{weil_reci_fp_r}
+\prod_{S \in E} \lsym{f_P}{r}{S} = 1
 \end{equation}
 
 Ze względu na własności symbolu lokalnego dla większości punktów $S$
-będzie zachodzić $\lsym{f_P}{h}{S} = 1$.
+będzie zachodzić $\lsym{f_P}{r}{S} = 1$.
 Jedyne punkty, dla których może być inaczej,
 to $Q'$, $Q' - Q$ oraz miejsca zerowe i bieguny funkcji $f_P$.
 Policzymy wartość symbolu lokalnego dla tych punktów.
 
-Zacznijmy od punktu $Q'$. W tym punkcie zachodzi $\ord_{Q'}(f_P) = 0$,
+Zacznijmy od punktu $Q'$. W tym punkcie zachodzi
+$\ord_{Q'}(f_P) = 0$ oraz $\ord_{Q'}(r) = n-1$,
 więc z własności symbolu lokalnego otrzymujemy:
 \begin{equation*}
-\lsym{f_P}{h}{Q'} = f_P(Q')^{n-1}
+\lsym{f_P}{r}{Q'} = f_P(Q')^{n-1}
 \end{equation*}
-Teraz rozważamy punkt $Q' - Q$. Ponownie zachodzi $\ord_{Q' - Q}(f_P) = 0$,
-zatem:
+Teraz rozważamy punkt $Q' - Q$.
+Tym razem $\ord_{Q' - Q}(f_P) = 0$ oraz $\ord_{Q' - Q}(r) = 1$.
+Dostajemy:
 \begin{equation*}
-\lsym{f_P}{h}{Q' - Q} = f_P(Q' - Q)
+\lsym{f_P}{r}{Q' - Q} = f_P(Q' - Q)
 \end{equation*}
-Wymnażamy obie równości i otrzymujemy:
+Wymnażamy obie równości:
 \begin{eqnarray*}
 \lsym{f_P}{h}{Q'}\lsym{f_P}{h}{Q' - Q}
 & = & f_P(Q')^{n-1} f_P(Q - Q') \\
 & = & \frac{f_P(Q' - Q)}{f_P(Q')} f_P(Q')^n \\
 & = & \frac{f_P}{f_P \circ t_Q}(Q' - Q) f_P(Q')^n \\
 & = & w(P,Q)^{-1} f_P(Q')^n \\
-& = & w(P,Q)^{-1} (g_P \circ [n])(Q') \\
-& = & w(P,Q)^{-1} g_P(Q)
+& = & w(P,Q)^{-1} (f_P' \circ [n])(Q') \\
+& = & w(P,Q)^{-1} f_P'(Q)
 \end{eqnarray*}
 
 Zanim obliczymy wartość symbolu lokalnego
 dla miejsc zerowych i biegunów funkcji $f_P$,
-rozważmy następującą funkcję pomocniczą $H$:
+rozważmy następującą funkcję pomocniczą $\widehat{r}$:
 \begin{equation*}
-H(T) = \prod_{S \in E[n]} h(S + T)
+\widehat{r}(T) = \prod_{S \in E[n]} r(S + T)
 \end{equation*}
 Jej dywizor jest równy:
 \begin{equation*}
-\rdiv(H) = \sum_{S \in E[n]} \rdiv(h \circ t_S)
+\rdiv(\widehat{r}) = \sum_{S \in E[n]} \rdiv(r \circ t_S)
 \end{equation*}
-Zauważmy, że
-$\rdiv(h \circ t_S) = (n-1)\divi{Q' - S} + \divi{Q' - Q - S} - n\divi{-S}$.
+Zauważmy, że zachodzi:
+\begin{equation*}
+\rdiv(r \circ t_S) = (n-1)\divi{Q' - S} + \divi{Q' - Q - S} - n\divi{-S}
+\end{equation*}
 Stąd otrzymujemy:
 \begin{eqnarray*}
-\rdiv(H)
-& = & \sum_{S \in E[n]} \rdiv(h \circ t_S) \\
+\rdiv(\widehat{r})
+& = & \sum_{S \in E[n]} \rdiv(r \circ t_S) \\
 & = & \sum_{S \in E[n]} (n-1)\divi{Q' - S} + \divi{Q' - Q - S} - n\divi{-S} \\
 & = & (n-1)\sum_{S \in E[n]}\divi{Q' + S} +
       \sum_{S \in E[n]}\divi{Q' + S} -
       n\sum_{S \in E[n]}\divi{S} \\
 & = & n[n]^{-1}(Q) - n[n]^{-1}(\ecident) \\
 & = & \rdiv({f_Q}^n) \\
-& = & \rdiv(g_Q \circ [n])
+& = & \rdiv(f_Q' \circ [n])
 \end{eqnarray*}
-Wybraliśmy funkcję $h$ dowolnie, więc przyjmijmy teraz,
-że została wybrana tak, żeby $H = g_Q \circ [n]$.
+Wybraliśmy funkcję $r$ dowolnie, więc przyjmijmy teraz,
+że została wybrana tak, żeby zachodziło:
+\begin{equation*}
+\widehat{r} = f_Q' \circ [n]
+\end{equation*}
 
-Obliczymy teraz fragment iloczynu \ref{weil_reci_fp_h},
+Obliczymy teraz fragment iloczynu \ref{weil_reci_fp_r},
 który odpowiada miejscom zerowym funkcji $f_P$.
 Dla każdego miejsca zerowego $S$ funkcji $f_P$
-mamy $\ord_S(f_P) = 1$ oraz $\ord_S(h) = 0$.
+mamy $\ord_S(f_P) = 1$ oraz $\ord_S(r) = 0$.
 Zatem:
 \begin{eqnarray*}
-\prod_{\ord_S(f_P) > 0} \lsym{f_P}{h}{S}
-& = & \prod_{\ord_S(f_P) > 0} \frac{1}{h(S)} \\
-& = & \prod_{S \in E[n]} \frac{1}{h(P' + S)} \\
-& = & \frac{1}{H(P')} \\
-& = & \frac{1}{(g_Q \circ [n])(P')} \\
-& = & \frac{1}{g_Q(P)}
+\prod_{\ord_S(f_P) > 0} \lsym{f_P}{r}{S}
+& = & \prod_{\ord_S(f_P) > 0} \frac{1}{r(S)} \\
+& = & \prod_{S \in E[n]} \frac{1}{r(P' + S)} \\
+& = & \frac{1}{\widehat{r}(P')} \\
+& = & \frac{1}{(f_Q' \circ [n])(P')} \\
+& = & \frac{1}{f_Q'(P)}
 \end{eqnarray*}
-Podobnie postępujemy z fragmentem iloczynu $\ref{weil_reci_fp_h}$,
+Podobnie postępujemy z fragmentem iloczynu $\ref{weil_reci_fp_r}$,
 który odpowiada biegunom funkcji $f_P$. Pamiętajmy przy tym,
-że punkt $\ecident$ jest również biegunem stopnia $n$ funkcji $h$.
+że punkt $\ecident$ jest również biegunem stopnia $n$ funkcji $r$.
 \begin{eqnarray*}
-\prod_{\ord_S(f_P) < 0} \lsym{f_P}{h}{S}
-& = & \lsym{f_P}{h}{\ecident}
-      \prod_{S \in E[n] \setminus \{\ecident\}} h(S) \\
-& = & (-1)^{n}\frac{{f_P}^{-n}}{h^{-1}}(\ecident)
-      \prod_{S \in E[n] \setminus \{\ecident\}} h(S) \\
-& = & (-1)^{n}\frac{{f_P}^{-n}}{H^{-1}}(\ecident) \\
-& = & (-1)^{n}\frac{H}{{f_P}^n}(\ecident) \\
-& = & (-1)^{n}\frac{g_Q \circ [n]}{g_P \circ [n]}(\ecident) \\
-& = & (-1)^{n}\frac{g_Q}{g_P}(\ecident)
+\prod_{\ord_S(f_P) < 0} \lsym{f_P}{r}{S}
+& = & \lsym{f_P}{r}{\ecident}
+      \prod_{S \in E[n] \setminus \{\ecident\}} r(S) \\
+& = & (-1)^{n}\frac{{f_P}^{-n}}{r^{-1}}(\ecident)
+      \prod_{S \in E[n] \setminus \{\ecident\}} r(S) \\
+& = & (-1)^{n}\frac{{f_P}^{-n}}{\widehat{r}^{-1}}(\ecident) \\
+& = & (-1)^{n}\frac{\widehat{r}}{{f_P}^n}(\ecident) \\
+& = & (-1)^{n}\frac{f_Q' \circ [n]}{f_P' \circ [n]}(\ecident) \\
+& = & (-1)^{n}\frac{f_Q'}{f_P'}(\ecident)
 \end{eqnarray*}
 
-Rozpiszmy jeszcze raz wzór \ref{weil_reci_fp_h}:
+Rozpiszmy jeszcze raz wzór \ref{weil_reci_fp_r}:
 \begin{eqnarray*}
-\prod_{S \in E} \lsym{f_P}{h}{S}
-& = & \lsym{f_P}{h}{Q'} \lsym{f_P}{h}{Q' - Q}
-      \prod_{\ord_S(f_P) > 0} \lsym{f_P}{h}{S}
-      \prod_{\ord_S(f_P) < 0} \lsym{f_P}{h}{S} \\
-& = & w(P, Q)^{-1} g_P(Q) \frac{1}{g_Q(P)} (-1)^n\frac{g_Q}{g_P}(\ecident)
+\prod_{S \in E} \lsym{f_P}{r}{S}
+& = & \lsym{f_P}{r}{Q'} \lsym{f_P}{r}{Q' - Q}
+      \prod_{\ord_S(f_P) > 0} \lsym{f_P}{r}{S}
+      \prod_{\ord_S(f_P) < 0} \lsym{f_P}{r}{S} \\
+& = & w(P, Q)^{-1} f_P'(Q) \frac{1}{f_Q'(P)} (-1)^n\frac{f_Q'}{f_P'}(\ecident)
 \end{eqnarray*}
 Zgodnie z prawem wzajemności Weila przyrównujemy wynik do jedynki
 i otrzymujemy:
 \begin{eqnarray*}
-1 & = & w(P, Q)^{-1} g_P(Q) \frac{1}{g_Q(P)} (-1)^n\frac{g_Q}{g_P}(\ecident) \\
-w(P, Q) & = & (-1)^n \frac{g_P(Q)}{g_Q(P)} \frac{g_Q}{g_P}(\ecident) \\
-w(P, Q) & = & w'(P, Q)
+1
+& = &
+w(P, Q)^{-1} f_P'(Q) \frac{1}{f_Q'(P)} (-1)^n\frac{f_Q'}{f_P'}(\ecident)
+\\
+w(P, Q)
+& = &
+(-1)^n \frac{f_P'(Q)}{f_Q'(P)} \frac{f_Q'}{f_P'}(\ecident)
+\\
+w(P, Q)
+& = &
+w'(P, Q)
 \end{eqnarray*}
 \end{proof}

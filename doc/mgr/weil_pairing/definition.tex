@@ -4,10 +4,9 @@ Mimo tego, że wprowadziliśmy już
 wiele elementów teorii krzywych eliptycznych,
 wciąż jeszcze brakuje nam pewnych wiadomości,
 aby móc zdefiniować iloczyn Weila.
-Powinny być one przedstawione w poprzednich rozdziałach,
-lecz ze względu na ograniczoną objętość pracy
-przedstawiamy je dopiero teraz
-w bardzo ograniczonym ujęciu.
+Ze względu na ograniczoną objętość pracy
+przedstawiamy je teraz
+w bardzo okrojonym ujęciu.
 
 \subsection*{Podgrupy $n$-torsyjne}
 
@@ -18,7 +17,7 @@ grupy na krzywej eliptycznej.
 
 \begin{definition}
 Dana jest krzywa eliptyczna $E$.
-\emph{Mnożenie punktu krzywej przez liczbę całkowitą $n$}
+\emph{Mnożenie punktu na krzywej przez liczbę całkowitą $n$}
 to funkcja $[n] \colon E \to E$
 określona następującym wzorem:
 \begin{equation}
@@ -38,7 +37,7 @@ które przypominają cechy operacji mnożenia liczb całkowitych.
 \begin{fact}
 Dana jest krzywa eliptyczna $E$, punkty $P, Q \in E$
 oraz liczby całkowite $m$ i $n$.
-Wówczas:
+Wówczas zachodzą następujące zależności:
 \begin{eqnarray*}
 m(P + Q) & = & mP + mQ \\
 (m + n)P & = & mP + nP \\
@@ -153,11 +152,11 @@ jest główny.
 \end{lemma}
 
 \begin{proof}
-Rozważmy funkcję $\frac{f_1}{f_2}$,
-gdzie $f_1$ to linia przechodząca przez punkty $(P+Q)$ i $-(P+Q)$,
-a $f_2$ to linia przechodząca przez punkty $P$, $Q$ i $-(P+Q)$.
+Rozważmy funkcję $\frac{r}{s}$,
+gdzie $r$ to linia przechodząca przez punkty $(P+Q)$ i $-(P+Q)$,
+a $s$ to linia przechodząca przez punkty $P$, $Q$ i $-(P+Q)$.
 Jak nietrudno sprawdzić,
-$\rdiv(\frac{f_1}{f_2}) = \divi{P+Q} - \divi{P} - \divi{Q} + \divi{\ecident}$
+$\rdiv(\frac{r}{s}) = \divi{P+Q} - \divi{P} - \divi{Q} + \divi{\ecident}$
 (również wtedy, gdy $P = Q$, $P = -Q$, $P = \ecident$ lub $Q = \ecident$).
 \end{proof}
 
@@ -168,7 +167,7 @@ Wówczas $\divi{P} + \divi{Q} \sim \divi{P+Q} + \divi{\ecident}$.
 
 Zauważmy, że z pomocą tego lematu i płynącego z niego wniosku
 możemy sformułować metodę redukcji dywizorów
-podobne do twierdzenia \ref{point_division_divisor_principle_theorem}.
+podobną do twierdzenia \ref{divisor_linear_reduction_theorem}.
 Ograniczymy się jednak do zastosowania tej metody
 do przypadku dywizorów postaci $[n]^{-1}(P)$.
 
@@ -223,18 +222,20 @@ aby móc podać definicję iloczynu Weila.
 
 \begin{definition}\label{weil_pairing_def}
 Dana jest krzywa eliptyczna $E$ nad ciałem $\K$.
-\emph{Iloczyn Weila} to funkcja
+Funkcję $f_P \in E(\K)$ określamy poprzez podaniej jej dywizora:
+\begin{equation}
+\rdiv(f_P) = [n]^{-1}(P) - [n]^{-1}(\ecident)
+\end{equation}
+Funkcję $t_Q \in E(K)$ określamy następująco:
+\begin{equation}
+t_Q(R) = R + Q
+\end{equation}
+Wówczas \emph{iloczyn Weila} to funkcja
 $w\colon E[n] \times E[n] \to \K$
 określona następującym wzorem:
 \begin{equation}\label{weil_pairing_eqn}
-w(P, Q) = \frac{f_P \circ t_Q}{f_P}(\ecident)
+w(P, Q) = \left(\frac{f_P \circ t_Q}{f_P}\right)(\ecident)
 \end{equation}
-Oznaczenia użyte w podanym wzorze są następujące:
-\begin{itemize}
-\item $f_P$ to dowolna funkcja wymierna taka,
-że $\rdiv(f_P) = [n]^{-1}(P) - [n]^{-1}(\ecident)$;
-\item $t_Q$ to przesunięcie o $Q$, tzn. $t_Q(R) = R+Q$.
-\end{itemize}
 \end{definition}
 
 \begin{remark}
@@ -251,16 +252,16 @@ Wartość iloczynu Weila nie zależy od wyboru funkcji $f_P$.
 
 \begin{proof}
 Na mocy wniosku \ref{fun_divi_equiv_to_const_lemma}
-dwie funkcje wymierne $f_P$ i $f_P'$ o takim samym dywizorze
+dwie funkcje wymierne $f_P$ i $\tilde{f_P}$ o takim samym dywizorze
 różnią się o czynnik stały różny od zera,
-zatem możemy przyjąć $f_P = cf_P'$.
+zatem możemy przyjąć $f_P = c\tilde{f_P}$.
 Podstawiamy tę zależność do wzoru \ref{weil_pairing_eqn} i otrzymujemy:
-\begin{equation*}
-\frac{f_P \circ t_Q}{f_P}(\ecident) =
-\frac{(cf_P') \circ t_Q}{cf_P'}(\ecident) =
-\frac{c(f_P' \circ t_Q)}{cf_P'}(\ecident) =
-\frac{f_P' \circ t_Q}{f_P'}(\ecident)
-\end{equation*}
+\begin{eqnarray*}
+\frac{f_P \circ t_Q}{f_P}(\ecident)
+& = & \frac{(c\tilde{f_P}) \circ t_Q}{c\tilde{f_P}}(\ecident) \\
+& = & \frac{c(\tilde{f_P} \circ t_Q)}{c\tilde{f_P}}(\ecident) \\
+& = & \frac{\tilde{f_P} \circ t_Q}{\tilde{f_P}}(\ecident)
+\end{eqnarray*}
 Widzimy stąd, że wartość iloczynu Weila pozostanie taka sama
 niezależnie od tego, jakiej funkcji użyjemy,
 ponieważ wszystkie one różnią się o czynnik stały,
@@ -275,7 +276,7 @@ Funkcje $f_P$ i $f_P \circ t_Q$ mają taki sam dywizor.
 Niech $R \in E[n^2]$ będzie dowolnym punktem takim, że $nR = P$.
 Zauważmy, że $f_P(S) = 0$ wtedy i tylko wtedy,
 gdy $(f_P \circ t_Q)(S - Q) = 0$.
-Podobnie, $f_P(R) = \infty$ wtedy i tylko wtedy,
+Podobnie, $f_P(S) = \infty$ wtedy i tylko wtedy,
 gdy $(f_P \circ t_Q)(S - Q) = \infty$.
 Wszystkie miejsca zerowe i bieguny funkcji $f_P$ są jednokrotne.
 Dywizor funkcji $f_P \circ t_Q$ możemy w takim razie zapisać
@@ -284,19 +285,19 @@ w następującej postaci:
 \rdiv(f_P \circ t_Q) =
 \sum_{S \in E[n]} \divi{R + S - Q} - \sum_{S \in E[n]} \divi{S - Q}
 \end{equation*}
-Wykonujemy ,,zamianę zmiennych''. Oznaczmy $S' = S - Q$.
-Zauważmy, że ponieważ $S, Q \in E[n]$, to również $S' \in E[n]$.
-Co więcej, przesunięcie całego zbioru $E[n]$ o $-Q$ nie zmienia go,
-tak więc nie zmienia się zakres wartości zmiennej $S'$.
+Wykonujemy ,,zamianę zmiennych'' --
+w miejsce zmiennej $S$ podstawiamy $S' = S - Q$.
+Zauważmy, że zmiena $S'$ również będzie przebiegać po zbiorze $E[n]$.
+Otrzymujemy:
 Otrzymujemy:
 \begin{eqnarray*}
 \rdiv(f_P \circ t_Q) =
-& = & \sum_{S' \in E[n]} \divi{R + S} - \sum_{S' \in E[n]} \divi{S'} \\
+& = & \sum_{S' \in E[n]} \divi{R + S'} - \sum_{S' \in E[n]} \divi{S'} \\
 & = & \rdiv(f_P)
 \end{eqnarray*}
 \end{proof}
 
-\begin{corollary}
+\begin{corollary}\label{weil_pairing_fun_const_coro}
 Funkcja $\frac{f_P \circ t_Q}{f_P}$ jest stała i niezerowa.
 \end{corollary}
 
@@ -337,6 +338,7 @@ tzn. jego wartość zależy tylko od punktów $P$ i $Q$.
 \end{theorem}
 
 \begin{proof}
-Natychmiastowy na podstawie lematów
-\ref{weil_pairing_ignore_const_lemma} i \ref{weil_pairing_same_divi_lemma}.
+Natychmiastowy na podstawie
+lematu \ref{weil_pairing_ignore_const_lemma}
+i wniosku \ref{weil_pairing_fun_const_coro}.
 \end{proof}

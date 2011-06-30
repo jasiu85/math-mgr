@@ -1,6 +1,6 @@
 \section{Własności}
 
-Zbadamy teraz podstawowe własności iloczynu Weila.
+Zbadamy teraz własności iloczynu Weila.
 
 \subsection*{Pierwiastki z jedności}
 
@@ -15,7 +15,7 @@ Wówczas $w(P,Q)^n = 1$.
 \begin{proof}
 Rozważmy następujące wyrażenie:
 \begin{equation*}
-g_P \circ \underbrace{t_Q \circ \cdots \circ t_Q}_{n\textrm{ razy}}
+f_P \circ \underbrace{t_Q \circ \cdots \circ t_Q}_{n\textrm{ razy}}
 \end{equation*}
 Składanie funkcji jest łączne,
 zatem wyrażenie to można ponawiasować na wiele sposobów.
@@ -24,29 +24,29 @@ Rozważmy dwa szczególne nawiasowania.
 \item
 Nawiasujemy od lewej do prawej:
 \begin{eqnarray*}
-g_P \circ \underbrace{t_Q \circ \cdots \circ t_Q}_{n\textrm{ razy}}
-& = & ((\cdots((g_P \circ t_Q) \circ
+f_P \circ \underbrace{t_Q \circ \cdots \circ t_Q}_{n\textrm{ razy}}
+& = & ((\cdots((f_P \circ t_Q) \circ
       \underbrace{t_Q) \circ \cdots ) \circ t_Q)}_{n-1\textrm{ razy}} \\
-& = & ((\cdots(((w(P,Q)g_P) \circ t_Q) \circ
+& = & ((\cdots(((w(P,Q)f_P) \circ t_Q) \circ
       \underbrace{t_Q) \circ \cdots ) \circ t_Q)}_{n-2\textrm{ razy}} \\
-& = & w(P,Q)((\cdots((g_P \circ t_Q) \circ
+& = & w(P,Q)((\cdots((f_P \circ t_Q) \circ
       \underbrace{t_Q) \circ \cdots ) \circ t_Q)}_{n-2\textrm{ razy}} \\
 & = & \ldots \\
-& = & w(P,Q)^ng_P
+& = & w(P,Q)^nf_P
 \end{eqnarray*}
 \item
 Nawiasujemy od prawej do lewej:
 \begin{eqnarray*}
-g_P \circ \underbrace{t_Q \circ \cdots \circ t_Q}_{n\textrm{ razy}}
-& = & (g_P \circ
+f_P \circ \underbrace{t_Q \circ \cdots \circ t_Q}_{n\textrm{ razy}}
+& = & (f_P \circ
       \underbrace{(t_Q \circ \cdots \circ (t_Q}_{n-1\textrm{ razy}}
       \circ\,t_Q)\cdots)) \\
-& = & (g_P \circ
+& = & (f_P \circ
       \underbrace{(t_Q \circ \cdots \circ (t_Q}_{n-2\textrm{ razy}}
       \circ\,t_{2Q})\cdots)) \\
 & = & \ldots \\
-& = & g_P \circ t_{nQ} \\
-& = & g_P
+& = & f_P \circ t_{nQ} \\
+& = & f_P
 \end{eqnarray*}
 \end{enumerate}
 Z porównania wyników obu nawiasowań widzimy, że $w(P,Q)^n = 1$.
@@ -78,8 +78,9 @@ jeżeli dla dowolnych elementów $P, P_1, P_2, Q, Q_1, Q_2 \in \G_1$ zachodzi:
 Sprawdźmy, że iloczyn Weila spełnia obie wymagane tożsamości.
 
 \begin{lemma}
-Dana jest krzywa eliptyczna $E$ oraz punkty $P_1, P_2, Q \in E[n]$.
-Wówczas:
+Dana jest krzywa eliptyczna $E$ nad ciałem $\K$
+oraz punkty $P_1, P_2, Q \in E[n]$.
+Wówczas zachodzi następująca zależność:
 \begin{equation}
 w(P_1 + P_2, Q) = w(P_1, Q)w(P_2, Q)
 \end{equation}
@@ -92,10 +93,10 @@ Otrzymujemy:
 \rdiv\left(\frac{f_{P_1 + P_2}}{f_{P_1}f_{P_2}}\right) =
 [n]^{-1}(P_1 + P_2) - [n]^{-1}(P_1) - [n]^{-1}(P_2) + [n]^{-1}(\ecident)
 \end{equation*}
-Niech $h$ będzie dowolną funkcją wymierną,
+Niech $r \in \K(E)$ będzie dowolną funkcją wymierną,
 której dywizor jest równy
 $\divi{P_1 + P_2} - \divi{P_1} - \divi{P_2} + \divi{\ecident}$.
-Rozważmy dywizor funkcji $h \circ [n]$.
+Rozważmy funkcję $r \circ [n]$.
 Funkcja ta ma miejsce zerowe w każdym takim punkcie $R$,
 że $nR = P_1 + P_2$ lub $nR = \ecident$
 oraz biegun w każdym takim punkcie $R$,
@@ -105,19 +106,19 @@ oraz uwzględnieniu faktu,
 mogą się one nałożyć i ,,wzmocnić'' lub ,,znieść'',
 otrzymujemy:
 \begin{equation*}
-\rdiv(h \circ [n]) =
+\rdiv(r \circ [n]) =
 [n]^{-1}(P_1 + P_2) - [n]^{-1}(P_1) - [n]^{-1}(P_2) + [n]^{-1}(\ecident)
 \end{equation*}
-Zatem $\frac{f_{P_1 + P_2}}{f_{P_1}f_{P_2}} = c(h \circ [n])$.
-Zauważmy teraz, że funkcja $h \circ [n]$ jest niezmiennicza
-ze względu na przesunięcia o element $S \in E[n]$:
+Zatem $\frac{f_{P_1 + P_2}}{f_{P_1}f_{P_2}} = c(r \circ [n])$.
+Zauważmy teraz, że funkcja $r \circ [n]$ jest niezmiennicza
+ze względu na przesunięcia o element $R \in E[n]$:
 \begin{eqnarray*}
-((h \circ [n]) \circ t_S)(R)
-& = & h([n](t_S(R))) \\
-& = & h([n](R + S)) \\
-& = & h(nR + nS) \\
-& = & h(nR) \\
-& = & (h \circ [n])(R)
+((r \circ [n]) \circ t_R)(S)
+& = & r([n](t_R(S))) \\
+& = & r([n](S + R)) \\
+& = & r(nS + nR) \\
+& = & r(nS) \\
+& = & (r \circ [n])(S)
 \end{eqnarray*}
 Zatem funkcja $\frac{f_{P_1 + P_2}}{f_{P_1}f_{P_2}}$
 również jest niezmiennicza ze względu na takie przesunięcia.
@@ -188,36 +189,38 @@ można przedstawić w następującej postaci:
 Jeśli zbadamy miejsca zerowe i bieguny funkcji $f_P \circ t_{kR}$,
 gdzie $k = 0, 1, \ldots, n-1$,
 to otrzymamy, że jej dywizor jest równy:
+\begin{eqnarray*}
+\rdiv(f_P \circ t_{kR})
+& = & \sum_{S \in E[n]} \divi{(1-k)R + S} - \sum_{S \in E[n]} \divi{-kR + S} \\
+& = & [n]^{-1}((1-k)P) - [n]^{-1}((-k)P)
+\end{eqnarray*}
+Określmy funkcję $\widehat{f_P}$ następująco:
 \begin{equation*}
-\rdiv(f_P \circ t_{kQ}) =
-\sum_{S \in E[n]} \divi{(1-k)R + S} - \sum_{S \in E[n]} \divi{-kR + S}
-\end{equation*}
-Widzimy, że jest on równy $[n]^{-1}((1-k)P) - [n]^{-1}((-k)P)$.
-Określmy funkcję $F$ następująco:
-\begin{equation*}
-F = \prod_{k=0}^{n-1} f_P \circ t_{kR}
+\widehat{f_P} = \prod_{k=0}^{n-1} f_P \circ t_{kR}
 \end{equation*}
 Jej dywizor jest równy:
 \begin{equation*}
-\rdiv(F) = \sum_{k=0}^{n-1} [n]^{-1}((1-k)P) - [n]^{-1}((-k)P)
+\rdiv\left(\widehat{f_P}\right) =
+\sum_{k=0}^{n-1} [n]^{-1}((1-k)P) - [n]^{-1}((-k)P)
 \end{equation*}
 Jest to suma, która składa się teleskopowo, skąd otrzymujemy:
 \begin{eqnarray*}
-\rdiv(F)
+\rdiv\left(\widehat{f_P}\right)
 & = & [n]^{-1}(P) - [n]^{-1}((1-n)P) \\
 & = & [n]^{-1}(P) - [n]^{-1}(P) \\
 & = & 0
 \end{eqnarray*}
-Funkcja $F$ jest zatem stała, więc $F = F \circ t_R$.
+Funkcja $\widehat{f_P}$ jest zatem stała,
+w szczególności $\widehat{f_P} = \widehat{f_P} \circ t_R$.
 Po rozpisaniu tej równości dostajemy:
 \begin{eqnarray*}
-F
+\widehat{f_P}
 & = &
-F \circ t_R
+\widehat{f_P} \circ t_R
 \\
 \prod_{k=0}^{n-1} f_P \circ t_{kR}
 & = &
-(\prod_{k=0}^{n-1} f_P \circ t_{kR}) \circ t_{kR}
+\left(\prod_{k=0}^{n-1} f_P \circ t_{kR}\right) \circ t_R
 \\
 \prod_{k=0}^{n-1} f_P \circ t_{kR}
 & = &
@@ -249,8 +252,7 @@ takie, że $P = kR, Q = lR$, to $w(P, Q) = 1$.
 Wykorzystamy dwuliniowość oraz to, że $w(R, R) = 1$:
 \begin{eqnarray*}
 w(P, Q)
-& = & w(kR, Q) \\
-& = & w(R, Q)^k \\
+& = & w(kR, lR) \\
 & = & w(R, lR)^k \\
 & = & w(R, R)^{kl} \\
 & = & 1
@@ -273,8 +275,7 @@ o dowolny element $Q \in E[n]$, tzn. $r = r \circ t_Q$,
 to funkcję $r$ można przedstawić w postaci $r = s \circ [n]$.
 \end{lemma}
 
-Nie podamy dowodu tego lematu -- objętość niniejszej pracy jest ograniczona,
-a metody użyte w dowodzie wykraczają poza zakres pracy.
+Nie podamy dowodu tego lematu, gdyż wykracza on poza zakres niniejszej pracy.
 
 \begin{proof}[Dowód twierdzenia \ref{weil_pairing_one_p_ecident}]
 Z założenia mamy $f_P \circ t_Q = f_P$,
@@ -286,8 +287,7 @@ Korzystamy z lematu \ref{sim_pq_eq_pq_lemma} i dostajemy $P = \ecident$.
 
 \subsection*{Niezdegenerowanie}
 
-Mogłoby zdarzyć się, że iloczyn Weila jest funkcją stałą,
-a na dodatek równą $1$. Tak jednak nie jest.
+Pokażemy teraz, że iloczyn Weila nie jest odwzorowaniem trywialnym.
 
 \begin{theorem}
 Dana jest krzywa eliptyczna $E$ oraz punkty $P, Q \in E[n]$.
@@ -306,7 +306,7 @@ Obliczmy wartość $w(mP, R)$:
 \begin{eqnarray*}
 w(mP, R)
 & = & w(mP, kP + lQ) \\
-& = & w(P,P)^{mk}(w(P,Q)^m)^l \\
+& = & w(P,P)^{mk}w(P,Q)^{ml} \\
 & = & 1
 \end{eqnarray*}
 Z twierdzenia \ref{weil_pairing_one_p_ecident} otrzymujemy,
@@ -325,7 +325,7 @@ Wówczas $w(P, Q) = w(Q, P)^{-1}$.
 \end{theorem}
 
 \begin{proof}
-Rozpiszmy z dwuliniowości wartość $w(P + Q, P + Q)$:
+Korzystając z dwuliniowości rozpiszmy wartość $w(P + Q, P + Q)$:
 \begin{eqnarray*}
 1
 & = & w(P + Q, P + Q) \\
