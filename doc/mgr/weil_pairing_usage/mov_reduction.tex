@@ -1,0 +1,226 @@
+\section{Redukcja MOV}
+
+Pierwsze zastosowanie iloczynu Weila
+związane jest
+z problemem logarytmu dyskretnego oraz protokołem Diffiego-Hellmana.
+
+Podajmy najpierw definicje obu problemów.
+
+\begin{problem}[Logarytm dyskretny]
+Dana jest grupa cykliczna $\G$,
+jej generator $g \in \G$
+oraz jej element $a \in \G$.
+Znaleźć liczbę całkowitą $k \in \Z$ taką, że:
+\begin{equation}\label{discrete_log_eqn}
+g^k = a
+\end{equation}
+\end{problem}
+
+\begin{remark}
+Zwyczajowo problem logarytmu dyskretnego opisuje się,
+stosując zapis multiplikatywny działania grupowego.
+W przypadku zapisu addytywnego równanie \ref{discrete_log_eqn}
+przybiera postać:
+\begin{equation}\label{discrete_log_additive_eqn}
+kg = a
+\end{equation}
+\end{remark}
+
+\begin{remark}
+Problem logarytmu dyskretnego można rozpatrywać w przypadku dowolnej grupy.
+Należy wówczas rozpatrywać jej podgrupę $(g)$
+generowaną przez pewien jej element $g$.
+\end{remark}
+
+\begin{remark}
+Problem logarytmu dyskretnego w grupie $\Z / n\Z$ jest prosty,
+ponieważ dysponujemy algorytmem obliczającym rozwiązania
+równania \ref{discrete_log_additive_eqn} w grupie $\Z / n\Z$.
+\end{remark}
+
+\begin{remark}
+Problem logarytmu dyskretnego w grupie multiplikatywnej ciała $\GF(p^e)$
+jest obecnie uważany za problem trudny obliczeniowo.
+\end{remark}
+
+Jak wiemy, grupa multiplikatywna ciała $\GF(p^e)$
+jest izomorficzna z grupą $\Z / (p^e-1)\Z$.
+Mimo to problemy logarytmu dyskretnego w tych grupach
+różnią się trudnością,
+co jest spowodowane różnicą w sposobie,
+w jaki reprezentujemy elementy obu grup
+oraz obliczamy wyniki działania grupowego.
+
+Problemem spokrewnionym z problemem logarytmu dyskretnego
+jest zagadnienie złamania protokołu Difiego-Hellmana,
+zwane w skrócie ,,problemem Diffiego-Hellmana''.
+
+\begin{problem}[Diffie-Hellman]
+Dana jest grupa cykliczna $\G$,
+jej generator $g \in G$
+oraz elementy $a = g^k$ i $b = g^l$,
+gdzie $k, l \in \Z$.
+Znaleźć element $c \in \G$ taki, że:
+\begin{equation}
+c = g^{kl}
+\end{equation}
+\end{problem}
+
+\begin{remark}
+Podobnie jak w przypadku problemu logarytmu dyskretnego,
+możemy stosować zapis addytywny (szukamy wówczas wartości $klg$)
+oraz rozpatrywać problem w dowolnej grupie.
+\end{remark}
+
+Pokrewieństwo obu problemów polega na tym,
+że jeden można zredukować do drugiego.
+
+\begin{theorem}
+Problem Diffiego-Hellmana w grupie $\G$ można
+w czasie wielomianowym w sposób deterministyczny
+zredukować do problemu logarytmu dyskretnego w grupie $\G$.
+\end{theorem}
+
+\begin{proof}
+Redukcja jest bardzo prosta.
+Jeżeli dysponujemy algorytmem rozwiązującym
+problem logarytmu dyskretnego w grupie $\G$,
+to postępujemy następująco:
+\begin{enumerate}
+\item na podstawie wartości $\G$, $g$ i $a = g^k$ obliczamy wartość $k$;
+\item na podstawie wartości $\G$, $g$ i $b = g^l$ obliczamy wartość $l$;
+\item obliczamy $kl$;
+\item obliczamy $g^{kl}$.
+\end{enumerate}
+Jak widać, aby rozwiązać egzemplarz problemu Diffiego-Hellmana
+wystarczy dwa razy zastosować rozwiązanie problemu logarytmu dyskretnego.
+\end{proof}
+
+Czy problem Diffiego-Hellmana można rozwiązać inaczej?
+Być może wystarczy odpowiednio wykorzystać inne operacje,
+które daje się efektywnie obliczać.
+Zagadnienie to jest o tyle istotne,
+że na trudności problemu Diffiego-Hellmana
+opiera się wiele kryptosystemów,
+których implementacje są wykorzystywane na codzień,
+m.in. w protokole SSL używanym w sieci Internet.
+Wydaje się, że oba problemy są równoważne (por. \ref{maurer}),
+a to oznacza trudność problemu Diffiego-Hellmana,
+a zatem bezpieczeństwo używanych protokołów.
+
+Oba podane problemy zostały przedstawione w wersji obliczeniowej.
+W teorii złożoności obliczeniowej często rozpatruje się wersje decyzyjne
+problemów. Problem Diffiego-Hellmana przybiera wówczas następującą postać.
+
+\begin{problem}
+Dana jest grupa $\G$,
+jej generator $g \in \G$
+oraz elementy $a = g^k$, $b = g^l$ i $c = g^m$
+gdzie $k, l, m \in \Z$.
+Stwierdzić, czy zachodzi następująca zależność:
+\begin{equation}
+kl \equiv m \quad (\mathrm{mod}\ \abs{\G})
+\end{equation}
+\end{problem}
+
+Jest jasne, że problem decyzyjny można zredukować do problemu obliczeniowego,
+zatem jest on nietrudniejszy. Może się zdarzyć, że jest dużo prostszy.
+
+W przypadku krzywych eliptycznych obie wersje problemu Diffiego-Hellmana
+są następujące.
+
+\begin{problem}
+Dana jest krzywa eliptyczna $E(\K)$,
+punkt $G \in E$ skończonego rzędu $n$
+oraz punkty $P = kG$ i $Q = lG$,
+gdzie $k, l \in \Z$.
+Znaleźć punkt $R \in E$ taki, że:
+\begin{equation}
+R = klG
+\end{equation}
+\end{problem}
+
+\begin{problem}
+Dana jest krzywa eliptyczna $E(\K)$,
+punkt $G \in E$ skończonego rzędu $n$
+oraz punkty $P = kG$, $Q = lG$ i $R = mG$,
+gdzie $k, l, m \in \Z$.
+Stwierdzić, czy zachodzi następująca zależność:
+\begin{equation}
+kl \equiv m \quad (\mathrm{mod}\ n)
+\end{equation}
+\end{problem}
+
+Czy problem Diffiego-Hellmana na krzywej eliptycznej jest trudny?
+Okazuje się, że iloczyn Weila ma wpływ na tę kwestię.
+
+\begin{theorem}[Redukcja MOV]
+Obliczeniowy problem logarytmu dyskretnego
+na krzywej eliptycznej $E = E(\GF(p^e))$
+można w czasie wielomianowym w sposób deterministyczny zredukować
+do obliczeniowego problemu logarytmu dyskretnego
+w grupie multiplikatywnej ciała $\GF(p^{ef})$.
+\end{theorem}
+
+\begin{proof}
+Niech punkt $G \in E$ rzędu $n$
+oraz punkt $P = kG$ będą instancją
+obliczeniowego problemu logarytmu dyskretnego na krzywej $E$.
+Rozważmy rozszerzenie $\GF(p^{ef})$ ciała $\GF(p^e)$ dostatecznie duże,
+aby istniał punkt $H \in E(\GF(p^{ef})$ taki,
+że $\ord(H) = n$ oraz $H \notin (G)$.
+Jest to możliwe, gdy $p \nmid n$.
+Wartość $w(G, H)$ jest wówczas
+pierwiastkiem pierwotnym $n$-tego stopnia z jedności.
+Oznaczmy $\mu = w(G, H)$ i policzmy wartość $w(P, H)$:
+\begin{eqnarray*}
+w(P, H)
+& = & w(kG, H) \\
+& = & w(G, H)^k \\
+& = & \mu^k
+\end{eqnarray*}
+Elementy $\mu$ i $w(P, H)$ stanowią zatem
+egzemplarz problemu logarytmu dyskretnego
+w grupie multiplikatywnej ciała $\GF(p^{ef})$,
+który ma takie samo rozwiązanie, jak egzemplarz pierwotnego problemu.
+\end{proof}
+
+\begin{corollary}
+Obliczeniowy problem Diffiego-Hellmana na krzywej eliptycznej $E(\GF(p^e))$
+jest nietrudniejszy od obliczeniowego problemu logarytmu dyskretnego
+w grupie multiplikatywnej ciała $\GF(p^{ef})$.
+\end{corollary}
+
+\begin{theorem}
+Decyzyjny problem Diffiego-Hellmana
+na krzywej superosobliwej $E = E_{0,1}(\F(p))$
+jest łatwy.
+\end{theorem}
+
+\begin{proof}
+Niech punkt $G \in E$ rzędu $n$
+oraz punkty $P = kG$, $Q = lG$ i $R = mG$
+będą instancją decyzyjnego problemu Diffiego-Hellmana na krzywej $E$.
+Oznaczmy $G = (a, b)$.
+Niech $\xi$ oznacza pierwiastek trzeciego stopnia z jedności w ciele $\GF(p^2)$.
+Jak wiemy, punkt $H = (\xi a, b)$ również ma rząd $n$
+i razem z punktem $G$ generuje grupę $E[n]$.
+
+Oznaczmy odwzorowanie $(x, y) \to (\xi x, y)$ przez $f$.
+Zauważmy, że zachodzą następujące zależności:
+\begin{eqnarray*}
+w(P, f(Q)) & = & w(G, H)^{kl} \\
+w(R, f(G)) & = & w(G, H)^m
+\end{eqnarray*}
+Ponieważ $w(G, H)$ to pierwiastek pierwotny $n$-tego stopnia z jedności,
+widzimy, że $kl \equiv m \quad (\mathrm{mod}\ n)$ wtedy i tylko wtedy, gdy
+$w(P, f(Q)) = w(R, f(G))$.
+\end{proof}
+
+\begin{remark}
+Kluczową rolę w dowodzie odegrał fakt, że izomorfizm $f$
+między grupami generowanymi przez punkty $G$ i $H$ daje się łatwo obliczać.
+Rozumowanie to można uogólnić na wszystkie krzywe,
+dla których jesteśmy w stanie wskazać analogiczny izomorfizm,
+który można efektywnie obliczać.
+\end{remark}

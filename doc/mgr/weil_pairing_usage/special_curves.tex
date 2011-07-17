@@ -1,0 +1,99 @@
+\section{Szczególne krzywe eliptyczne}
+
+Krzywe eliptyczne, które są używane w systemach kryptograficznych,
+są dobierane ze szczególną starannością.
+Wskażemy pewien szczególny rodzaj krzywych eliptycznych,
+które wyjątkowo dobrze nadają się do zastosowań
+związanych z iloczynem Weila.
+
+\begin{definition}
+Dana jest liczba pierwsza $p$ taka, że $p \equiv 2\ (\mathrm{mod}\ 3)$.
+\emph{Superosobliwa krzywa eliptyczna nad ciałem $\F(p)$}
+to krzywa $E_{0,1}(\F(p))$.
+\end{definition}
+
+\begin{remark}
+Krzywe superosobliwe definiuje się tak naprawdę w zupełnie inny,
+bardziej ogólny sposób. Podana definicja to jedynie przykład
+pewnej rodziny krzywych, które są superosobliwe w sensie ogólnej definicji.
+Inną rodziną krzywych superosobliwych są krzywe postaci $E_{1,0}(\F(p))$,
+gdzie $p \equiv 3\ (\mathrm{mod}\ 4)$.
+\end{remark}
+
+Krzywe superosobliwe są interesujące,
+struktura grupy na takich krzywych jest prosta,
+co pokazują następujące twierdzenia.
+
+\begin{theorem}
+Krzywa superosobliwa $E_{0,1}(\F(p))$ składa się z $p + 1$ punktów.
+\end{theorem}
+
+\begin{proof}
+Rozważmy równanie $x^3 = c$ w ciele $\F(p)$.
+Weźmy dowolne dwa elementy $a, b \in \F(p)$ takie, że $a^3 = c$ i $b^3 = c$.
+Gdy $c = 0$, to $a = b = 0$.
+Gdy $c \neq 0$, zapisujemy elementy $a$ i $b$ jako potęgi generatora:
+$a = g^k$, $b = g^l$.
+Wiemy, że $a^3 = b^3$, skąd dostajemy $g^{3(k-l)} = 1$.
+Zatem $p-1 \mid 3(k-l)$.
+Ponieważ liczba $p-1$ jest względnie pierwsza z $3$,
+otrzymujemy $p-1 \mid k-l$.
+Stąd $a = b$.
+
+Z rozważań tych wynika następujący wniosek:
+funkcja $x^3 + 1$ jest bijekcją w zbiorze $\F(p)$,
+w jej obrazie znajdują się wszystkie reszty kwadratowe,
+zatem krzwa superosobliwa $E_{0,1}(\F(p))$ zawiera dokładnie $p+1$ punktów.
+\end{proof}
+
+\begin{theorem}
+Krzywa superosobliwa $E = E_{0,1}(\F(p))$
+jest izomorficzna z grupą $\Z / (p+1)\Z$.
+\end{theorem}
+
+\begin{proof}
+Zgodnie z twierdzeniem \ref{finite_curve_structure_theorem}
+krzywa $E$ jest izomorficzna z grupą $(\Z / k\Z) \times (\Z / l\Z)$,
+gdzie $kl = p+1$ oraz $l \mid \gcd(k, p-1)$.
+Skoro $k \mid p+1$, to $l \mid \gcd(p+1, p-1)$,
+zatem $l = 1$ lub $l = 2$.
+W pierwszym przypadku twierdzenie jest udowodnione.
+Pokażemy, że drugi jest niemożliwy.
+
+Przyjmijmy, że $l = 2$.
+Jeżeli $2 \nmid k$,
+to grupa $(\Z / k\Z) \times (\Z / l\Z)$ jest izomoriczna
+z żądaną grupą $\Z / (p+1)\Z$.
+Natomiast jeśli $2 \mid k$, to na krzywej $E$ są dwa punkty rzędu dwa,
+a więc wielomian $x^3 + 1$ ma w ciele $\F(p)$ dwa miejsca zerowe.
+To jest niemożliwe, bo wielomian ten jest bijekcją w zbiorze $\F(p)$,
+jak zauważyliśmy wcześniej.
+\end{proof}
+
+W kontekście iloczynu Weila krzywe superosobliwe są ważne dlatego,
+że łatwo wskazywać ich podgrupy $n$-torsyjne.
+
+\begin{theorem}
+Dana jest liczba pierwsza $p$ taka, że $p \equiv 2\ (\mathrm{mod}\ 3)$
+oraz liczba pierwsza $n \mid p + 1$.
+Wówczas podgrupa $n$-torsyjna krzywej eliptycznej $E_{0,1}(\GF(p^2))$
+jest izomorficzna z grupą $(\Z / n\Z) \times (\Z / n\Z)$.
+\end{theorem}
+
+\begin{proof}
+Ponieważ $3 \mid p^2-1$, w ciele $\GF(p^2)$
+istnieje nietrywialny pierwiastek trzeciego stopnia z jedności.
+Oznaczmy go przez $\xi$.
+Zauważmy teraz, że odwzorowanie $(x, y) \to (\xi x, y)$
+jest automorfizmem krzywej $E_{0,1}(\GF(p^2))$.
+
+Niech $P = (a, b)$ będzie takim punktem krzywej $E_{0,1}(\F(p))$,
+że $nP = \ecident$.
+Teraz, punkt $Q = (\xi a, b) \in E_{0,1}(\GF(p^2))$ również ma rząd $n$,
+bo jest obrazem punktu $P$ poprzez opisany automorfizm.
+Zauważmy przy tym, że $Q \notin E_{0,1}(\F(p))$,
+bo $\xi \notin \F(p)$.
+
+Wynika stąd już, że podgrupa $n$-torsyjna krzywej $E_{0,1}(\GF(p^2))$
+ma żądaną postać. Co więcej, punkty $P$ i $Q$ są jej generatorami.
+\end{proof}
