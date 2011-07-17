@@ -3,34 +3,36 @@
 Algorytm będzie obliczał wartości iloczynu Weila
 na podstawie definicji alternatywnej.
 Niestety, fragmentem wzoru \ref{weil_pairing_alt_eqn}
-jest wyrażenie $\frac{g_Q}{g_P}(\ecident)$,
+jest wyrażenie $\frac{f_Q'}{f_P'}(\ecident)$,
 które zawiera elementy niewygodne z obliczeniowego punktu widzenia --
 miejsca zerowe i bieguny oraz punkt w nieskończoności.
 Dlatego ,,przesuniemy'' licznik i mianownik
 we wzorze \ref{weil_pairing_alt_eqn} tak,
 aby operować tylko na wartościach skończonych.
 
-\begin{definition}
-Dana jest krzywa eliptyczna $E$ oraz punkty $P, Q \in E[n]$.
-Niech $R, S \in E$ będą dowolnymi punktami krzywej takimi,
+\begin{definition}\label{base_formula_def}
+Dana jest krzywa eliptyczna $E$ nad ciałem $\K$
+oraz punkty $P, Q \in E[n]$.
+Niech $R, S \in E$ będą dowolnymi punktami krzywej $E$ takimi,
 że punkty $P$, $Q$, $R$, $S$, $P+R$, $Q+S$ i $\ecident$ są parami różne.
-Funkcje wymierne $\widehat{g_P}, \widehat{g_Q} \in K(E)$
+Funkcje wymierne $f_P'', f_Q'' \in K(E)$
 określamy poprzez podanie ich dywizorów
+następująco:
 \begin{eqnarray*}
-\rdiv(\widehat{g_P}) & = & n\divi{P+R} - n\divi{R} \\
-\rdiv(\widehat{g_Q}) & = & n\divi{Q+S} - n\divi{S}
+\rdiv(f_P'') & = & n\divi{P+R} - n\divi{R} \\
+\rdiv(f_Q'') & = & n\divi{Q+S} - n\divi{S}
 \end{eqnarray*}
 Określamy funkcję $w''(P, Q)\colon E[n] \to \K$
 następującym wzorem:
 \begin{equation}\label{base_formula_eqn}
-w''(P, Q) = (-1)^n\frac{\widehat{g_P}(Q+S)}{\widehat{g_P}(S)}
-            \frac{\widehat{g_Q}(R)}{\widehat{g_Q}(P+R)}
+w''(P, Q) = (-1)^n\frac{f_P''(Q+S)}{f_P''(S)}\frac{f_Q''(R)}{f_Q''(P+R)}
 \end{equation}
 \end{definition}
 
 \begin{remark}
-Podobnie jak w przypadku funkcji $g_P$ i $g_Q$,
-funkcje $\widehat{g_P}$ i $\widehat{g_Q}$
+Podobnie jak w przypadku funkcji
+$f_P''$ i $f_Q''$ z definicji \ref{weil_pairing_alt_def},
+funkcje $f_P''$ i $f_Q''$
 są określone z dokładnością do czynnika stałego.
 Nie wpływa to na wartość funkcji $w''(P, Q)$.
 \end{remark}
@@ -52,96 +54,101 @@ w'(P, Q) = w''(P, Q)
 \end{theorem}
 
 \begin{proof}
-Z postaci dywizorów określających funkcje $\widehat{g_P}$ i $\widehat{g_Q}$
-łatwo zauważyć,
-że $\widehat{g_P} = g_P \circ t_R$ oraz $\widehat{g_Q} = g_Q \circ t_S$.
+Z postaci dywizorów określających funkcje $f_P''$ i $f_Q''$
+łatwo zauważyć, że $f_P'' = f_P' \circ t_R$ oraz $f_P'' = f_Q' \circ t_S$.
 Potrzebna nam będzie jednak inna reprezentacja.
-Z lematu \ref{dupa} wiemy,
+Z lematu \ref{divi_reduction_lemma} wiemy,
 że dywizor $\divi{P+R} - \divi{P} - \divi{R} + \divi{\ecident}$ jest główny,
 podobnie dywizor $\divi{Q+S} - \divi{Q} - \divi{S} + \divi{\ecident}$.
-Niech $h_P$ i $h_Q$ będą określone przez te dywizory, tzn.:
+Niech $r_P$ i $r_Q$ będą określone za pomocą tych dywizorów,
+to znaczy:
 \begin{eqnarray*}
-\rdiv(h_P) & = & \divi{P+R} - \divi{P} - \divi{R} + \divi{\ecident} \\
-\rdiv(h_Q) & = & \divi{Q+S} - \divi{Q} - \divi{S} + \divi{\ecident}
+\rdiv(r_P) & = & \divi{P+R} - \divi{P} - \divi{R} + \divi{\ecident} \\
+\rdiv(r_Q) & = & \divi{Q+S} - \divi{Q} - \divi{S} + \divi{\ecident}
 \end{eqnarray*}
 Można teraz sprawdzić,
-że $\widehat{g_P} = g_Ph_P^n$ oraz $\widehat{g_Q} = g_Qh_Q^n$.
+że $f_P'' = f_P'r_P^n$ oraz $f_Q'' = f_Q'r_Q^n$.
 
-Zastosujmy prawo wzajemności Weila do funkcji $g_P$ i $h_Q$.
+Zastosujmy prawo wzajemności Weila do funkcji $f_P'$ i $r_Q$.
 Wykorzystamy przy tym własności symbolu lokalnego
 oraz to, że punkty $P$, $Q+S$, $Q$, $S$ i $\ecident$ są parami różne.
 Otrzymujemy:
 \begin{eqnarray}
 1
-& = & \prod_{T \in E} \lsym{g_P}{h_Q}{T}
+& = & \prod_{T \in E} \lsym{f_P'}{r_Q}{T}
 \nonumber \\
-& = & \lsym{g_P}{h_Q}{Q+S}\lsym{g_P}{h_Q}{Q}\lsym{g_P}{h_Q}{S}
-      \lsym{g_P}{h_Q}{P}\lsym{g_P}{h_Q}{\ecident}
+& = & \lsym{f_P'}{r_Q}{Q+S}\lsym{f_P'}{r_Q}{Q}      \lsym{f_P'}{r_Q}{S}
+      \lsym{f_P'}{r_Q}{P}  \lsym{f_P'}{r_Q}{\ecident}
 \nonumber \\
-& = & \frac{1}{h_Q^n(P)}\frac{g_P(Q+S)}{g_P(Q)g_P(S)}
-      (-1)^{-n}\left(\frac{g_P}{h_Q^{-n}}\right)(\ecident)
+\label{reciprocity_1_eqn}
+& = & \frac{1}{r_Q^n(P)}\frac{f_P'(Q+S)}{f_P'(Q)f_P'(S)}
+      (-1)^{-n}\left(\frac{f_P'}{r_Q^{-n}}\right)(\ecident)
 \end{eqnarray}
-W analogiczny sposób stosujemy prawo wzajemności Weila do funkcji
-$h_P$ i $g_Q$. Otrzymujemy:
+W analogiczny sposób stosujemy prawo wzajemności Weila
+do funkcji $r_P$ i $f_Q'$:
 \begin{eqnarray}
 1
-& = & \prod_{T \in E} \lsym{h_P}{g_Q}{T} \nonumber \\
-& = & \lsym{h_P}{g_Q}{P+R}\lsym{h_P}{g_Q}{P}\lsym{h_P}{g_Q}{R}
-      \lsym{h_P}{g_Q}{Q}\lsym{h_P}{g_Q}{\ecident} \nonumber \\
-& = & h_P^n(Q)\frac{g_Q(P)g_Q(R)}{g_Q(P+R)}
-      (-1)^{-n}\left(\frac{h_P^{-n}}{g_Q}\right)(\ecident)
+& = & \prod_{T \in E} \lsym{r_P}{f_Q'}{T}
+\nonumber \\
+& = & \lsym{r_P}{f_Q'}{P+R}\lsym{r_P}{f_Q'}{P}       \lsym{r_P}{f_Q'}{R}
+      \lsym{r_P}{f_Q'}{Q}  \lsym{r_P}{f_Q'}{\ecident}
+\nonumber \\
+\label{reciprocity_2_eqn}
+& = & r_P^n(Q)\frac{f_Q'(P)f_Q'(R)}{f_Q'(P+R)}
+      (-1)^{-n}\left(\frac{r_P^{-n}}{f_Q'}\right)(\ecident)
 \end{eqnarray}
 Stosujemy prawo wzajemności Weila jeszcze raz do funkcji $h_P$ i $h_Q$:
 \begin{eqnarray}
 1
-& = & \prod_{T \in E} \lsym{h_P}{h_Q}{T}
+& = & \prod_{T \in E} \lsym{r_P}{r_Q}{T}
 \nonumber \\
-& = & \lsym{h_P}{h_Q}{P+R}
-      \lsym{h_P}{h_Q}{P}
-      \lsym{h_P}{g_Q}{R}
+& = & \lsym{r_P}{r_Q}{P+R}
+      \lsym{r_P}{r_Q}{P}
+      \lsym{r_P}{r_Q}{R}
 \nonumber \\
-&   & \lsym{h_P}{h_Q}{Q+S}
-      \lsym{h_P}{g_Q}{Q}
-      \lsym{h_P}{h_Q}{S}
-      \lsym{h_P}{h_Q}{\ecident}
+&   & \lsym{r_P}{r_Q}{Q+S}
+      \lsym{r_P}{r_Q}{Q}
+      \lsym{r_P}{r_Q}{S}
+      \lsym{r_P}{r_Q}{\ecident}
 \nonumber \\
-& = & \frac{h_P(Q+S)}{h_P(S)}
-      \frac{h_Q(R)}{h_Q(P+R)}
-      \frac{h_P(Q)}{h_Q(P)}
-      \left(\frac{h_P}{h_Q}\right)(\ecident)
+& = & \frac{r_P(Q+S)}{r_P(S)}
+      \frac{r_Q(R)}{r_Q(P+R)}
+      \frac{r_P(Q)}{r_Q(P)}
+      \left(\frac{r_P}{r_Q}\right)(\ecident)
 \end{eqnarray}
 Ostatnią równość podnosimy do $n$-tej potęgi i otrzymujemy:
-\begin{equation}
+\begin{equation}\label{reciprocity_3_eqn}
 1 =
-\frac{h_P^n(Q+S)}{h_P^n(S)}
-\frac{h_Q^n(R)}{h_Q^n(P+R)}
-\frac{h_P^n(Q)}{h_Q^n(P)}
-\left(\frac{h_P^n}{h_Q^n}\right)(\ecident)
+\frac{r_P^n(Q+S)}{r_P^n(S)}
+\frac{r_Q^n(R)}{r_Q^n(P+R)}
+\frac{r_P^n(Q)}{r_Q^n(P)}
+\left(\frac{r_P^n}{r_Q^n}\right)(\ecident)
 \end{equation}
 
-Lewe strony równości \ref{dupa1}, \ref{dupa2} i \ref{dupa3}
-możemy domnożyć do wzoru \ref{weil_pairing_one_eqn}
+Dzięki prawu wzajemności Weila lewe strony równości
+\ref{reciprocity_1_eqn}, \ref{reciprocity_2_eqn} i \ref{reciprocity_3_eqn}
+możemy domnożyć do wzoru \ref{weil_pairing_alt_eqn}
 nie zmieniając wyniku.
 Otrzymujemy:
 \begin{eqnarray*}
 w'(P,Q)
-& = & \frac{g_P(Q)}{g_Q(P)}(-1)^n\left(\frac{g_Q}{g_P}\right)(\ecident) \\
-& = & \frac{g_P(Q)}{g_Q(P)}(-1)^n\left(\frac{g_Q}{g_P}\right)(\ecident) \\
-&   & \frac{1}{h_Q^n(P)}\frac{g_P(Q+S)}{g_P(Q)g_P(S)}
-      (-1)^{-n}\left(\frac{g_P}{h_Q^{-n}}\right)(\ecident) \\
-&   & h_P^n(Q)\frac{g_Q(P)g_Q(R)}{g_Q(P+R)}
-      (-1)^{-n}\left(\frac{h_P^{-n}}{g_Q}\right)(\ecident) \\
-&   & \frac{h_P^n(Q+S)}{h_P^n(S)}
-      \frac{h_Q^n(R)}{h_Q^n(P+R)}
-      \frac{h_P^n(Q)}{h_Q^n(P)}
-      \left(\frac{h_P^n}{h_Q^n}\right)(\ecident) \\
-& = & \frac{g_P(Q+S)h_P^n(Q+S)}{g_P(S)h_P^n(S)}
-      \frac{g_Q(R)h_{Q,S}(R)}{g_Q(P+R)h_Q(P+R)}
+& = & \frac{f_P'(Q)}{f_Q'(P)}(-1)^n\left(\frac{f_Q'}{f_P'}\right)(\ecident) \\
+& = & \frac{f_P'(Q)}{f_Q'(P)}(-1)^n\left(\frac{f_Q'}{f_P'}\right)(\ecident) \\
+&   & \frac{1}{r_Q^n(P)}\frac{f_P'(Q+S)}{f_P'(Q)f_P'(S)}
+      (-1)^{-n}\left(\frac{f_P'}{r_Q^{-n}}\right)(\ecident) \\
+&   & r_P^n(Q)\frac{f_Q'(P)f_Q'(R)}{f_Q'(P+R)}
+      (-1)^{-n}\left(\frac{r_P^{-n}}{f_Q'}\right)(\ecident) \\
+&   & \frac{r_P^n(Q+S)}{r_P^n(S)}
+      \frac{r_Q^n(R)}{r_Q^n(P+R)}
+      \frac{r_P^n(Q)}{r_Q^n(P)}
+      \left(\frac{r_P^n}{r_Q^n}\right)(\ecident) \\
+& = & \frac{f_P'(Q+S)r_P^n(Q+S)}{f_P(S)r_P^n(S)}
+      \frac{f_Q'(R)r_Q^n(R)}{f_Q'(P+R)r_Q^n(P+R)}
       (-1)^n\left(
-      \frac{g_Pg_Qh_P^nh_P^{-n}}{g_Qg_Ph_Q^nh_Q^{-n}}
+      \frac{f_P'f_Q'r_P^nr_P^{-n}}{f_Q'f_P'r_Q^nr_Q^{-n}}
       \right)(\ecident) \\
-& = & (-1)^n\frac{\widehat{g_P}(Q+S)}{\widehat{g_P}(S)}
-      \frac{\widehat{g_Q}(R)}{\widehat{g_Q}(P+R)} \\
+& = & (-1)^n\frac{f_P''(Q+S)}{f_P''(S)}
+      \frac{f_Q''}{f_Q''(P+R)} \\
 & = & w''(P,Q)
 \end{eqnarray*}
 \end{proof}

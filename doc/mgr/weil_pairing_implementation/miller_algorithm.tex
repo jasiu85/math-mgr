@@ -15,29 +15,35 @@ obowiązują następujące konwencje:
 \item pseudokod będziemy zapisywać w formie podobnej do tej
 stosowanej w książce \ref{clrs};
 \item operacje arytmetyczne na liczbach całkowitych
-uznajemy za elementarne
-i oznaczamy je symbolami $+$, $-$, $\cdot$, $\kw{div}$, $\kw{mod}$;
-\item porównania liczb całkowitych ($=$, $\neq$, $<$, $\leq$, $>$, $\geq$)
+($+$, $-$, $\cdot$, $\kw{div}$, $\kw{mod}$)
+uznajemy za elementarne;
+\item porównania liczb całkowitych
+($=$, $\neq$, $<$, $\leq$, $>$, $\geq$)
 uznajemy za elementarne;
 \item operacje arytmetyczne na elementach ciał skończonych
-uznajemy za elementarne
-i oznaczamy je symbolami $+$, $-$, $\cdot$, $/$;
-\item porównania elementów ciał skończonych ($=$, $\neq$)
+($+$, $-$, $\cdot$, $/$)
 uznajemy za elementarne;
-\item porównania punktów na krzywej eliptycznej ($=$, $\neq$)
+\item porównania elementów ciał skończonych
+($=$, $\neq$)
+uznajemy za elementarne;
+\item porównania punktów na krzywej eliptycznej
+($=$, $\neq$)
 uznajemy za elementarne;
 \item ustalamy, że notacja $p[o]$ oznacza odczytanie cechy $p$ obiektu $o$,
 w szczególności:
 \begin{itemize}
-\item $a[l]$ $b[l]$ i $c[l]$ oznaczają odpowiednio
-współczynnik stojący przy zmiennej $x$ w linii $l$,
-współczynnik stojący przy zmiennej $y$ w linii $l$
-i wyraz wolny linii $l$;
+\item $\id{zero}[\K]$, $\id{one}[\K]$ itd.
+oznaczają odpowiednio
+zero, jedynkę itd. w ciele $\K$;
 \item $A[E]$, $B[E]$, $\id{field}[E]$, $\id{identity}[E]$
 oznaczają odpowiednio
 parametry krzywej $E$, ciało, nad którym krzywa $E$ jest zdefiniowana
 i punkt w nieskończoności krzywej $E$;
 \item $x[P]$ i $y[P]$ oznaczają współrzędne skończonego punktu $P$ krzywej;
+\item $a[l]$ $b[l]$ i $c[l]$ oznaczają odpowiednio
+współczynnik stojący przy zmiennej $x$ w linii $l$,
+współczynnik stojący przy zmiennej $y$ w linii $l$
+i wyraz wolny linii $l$;
 \end{itemize}
 \item zakładamy, że dysponujemy następującymi procedurami:
 \begin{itemize}
@@ -95,7 +101,7 @@ wartość $l(P)$:
 
 Podamy teraz procedury wyznaczające linie przechodzące przez zadane punkty.
 Najpierw rozważymy przypadki szczególne,
-dla których wyznaczyliśmy wcześniej odpowiednie wzory.
+dla których wyprowadziliśmy wcześniej odpowiednie wzory.
 
 \begin{algorithm}
 Dana jest krzywa eliptyczna $E$
@@ -426,8 +432,8 @@ punkt krzywej $E$:
 
 Możemy teraz przejść do opisania algorytmu Millera.
 
-\begin{algorithm}
-Dana jest krzywa eliptyczna $E$,
+\begin{algorithm}\label{miller_alg}
+Dana jest krzywa eliptyczna $E$ nad ciałem skończonym,
 liczba całkowita $n$
 oraz punkty $P, Q \in E$ takie, że $nP = \ecident$ i $nQ = \ecident$.
 Następujące procedury
