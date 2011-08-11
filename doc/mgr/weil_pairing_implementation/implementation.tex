@@ -1,9 +1,209 @@
 \section{Opis implementacji}
 
-\subsection*{Wybór języka programowania}
+Część niniejszej pracy stanowi implementacja
+opisanego w tym rozdziale algorytmu Millera,
+którą teraz krótko omówimy.
 
-\todolipsum{Wybór języka programowania.}
+\subsection*{Język programowania}
 
-\subsection*{Niezbędne składniki implementacji}
+Do implementacji został użyty język Python \cite{python}.
+Podsumujmy krótko jego najważniejsze cechy.
+\begin{itemize}
+\item
+Python ma charakterystyczną składnię.
+Najbardziej rzuca się w oczy sposób oznaczania bloków kodu
+(tzn. ciał pętli, treści procedur, gałęzi instrukcji warunkowych itd.) --
+blok kodu jest ,,wcięty'',
+tzn. zawiera większą liczbę białych znaków na początkach linii
+niż kod otaczający.
+\item
+Python jest językiem interpretowanym,
+tzn. instrukcje pythonowe nie są kompilowane do języka niższego poziomu
+(np. do kodu maszynowego),
+lecz wykonywane bezpośrednio przez ,,interpreter''.
+\item
+Python pozwala stosować wiele paradygmatów programowania:
+imperatywny, obiektowy i funkcyjny (częściowo).
+\item
+Python jest językiem dynamicznie typowanym,
+tzn. wszelkiego rodzaju kontrola typów
+(np. sprawdzanie, że argumentami operacji dodawania są liczby)
+jest wykonywana w trakcie interpretowania programu --
+nie ma przecież żadnej fazy kompilacji.
+\item
+Python dostarcza mechanizm automatycznego zarządzania pamięcią
+oparty o zliczanie referencji.
+\item
+Python dysponuje niezmiernie bogatą biblioteką standardową,
+która oprócz usług dostępnych we wszystkich językach programowania
+(dostęp do plików, niskopoziomowy dostęp do sieci itp.)
+dostarcza mechanizmy służące
+do prowadzenia wysokopoziomowej komunikacji sieciowej
+(protokoły HTTP, SMTP, FTP itp.);
+obsługi plików skompresowanych (TAR, GZip, BZip2);
+tworzenia interfejsów graficznych (Tk);
+prowadzenia komunikacji międzyprocesowej;
+przetwarzania danych multimedialnych itd.
+\item
+Python może być uruchomiony na wielu systemach operacyjnych:
+wszystkich nowszych wersjach systemu Windows firmy Microsoft,
+praktycznie dowolnej dystrybucji systemu Linux,
+a także na wielu innych systemach uniksowych,
+w tym na Mac OS X firmy Apple.
+\item
+Nad rozwojem języka Python czuwa jego twórca Guido van Rossum
+oraz społeczność skupiona wokół fundacji Python Software Foundation,
+dzięki czemu proces wytwarzania kolejnych wersji języka
+jest otwarty, przejrzysty i dostępny dla osób postronnych.
+\item
+Python udostępniany jest na licencji Python License,
+która jest zgodna z wymogami OSI, jest zatem licencją wolną.
+Oznacza to, że z Pythona można korzystać bezpłatnie
+w praktycznie dowolnych zastosowaniach, w tym akademickich i komercyjnych.
+\end{itemize}
 
-\todolipsum{Niezbędne składniki implementacji.}
+Wybór języka Python do zaimplementowania algorytmu Millera
+podyktowany był następującymi względami:
+\begin{itemize}
+\item
+Składnia języka Python jest niezwykle podobna
+do zastosowanego w pracy sposobu prezentowania pseudokodu.
+Dzięki temu wszystkie przedstawione algorytmy
+można było bez wysiłku przetłumaczyć
+na składnię Pythona.
+\item
+Elementem biblioteki standardowej Pythona
+jest implementacja ,,długich'' liczb całkowitych,
+tzn. liczb całkowitych o dowolnej ilości bitów.
+Dzięki temu implementacja procedur była prostsza.
+\item
+Dynamiczne typowanie, automatyczne zarządzanie pamięcią
+oraz brak konieczności kompilacji
+pozwalają na bardzo łatwe pisanie prototypów w Pythonie.
+Dzięki temu implementacja algorytmu Millera powstała bardzo szybko.
+\end{itemize}
+
+\subsection*{Struktura implementacji}
+
+Pełna komputerowa implementacja algorytmu Millera
+obejmuje nie tylko przedstawione w tym rozdziale algorytmy,
+ale także pewną ilość dodatkowych elementów.
+Całość można podzielić na ,,warstwy'',
+czyli takie części, że każda kolejna jest zależna od poprzedniej.
+\begin{enumerate}
+\item
+Pierwszą warstwą jest implementacja liczb całkowitych dowolnej precyzji.
+Koncepcją implementacji jest system pozycyjny,
+w którym podstawę stanowi potęga liczby dwa, np. $2^{32}$ lub $2^{64}$.
+Implementacji ,,długich'' liczb całkowitych
+dostarcza biblioteka standardowa Pythona.
+\item
+Drugą warstwą jest implementacja ciał skończonych.
+Operacje na elementach skończonych są zaimplementowane
+wyłącznie za pomocą operacji na ,,długich'' liczbach całkowitych
+oraz standardowych konstrukcji językowych Pythona.
+Przyjęto obiektowy model reprezentacji danych.
+Warstwę tę można podzielić na mniejsze warstwy.
+\begin{itemize}
+\item
+Implementacja pierścienia liczb całkowitych to po prostu przedstawienie
+dostępnych w Pythonie ,,długich'' liczb całkowitych w postaci obiektowej.
+\item
+Implementacja pierścienia ilorazowego nad zadanym pierścieniem bazowym
+polega na zaimplementowaniu
+operacji dzielenia z resztą oraz algorytmu Euklidesa w pierścieniu bazowym.
+Operacje w pierścieniu ilorazowym polegają teraz
+na wykonywaniu operacji w pierścieniu bazowym modulo zadany element.
+Odwrotności w pierścieniu ilorazowym obliczamy
+za pomocą algorytmu Euklidesa.
+\item
+Implementacja pierścienia wielomianów nad zadanym pierścieniem bazowym
+polega na reprezentowaniu wielomianów
+za pomocą tablic elementów pierścienia bazowego.
+\end{itemize}
+Ciało skończone $\F(p)$
+możemy przedstawić jako pierścień ilorazowy
+pierścienia liczb całkowitych podzielonego przez $p$.
+Ciało skończone $\GF(q)$, gdzie $q = p^e$,
+przedstawiamy jako pierścień ilorazowy
+pierścienia wielomianów nad ciałem $\F(p)$
+podzielony przez wielomian stopnia $e$
+nierozkładalny nad ciałem $\F(p)$.
+\item
+Trzecią warstwę stanowi implementacja prostego modelu obiektowego
+reprezentującego krzywe eliptyczne oraz punkty i linie na krzywych.
+Warstwa ta dostarcza jedynie reprezentację danych,
+nie udostępnia natomiast żadnych operacji na tych danych.
+\item
+Czwartą i ostatnią warstwę
+stanowi implementacja procedur przedstawionych w tym rodziale.
+Tę warstwę również można podzielić na części.
+\begin{itemize}
+\item
+Implementacja konstruktorów
+(np. $\proc{Curve-Finite-Point}(E, a, b)$, $\proc{Line-On-Curve}(E, a, b, c)$)
+i akcesorów (np. $x[P]$, $\id{identity}[E]$, $a[l]$).
+Polega ona na odpowiednim odwoływaniu się
+do modelu obiektowego z warstwy trzeciej.
+\item
+Implementacja procedur uznanych za dane
+(np. $\proc{Finite-Field-Element-Square-Root}(K, a)$).
+\item
+Implementacja ogólnych procedur przedstawionych w tym rozdziale
+(np. $\proc{Line-Through-Curve-Points}(E, P, Q)$,
+$\proc{Add-Curve-Points}(E, P, Q)$).
+\item
+Implementacja algorytmu Millera,
+w tym procedury $\proc{Weil-Pairing}(E, n, P, Q)$.
+\end{itemize}
+\end{enumerate}
+
+\subsection*{Wydajność}
+
+Wydajność otrzymanej implementacji algorytmu Millera jest niska.
+Fakt ten jest wywołany kilkoma czynnikami.
+
+Po pierwsze, zastosowany język Python oprócz wszystkich wymienionych zalet
+ma też jedną zasadniczą wadę -- nie jest szybki.
+Przyczyną tego stanu rzeczy jest przede wszystkim to,
+że jest to język interpretowany.
+W zależności od zastosowań może on być kilka do kilkudziesięciu razy
+wolniejszy od języków kompilowanych, np. od C++.
+
+Po drugie, sposób zastosowany przy implementacji ciał skończonych
+nie jest wydajny.
+Przedstawienie ciał skończonych jako pierścieni ilorazowych powoduje,
+że wykonanie pojedyńczej operacji arytmetycznej w ciele skończonym
+przekłada się na wiele operacji w pierścieniach bazowych,
+a w konsekwencji na jeszcze więcej operacji na liczbach całkowitych.
+Mimo niskiej wydajności ten sposób reprezentacji został zastosowany,
+ponieważ jest przejrzysty i ogólny.
+
+Po trzecie, sam algorytm Millera w postaci podanej w niniejszej pracy
+charakteryzuje się dużą stałą w złożoności asymptotycznej.
+Uważna analiza pozwala wyeliminować losowość z algorytmu (por. \cite{miller}).
+
+W związku z powyższym należy uznać, że stanowiąca część niniejszej pracy
+implementacja algorytmu Millera ma charakter poglądowy
+i nie nadaje się do zastosowań praktycznych.
+
+\subsection*{System Sage}
+
+Narzędziem, które okazało się niezwykle pomocne podczas implementacji,
+jest system Sage \cite{sage}.
+Jest to wolny odpowiednik systemów
+Mathematica \cite{mathematica} czy Maple \cite{maple}.
+Oto niektóre z funkcji, które udostępnia:
+\begin{itemize}
+\item
+przeprowadzanie obliczeń symbolicznych;
+\item
+symboliczne i numeryczne rozwiązywanie
+różnego rodzaju równań i układów równań;
+\item
+wykonywanie operacji arytmetycznych
+na elementach różnych obiektów algebraicznych --
+ciał, pierścieni itp.;
+\item
+implementacja wielu algorytmów teorioliczbowych i kryptograficznych.
+\end{itemize}
