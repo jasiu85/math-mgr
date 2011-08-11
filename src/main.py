@@ -6,9 +6,16 @@ from elliptic_curve import EllipticCurve
 from miller import *
 
 
+def ec_point_coords(E, P):
+    if P == identity(E):
+        return (-1, -1)
+    return (x(P)._._, y(P)._._)
+
+
 def example(K, A, B, n):
     E = EllipticCurve(K, A, B)
     L = [P for P in E.all_elements() if MultiplyCurvePoint(E, P, n) == identity(E)]
+    L.sort(key=lambda P: ec_point_coords(E, P))
     l = len(L)
     M = [['']*(l+1) for _ in xrange(l+1)]
     for i, P in enumerate(L):
@@ -19,7 +26,6 @@ def example(K, A, B, n):
         for j, Q in enumerate(L):
             w = WeilPairing(E, n, P, Q)
             M[i+1][j+1] = str(w)
-        print '%5.1f%%' % (((i+1) * 100.) / l)
     W = [0]*(l+1)
     for i in xrange(l+1):
         for j in xrange(l+1):
@@ -27,7 +33,7 @@ def example(K, A, B, n):
     for i in xrange(l+1):
         for j in xrange(l+1):
             p = W[j] - len(M[i][j])
-            print ';' + ' '*((p+1) // 2) + M[i][j] + ' '*(p // 2),
+            print ' '*((p+1) // 2) + M[i][j] + ' '*(p // 2),
         print
     print
 
