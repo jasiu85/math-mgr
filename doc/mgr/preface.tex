@@ -1,21 +1,84 @@
 \chapter*{Wstęp}
 \addcontentsline{toc}{chapter}{Wstęp}
 
-\todolipsum{Wstęp.}
+Matematyka uważana jest za naukę trudną, abstrakcyjną
+oraz mającą niewielki wpływ na życie zdecydowanej większości ludzi.
+Jest jednak zupełnie odwrotnie --
+poznawanie matematyki stanowi dla wielu osób wspaniałą rozrywkę
+i specyficzną kategorię wrażeń estetycznych.
+Co więcej, bez pewnej ilości narzędzi matematycznych
+nie obejdzie się żadna nauka,
+poczynając od przyrodniczych,
+poprzez społeczno-ekonomiczne,
+a na humanistycznych kończąc.
+Dlatego właśnie matematyka nazywana jest królową nauk.
 
-podpis cyfrowy
+Różne nauki w różnym stopniu korzystają ze zdobyczy
+poszczególnych działów matematyki.
+I tak na przykład
+mechanika klasyczna opiera się na analizie,
+głównie na rachunku różniczkowym i całkowym;
+równania różniczkowe cząstkowe służą dziś
+do opisywania i symulowania wielu zjawisk,
+w tym prognozowania pogody, projektowania powierzchni aerodynamicznych
+(kadłubów samolotów, karoserii samochodów itd.);
+rachunek prawdopodobieństwa i statystyka
+znajdują zastosowanie w ekonomii i przy różnego rodzaju grach losowych,
+są także nieodzowne (choć niestety często ignorowane)
+podczas przeprowadzania eksperymentów psychologicznych i socjologicznych;
+współczesne problemy fizyki
+związane z ogólną teorią względności oraz mechaniką kwantową
+formułowane są w języku zaawansowanej algebry.
+Widać więc, że matematyka znajduje zastosowanie w życiu codziennym,
+nawet jeśli jej zdobycze są wykorzystywane nieświadomie.
 
-szyfrowanie
+Jednym z działów matematyki jest teoria liczb.
+Przez długi czas była ona uważana za gałąź matematyki,
+która, chociaż ma niemały wpływ na matematykę samą w sobie,
+to znajduje niewiele zastosowań poza nią.
+Znaczenie teorii liczb w życiu codziennym
+niesamowicie wzrosło wraz z pojawieniem się komputerów.
 
-Bellare
+W obecnych czasach komputery wspomagają nas w wykonywaniu wielu czynności,
+w tym pozwalają nam komunikować się drogą elektroniczną.
+To spowodowało, że należało rozwiązać komputerowe odpowiedniki
+klasycznych problemów związanych z komunikacją:
+potwierdzeniem tożsamości nadawcy komunikatu
+oraz zapewnieniem, że komunikat zostanie odczytany jedynie przez odbiorcę.
+Problem zaprojektowania systemu komputerowego,
+który miałby te dwie cechy,
+dał początek współczesnej kryptografii.
 
-redukcja MOV
+Komputerowe systemy kryptograficzne bazują na fakcie,
+że pewne problemy są trudne obliczeniowo.
+Egzemplarz takiego problemu wraz z rozwiązaniem
+(które da się znaleźć łatwo, jeżeli odpowiednio generować egzemplarz)
+stanowi ,,sekret'' pozwalający dwóm stronom na bezpieczną komunikację.
+Jest to komputerowy odpowiednik kłódki i klucza,
+którym dysponują tylko dwie osoby.
+Tak się przy tym składa,
+że problemy, które dają podstawę systemom kryptograficznym,
+bardzo często związane są z teorią liczb,
+stąd właśnie wynika wzrost jej znaczenia.
+Przykładowo, problem rozkładu na czynniki pierwsze leży u podstaw systemu RSA,
+a na problemie logarytmu dyskretnego opiera się protokół Diffiego-Hellmana.
 
-wydajność kryptosystemów - cpu, pamięć, sieć
+Celem niniejszej pracy jest przedstawienie procesu,
+na skutek którego pojęcie matematyczne
+może poprzez teorię liczb i kryptografię oraz techniki komputerowe
+trafić do codziennego (nawet jeśli nieświadomego) użytku.
+Proces ten zostanie zobrazowany na przykładzie iloczynu Weila --
+pewnej dwuargumentowej operacji
+działającej na punktach krzywej eliptycznej.
 
-Silverman
-
-Blake, Smart, Serrousi "Advances in EC cyrptography"
-
-Enge "Elliptic Curves And Their Applications To Cryptography: An Introduction"
-
+Praca składa się z pięciu rozdziałów.
+W rozdziale pierwszym znajduje się krótkie wprowadzenie
+do tematyki krzywych eliptycznych.
+Rozdział drugi zawiera bardziej szczegółowe studium
+pewnego wyjątkowo ważnego pojęcia związanego z krzywymi eliptycznymi,
+a mianowicie struktury grupy abelowej na krzywej eliptycznej.
+Celem rozdziału trzeciego
+jest zdefiniowanie i zanalizowanie własności iloczynu Weila.
+Rozdział czwarty opisuje algorytm Millera,
+który pozwala efektywnie obliczać wartości iloczynu Weila.
+Wreszcie, rozdział piąty opisuje zastosowania iloczynu Weila w kryptografii.
