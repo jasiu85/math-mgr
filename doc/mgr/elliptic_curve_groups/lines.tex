@@ -12,20 +12,27 @@ geometrycznego pojęcia linii prostej.
 Przyjmujemy następującą definicję linii na krzywej eliptycznej.
 
 \begin{definition}
-\emph{Linia na krzywej eliptycznej $E(\K)$}
-to wielomian $l$ postaci $l = ax + by +c$,
-gdzie $a, b, c \in \K$
-oraz współczynniki $a$ i $b$ nie są jednocześnie równe $0$.
+Dana jest krzywa eliptyczna $E = E(\K)$
+oraz trzy elementy $a, b, c \in \K$ takie,
+że $a$ i $b$ nie są jednocześnie równe $0$.
+\emph{Linia na krzywej eliptycznej $E(\K)$ o współczynnikach $a$, $b$ i $c$}
+to wielomian $ax + by + c$.
+Zbiór wszystkich linii na krzywej eliptycznej $E$
+oznaczamy symbolem $\Lines(E)$.
 \end{definition}
 
 \begin{definition}
-Dana jest krzywa eliptyczna $E$ oraz linia $l$ na tej krzywej.
+Dana jest krzywa eliptyczna $E$,
+linia $l \in \Lines(E)$
+oraz punkt $P \in E$.
 Mówimy, że \emph{linia $l$ przecina krzywą $E$ w punkcie $P$},
 jeśli $l(P) = 0$.
 \end{definition}
 
 \begin{definition}
-Dana jest krzywa eliptyczna $E$ oraz linia $l$ na tej krzywej.
+Dana jest krzywa eliptyczna $E$,
+linia $l \in \Lines(E)$
+oraz punkt $P \in E$.
 Mówimy, że \emph{linia $l$ jest styczna do krzywej $E$ w punkcie $P$},
 jeśli $\ord_P(l) > 1$.
 \end{definition}
@@ -36,14 +43,17 @@ Następujące własności są to po prostu podane wcześniej fakty
 zastosowane do przypadku linii.
 
 \begin{fact}\label{line_deg_fact}
-Dana jest linia $l = ax + by + c$.
-Jej stopień wynosi $3$, gdy $b \neq 0$
-oraz $2$, gdy $b = 0$.
+Dana jest krzywa eliptyczna $E$
+oraz linia $l \in \Lines(E)$, $l = ax + by + c$.
+Jeżeli $b \neq 0$, to $\deg(l) = 3$,
+w przeciwnym razie $\deg(l) = 2$.
 \end{fact}
 
 \begin{fact}\label{line_divisor_norm_fact}
-Dana jest linia $l$.
-Wówczas $\abs{\rdiv(l)} \in \{2,3\}$.
+Dana jest krzywa eliptyczna $E$
+oraz linia $l \in \Lines(E)$, $l = ax + by + c$.
+Jeżeli $b \neq 0$, to $\abs{\rdiv(l)} = 3$,
+w przeiwnym razie $\abs{\rdiv(l)} = 2$.
 \end{fact}
 
 Będziemy mieć dużo do czynienia z liniami,
@@ -51,9 +61,11 @@ dlatego musimy uściślić wyniki,
 które przedstawia fakt \ref{line_divisor_norm_fact}.
 
 \begin{fact}\label{possible_line_divisors_fact}
-Dana jest linia $l$ na krzywej eliptycznej $E$.
-Niech $P$, $Q$ oraz $R$ oznaczają dowolne trzy parami różne punkty krzywej $E$.
-Wówczas dywizor $\rdiv(l)$ linii $l$ może mieć jedną z następujących postaci:
+Dana jest krzywa eliptyczna $E$
+oraz linia $l \in \Lines(E)$.
+Niech $P, Q, R \in E$ oznaczają dowolne trzy punkty krzywej $E$,
+które są parami różne i różne od punktu w nieskończoności.
+Wówczas dywizor $\rdiv(l)$ może mieć jedną z następujących postaci:
 \begin{itemize}
 \item $\rdiv(l) = \divi{P} + \divi{Q} + \divi{R} - 3\divi{\ecident}$;
 \item $\rdiv(l) = 2\divi{P} + \divi{Q} - 3\divi{\ecident}$;
@@ -83,8 +95,10 @@ Następujące twierdzenia pokazują,
 w jaki sposób linie przecinają się z krzywymi eliptycznymi.
 
 \begin{theorem}\label{line_through_two_points_theorem}
-Przez dowolne dwa różne punkty skończone $P$ i $Q$ krzywej eliptycznej
-można przeprowadzić dokładnie jedną (z dokładnością do czynnika stałego) linię.
+Dana jest krzywa eliptyczna $E$
+oraz punkty skończone $P, Q \in E$, $P \neq Q$.
+Wówczas przez punkty $P$ i $Q$
+przechodzi dokładnie jedna (z dokładnością do czynnika stałego) linia.
 \end{theorem}
 
 \begin{proof}
@@ -105,32 +119,39 @@ to rozpatrujemy linię:
 l(x, y) = \left(\frac{d-b}{c-a}\right)(x - a) - (y - b)
 \end{equation}
 Ponownie, $l(P) = 0$ oraz $l(Q) = 0$.
-Zauważmy też, że $c \neq a$,
-więc iloraz $\frac{d-b}{c-a}$ jest dobrze określony.
+Zauważmy też,
+że iloraz $\frac{d-b}{c-a}$ jest dobrze określony,
+ponieważ $c \neq a$.
 \end{enumerate}
+
 W obu przypadkach można pokazać, że inne linie
 przechodzące przez punkty $P$ i $Q$ różnią się od linii $l$ o czynnik stały.
 Wystarczy rozpatrzyć odpowiedni układ równań liniowych
-na współczynniki linii: jedno równanie ma postać $l(P) = 0$,
-a drugie -- $l(Q) = 0$.
+na współczynniki linii:
+jedno równanie ma postać $l(P) = 0$, a drugie -- $l(Q) = 0$.
+Są to dwa równania liniowe trzech zmiennych,
+przestrzeń rozwiązań jest więc jednowymiarowa.
+Widać też, że wszystkie rozwiązania są proporcjonalne,
+ponieważ układ równań jest jednorodny.
 \end{proof}
 
 \begin{theorem}
-Dane są dwa różne punkty skończone $P$ i $Q$ na krzywej eliptycznej
-oraz linia $l$ przechodząca przez te punkty.
+Dana jest krzywa eliptyczna $E$,
+punkty skończone $P, Q \in E$, $P \neq Q$.
+Niech $l \in \Lines(E)$ będzie linią przechodzącą przez punkty $P$ i $Q$.
 Wówczas:
 \begin{itemize}
-\item jeśli $P = \overline{Q}$,
+\item jeżeli $P = \overline{Q}$,
 to $\rdiv(l) = \divi{P} + \divi{Q} - 2\divi{\ecident}$;
-\item jeśli $P \neq \overline{Q}$,
-to $\rdiv(l) = \divi{P} + \divi{Q} + \divi{R} - 3\divi{\ecident}$,
-przy czym punkt $R$ jest skończony
-i może zdarzyć się, że $R = P$ lub $R = Q$.
+\item jeżeli $P \neq \overline{Q}$,
+to istnieje punkt skończony $R \in E$ taki,
+że $\rdiv(l) = \divi{P} + \divi{Q} + \divi{R} - 3\divi{\ecident}$,
+może przy tym zdarzyć się, że $R = P$ lub $R = Q$.
 \end{itemize}
 \end{theorem}
 
 \begin{proof}
-Rozważmy dwa przypadki.
+Rozważmy oba przypadki.
 \begin{enumerate}
 \item
 Jeżeli $P = \overline{Q}$,
