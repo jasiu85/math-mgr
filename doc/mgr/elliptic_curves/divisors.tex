@@ -7,16 +7,20 @@ Narzędziem, które pozwoli nam je badać, są dywizory.
 
 \subsection*{Definicja}
 
-Aby móc zdefiniować dywizor,
-przypomnijmy, czym jest abelowa grupa wolna.
+Przed podaniem definicji dywizora na krzywej eliptycznej przypomnijmy,
+czym jest abelowa grupa wolna.
 
 \begin{definition}
-Dany jest zbiór $S$.
-\emph{Suma formalna nad zbiorem $S$} to wyrażenie w postaci
+Dany jest zbiór $S$,
+liczba naturalna $n$,
+parami różne elementy $s_1, \ldots, s_n \in S$
+oraz liczby całkowite $a_1, \ldots, a_n \in \Z$.
+\emph{Skończona suma formalna nad zbiorem $S$ długości $n$
+o składnikach $s_1, \ldots s_k$ i współczynnikach $a_1, \ldots, a_k$}
+to następujące wyrażenie:
 \begin{equation*}
 \sum_{k=1}^n a_k\divi{s_k}
 \end{equation*}
-gdzie $a_k \in \Z$ oraz $s_k \in S$ dla $k = 1, 2, \ldots, n$.
 
 \emph{Abelowa grupa wolna generowana przez zbiór $S$}
 to zbiór złożony ze wszystich sum formalnych nad zbiorem $S$
@@ -24,7 +28,7 @@ wyposażony w działanie polegające na formalnym dodaniu dwóch sum
 i pogrupowaniu składników ze względu na elementy zbioru $S$.
 \end{definition}
 
-\begin{remark}
+\begin{remark}\label{formal_sum_notation_remark}
 Sumę formalną nad zbiorem $S$ będziemy często zapisywać
 w następującej postaci:
 \begin{equation*}
@@ -39,10 +43,11 @@ tylko skończoną ilość razy.
 Dana jest krzywa eliptyczna $E$.
 \emph{Dywizor na krzywej eliptycznej $E$}
 to element abelowej grupy wolnej generowanej przez punkty krzywej $E$.
+Zbiór wszystkich dywizorów na krzywej $E$ oznaczamy symbolem $\Div(E)$.
 \end{definition}
 
 \begin{remark}
-Zgodnie z poczynioną przed chwilą uwagą,
+Zgodnie z poczynioną przed chwilą uwagą \ref{formal_sum_notation_remark}
 dywizory na krzywej eliptycznej $E$ będziemy często zapisywać
 w następującej postaci:
 \begin{equation*}
@@ -50,38 +55,27 @@ w następującej postaci:
 \end{equation*}
 \end{remark}
 
-\subsection*{Własności dywizorów}
-
 Dla dywizorów określamy stopień oraz normę.
 
 \begin{definition}
-Dany jest dywizor $\Delta$ na krzywej eliptycznej $E$.
+Dana jest krzywa eliptyczna $E$
+oraz dywizor $\Delta \in \Div(E)$,
+$\Delta = \linebreak \sum_{P \in E} a(P)\divi{P}$.
 \emph{Stopień dywizora $\Delta$},
-oznaczany $\deg(\Delta)$,
-to suma współczynników
-stojących przy punktach krzywej wchodzących w jego skład,
-to znaczy, gdy dywizor $\Delta$ dany jest wzorem
-\begin{equation*}
-\Delta = \sum_{P \in E} a(P)\divi{P}
-\end{equation*}
-to jego stopień dany jest wzorem
+oznaczany symbolem $\deg(\Delta)$,
+to następująca wielkość:
 \begin{equation*}
 \deg(\Delta) = \sum_{P \in E} a(P)
 \end{equation*}
 \end{definition}
 
 \begin{definition}
-Dany jest dywizor $\Delta$ na krzywej eliptycznej $E$.
+Dana jest krzywa eliptyczna $E$
+oraz dywizor $\Delta \in \Div(E)$,
+$\Delta = \linebreak \sum_{P \in E} a(P)\divi{P}$.
 \emph{Norma dywizora $\Delta$},
-oznaczana $\abs{\Delta}$,
-to suma wartości bezwzględnych współczynników
-stojących przy wszytkich punktach krzywej wchodzących w jego skład
-z wyjątkiem punktu w nieskończoności,
-to znaczy, gdy dywizor $\Delta$ dany jest wzorem
-\begin{equation*}
-\Delta = \sum_{P \in E} a(P)\divi{P}
-\end{equation*}
-to jego norma dana jest wzorem
+oznaczana symbolem $\abs{\Delta}$,
+to następująca wielkość:
 \begin{equation*}
 \abs{\Delta} = \sum_{P \in E \setminus \{\ecident\}} \abs{a(P)}
 \end{equation*}
@@ -95,10 +89,11 @@ o wszystkich miejscach zerowych i biegunach funkcji wymiernej
 oraz ich krotnościach.
 
 \begin{definition}
-Dana jest funkcja wymierna $r$ na krzywej eliptycznej $E$.
+Dana jest krzywa eliptyczna $E = E(\K)$
+oraz funkcja wymierna $r \in \K(E)$.
 \emph{Dywizor funkcji $r$},
-oznaczany $\rdiv(r)$,
-to dywizor określony następującym wzorem:
+oznaczany symbolem $\rdiv(r)$,
+to następujący dywizor:
 \begin{equation*}
 \rdiv(r) = \sum_{P \in E} \ord_P(r)\divi{P}
 \end{equation*}
@@ -108,20 +103,23 @@ Okazuje się, że dywizor niosący informacje o miejscach zerowych i biegunach
 funkcji wymiernej wyznacza ją niemalże jednoznacznie.
 
 \begin{fact}
-Dwie funkcje wymierne różniące się o czynnik stały mają taki sam dywizor.
+Dwie funkcje wymierne na krzywej eliptycznej
+różniące się o czynnik stały mają taki sam dywizor.
 \end{fact}
 
 \begin{theorem}
-Dane są dwie funkcje wymierne $r$ i $s$ na krzywej eliptycznej takie,
-że $\rdiv(r) = \rdiv(s)$.
-Wówczas iloraz $\frac{r}{s}$ jest stały.
+Dana jest krzywa eliptyczna $E = E(\K)$
+oraz dwie funkcje wymierne $r, s \in \K(E)$.
+Wówczas iloraz $\frac{r}{s}$ jest stały i niezerowy.
 \end{theorem}
 
 \begin{corollary}\label{zero_div_const_fun_coro}
-Funkcja wymierna na krzywej eliptycznej nie ma miejsca zerowego ani bieguna,
-wtedy i tylko wtedy, gdy jest stała i niezerowa.
+Funkcja wymierna na krzywej eliptycznej
+nie ma miejsca zerowego ani bieguna wtedy i tylko wtedy,
+gdy jest stała i niezerowa.
 \end{corollary}
 
 \begin{corollary}\label{fun_divi_equiv_to_const_lemma}
-Dywizor wyznacza funkcję wymierną z dokładnością do stałego czynnika.
+Dywizor na krzywej eliptycznej
+wyznacza funkcję wymierną z dokładnością do stałego czynnika.
 \end{corollary}

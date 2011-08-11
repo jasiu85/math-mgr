@@ -6,29 +6,35 @@ następującą definicję krzywej eliptycznej.
 \begin{definition}\label{elliptic_curve_definition}
 Dane jest ciało $\K$ oraz dwa jego elementy $A, B \in \K$.
 Wówczas \emph{krzywa eliptyczna nad ciałem $\K$ o parametrach $A$ i $B$},
-oznaczana $E_{A,B}(\K)$ (w skrócie $E(\K)$ lub $E$),
+oznaczana symbolem $E_{A,B}(\K)$ (w skrócie $E(\K)$ lub $E$),
 to zbiór składający się
-ze wszystkich par $(x, y) \in \K \times \K$, które spełniają równość
+ze wszystkich par $(x, y) \in \K \times \K$,
+które spełniają następującą równość:
 \begin{equation}\label{elliptic_curve_equation}
 y^2 = x^3 + Ax + B
 \end{equation}
-oraz jednego dodatkowego elementu oznaczanego symbolem $\ecident$.
+Ponadto, każda krzywa eliptyczna zawiera jeszcze jeden dodatkowy element,
+oznaczany symbolem $\ecident$.
 \end{definition}
 
 Ustalamy ponadto następujące określenia.
 
 \begin{definition}
-Element $\ecident$ krzywej eliptycznej zwany jest
-\emph{punktem w nieskończoności} lub \emph{identycznością}.
-Pozostałe elementy krzywej zwane są \emph{punktami skończonymi}.
-Punkty skończone postaci $P = (a, 0)$ zwane są \emph{punktami rzędu dwa}.
+Dana jest krzywa eliptyczna $E$.
+Element $\ecident \in E$ zwany jest
+\emph{punktem w nieskończoności (na) krzywej $E$} lub jej \emph{identycznością}.
+Pozostałe elementy $P \in E$
+zwane są \emph{punktami skończonymi (na) krzywej $E$}.
+Punkty skończone $P \in E$ postaci $P = (a, 0)$
+zwane są \emph{punktami rzędu dwa (na) krzywej $E$}.
 \end{definition}
 
 \begin{definition}
-Równanie \ref{elliptic_curve_equation} zwane jest \emph{równaniem krzywej}.
+Dana jest krzywa eliptyczna $E$.
+Równanie \ref{elliptic_curve_equation} zwane jest \emph{równaniem krzywej $E$}.
 Wielomian $x^3 + Ax + B$ występujący po jego prawej stronie,
-oznaczany symbolem $\kappa$,
-zwany jest \emph{wielomianem charakterystycznym krzywej}.
+oznaczany symbolem $\kappa(E)$ (w skrócie $\kappa$),
+zwany jest \emph{wielomianem charakterystycznym krzywej $E$}.
 \end{definition}
 
 Pochodzenie określeń
@@ -40,14 +46,15 @@ wprowadzamy jeszcze następujące oznaczenie,
 którego będziemy często używać.
 
 \begin{definition}
-Dany jest punkt skończony $P = (a, b)$ na krzywej eliptycznej.
-\emph{Punkt sprzężony do punktu $P$}, oznaczany $\overline{P}$,
-to punkt $(a, -b)$.
+Dana jest krzywa eliptyczna $E$
+oraz jej punkt skończony $P \in E$, $P = (a, b)$.
+\emph{Punkt sprzężony do punktu $P$}
+to punkt $\overline{P} = (a, -b)$.
 \end{definition}
 
 \begin{fact}
-Punkty rzędu dwa są sprzężone do samych siebie,
-tzn. jeśli $P = (a, 0)$, to $\overline{P} = P$.
+Punkty rzędu dwa na krzywej eliptycznej są sprzężone do samych siebie,
+tzn. jeżeli $P = (a, 0)$, to $P = \overline{P}$.
 \end{fact}
 
 W definicji \ref{elliptic_curve_definition} ciało $\K$ może być dowolne,
@@ -59,7 +66,7 @@ nie jest odpowiednia w takiej sytuacji.
 
 \begin{remark}
 Zakładamy odtąd, o ile nie będzie zaznaczone inaczej,
-że charakterystyka ciała $\K$, nad którym rozważamy krzywe eliptyczne,
+że charakterystyka ciał, nad którymi rozważamy krzywe eliptyczne,
 jest różna od $2$ i $3$.
 \end{remark}
 
@@ -68,7 +75,7 @@ którym nie będziemy zajmować się w niniejszej pracy.
 
 \begin{definition}
 Krzywa eliptyczna $E(\K)$ jest \emph{zdegenerowana},
-jeżeli jej wielomian charakterystyczny $\kappa$
+jeżeli jej wielomian charakterystyczny $\kappa(E)$
 ma w domknięciu algebraicznym $\overline{\K}$ ciała $\K$
 pierwiastek wielokrotny.
 Jeżeli krzywa nie jest zdegenerowana,
