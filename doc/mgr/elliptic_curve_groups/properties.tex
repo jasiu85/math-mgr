@@ -8,8 +8,10 @@ w definicji działania grupowego,
 ciało, nad którym krzywe rozpatrujemy, nie musi być algebraicznie domknięte.
 
 \begin{fact}
-Dana jest krzywa eliptyczna $E(\fieldL)$ oraz ciało $\K \subset \fieldL$.
-Wówczas suma dwóch punktów $\K$-wymiernych jest punktem $\K$-wymiernym.
+Dana jest krzywa eliptyczna $E$ nad ciałem $\fieldL$
+o parametrach z ciała $\K \subset \fieldL$.
+Wówczas suma dwóch punktów $\K$-wymiernych na krzywej $E$
+jest punktem $\K$-wymiernym.
 \end{fact}
 
 Jest jasne, że w przypadku ciał algebraicznie domkniętych krzywa eliptyczna
@@ -18,7 +20,7 @@ W przypadku ciał skończonych sytuacja wygląda zupełnie inaczej.
 
 \begin{theorem}[Hasse]
 Rząd grupy na dowolnej krzywej eliptycznej $E$
-nad dowolnym ciałem skończonym $\GF_q$,
+nad dowolnym ciałem skończonym $\GF(q)$,
 gdzie $q = p^n$ oraz $p$ jest liczbą pierwszą,
 spełnia następującą nierówność:
 \begin{equation}
@@ -28,11 +30,12 @@ q + 1 - 2\sqrt{q} \leq \abs{E} \leq q + 1 + 2\sqrt{q}
 
 Dowód tego twierdzenia można znaleźć np. w pracy \cite{ecintro1},
 zaś intuicyjne wyjaśnienie jest następujące.
-Jeżeli potraktujemy wielomian charakterystyczny $\kappa$ krzywej eliptycznej
-jak funkcję różnowartościową,
-to wówczas dla mniej-więcej połowy elementów $a \in \GF_q$
+Wielomian charakterystyczny $\kappa$ rzadko przyjmuje tę samą wartość
+więcej niż raz, zatem możemy uznać, że jest on ,,prawie''
+permutacją zbioru $\GF(q)$.
+Stąd dla mniej-więcej połowy elementów $a \in \GF(q)$
 można z wartości $\kappa(a)$ wyciągnąć pierwiastek kwadratowy.
-Zatem krzywa ma około $2\frac{q}{2}$ punktów skończonych.
+Zatem krzywa eliptyczna $E(\GF(q))$ ma około $2\frac{q}{2}$ punktów skończonych.
 Doliczając punkt w nieskończoności otrzymujemy około $q + 1$ punktów.
 
 Choć nie ma jawnego wzoru
@@ -42,7 +45,7 @@ którego dowód można odnaleźć w książce \cite{silverman},
 charakteryzuje ogólną strukturę takiej grupy.
 
 \begin{theorem}\label{finite_curve_structure_theorem}
-Grupa na krzywej eliptycznej $E$ nad ciałem $\GF_q$
+Grupa na krzywej eliptycznej nad ciałem $\GF(q)$
 jest izomorficzna z grupą $(\Z/m\Z) \times (\Z/n\Z)$,
 przy czym $n \mid \gcd(m, q-1)$.
 \end{theorem}
@@ -53,6 +56,6 @@ rząd grupy na krzywej nad ciałem skończonym.
 Został on opublikowany po raz pierwszy w pracy \cite{schoof}.
 
 \begin{theorem}[Schoof]
-Istnieje algorytm, który pozwala obliczyć rząd grupy na krzywej eliptycznej $E$
-nad ciałem $\GF_q$ za pomocą $O(\log^8 q)$ operacji na bitach.
+Istnieje algorytm, który pozwala obliczyć rząd grupy na krzywej eliptycznej
+nad ciałem $\GF(q)$ za pomocą $O(\log^8 q)$ operacji na bitach.
 \end{theorem}

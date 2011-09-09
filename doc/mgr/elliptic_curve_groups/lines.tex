@@ -4,37 +4,35 @@ Aby zdefiniować działanie grupowe na krzywej eliptycznej,
 będziemy wielokrotnie posługiwać się
 pewną specyficzną klasą wielomianów.
 Są to odpowiedniki wielomianów liniowych
-i stanowią one algebraiczny odpowiednik
-geometrycznego pojęcia linii prostej.
+i linii prostych.
 
 \subsection*{Definicja}
 
 Przyjmujemy następującą definicję linii na krzywej eliptycznej.
 
 \begin{definition}
-Dana jest krzywa eliptyczna $E = E(\K)$
-oraz trzy elementy $a, b, c \in \K$ takie,
+Dana jest krzywa eliptyczna $E$ nad ciałem $\K$
+oraz trzy elementy $a$, $b$ i $c$ ciała $\K$ takie,
 że $a$ i $b$ nie są jednocześnie równe $0$.
-\emph{Linia na krzywej eliptycznej $E(\K)$ o współczynnikach $a$, $b$ i $c$}
+\emph{Linia na krzywej eliptycznej $E$ o współczynnikach $a$, $b$ i $c$}
 to wielomian $ax + by + c$.
+Jeżeli $b = 0$, to mówimy, że linia $l$ jest \emph{pionowa}.
 Zbiór wszystkich linii na krzywej eliptycznej $E$
 oznaczamy symbolem $\Lines(E)$.
 \end{definition}
 
 \begin{definition}
-Dana jest krzywa eliptyczna $E$,
-linia $l \in \Lines(E)$
+Dana jest linia $l$ na krzywej eliptycznej $E$
 oraz punkt $P \in E$.
-Mówimy, że \emph{linia $l$ przecina krzywą $E$ w punkcie $P$},
-jeśli $l(P) = 0$.
+\emph{Linia $l$ przecina krzywą $E$ w punkcie $P$},
+jeżeli $l(P) = 0$.
 \end{definition}
 
 \begin{definition}
-Dana jest krzywa eliptyczna $E$,
-linia $l \in \Lines(E)$
+Dana jest linia $l$ na krzywej eliptycznej $E$
 oraz punkt $P \in E$.
-Mówimy, że \emph{linia $l$ jest styczna do krzywej $E$ w punkcie $P$},
-jeśli $\ord_P(l) > 1$.
+\emph{Linia $l$ jest styczna do krzywej $E$ w punkcie $P$},
+jeżeli $\ord_P(l) > 1$.
 \end{definition}
 
 \subsection*{Własności}
@@ -43,15 +41,13 @@ Następujące własności są to po prostu podane wcześniej fakty
 zastosowane do przypadku linii.
 
 \begin{fact}\label{line_deg_fact}
-Dana jest krzywa eliptyczna $E$
-oraz linia $l \in \Lines(E)$, $l = ax + by + c$.
+Dana jest linia $l$ na krzywej eliptycznej postaci $l = ax + by + c$.
 Jeżeli $b \neq 0$, to $\deg(l) = 3$,
 w przeciwnym razie $\deg(l) = 2$.
 \end{fact}
 
 \begin{fact}\label{line_divisor_norm_fact}
-Dana jest krzywa eliptyczna $E$
-oraz linia $l \in \Lines(E)$, $l = ax + by + c$.
+Dana jest linia $l$ na krzywej eliptycznej postaci $l = ax + by + c$.
 Jeżeli $b \neq 0$, to $\abs{\rdiv(l)} = 3$,
 w przeiwnym razie $\abs{\rdiv(l)} = 2$.
 \end{fact}
@@ -61,10 +57,9 @@ dlatego musimy uściślić wyniki,
 które przedstawia fakt \ref{line_divisor_norm_fact}.
 
 \begin{fact}\label{possible_line_divisors_fact}
-Dana jest krzywa eliptyczna $E$
-oraz linia $l \in \Lines(E)$.
-Niech $P, Q, R \in E$ oznaczają dowolne trzy punkty krzywej $E$,
-które są parami różne i różne od punktu w nieskończoności.
+Dana jest linia $l$ na krzywej eliptycznej $E$.
+Niech $P$, $Q$ i $R$ będą
+trzema parami różnymi punktami skończonymi krzywej $E$.
 Wówczas dywizor $\rdiv(l)$ może mieć jedną z następujących postaci:
 \begin{itemize}
 \item $\rdiv(l) = \divi{P} + \divi{Q} + \divi{R} - 3\divi{\ecident}$;
@@ -86,7 +81,6 @@ może zdarzyć się, że punkty $P$, $Q$ oraz $R$ nie są parami różne
 lub że jeden z nich nie jest skończony;
 \item $\rdiv(l) = \divi{P} + \divi{\overline{P}} - 2\divi{\ecident}$ --
 jest to ogólna postać linii pionowych,
-tzn. takich, które mają współczynnik przy zmiennej $y$ równy $0$,
 może zdarzyć się, że $P = \overline{P}$.
 \end{itemize}
 \end{remark}
@@ -95,14 +89,13 @@ Następujące twierdzenia pokazują,
 w jaki sposób linie przecinają się z krzywymi eliptycznymi.
 
 \begin{theorem}\label{line_through_two_points_theorem}
-Dana jest krzywa eliptyczna $E$
-oraz punkty skończone $P, Q \in E$, $P \neq Q$.
+Dane są dwa różne punkty skończone $P$ i $Q$ na krzywej eliptycznej.
 Wówczas przez punkty $P$ i $Q$
-przechodzi dokładnie jedna (z dokładnością do czynnika stałego) linia.
+przechodzi jedna (z dokładnością do czynnika stałego) linia.
 \end{theorem}
 
 \begin{proof}
-Oznaczmy $P = (a, b), Q = (c, d)$ i rozważmy dwa przypadki.
+Oznaczmy $P = (a, b)$, $Q = (c, d)$ i rozważmy dwa przypadki.
 \begin{enumerate}
 \item
 Jeżeli $P = \overline{Q}$,
@@ -118,7 +111,7 @@ to rozpatrujemy linię:
 \begin{equation}
 l(x, y) = \left(\frac{d-b}{c-a}\right)(x - a) - (y - b)
 \end{equation}
-Ponownie, $l(P) = 0$ oraz $l(Q) = 0$.
+Ponownie łatwo sprawdzić, że $l(P) = 0$ oraz $l(Q) = 0$.
 Zauważmy też,
 że iloraz $\frac{d-b}{c-a}$ jest dobrze określony,
 ponieważ $c \neq a$.
@@ -136,9 +129,8 @@ ponieważ układ równań jest jednorodny.
 \end{proof}
 
 \begin{theorem}
-Dana jest krzywa eliptyczna $E$,
-punkty skończone $P, Q \in E$, $P \neq Q$.
-Niech $l \in \Lines(E)$ będzie linią przechodzącą przez punkty $P$ i $Q$.
+Dane są dwa różne punkty skończone $P$ i $Q$ na krzywej eliptycznej.
+Niech $l$ będzie linią przechodzącą przez punkty $P$ i $Q$.
 Wówczas:
 \begin{itemize}
 \item jeżeli $P = \overline{Q}$,
@@ -177,11 +169,13 @@ W pozostałych przypadkach można dobrać punkt skończony $R$
 \end{proof}
 
 \begin{theorem}
-Dane są dwa różne punkty skończone $P = (a, b)$ i $Q = (c, d)$
-na krzywej eliptycznej oraz linia $l$ przechodząca przez te punkty.
-Jeżeli $\rdiv(l) = \divi{P} + \divi{Q} + \divi{R} - 3\divi{\ecident}$,
-gdzie $R = (e, f)$ jest punktem skończonym krzywej,
-to:
+Dane są dwa różne, niesprzężone do siebie
+punkty skończone $P$ i $Q$ na krzywej eliptycznej
+postaci $P = (a, b)$ i $Q = (c, d)$.
+Niech $l$ będzie linią przechodzącą przez punkty $P$ i $Q$.
+Niech $R$ będzie punktem skończonym krzywej postaci $R = (e, f)$ takim,
+że $\rdiv(l) = \divi{P} + \divi{Q} + \divi{R} - 3\divi{\ecident}$.
+Wówczas:
 \begin{eqnarray}
 \label{chord_line_third_point_x_eqn}
 e & = & \left(\frac{d-b}{c-a}\right)^2 - a - c \\
@@ -214,16 +208,16 @@ f & = & b + \left(\frac{d-b}{c-a}\right)(e-a)
 \end{proof}
 
 \begin{theorem}\label{line_tangent_at_point_theorem}
-Przez dowolny punkt skończony $P$ krzywej eliptycznej
-można poprowadzić dokładnie jedną (z dokładnością do czynnika stałego)
-linię styczną do krzywej w tym punkcie.
+Dany jest punkt skończony $P$ na krzywej eliptycznej.
+Wówczas przez punkt $P$ przechodzi jedna (z dokładnością do czynnika stałego)
+linia styczna do krzywej w punkcie $P$.
 \end{theorem}
 
 \begin{proof}
 Oznaczmy $P = (a, b)$ i rozważmy dwa przypadki.
 \begin{enumerate}
 \item
-Jeżeli $P$ jest punktem podwójnym, tzn. $P = \overline{P}$ i $b = 0$,
+Jeżeli $P$ jest punktem rzędu dwa, tzn. $P = \overline{P}$ i $b = 0$,
 to rozpatrujemy linię:
 \begin{equation}
 l(x, y) = x - a
@@ -231,11 +225,11 @@ l(x, y) = x - a
 Ma ona stopień równy $2$,
 a jej dywizor, zgodnie z uwagą \ref{possible_line_divisors_remark},
 ma postać $\divi{P} + \divi{\overline{P}} - 2\divi{\ecident}$.
-Skoro $P$ jest punktem podwójnym, to dywizor ten jest równy
+Skoro $P$ jest punktem rzędu dwa, to dywizor ten jest równy
 $2\divi{P} - 2\divi{\ecident}$,
 zatem linia $l$ jest styczna do krzywej w punkcie $P$.
 \item
-Jeżeli $P$ nie jest punktem podwójnym,
+Jeżeli $P$ nie jest punktem rzędu dwa,
 to rozpatrujemy linię:
 \begin{equation}
 l(x, y) = \left(\frac{3a^2 + A}{2b}\right)(x - a) - (y - b)
@@ -261,7 +255,9 @@ s = \frac{l}{u}
 Widzimy teraz, że $s(P) = 0$,
 Zatem $\ord_P(l) > 1$, czyli linia $l$ jest styczna do krzywej w punkcie $P$.
 \end{enumerate}
-Ponownie, to, że inne linie styczne w punkcie $P$ różnią się od linii $l$
+
+Podobnie jak w dowodzie twierdzenia \ref{line_through_two_points_theorem},
+to, że inne linie styczne do krzywej w punkcie $P$ różnią się od linii $l$
 o czynnik stały, wynika z rozpatrzenia odpowiedniego układu równań liniowych.
 Jedno równanie ma postać $l(P) = 0$, a drugie --
 $s(P) = (\frac{l}{u})(P) = 0$
@@ -269,8 +265,8 @@ $s(P) = (\frac{l}{u})(P) = 0$
 \end{proof}
 
 \begin{theorem}
-Dany jest punkt skończony $P$ na krzywej eliptycznej
-oraz linia $l$ styczna do krzywej w tym punkcie.
+Dany jest punkt skończony $P$ na krzywej eliptycznej.
+Niech $l$ będzie linią styczną do krzywej w punkcie $P$.
 Wówczas:
 \begin{itemize}
 \item jeśli $P = \overline{P}$,
@@ -309,11 +305,12 @@ W pozostałych przypadkach można dobrać punkt skończony $Q$
 \end{proof}
 
 \begin{theorem}
-Dany jest punkt skończony $P = (a, b)$ na krzywej eliptycznej
-oraz linia $l$ styczna do krzywej w tym punkcie.
-Jeżeli $div(l) = 2\divi{P} + \divi{Q} - 3\divi{\ecident}$,
-gdzie $Q = (c, d)$ jest punktem skończonym krzywej,
-to:
+Dany jest punkt skończony $P$ na krzywej eliptycznej postaci $P = (a, b)$
+niebędący punktem rzędu dwa.
+Niech $l$ będzie linią styczną do krzywej w punkcie $P$.
+Niech $Q$ będzie punktem skończonym krzywej postaci $Q = (c, d)$ takim,
+że $\rdiv(l) = 2\divi{P} + \divi{Q} - 3\divi{\ecident}$.
+Wówczas:
 \begin{eqnarray}
 \label{tangent_line_third_point_x_eqn}
 c & = & \left(\frac{3a^2 + A}{2b}\right)^2 - 2a \\
@@ -355,19 +352,24 @@ takiej linii z krzywą eliptyczną dają się wyrazić
 jako nieskomplikowane wyrażenia wymierne.
 
 \begin{fact}
-Dana jest krzywa eliptyczna $E(\fieldL)$, ciało $\K \subset \fieldL$
-oraz linia $l$ przechodząca przez punkty $P$ i $Q$ krzywej.
-Oznaczmy $\rdiv(l) = \divi{P} + \divi{Q} + \divi{R} - 3\divi{\ecident}$.
+Dana jest krzywa eliptyczna $E$ nad ciałem $\fieldL$
+o parametrach z ciała $\K \subset \fieldL$
+oraz dwa różne punkty skończone $P, Q \in E$.
+Niech $l$ będzie linią przechodzącą przez punkty $P$ i $Q$,
+a $R$ będzie trzecim punktem przecięcia linii $l$ z krzywą $E$,
+tzn. $\rdiv(l) = \divi{P} + \divi{Q} + \divi{R} - 3\divi{\ecident}$.
 Wówczas, jeżeli punkty $P$ i $Q$ są $\K$-wymierne,
 to również punkt $R$ jest $\K$-wymierny,
 a współczynniki linii $l$ są elementami ciała $\K$.
-a punkt $R$ jest $\K$-wymierny.
 \end{fact}
 
 \begin{fact}
-Dana jest krzywa eliptyczna $E(\fieldL)$, ciało $\K \subset \fieldL$
-oraz linia $l$ styczna do krzywej w punkcie $P$.
-Oznaczmy $\rdiv(l) = 2\divi{P} + \divi{Q} - 3\divi{\ecident}$.
+Dana jest krzywa eliptyczna $E$ nad ciałem $\fieldL$
+o parametrach z ciała $\K \subset \fieldL$
+oraz punkt skończony $P \in E$ niebędący punktem rzędu dwa.
+Niech $l$ będzie linią styczną do krzywej $E$ w punkcie $P$,
+a $Q$ będzie drugim punktem przecięcia linii $l$ z krzywą $E$,
+tzn. $\rdiv(l) = 2\divi{P} + \divi{Q} - 3\divi{\ecident}$.
 Wówczas, jeżeli punkt $P$ jest $\K$-wymierny,
 to również punkt $Q$ jest $\K$-wymierny,
 a współczynniki linii $l$ są elementami ciała $\K$.
@@ -379,6 +381,6 @@ a mimo to zawsze da się wyznaczyć współczynniki linii
 oraz dodatkowego punktu przecięcia linii z krzywą.
 A priori nie było to oczywiste --
 uzyskane wzory mogły być bardziej skomplikowane (np. wymagać pierwiastkowania)
-i konkretne liczby niezbędne do wyrażenia współczynników i współrzędnych
+i konkretne wartości niezbędne do wyrażenia współczynników i współrzędnych
 znajdowałyby się dopiero w domknięciu algebraicznym $\overline{\K}$
 ciała $\K$.

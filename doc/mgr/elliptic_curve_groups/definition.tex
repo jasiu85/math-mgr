@@ -5,7 +5,8 @@ Zdefiniujemy teraz działanie grupowe na zbiorze punktów krzywej eliptycznej.
 \begin{definition}\label{ec_groupop_def}
 Dana jest krzywa eliptyczna $E$.
 \emph{Grupa na krzywej eliptycznej $E$}
-składa się ze zbioru punktów krzywej $E$
+to grupa składająca się
+ze zbioru punktów krzywej $E$
 oraz działania, oznaczanego symbolem $+$,
 określonego w następujący sposób.
 \begin{enumerate}
@@ -16,14 +17,16 @@ P + \ecident = \ecident = \ecident + P
 \end{equation}
 \item\label{ec_groupop_inverse}
 Elementem przeciwnym do punktu $P \neq \ecident$,
-oznaczanym $-P$,
+oznaczanym symbolem $-P$,
 jest punkt $\overline{P}$.
 \begin{equation}
 P + \overline{P} = \ecident = \overline{P} + P
 \end{equation}
 \item\label{ec_groupop_add_generic}
-Suma dwóch punktów skończonych $P = (a, b)$ oraz $Q = (c, d)$,
-przy czym $Q \neq \overline{P}$, to punkt $R = (e, f)$,
+Suma dwóch punktów skończonych $P$ i $Q$
+postaci $P = (a, b)$ i $Q = (c, d)$,
+przy czym $Q \neq \overline{P}$,
+to punkt $R$ postaci $R = (e, f)$,
 którego współrzędne są określone następującymi wzorami:
 \begin{eqnarray}
 \label{ec_groupop_add_generic_eqn_x}
@@ -53,24 +56,24 @@ będziemy ją oznaczać tak samo, jak oznaczamy krzywe.
 \end{remark}
 
 \begin{remark}
-W podanej definicji w punkcie \ref{ec_groupop_add_generic}
+W podanej definicji w punkcie \ref{ec_groupop_add_generic}.
 suma dwóch punktów $P$ i $Q$
 nie jest określona, gdy $Q = \overline{P}$
 lub gdy jeden z punktów jest nieskończony.
 Wynik dodawania jest wówczas określony
 na podstawie zależności podanych w punkcie
-\ref{ec_groupop_neutral} lub \ref{ec_groupop_inverse}.
+\ref{ec_groupop_neutral}. lub \ref{ec_groupop_inverse}.
 \end{remark}
 
 \begin{remark}
-Przypadek opisany w punkcie \ref{ec_groupop_add_generic_tangent}
+Przypadek opisany w punkcie \ref{ec_groupop_add_generic_tangent}.
 zachodzi wtedy,
 gdy próbujemy dodać punkt skończony niebędący punktem rzędu dwa
 do samego siebie.
 \end{remark}
 
 \begin{fact}
-Jeżeli punkty $P, Q, R \in E$ leżą na jednej linii,
+Jeżeli punkty $P$, $Q$ i $R$ leżą na jednej linii,
 to $P + Q + R = \ecident$.
 \end{fact}
 
@@ -83,10 +86,12 @@ po czym za wynik dodawania uznajemy punkt $\overline{R}$.
 Podobieństwo do działania w zerowej grupie Picarda nie jest przypadkowe.
 
 \begin{theorem}
-Niech $\pi \colon E \to \Pic^0(E)$
+Dana jest krzywa eliptyczna $E$.
+Niech $\pi$
 będzie bijekcją określoną wzorem
 \ref{piczero_bijection_eqn}.
-Wówczas dla dowolnych punktów $P, Q \in E$:
+Wówczas dla dowolnych punktów $P$ i $Q$ na krzywej $E$
+zachodzą następujące zależności:
 \begin{itemize}
 \item $\pi(P + Q) = \pi(P) + \pi(Q)$;
 \item
@@ -113,9 +118,8 @@ oraz faktu \ref{piczero_addition_fact}.
 \end{proof}
 
 \begin{corollary}
-Krzywa eliptyczna $E$ wraz z działaniem określonym w definicji
-\ref{ec_groupop_def} tworzy grupę abelową.
-Grupa ta jest izomorficzna z grupą $\Pic^0(E)$.
+Grupa na krzywej eliptycznej $E$
+jest abelowa i izomorficzna z grupą $\Pic^0(E)$.
 \end{corollary}
 
 Udało się nam uniknąć sprawdzania praw grupowych
@@ -123,8 +127,8 @@ bezpośrednio z podanej definicji (co byłoby dosyć żmudne),
 a przy tym zrozumieliśmy powód,
 dla którego działanie na krzywej eliptycznej jest zdefiniowane
 właśnie w taki sposób.
-Jest to o tyle cenne, że często działanie
-definiuje się po prostu poprzez podanie odpowiednich wzorów
-i ewentualne skomentowanie faktu,
-że we wzorach tych chodzi o ,,znalezienie trzeciego punktu
-przecięcia linii z krzywą i odbicie go''.
+Jest to o tyle cenne,
+że w literaturze fachowej, lecz niekoniecznie matematycznej,
+działanie grupowe na krzywej eliptycznej
+często definiuje się po prostu poprzez podanie odpowiednich wzorów,
+bez wskazania motywacji.

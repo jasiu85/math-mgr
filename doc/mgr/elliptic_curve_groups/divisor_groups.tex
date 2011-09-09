@@ -10,8 +10,9 @@ Największą rozpatrywaną grupą jest oczywiście
 grupa złożona ze wszystkich dywizorów na krzywej eliptycznej.
 
 \begin{definition}
-\emph{Grupa dywizorów na krzywej eliptycznej $E$},
-oznaczana $\Div(E)$,
+Dana jest krzywa eliptyczna $E$.
+\emph{Grupa dywizorów na krzywej $E$},
+oznaczana symbolem $\Div(E)$,
 jest to abelowa grupa wolna generowana przez punkty krzywej $E$.
 \end{definition}
 
@@ -20,8 +21,9 @@ wyróżnioną pozycję zajmują te,
 które są dywizorami funkcji wymiernych.
 
 \begin{definition}
-Dywizor na krzywej eliptycznej jest \emph{główny},
-jeśli jest on dywizorem pewnej funkcji wymiernej na tej krzywej.
+Dany jest dywizor $\Delta$ na krzywej eliptycznej.
+Dywizor $\Delta$ jest \emph{główny},
+jeżeli jest on dywizorem pewnej funkcji wymiernej na tej krzywej.
 \end{definition}
 
 Następujące twierdzenie pokazuje, że dywizory główne tworzą grupę.
@@ -32,18 +34,21 @@ Wówczas $\rdiv(rs) = \rdiv(r) + \rdiv(s)$.
 \end{theorem}
 
 \begin{definition}
-\emph{Grupa dywizorów głównych na krzywej eliptycznej $E$},
-oznaczana $\Prin(E)$,
-składa się ze wszystkich dywizorów głównych na krzywej $E$.
+Dana jest krzywa eliptyczna $E$.
+\emph{Grupa dywizorów głównych na krzywej $E$},
+oznaczana symbolem $\Prin(E)$,
+to podgrupa grupy $\Div(E)$
+składająca się ze wszystkich dywizorów głównych na krzywej $E$.
 \end{definition}
 
-Grupa $\Prin(E)$ jest oczywiście podgrupą grupy $\Div(E)$,
-a że obie są abelowe, istnieje ich grupa ilorazowa.
+Grupy $\Div(E)$ oraz $\Prin(E)$ są abelowe,
+zatem istnieje ich grupa ilorazowa.
 
 \begin{definition}
-\emph{Grupa Picarda na krzywej eliptycznej $E$},
-oznaczana $\Pic(E)$,
-jest to grupa ilorazowa $\Div(E)/\Prin(E)$.
+Dana jest krzywa eliptyczna $E$.
+\emph{Grupa Picarda na krzywej $E$},
+oznaczana symbolem $\Pic(E)$,
+to grupa ilorazowa $\Div(E)/\Prin(E)$.
 \end{definition}
 
 Jak łatwo się przekonać,
@@ -53,9 +58,10 @@ wtedy i tylko wtedy, gdy ich różnica jest dywizorem głównym.
 Fakt ten prowadzi nas do następującej definicji.
 
 \begin{definition}
-Dywizory $\Delta_1$ oraz $\Delta_2$ są \emph{równoważne},
-co zapisujemy $\Delta_1 \sim \Delta_2$,
-jeśli ich różnica $\Delta_1 - \Delta_2$ jest dywizorem głównym.
+Dane są dywizory $\Delta_1$ i $\Delta_2$ na krzywej eliptycznej.
+Dywizory $\Delta_1$ i $\Delta_2$ są \emph{równoważne},
+co oznaczamy symbolem $\Delta_1 \sim \Delta_2$,
+jeżeli ich różnica $\Delta_1 - \Delta_2$ jest dywizorem głównym.
 \end{definition}
 
 Wniosek \ref{function_order_sum_zero_corollary}
@@ -69,25 +75,25 @@ to $\deg(\Delta) = 0$.
 To prowadzi nas do definicji kolejnej wartej uwagi grupy.
 
 \begin{definition}
-\emph{Grupa dywizorów stopnia zero na krzywej eliptycznej $E$},
-oznaczana $\Div^0(E)$,
-to grupa złożona z dywizorów stopnia zero.
+Dana jest krzywa eliptyczna $E$.
+\emph{Grupa dywizorów stopnia zero na krzywej $E$},
+oznaczana symbolem $\Div^0(E)$,
+to podgrupa grupy $\Div(E)$
+składająca się ze wszystich dywizorów stopnia zero na krzywej $E$.
 \end{definition}
 
-W związku z faktem \ref{prin_divi_zero_deg_fact}
-zachodzą następujące inkluzje:
-$\Prin(E) \subset \Div^0(E) \subset \Div(E)$.
-Wszystkie wymienione grupy są abelowe,
-więc znowu istnieją grupy ilorazowe.
-Grupa ilorazowa $\Div(E) / \Div^0(E) = \Z$
+Inkluzja $\Prin(E) \subset \Div^0(E) \subset \Div(E)$
+Grupa ilorazowa $\Div(E) / \Div^0(E)$
 nie jest specjalnie interesująca,
-natomiast grupa $\Div^0(E) / \Prin(E)$
+ponieważ jest równa grupie liczb całkowitych $\Z$.
+Natomiast grupa $\Div^0(E) / \Prin(E)$
 będzie dla nas bardzo ważna.
 
 \begin{definition}
-\emph{Zerowa grupa Picarda na krzywej eliptyzne $E$},
-oznaczana $\Pic^0(E)$,
-jest to grupa ilorazowa $\Div^0(E) / \Prin(E)$.
+Dana jest krzywa eliptyczna $E$.
+\emph{Zerowa grupa Picarda na krzywej $E$},
+oznaczana symbolem $\Pic^0(E)$,
+to grupa ilorazowa $\Div^0(E) / \Prin(E)$.
 \end{definition}
 
 \subsection*{Redukcje liniowe}
@@ -100,27 +106,25 @@ Następujące dwa twierdzenia pokazują, że taką funkcję wymierną
 można skonstruować, mnożąc i dzieląc odpowiednie linie.
 
 \begin{theorem}\label{divisor_linear_reduction_theorem}
-Dana jest krzywa eliptyczna $E$.
-Wówczas dla każdego dywizora $\Delta \in \Div(E)$
-istnieje dywizor $\tilde{\Delta} \in \Div(E)$ taki,
+Dany jest dywizor $\Delta$ na krzywej eliptycznej $E$.
+Wówczas istnieje dywizor $\tilde{\Delta} \in \Div(E)$ taki,
 że $\Delta \sim \tilde{\Delta}$, $\deg(\Delta) = \deg(\tilde{\Delta})$
 oraz $\tilde{\Delta} = \divi{P} + n\divi{\ecident}$,
 gdzie $P \in E$.
 \end{theorem}
 
 \begin{proof}
-Niech $\Delta \in \Div(E)$ będzie dowolnym dywizorem.
-Rozważmy składniki, z których składa się dywizor $\Delta$.
+Oznaczmy $\Delta = \sum_{P \in E}a(P)\divi{P}$.
 Mogą zajść następujące przypadki:
 \begin{enumerate}
 \item dywizor $\Delta$ zawiera dwa składniki
-$a(P)\divi{P}$ oraz $a(Q)\divi{Q}$,
-gdzie $P$ oraz $Q$ to takie dwa różne punkty skończone krzywej,
-że współczynniki $a(P)$ oraz $a(Q)$ są niezerowe oraz tego samego znaku;
+$a(P)\divi{P}$ i $a(Q)\divi{Q}$,
+gdzie $P$ i $Q$ to dwa różne punkty skończone krzywej,
+a współczynniki $a(P)$ i $a(Q)$ są niezerowe oraz tego samego znaku;
 \item dywizor $\Delta$ zawiera składnik $a(P)\divi{P}$,
-gdzie $P$ to taki punkt skończony krzywej, że $\abs{a(P)} > 1$;
+gdzie $P$ punkt skończony krzywej, a $\abs{a(P)} > 1$;
 \item dywizor $\Delta$ ma postać $\divi{P} - \divi{Q} + n\divi{\ecident}$,
-gdzie $P$ oraz $Q$ to punkty skończone krzywej;
+gdzie $P$ i $Q$ to punkty skończone krzywej;
 \item dywizor $\Delta$ ma postać $\pm\divi{P} + n\divi{\ecident}$
 lub $n\divi{\ecident}$,
 gdzie $P$ to punkt skończony krzywej.
@@ -131,14 +135,14 @@ możemy wskazać dywizor $\Delta'$ taki,
 że $\Delta \sim \Delta'$, $\deg(\Delta) = \deg(\Delta')$
 oraz $\abs{\Delta} > \abs{\Delta'}$.
 \begin{enumerate}
-\item Dla ustalenia uwagi przyjmimy,
+\item Dla ustalenia uwagi przyjmijmy,
 że współczynniki $a(P)$ oraz $a(Q)$ są dodatnie.
 Rozważmy dywizor $\Delta' = \Delta - \rdiv(l)$,
 gdzie $l$ to linia przechodząca przez punkty $P$ oraz $Q$,
 ma ona dywizor $\rdiv(l)$ równy
 $\divi{P} + \divi{Q} + \divi{R} - 3\divi{\ecident}$.
 Może zdarzyć się, że punkt $R$ jest równy $P$, $Q$ lub $\ecident$.
-Łatwo sprawdzić, że zawsze $\abs{\Delta} > \abs{\Delta'}$.
+W każdym przypadku łatwo sprawdzić, że $\abs{\Delta} > \abs{\Delta'}$.
 \item Dla ustalenia uwagi przyjmijmy, że współczynnik $a(P)$ jest dodatni.
 Rozważmy dywizor $\Delta' = \Delta - \rdiv(l)$,
 gdzie $l$ jest linią styczną do krzywej w punkcie $P$,
@@ -173,25 +177,24 @@ bo normy kolejnych dywizorów maleją,
 a nie mogą tego robić w nieskończoność -- są to liczby naturalne.
 Ostatni dywizor w ciągu $\Delta_k$ musi więc mieć postać
 $\pm\divi{P} + n\divi{\ecident}$ lub $n\divi{\ecident}$,
-gdyż w przeciwnym razie można by kontynuować redukcję.
+gdyż w przeciwnym razie można by kontynuować redukowanie.
 
-Jeżeli $\Delta_k = \divi{P} + n\divi{\ecident}$,
+Jeżeli $\Delta_k$ jest postaci $\divi{P} + n\divi{\ecident}$,
 to jest to szukany dywizor.
-Jeżeli $\Delta_k = n\divi{\ecident}$,
+Jeżeli $\Delta_k$ ma postać $n\divi{\ecident}$,
 to również jest to szukany dywizor --
 zapisujemy go w postaci $\Delta_k = \divi{\ecident} + (n-1)\divi{\ecident}$.
-Jeśli zaś $\Delta_k = -\divi{P} + n\divi{\ecident}$,
+Jeśli zaś $\Delta_k$ jest postaci $-\divi{P} + n\divi{\ecident}$,
 to szukanym dywizorem jest dywizor
 $\Delta_k + \rdiv(l)$,
 gdzie $l$ to linia przechodząca przez punkty $P$ oraz $\overline{P}$
 (lub styczna do krzywej w punkcie $P$, jeżeli jest to punkt podwójny).
 Linia $l$ ma dywizor $\divi{P} + \divi{\overline{P}} - 2\divi{\ecident}$,
 zatem $\Delta_k + \rdiv(l) = \divi{\overline{P}} + (n-2)\divi{\ecident}$.
-Jest to dywizor równoważny dywizorowi $\Delta$ oraz mający taki sam stopień.
 \end{proof}
 
 \begin{lemma}\label{sim_pq_eq_pq_lemma}
-Dane są punkty $P$ i $Q$ na krzywej eliptycznej $E$.
+Dane są punkty $P$ i $Q$ na krzywej eliptycznej.
 Jeżeli $\divi{P} \sim \divi{Q}$,
 to $P = Q$.
 \end{lemma}
@@ -232,21 +235,20 @@ skąd $\overline{Q} = \overline{P}$, czyli $Q = P$.
 \end{proof}
 
 \begin{theorem}\label{zerodeg_divisor_linear_reduction_theorem}
-Dana jest krzywa eliptyczna $E$.
-Wówczas dla każdego dywizora $\Delta \in \Div^0(E)$
-istnieje dokładnie jeden dywizor $\tilde{\Delta} \in \Div^0(E)$ taki,
+Dany jest dywizor zerowego stopnia $\Delta$ na krzywej eliptycznej $E$.
+Wówczas istnieje dokładnie jeden dywizor $\tilde{\Delta} \in \Div^0(E)$ taki,
 że $\Delta \sim \tilde{\Delta}$, $\deg(\Delta) = \deg(\tilde{\Delta})$
 oraz $\tilde{\Delta} = \divi{P} - \divi{\ecident}$,
 gdzie $P \in E$.
 \end{theorem}
 
 \begin{proof}
-Istnienie dywizora $\tilde{\Delta}$ to wniosek z twierdzenia
-\ref{divisor_linear_reduction_theorem} --
-dostajemy z niego, że istnieje żądany dywizor $\tilde{\Delta}$
-z zastrzeżeniem, że ma on postać $\divi{P} + n\divi{\ecident}$.
-Ale ponieważ $\deg(\tilde{\Delta}) = \deg(\Delta) = 0$,
-widzimy, że $n = -1$, czyli $\tilde{\Delta} = \divi{P} - \divi{\ecident}$.
+Zastosujmy twierdzenie \ref{divisor_linear_reduction_theorem}.
+Otrzymujemy, że istnieje dywizor $\tilde{\Delta}$
+postaci $\divi{P} + n\divi{\ecident}$,
+który jest równoważny dywizorowi $\Delta$ oraz ma taki sam stopień.
+Skoro $\deg(\tilde{\Delta}) = \deg(\Delta) = 0$,
+to musi zachodzić $n = -1$, czyli $\tilde{\Delta} = \divi{P} - \divi{\ecident}$.
 Jednoznaczność otrzymujemy udowodnionego przed chwilą lematu
 \ref{sim_pq_eq_pq_lemma}.
 \end{proof}
@@ -259,6 +261,8 @@ możemy szczegółowo zanalizować zerową grupę Picarda.
 
 \begin{theorem}\label{piczero_curvepts_bijection_theorem}
 Dana jest krzywa eliptyczna $E$.
+Niech $[\Delta]$ oznacza klasę abstrakcji dywizora $\Delta$
+w grupie $\Pic^0(E)$.
 Niech funkcja $\pi\colon E \to \Pic^0(E)$ będzie określona wzorem:
 \begin{equation}\label{piczero_bijection_eqn}
 \pi(P) = [\divi{P} - \divi{\ecident}]
@@ -275,21 +279,25 @@ Z lematu \ref{sim_pq_eq_pq_lemma} dostajemy $P = Q$.
 
 Funkcja $\pi$ jest ,,na''. Weźmy dowolną warstwę będącą elementem
 zerowej grupy Picarda i wybierzmy z niej dowolny dywizor $\Delta$.
-Jest on równoważny pewnemu dywizorowi $\divi{P} - \divi{\ecident}$.
-Wówczas $\pi(P)$ jest właśnie tą warstwą.
+Zgodnie z twierdzeniem \ref{divisor_linear_reduction_theorem}
+jest on równoważny pewnemu dywizorowi postaci $\divi{P} - \divi{\ecident}$.
+Wówczas warstwa $\pi(P)$ to właśnie warstwa zawierająca dywizor $\Delta$.
 \end{proof}
 
 \begin{corollary}\label{piczero_representants_coro}
-Zerową grupę Picarda możemy zatem utożsamić
+Zerową grupę Picarda możemy utożsamić
 ze zbiorem punktów krzywej eliptycznej
-wybierając z każdej warstwy reprezentanta postaci $\divi{P} - \divi{\ecident}$.
+przyporządkowując punktowi $P$
+warstwę zawierającą dywizor $\divi{P} - \divi{\ecident}$.
 \end{corollary}
 
-Zobaczmy, jak wygląda dodawanie takich reprezentantów.
+Zbadajmy, który punkt jest reprezentantem warstwy,
+która jest sumą dwóch warstw reprezentowanych przez zadane punkty.
 
 \begin{fact}\label{piczero_addition_fact}
-Dodawanie dwóch elementów zerowej grupy Picarda
-$\divi{P} - \divi{\ecident}$ oraz $\divi{Q} - \divi{\ecident}$
+Dodawanie dwóch elementów zerowej grupy Picarda,
+które są warstwami zawierającymi dywizory
+$\divi{P} - \divi{\ecident}$ oraz $\divi{Q} - \divi{\ecident}$,
 przeprowadzamy następująco.
 \begin{enumerate}
 \item
@@ -319,7 +327,8 @@ Otrzymujemy:
 \item
 Jeżeli $P = \overline{Q}$,
 to $R = \ecident$
-i wynik dodawania jest równy $\divi{\ecident} - \divi{\ecident}$.
+i wynik dodawania to warstwa
+zawierająca dywizor $\divi{\ecident} - \divi{\ecident}$.
 \item
 W przeciwnym razie wykonujemy jeszcze jedną redukcję za pomocą linii $l_2$
 przechodzącej przez punkty $R$ oraz $\overline{R}$
@@ -332,5 +341,7 @@ Otrzymujemy:
 \\ & = &
 \divi{\overline{R}} - \divi{\ecident}
 \end{eqnarray*}
+Wynikiem jest warstwa
+zawierająca dywizor $\divi{\overline{R}} - \divi{\ecident}$.
 \end{enumerate}
 \end{fact}
