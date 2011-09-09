@@ -5,7 +5,7 @@ następującą definicję krzywej eliptycznej.
 
 \begin{definition}\label{elliptic_curve_definition}
 Dane jest ciało $\K$ oraz dwa jego elementy $A, B \in \K$.
-Wówczas \emph{krzywa eliptyczna nad ciałem $\K$ o parametrach $A$ i $B$},
+\emph{Krzywa eliptyczna nad ciałem $\K$ o parametrach $A$ i $B$},
 oznaczana symbolem $E_{A,B}(\K)$ (w skrócie $E(\K)$ lub $E$),
 to zbiór składający się
 ze wszystkich par $(x, y) \in \K \times \K$,
@@ -13,7 +13,7 @@ które spełniają następującą równość:
 \begin{equation}\label{elliptic_curve_equation}
 y^2 = x^3 + Ax + B
 \end{equation}
-Ponadto, każda krzywa eliptyczna zawiera jeszcze jeden dodatkowy element,
+Ponadto, każda krzywa eliptyczna zawiera jeszcze jeden dodatkowy element
 oznaczany symbolem $\ecident$.
 \end{definition}
 
@@ -22,11 +22,11 @@ Ustalamy ponadto następujące określenia.
 \begin{definition}
 Dana jest krzywa eliptyczna $E$.
 Element $\ecident \in E$ zwany jest
-\emph{punktem w nieskończoności (na) krzywej $E$} lub jej \emph{identycznością}.
+\emph{punktem w nieskończoności na krzywej $E$} lub jej \emph{identycznością}.
 Pozostałe elementy $P \in E$
-zwane są \emph{punktami skończonymi (na) krzywej $E$}.
+zwane są \emph{punktami skończonymi na krzywej $E$}.
 Punkty skończone $P \in E$ postaci $P = (a, 0)$
-zwane są \emph{punktami rzędu dwa (na) krzywej $E$}.
+zwane są \emph{punktami rzędu dwa na krzywej $E$}.
 \end{definition}
 
 \begin{definition}
@@ -46,11 +46,15 @@ wprowadzamy jeszcze następujące oznaczenie,
 którego będziemy często używać.
 
 \begin{definition}
-Dana jest krzywa eliptyczna $E$
-oraz jej punkt skończony $P \in E$, $P = (a, b)$.
-\emph{Punkt sprzężony do punktu $P$}
-to punkt $\overline{P} = (a, -b)$.
+Dany jest punkt skończony $P$ na krzywej eliptycznej postaci $P = (a, b)$.
+\emph{Punkt sprzężony do punktu $P$},
+oznaczany symbolem $\overline{P}$,
+to punkt skończony $(a, -b)$.
 \end{definition}
+
+\begin{fact}
+Każdy punkt skończonej na krzywej eliptycznej ma punkt sprzężony.
+\end{fact}
 
 \begin{fact}
 Punkty rzędu dwa na krzywej eliptycznej są sprzężone do samych siebie,
@@ -74,7 +78,8 @@ Jest jeszcze jedno źródło trudności,
 którym nie będziemy zajmować się w niniejszej pracy.
 
 \begin{definition}
-Krzywa eliptyczna $E(\K)$ jest \emph{zdegenerowana},
+Dana jest krzywa eliptyczna $E$ nad ciałem $\K$.
+Mówimy, że jest ona \emph{zdegenerowana},
 jeżeli jej wielomian charakterystyczny $\kappa(E)$
 ma w domknięciu algebraicznym $\overline{\K}$ ciała $\K$
 pierwiastek wielokrotny.
@@ -89,7 +94,7 @@ są niezdegenerowane.
 \end{remark}
 
 \begin{theorem}
-Jeżeli charakterystyka ciała $\K$ nie jest równa $2$ ani $3$,
-to krzywa eliptyczna $E_{A,B}(\K)$ jest zdegenerowana wtedy i tylko wtedy,
+Dane jest ciało $\K$ o charakterystyce różnej od $2$ i $3$.
+Wówczas krzywa eliptyczna $E_{A,B}(\K)$ jest zdegenerowana wtedy i tylko wtedy,
 gdy $\frac{A^3}{27} + \frac{B^2}{4} = 0$.
 \end{theorem}

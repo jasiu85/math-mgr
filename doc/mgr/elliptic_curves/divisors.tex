@@ -16,14 +16,14 @@ liczba naturalna $n$,
 parami różne elementy $s_1, \ldots, s_n \in S$
 oraz liczby całkowite $a_1, \ldots, a_n \in \Z$.
 \emph{Skończona suma formalna nad zbiorem $S$ długości $n$
-o składnikach $s_1, \ldots s_k$ i współczynnikach $a_1, \ldots, a_k$}
+o składnikach $s_1, \ldots s_n$ i współczynnikach $a_1, \ldots, a_n$}
 to następujące wyrażenie:
 \begin{equation*}
 \sum_{k=1}^n a_k\divi{s_k}
 \end{equation*}
 
 \emph{Abelowa grupa wolna generowana przez zbiór $S$}
-to zbiór złożony ze wszystich sum formalnych nad zbiorem $S$
+to zbiór złożony ze wszystich skończonych sum formalnych nad zbiorem $S$
 wyposażony w działanie polegające na formalnym dodaniu dwóch sum
 i pogrupowaniu składników ze względu na elementy zbioru $S$.
 \end{definition}
@@ -58,9 +58,8 @@ w następującej postaci:
 Dla dywizorów określamy stopień oraz normę.
 
 \begin{definition}
-Dana jest krzywa eliptyczna $E$
-oraz dywizor $\Delta \in \Div(E)$,
-$\Delta = \linebreak \sum_{P \in E} a(P)\divi{P}$.
+Dany jest dywizor $\Delta$ na krzywej eliptycznej $E$
+postaci $\Delta = \sum_{P \in E} a(P)\divi{P}$.
 \emph{Stopień dywizora $\Delta$},
 oznaczany symbolem $\deg(\Delta)$,
 to następująca wielkość:
@@ -70,9 +69,8 @@ to następująca wielkość:
 \end{definition}
 
 \begin{definition}
-Dana jest krzywa eliptyczna $E$
-oraz dywizor $\Delta \in \Div(E)$,
-$\Delta = \linebreak \sum_{P \in E} a(P)\divi{P}$.
+Dany jest dywizor $\Delta$ na krzywej eliptycznej $E$
+postaci $\Delta = \sum_{P \in E} a(P)\divi{P}$.
 \emph{Norma dywizora $\Delta$},
 oznaczana symbolem $\abs{\Delta}$,
 to następująca wielkość:
@@ -89,11 +87,10 @@ o wszystkich miejscach zerowych i biegunach funkcji wymiernej
 oraz ich krotnościach.
 
 \begin{definition}
-Dana jest krzywa eliptyczna $E = E(\K)$
-oraz funkcja wymierna $r \in \K(E)$.
+Dana jest funkcja wymierna $r$ na krzywej eliptycznej $E$.
 \emph{Dywizor funkcji $r$},
 oznaczany symbolem $\rdiv(r)$,
-to następujący dywizor:
+to dywizor na krzywej $E$ określony następująco:
 \begin{equation*}
 \rdiv(r) = \sum_{P \in E} \ord_P(r)\divi{P}
 \end{equation*}
@@ -108,9 +105,9 @@ różniące się o czynnik stały mają taki sam dywizor.
 \end{fact}
 
 \begin{theorem}
-Dana jest krzywa eliptyczna $E = E(\K)$
-oraz dwie funkcje wymierne $r, s \in \K(E)$.
-Wówczas iloraz $\frac{r}{s}$ jest stały i niezerowy.
+Dane są funkcje wymierne $r$ i $s$ na krzywej eliptycznej.
+Zależność $\rdiv(r) = \rdiv(s)$ zachodzi wtedy i tylko wtedy,
+gdy iloraz $\frac{r}{s}$ jest stały i niezerowy.
 \end{theorem}
 
 \begin{corollary}\label{zero_div_const_fun_coro}
@@ -121,5 +118,5 @@ gdy jest stała i niezerowa.
 
 \begin{corollary}\label{fun_divi_equiv_to_const_lemma}
 Dywizor na krzywej eliptycznej
-wyznacza funkcję wymierną z dokładnością do stałego czynnika.
+wyznacza funkcję wymierną z dokładnością do stałego niezerowego czynnika.
 \end{corollary}
