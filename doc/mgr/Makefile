@@ -6,6 +6,7 @@ clean:
 	rm -f mgr.log
 	rm -f mgr.aux
 	rm -f mgr.toc
+	rm -f mgr.out
 
 mrproper: clean
 	rm -f mgr.pdf
