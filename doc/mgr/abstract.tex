@@ -1,26 +1,30 @@
 \begin{abstract}
 
+\noindent
 W niniejszej pracy opisano iloczyn Weila,
 algorytm obliczający jego wartości
 oraz jego zastosowania w kryptografii.
 Praca zawiera również
 krótkie wprowadzenie do krzywych eliptycznych.
 
-Iloczyn Weila to funkcja $w_n \colon E[n] \times E[n] \to \mu_n$,
+\noindent
+Iloczyn Weila to funkcja $w\colon E[n] \times E[n] \to \K$,
 która prowadzi z podgrupy $n$-torsyjnej $E[n]$
 krzywej eliptycznej $E$ nad ciałem $\K$
 (czyli podgrupy składającej się z tych punktów $P$ krzywej $E$,
 dla których zachodzi $nP = \ecident$)
-w grupę $\mu_n$ pierwiastków $n$-tego stopnia z jedności w ciele $\K$.
+w grupę pierwiastków $n$-tego stopnia z jedności w ciele $\K$.
 Cechy charakterystyczne iloczynu Weila
 to dwuliniowość, antysymetria oraz niezdegenerowanie.
 
+\noindent
 Przedstawiony w pracy algorytm obliczający wartości iloczynu Weila
 został zaproponowany przez Millera.
 Algorytm ten realizuje schemat ,,podwajaj-i-dodawaj''
 podobny do tego występującego
 w algorytmie szybkiego podnoszenia do $n$-tej potęgi.
 
+\noindent
 Zastosowania iloczynu Weila zaprezentowane w pracy obejmują
 konstrukcje kryptosystemów pozwalających
 na szyfrowanie i podpisywanie wiadomości oparte o tożsamość
