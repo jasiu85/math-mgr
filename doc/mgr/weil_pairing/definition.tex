@@ -1,25 +1,26 @@
 \section{Definicja}
 
+\noindent
 Mimo tego, że wprowadziliśmy już
 wiele elementów teorii krzywych eliptycznych,
 wciąż jeszcze brakuje nam pewnych wiadomości,
 aby móc zdefiniować iloczyn Weila.
 Ze względu na ograniczoną objętość pracy
-przedstawiamy je teraz
+przedstawimy je teraz
 w bardzo okrojonym ujęciu.
 
 \subsection*{Podgrupy $n$-torsyjne}
 
-Zaczniemy od podania dziedziny,
-na której działa iloczyn Weila.
-Są to pewne specyficzne podgrupy
-grupy na krzywej eliptycznej.
+\noindent
+Zaczniemy od zdefiniowania podgrup grupy na krzywej eliptycznej,
+które stanowią dziedzinę iloczynu Weila.
 
 \begin{definition}
-Dana jest krzywa eliptyczna $E$.
+Dana jest krzywa eliptyczna $E$
+oraz liczba całkowita $n$.
 \emph{Mnożenie punktu na krzywej przez liczbę całkowitą $n$}
 to funkcja $[n] \colon E \to E$
-określona następującym wzorem:
+określona następująco:
 \begin{equation}
 [n](P) =
 \fundefthree
@@ -30,14 +31,15 @@ określona następującym wzorem:
 Wyrażenie $[n](P)$ zapisujemy skrótowo jako $nP$.
 \end{definition}
 
+\noindent
 Użycie określenia ,,mnożenie'' oraz skrótowego zapisu $nP$
-motywują własności funkcji $[n]$,
+jest zmotywowane przez własności funkcji $[n]$,
 które przypominają cechy operacji mnożenia liczb całkowitych.
 
 \begin{fact}
-Dana jest krzywa eliptyczna $E$, punkty $P, Q \in E$
-oraz liczby całkowite $m$ i $n$.
-Wówczas zachodzą następujące zależności:
+Dla dowolnych punktów $P$ i $Q$ na krzywej eliptycznej
+oraz liczb całkowitych $m$ i $n$
+zachodzą następujące zależności:
 \begin{eqnarray*}
 m(P + Q) & = & mP + mQ \\
 (m + n)P & = & mP + nP \\
@@ -46,6 +48,7 @@ m(-P) & = & -(mP) \\
 \end{eqnarray*}
 \end{fact}
 
+\noindent
 Jesteśmy zainteresowani takimi punktami $P$ krzywej,
 które spełniają równanie $nP = \ecident$.
 Jak nietrudno stwierdzić na podstawie podanych własności mnożenia,
@@ -54,15 +57,18 @@ tworzą one grupę.
 \begin{definition}
 Dana jest krzywa eliptyczna $E$
 oraz liczba naturalna $n$.
-\emph{Podgrupa $n$-torsyjna} grupy na krzywej $E$,
-oznaczana $E[n]$,
-to podgrupa złożona z tych punktów $P \in E$,
+\emph{Podgrupa $n$-torsyjna na krzywej $E$},
+oznaczana symbolem $E[n]$,
+to podgrupa grupy na krzywej $E$
+złożona ze wszystkich punktów $P \in E$,
 które spełniają zależność:
 \begin{equation}
 nP = \ecident
 \end{equation}
+Elementy grupy $E[n]$ nazywamy \emph{punktami rzędu $n$ na krzywej $E$}.
 \end{definition}
 
+\noindent
 Podajemy bez dowodu kilka podstawowych własności podgrup $n$-torsyjnych.
 
 \begin{fact}
@@ -71,7 +77,7 @@ oraz liczby naturalne $m$ i $n$.
 Jeżeli $m \mid n$, to $E[m] \subset E[n]$.
 \end{fact}
 
-\begin{theorem}
+\begin{theorem}\label{torsion_subgroup_isomorphic_zn_zn}
 Dana jest krzywa eliptyczna $E$ nad ciałem algebraicznie domkniętym $\K$
 oraz liczba naturalna $n$.
 Jeżeli $\fieldchar(\K) = 0$ lub $\gcd(n, \fieldchar(\K)) = 1$,
@@ -86,36 +92,51 @@ Podgrupa $E[2]$ składa się z czterech punktów:
 punktu $\ecident$ oraz trzech punktów rzędu dwa.
 \end{corollary}
 
+\begin{remark}
+Zakładamy od tej pory,
+że rozważane podgrupy $n$-torsyjne
+to zawsze mają strukturę $(\Z / n\Z) \times (\Z / n\Z)$.
+\end{remark}
+
 \subsection*{Pewne szczególne dywizory}
 
+\noindent
 Elementy podgrupy $n$-torsyjnej to rozwiązania równania $nQ = \ecident$.
 Rozważymy teraz bardziej ogólne równanie $nQ = P$.
 Doprowadzi nas to do definicji pewnego rodzaju dywizorów,
 które pojawiają się w definicji iloczynu Weila.
 
 \begin{theorem}
-Dana jest krzywa eliptyczna $E$, jej podgrupa $E[n]$ oraz punkt $P \in E[n]$.
+Dana jest krzywa eliptyczna $E$,
+liczba naturalna $n$
+oraz punkt $P \in E[n]$.
 Wówczas:
 \begin{itemize}
-\item istnieje taki punkt $Q_0 \in E[n^2]$, że $P = nQ_0$;
+\item istnieje taki punkt $Q_0 \in E[n^2]$, że $nQ_0 = P$;
 \item każdy punkt $Q \in E[n^2]$ spełniający równanie
-$P = nQ$ można przedstawić w postaci $Q = Q_0 + R$,
+$nQ = P$ można przedstawić w postaci $Q = Q_0 + R$,
 gdzie $R \in E[n]$.
 \end{itemize}
 \end{theorem}
 
 \begin{proof}
-Wystarczy przeanalizować sposób, w jaki grupa $(\Z/n\Z)\times(\Z/n\Z)$
+Zgodnie z twierdzeniem \ref{torsion_subgroup_isomorphic_zn_zn}
+grupy $E[n]$ i $E[n^2]$ są izomorficzne
+odpowiednio z grupami
+$(\Z/n\Z)\times(\Z/n\Z)$ i $(\Z/n^2\Z)\times(\Z/n^2\Z)$.
+Wystarczy teraz przeanalizować sposób,
+w jaki grupa $(\Z/n\Z)\times(\Z/n\Z)$
 jest zanurzona w grupie $(\Z/n^2\Z)\times(\Z/n^2\Z)$.
 \end{proof}
 
 \begin{corollary}\label{point_division_corollary}
-Jest $n^2$ punktów $Q \in E[n^2]$ spełniających równanie $P = nQ$,
+Jest $n^2$ punktów $Q \in E$ spełniających równanie $P = nQ$,
 gdzie $P \in E[n]$.
 Zbiór tych punktów można przedstawić w postaci $\{Q_0 + R \mid R \in E[n]\}$,
 gdzie $Q_0$ jest dowolnym takim punktem.
 \end{corollary}
 
+\noindent
 Rozważania te motywują definicję ,,dzielenia'' punktu.
 Takie dzielenie jest podobne do pierwiastkowania liczb zespolonych --
 jest niejednoznaczne, ale zbiór wszystkich możliwych wyników dzielenia
@@ -123,7 +144,8 @@ przejawia pewną strukturę.
 Zbiór ten będziemy reprezentować za pomocą dywizora.
 
 \begin{definition}
-Dana jest krzywa eliptyczna $E$ nad ciałem algebraicznie domkniętym.
+Dana jest krzywa eliptyczna $E$
+oraz liczba całkowita $n$.
 \emph{Dzielenie punktu krzywej przez liczbę całkowitą $n$}
 to funkcja $[n]^{-1} \colon E[n] \to \Div(E)$
 określona następującym wzorem:
@@ -132,39 +154,42 @@ określona następującym wzorem:
 \end{equation}
 \end{definition}
 
+\noindent
 Następujące twierdzenie przedstawia własność tego rodzaju dywizorów,
 która będzie nas najbardziej interesować.
 
 \begin{theorem}\label{point_division_divisor_principle_theorem}
-Dana jest krzywa eliptyczna $E$ oraz punkt $P \in E[n]$.
+Dany jest punkt $P$ rzędu $n$ na krzywej eliptycznej $E$.
 Wówczas:
 \begin{eqnarray*}
 [n]^{-1}(P) \sim n^2\divi{\ecident}
 \end{eqnarray*}
 \end{theorem}
 
+\noindent
 Dowód tego twierdzenia poprzedzimy bardzo użytecznym lematem.
 
 \begin{lemma}\label{divi_reduction_lemma}
-Dana jest krzywa eliptyczna $E$ oraz punkty $P, Q \in E$.
+Dane są punkty $P$ i $Q$ na krzywej eliptycznej.
 Wówczas dywizor $\divi{P+Q} - \divi{P} - \divi{Q} + \divi{\ecident}$
 jest główny.
 \end{lemma}
 
 \begin{proof}
-Rozważmy funkcję $\frac{r}{s}$,
+Lemat zachodzi, jeżeli $P = Q$, $P = -Q$, $P = \ecident$ lub $Q = \ecident$.
+W przeciwnym przypadku rozważmy funkcję $\frac{r}{s}$,
 gdzie $r$ to linia przechodząca przez punkty $(P+Q)$ i $-(P+Q)$,
 a $s$ to linia przechodząca przez punkty $P$, $Q$ i $-(P+Q)$.
 Jak nietrudno sprawdzić,
-$\rdiv(\frac{r}{s}) = \divi{P+Q} - \divi{P} - \divi{Q} + \divi{\ecident}$
-(również wtedy, gdy $P = Q$, $P = -Q$, $P = \ecident$ lub $Q = \ecident$).
+$\rdiv(\frac{r}{s}) = \divi{P+Q} - \divi{P} - \divi{Q} + \divi{\ecident}$.
 \end{proof}
 
 \begin{corollary}\label{divi_sum_reduction_coro}
-Dane jest krzywa eliptyczna $E$ oraz punkty $P, Q \in E$.
+Dane są punkty $P$ i $Q$ na krzywej eliptycznej.
 Wówczas $\divi{P} + \divi{Q} \sim \divi{P+Q} + \divi{\ecident}$.
 \end{corollary}
 
+\noindent
 Zauważmy, że z pomocą tego lematu i płynącego z niego wniosku
 możemy sformułować metodę redukcji dywizorów
 podobną do twierdzenia \ref{divisor_linear_reduction_theorem}.
@@ -217,22 +242,27 @@ Dywizor $[n]^{-1}(P) - [n]^{-1}(\ecident)$ jest główny.
 
 \subsection*{Iloczyn Weila}
 
+\noindent
 Dysponujemy już wszystkimi niezbędnymi informacjami,
 aby móc podać definicję iloczynu Weila.
 
 \begin{definition}\label{weil_pairing_def}
-Dana jest krzywa eliptyczna $E$ nad ciałem $\K$.
-Funkcję $f_P \in E(\K)$ określamy poprzez podaniej jej dywizora:
+Dana jest krzywa eliptyczna $E$ nad ciałem $\K$
+oraz liczba całkowita $n$.
+Niech $P$ będzie dowolnym punktem na krzywej $E$.
+Niech $f_P$ będzie funkcją wymierną na krzywej $E$
+określoną z dokładnością do niezerowego czynnika stałego
+poprzez podanie jej dywizora:
 \begin{equation}
 \rdiv(f_P) = [n]^{-1}(P) - [n]^{-1}(\ecident)
 \end{equation}
-Funkcję $t_Q \in E(K)$ określamy następująco:
+Niech funkcja $t_Q\colon E \to E$ będzie określona następująco:
 \begin{equation}
 t_Q(R) = R + Q
 \end{equation}
-Wówczas \emph{iloczyn Weila} to funkcja
+\emph{Iloczyn Weila} to funkcja
 $w\colon E[n] \times E[n] \to \K$
-określona następującym wzorem:
+określona następująco:
 \begin{equation}\label{weil_pairing_eqn}
 w(P, Q) = \left(\frac{f_P \circ t_Q}{f_P}\right)(\ecident)
 \end{equation}
@@ -241,10 +271,19 @@ w(P, Q) = \left(\frac{f_P \circ t_Q}{f_P}\right)(\ecident)
 \begin{remark}
 Zauważmy, że podana definicja określa nie jedną funkcję,
 lecz całą rodzinę funkcji --
-po jednej dla każdej z grup $E[n]$, gdzie $n \in \N$.
+po jednej dla każdej liczby całkowitej $n$.
+Dalsze rozważania ograniczamy do tych liczb $n$,
+które są dodatnie i dla których
+grupa $E[n]$ ma strukturę $(\Z / n\Z)\times(\Z / n\Z)$.
 \end{remark}
 
-Sprawdźmy, że iloczyn Weila jest dobrze określony
+\begin{remark}
+Przyjmujemy od tej pory, że zawsze dana jest pewna liczba całkowita $n$
+oraz odpowiadający jej iloczyn Weila $w\colon E[n] \times E[n] \to \K$.
+\end{remark}
+
+\noindent
+Sprawdźmy teraz, że iloczyn Weila jest dobrze określony.
 
 \begin{lemma}\label{weil_pairing_ignore_const_lemma}
 Wartość iloczynu Weila nie zależy od wyboru funkcji $f_P$.
@@ -253,8 +292,8 @@ Wartość iloczynu Weila nie zależy od wyboru funkcji $f_P$.
 \begin{proof}
 Na mocy wniosku \ref{fun_divi_equiv_to_const_lemma}
 dwie funkcje wymierne $f_P$ i $\tilde{f_P}$ o takim samym dywizorze
-różnią się o czynnik stały różny od zera,
-zatem możemy przyjąć $f_P = c\tilde{f_P}$.
+różnią się o stały niezerowy czynnik,
+zatem przyjmijmy, że $f_P = c\tilde{f_P}$.
 Podstawiamy tę zależność do wzoru \ref{weil_pairing_eqn} i otrzymujemy:
 \begin{eqnarray*}
 \frac{f_P \circ t_Q}{f_P}(\ecident)
@@ -286,9 +325,8 @@ w następującej postaci:
 \sum_{S \in E[n]} \divi{R + S - Q} - \sum_{S \in E[n]} \divi{S - Q}
 \end{equation*}
 Wykonujemy ,,zamianę zmiennych'' --
-w miejsce zmiennej $S$ podstawiamy $S' = S - Q$.
+w miejsce zmiennej $S$ podstawiamy zmienną $S' = S - Q$.
 Zauważmy, że zmiena $S'$ również będzie przebiegać po zbiorze $E[n]$.
-Otrzymujemy:
 Otrzymujemy:
 \begin{eqnarray*}
 \rdiv(f_P \circ t_Q) =

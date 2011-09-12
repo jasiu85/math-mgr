@@ -1,5 +1,6 @@
 \section{Definicja alternatywna}
 
+\noindent
 Na podstawie podanej definicji iloczynu Weila
 udało nam się udowodnić szereg jego własności.
 Definicja ta nie nadaje się jednak do tego,
@@ -10,19 +11,23 @@ która lepiej nada się do celów obliczeniowych.
 
 \subsection*{Definicja}
 
-Oto alternatywna definicja iloczynu Weila.
+\noindent
+Alternatywna definicja iloczynu Weila jest następująca.
 
 \begin{definition}\label{weil_pairing_alt_def}
-Dana jest krzywa eliptyczna $E$ oraz punkty $P, Q \in E[n]$.
-Funkcje wymierne $f_P', f_Q' \in K(E)$
-określamy poprzez podanie ich dywizorów
-następująco:
+Dana jest krzywa eliptyczna $E$ nad ciałem $\K$
+oraz liczba całkowita $n$.
+Niech $P$ i $Q$ będą dowolnymi punktami na krzywej $E$.
+Niech $f_P'$ i $f_Q'$ będą funkcjami wymiernymi na krzywej $E$
+określonymi z dokładnością do niezerowego czynnika stałego
+poprzez podanie ich dywizorów:
 \begin{eqnarray*}
 \rdiv(f_P') & = & n\divi{P} - n\divi{\ecident} \\
 \rdiv(f_Q') & = & n\divi{Q} - n\divi{\ecident}
 \end{eqnarray*}
-Określamy funkcję $w'(P, Q)\colon E[n] \to \K$
-następującym wzorem:
+\emph{Alternatywna postać iloczynu Weila}
+to funkcja $w'\colon E[n] \to \K$
+określona następująco:
 \begin{equation}\label{weil_pairing_alt_eqn}
 w'(P, Q) = (-1)^n\frac{f_P'(Q)}{f_Q'(P)}\frac{f_Q'}{f_P'}(\ecident)
 \end{equation}
@@ -36,28 +41,30 @@ zatem jest ona dobrze określona.
 
 \subsection*{Symbol lokalny i prawo wzajemności Weila}
 
+\noindent
 Aby móc udowodnić równoważność obu definicji,
 wprowadzimy tzw. symbol lokalny
-i posłużymy się ważną zależnością, którą spełnia.
+i posłużymy się ważną zależnością, którą spełnia:
+prawem wzajemności Weila.
 
 \begin{definition}
-Dana jest krzywa eliptyczna $E$, punkt $P \in E$
-oraz dwie funkcje wymierne $r, s \in K(E)$,
-z których żadna nie jest tożsamościowo równa zero.
+Dany jest punkt $P$ na krzywej eliptycznej $E$.
+Niech $r$ i $s$ będą dwoma niezerowymi funkcjami wymiernymi na krzywej $E$.
 \emph{Symbol lokalny $\lsym{r}{s}{P}$}
-określony jest następującym wzorem:
+określony jest następująco:
 \begin{equation}
 \lsym{r}{s}{P} =
 (-1)^{\ord_P(r)\ord_P(s)}\left(\frac{r^{\ord_P(s)}}{s^{\ord_P(r)}}\right)(P)
 \end{equation}
 \end{definition}
 
-Podstawowe własności symbolu lokalnego są następujące.
+\noindent
+Podstawowe własności symbolu lokalnego podsumowuje następujące twierdzenie.
 
 \begin{theorem}
-Dana jest krzywa eliptyczna $E$, punkt $P \in E$
-oraz funkcje wymierne $r, r_1, r_2, s, s_1, s_2 \in K(E)$,
-z których żadna nie jest tożsamościowo równa zero.
+Dany jest punkt $P$ na krzywej eliptycznej $E$.
+Niech $r$, $r_1$, $r_2$, $s$, $s_1$ i $s_2$
+będą dowolnymi niezerowymi funkcjami wymiernymi na krzywej $E$.
 Wówczas zachodzą następujące zależności:
 \begin{itemize}
 \item
@@ -85,28 +92,29 @@ jeżeli $\ord_P(1-s) > 0$ oraz $\ord_P(r) \neq 0$, to $\lsym{r}{s}{P} = 1$.
 \end{itemize}
 \end{theorem}
 
-Oto ważna własność symbolu lokalnego,
-której użyjemy w dowodzie równoważności obu definicji iloczynu Weila.
+\noindent
+Nietrywialną własnością symbolu lokalnego jest następująca zależność.
 
 \begin{theorem}[Prawo wzajemności Weila]
-Dana jest krzywa eliptyczna $E$ oraz funkcje wymierne $r, s \in K(E)$.
-Wówczas:
+Dane są niezerowe funkcje wymierne $r$ i $s$ na krzywej eliptycznej $E$.
+Wówczas zachodzi następująca zależność:
 \begin{equation}
 \prod_{P \in E} \lsym{r}{s}{P} = 1
 \end{equation}
 \end{theorem}
 
-Dowód uogólnionego prawa wzajemności Weila znacznie wykracza
+\noindent
+Dowód prawa wzajemności Weila znacznie wykracza
 poza zakres niniejszej pracy, dlatego nie podajemy go.
 
 \subsection*{Równoważność obu definicji}
 
+\noindent
 Udowodnimy teraz, że obie definicje iloczynu Weila są równoważne.
 
 \begin{theorem}
-Dana jest krzywa eliptyczna $E$ nad ciałem $\K$
-oraz punkty $P, Q \in E[n]$.
-Wówczas:
+Dane są punkty $P$ i $Q$ rzędu $n$ na krzywej eliptycznej $E$ nad ciałem $\K$.
+Wówczas zachodzi następująca zależność:
 \begin{equation}
 w(P, Q) = w'(P, Q)
 \end{equation}
@@ -116,8 +124,9 @@ w(P, Q) = w'(P, Q)
 Zakładamy, że $P \neq Q$, $P \neq \ecident$, $Q \neq \ecident$,
 gdyż w tych przypadkach łatwo sprawdzić, że żądana równość zachodzi.
 
-Niech $f_P$ oraz $f_Q$ będą funkcjami wymiernymi
-z klasycznej definicji iloczynu Weila.
+\noindent
+Niech $f_P$ oraz $f_Q$ będą funkcjami wymiernymi na krzywej $E$
+określonymi w definicji \ref{weil_pairing_def}.
 Poprzez analizę krotności miejsc zerowych i biegunów możemy sprawdzić,
 że następujące dywizory są równe:
 \begin{eqnarray*}
@@ -131,6 +140,7 @@ aby zachodziły następujące równości:
 {f_Q}^n & = & f_Q' \circ [n]
 \end{eqnarray*}
 
+\noindent
 Dalej, przyjmijmy, że $P', Q' \in E$ są takimi punktami,
 że $P = nP'$ oraz $Q = nQ'$.
 Rozważmy następujący dywizor:
@@ -144,17 +154,20 @@ Niech więc $r \in \K(E)$ będzie funkcją wymierną o takim dywizorze:
 \rdiv(r) = (n-1)\divi{Q'} + \divi{Q' - Q} - n\divi{\ecident}
 \end{equation*}
 
+\noindent
 Stosujemy uogólnione prawo wzajemności Weila do funkcji $f_P$ i $r$:
 \begin{equation}\label{weil_reci_fp_r}
 \prod_{S \in E} \lsym{f_P}{r}{S} = 1
 \end{equation}
 
+\noindent
 Ze względu na własności symbolu lokalnego dla większości punktów $S$
 będzie zachodzić $\lsym{f_P}{r}{S} = 1$.
 Jedyne punkty, dla których może być inaczej,
 to $Q'$, $Q' - Q$ oraz miejsca zerowe i bieguny funkcji $f_P$.
 Policzymy wartość symbolu lokalnego dla tych punktów.
 
+\noindent
 Zacznijmy od punktu $Q'$. W tym punkcie zachodzi
 $\ord_{Q'}(f_P) = 0$ oraz $\ord_{Q'}(r) = n-1$,
 więc z własności symbolu lokalnego otrzymujemy:
@@ -169,7 +182,7 @@ Dostajemy:
 \end{equation*}
 Wymnażamy obie równości:
 \begin{eqnarray*}
-\lsym{f_P}{h}{Q'}\lsym{f_P}{h}{Q' - Q}
+\lsym{f_P}{r}{Q'}\lsym{f_P}{r}{Q' - Q}
 & = & f_P(Q')^{n-1} f_P(Q - Q') \\
 & = & \frac{f_P(Q' - Q)}{f_P(Q')} f_P(Q')^n \\
 & = & \frac{f_P}{f_P \circ t_Q}(Q' - Q) f_P(Q')^n \\
@@ -178,6 +191,7 @@ Wymnażamy obie równości:
 & = & w(P,Q)^{-1} f_P'(Q)
 \end{eqnarray*}
 
+\noindent
 Zanim obliczymy wartość symbolu lokalnego
 dla miejsc zerowych i biegunów funkcji $f_P$,
 rozważmy następującą funkcję pomocniczą $\widehat{r}$:
@@ -210,6 +224,7 @@ Wybraliśmy funkcję $r$ dowolnie, więc przyjmijmy teraz,
 \widehat{r} = f_Q' \circ [n]
 \end{equation*}
 
+\noindent
 Obliczymy teraz fragment iloczynu \ref{weil_reci_fp_r},
 który odpowiada miejscom zerowym funkcji $f_P$.
 Dla każdego miejsca zerowego $S$ funkcji $f_P$
@@ -223,6 +238,8 @@ Zatem:
 & = & \frac{1}{(f_Q' \circ [n])(P')} \\
 & = & \frac{1}{f_Q'(P)}
 \end{eqnarray*}
+
+\noindent
 Podobnie postępujemy z fragmentem iloczynu $\ref{weil_reci_fp_r}$,
 który odpowiada biegunom funkcji $f_P$. Pamiętajmy przy tym,
 że punkt $\ecident$ jest również biegunem stopnia $n$ funkcji $r$.
@@ -238,6 +255,7 @@ który odpowiada biegunom funkcji $f_P$. Pamiętajmy przy tym,
 & = & (-1)^{n}\frac{f_Q'}{f_P'}(\ecident)
 \end{eqnarray*}
 
+\noindent
 Rozpiszmy jeszcze raz wzór \ref{weil_reci_fp_r}:
 \begin{eqnarray*}
 \prod_{S \in E} \lsym{f_P}{r}{S}

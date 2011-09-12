@@ -1,14 +1,16 @@
 \section{Własności}
 
-Zbadamy teraz własności iloczynu Weila.
+\noindent
+Udowodnimy teraz szereg podstawowych własności iloczynu Weila.
 
 \subsection*{Pierwiastki z jedności}
 
+\noindent
 Zaczniemy od pokazania, że wartości, jakie przyjmuje iloczyn Weila,
 to pierwiastki z jedynki.
 
 \begin{theorem}
-Dana jest krzywa eliptyczna $E$ oraz punkty $P, Q \in E[n]$.
+Dane są punkty $P$ i $Q$ rzędu $n$ na krzywej eliptycznej $E$.
 Wówczas $w(P,Q)^n = 1$.
 \end{theorem}
 
@@ -52,34 +54,31 @@ f_P \circ \underbrace{t_Q \circ \cdots \circ t_Q}_{n\textrm{ razy}}
 Z porównania wyników obu nawiasowań widzimy, że $w(P,Q)^n = 1$.
 \end{proof}
 
-\begin{remark}
-Przeciwdziedzinę iloczynu Weila będziemy odtąd oznaczać $\mu_n$ --
-jest to grupa multiplikatywna pierwiastków $n$-tego stopnia
-z jedności.
-\end{remark}
-
 \subsection*{Odwzorowanie dwuliniowe}
 
+\noindent
 Wykażemy teraz własność iloczynu Weila,
 która jest jednym z ważnych powodów jego użyteczności.
-Własnością tą jest tzw. dwuliniowość.
+Własnością tą jest dwuliniowość.
 
 \begin{definition}
-Dane są: grupa addytywna $\G_1$ oraz grupa multiplikatywna $\G_2$.
+Dana jest grupa addytywna $\G_1$ oraz grupa multiplikatywna $\G_2$.
 Odwzorowanie $b\colon \G_1 \times \G_1 \to \G_2$
 jest \emph{dwuliniowe},
-jeżeli dla dowolnych elementów $P, P_1, P_2, Q, Q_1, Q_2 \in \G_1$ zachodzi:
+jeżeli dla dowolnych elementów
+$P$, $P_1$, $P_2$, $Q$, $Q_1$ i $Q_2$ z grupy $\G_1$
+zachodzą następujące zależności:
 \begin{itemize}
 \item $b(P_1 + P_2, Q) = b(P_1, Q)b(P_2, Q)$;
 \item $b(P, Q_1 + Q_2) = b(P, Q_1)b(P, Q_2)$.
 \end{itemize}
 \end{definition}
 
+\noindent
 Sprawdźmy, że iloczyn Weila spełnia obie wymagane tożsamości.
 
 \begin{lemma}
-Dana jest krzywa eliptyczna $E$ nad ciałem $\K$
-oraz punkty $P_1, P_2, Q \in E[n]$.
+Dane są punkty $P_1$, $P_2$ i $Q$ rzędu $n$ na krzywej eliptycznej $E$.
 Wówczas zachodzi następująca zależność:
 \begin{equation}
 w(P_1 + P_2, Q) = w(P_1, Q)w(P_2, Q)
@@ -163,19 +162,17 @@ w(P, Q_1 + Q_2)
 \end{proof}
 
 \begin{corollary}
-Iloczyn Weila $w\colon E[n] \times E[n] \to \mu_n$
-jest odwzorowaniem dwuliniowym.
+Iloczyn Weila jest odwzorowaniem dwuliniowym.
 \end{corollary}
 
 \subsection*{Wartości dla szczególnych argumentów}
 
+\noindent
 Obliczymy teraz wartość iloczynu Weila
 dla kilku specyficznych kombinacji punktów $P$ i $Q$.
 
-Zaczniemy od przypadku, gdy $P = Q$.
-
 \begin{theorem}
-Dana jest krzywa eliptyczna $E$ oraz punkt $P \in E[n]$.
+Dany jest punkt $P$ rzędu $n$ na krzywej eliptycznej $E$.
 Wówczas $w(P, P) = 1$.
 \end{theorem}
 
@@ -237,15 +234,16 @@ f_P \circ t_P
 Zatem $w(P,P) = \frac{f_P \circ t_P}{f_P} = \frac{f_P}{f_P} = 1$.
 \end{proof}
 
+\noindent
 Wynik ten uogólniamy na przypadek punktów ,,współliniowych''.
 Pojęcie współliniowości bierze się stąd,
 że grupa $E[n]$ jest izomorficzna z grupą $(\Z/n\Z)\times(\Z/n\Z)$,
 która jest wolnym modułem wymiaru dwa nad pierścieniem $\Z/n\Z$.
 
 \begin{theorem}
-Dana jest krzywa eliptyczna $E$ oraz punkty $P, Q \in E[n]$.
+Dane są punkty $P$ i $Q$ rzędu $n$ na krzywej eliptycznej $E$.
 Jeżeli istnieje punkt $R \in E[n]$ oraz liczby całkowite $k$ i $l$
-takie, że $P = kR, Q = lR$, to $w(P, Q) = 1$.
+takie, że $P = kR$ i $Q = lR$, to $w(P, Q) = 1$.
 \end{theorem}
 
 \begin{proof}
@@ -259,38 +257,45 @@ w(P, Q)
 \end{eqnarray*}
 \end{proof}
 
+\noindent
 Następujące twierdzenie jest w pewnym sensie odwrotne do poprzedniego wyniku.
 
 \begin{theorem}\label{weil_pairing_one_p_ecident}
-Dana jest krzywa eliptyczna $E$ oraz punkt $P \in E[m]$.
-Jeżeli $w(P, Q) = 1$ dla każdego punktu $Q \in E[m]$, to $P = \ecident$.
+Dany jest punkt $P$ rzędu $n$ na krzywej eliptycznej $E$.
+Jeżeli $w(P, Q) = 1$ dla każdego punktu $Q \in E[n]$, to $P = \ecident$.
 \end{theorem}
 
+\noindent
 W dowodzie tego twierdzenia kluczową rolę odegra następujący lemat.
 
 \begin{lemma}
-Dana jest krzywa eliptyczna $E$ oraz funkcja wymierna $r$ na tej krzywej.
+Dana jest funkcja wymierna $r$ na krzywej eliptycznej $E$.
 Jeżeli funkcja $r$ jest niezmiennicza ze względu na przesunięcie
-o dowolny element $Q \in E[n]$, tzn. $r = r \circ t_Q$,
-to funkcję $r$ można przedstawić w postaci $r = s \circ [n]$.
+o dowolny punkt $Q \in E[n]$, tzn. $r = r \circ t_Q$,
+to funkcję $r$ można przedstawić w postaci $r = s \circ [n]$,
+gdzie $s$ jest pewną funkcją wymierną na krzywej $E$.
 \end{lemma}
 
+\noindent
 Nie podamy dowodu tego lematu, gdyż wykracza on poza zakres niniejszej pracy.
 
 \begin{proof}[Dowód twierdzenia \ref{weil_pairing_one_p_ecident}]
 Z założenia mamy $f_P \circ t_Q = f_P$,
-więc na mocy lematu $f_P = s \circ [m]$.
-Porównując dywizor funkcji $f_P$ z kształtem funkcji $s \circ [m]$
+więc na mocy lematu $f_P = s \circ [n]$.
+Porównując dywizor funkcji $f_P$ z kształtem funkcji $s \circ [n]$
 otrzymujemy, że $\rdiv(s) = \divi{P} - \divi{\ecident}$.
 Korzystamy z lematu \ref{sim_pq_eq_pq_lemma} i dostajemy $P = \ecident$.
 \end{proof}
 
 \subsection*{Niezdegenerowanie}
 
-Pokażemy teraz, że iloczyn Weila nie jest odwzorowaniem trywialnym.
+\noindent
+Mogłoby się zdarzyć, że skomplikowana definicja doprowadziła nas
+do funkcji trywialnej.
+Pokażemy teraz, że tak nie jest.
 
 \begin{theorem}
-Dana jest krzywa eliptyczna $E$ oraz punkty $P, Q \in E[n]$.
+Dane są punkty $P$ i $Q$ rzędu $n$ na krzywej eliptycznej $E$.
 Jeżeli punkty $P$ i $Q$ są generatorami grupy $E[n]$,
 to $w(P, Q)$ jest pierwiastkiem pierwotnym $n$-tego stopnia z jedności.
 \end{theorem}
@@ -315,12 +320,18 @@ w grupie $E[n]$. Z drugiej strony, zawsze mamy $w(P, Q)^n = 1$,
 zatem $m \mid n$. Ostatecznie otrzymujemy $n = m$.
 \end{proof}
 
+\begin{corollary}
+Wartością iloczynu Weila
+może być dowolny pierwiastek $n$-tego stopnia z jedności.
+\end{corollary}
+
 \subsection*{Antysymetria}
 
+\noindent
 Z dwuliniowości łatwo pokazać, że iloczyn Weila jest antysymetryczny.
 
 \begin{theorem}
-Dana jest krzywa eliptyczna $E$ oraz punkty $P, Q \in E[n]$.
+Dane są punkty $P$ i $Q$ rzędu $n$ na krzywej eliptycznej $E$.
 Wówczas $w(P, Q) = w(Q, P)^{-1}$.
 \end{theorem}
 
