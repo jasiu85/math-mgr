@@ -1,10 +1,12 @@
 \section{Dowód poprawności i oszacowanie złożoności}
 
+\noindent
 Udowodnimy teraz poprawność algorytmu Millera
 oraz oszacujemy jego złożoność.
 
 \subsection*{Wyjaśnienie}
 
+\noindent
 Podstawę, na której opiera się algorytm Millera,
 stanowi następująca definicja i płynące z niej wnioski.
 
@@ -19,6 +21,7 @@ w następujący sposób:
 \end{equation}
 \end{definition}
 
+\noindent
 Związek tej definicji z iloczynem Weila pokazuje następujący fakt.
 
 \begin{fact}\label{rn_eq_fp_fact}
@@ -28,6 +31,7 @@ Zachodzi następująca zależność:
 \end{equation}
 \end{fact}
 
+\noindent
 Funkcje $r_{P,R}^{(k)}$ spełniają następującą zależność.
 
 \begin{lemma}\label{dbl_add_lemma}
@@ -65,6 +69,7 @@ r_{P,R}^{(k+l)} = r_{P,R}^{(k)} r_{P,R}^{(l)} \frac{g}{h}
 \end{equation}
 \end{corollary}
 
+\noindent
 Widzimy teraz, na czym opiera się algorytm Millera.
 Lemat \ref{dbl_add_lemma} i płynący z niego wniosek \ref{dbl_add_coro}
 sugerują algorytm typu ,,podwajaj-i-dodawaj'',
@@ -72,6 +77,7 @@ który pozwala obliczać wartości funkcji $r_{P,R}^{(n)}$.
 
 \subsection*{Poprawność}
 
+\noindent
 Pokażemy teraz, że algorytm \ref{miller_alg} jest poprawny,
 tzn. że rzeczywiście oblicza wartości ilczynu Weila
 i że ma własność stopu.
@@ -113,16 +119,19 @@ Będziemy rozpatrywać zapis liczby $n$ w postaci dwójkowej:
 n = \sum_{k = 0}^{\lfloor\log_2 n\rfloor} n_k2^k
 \end{equation*}
 
+\noindent
 Jak łatwo sprawdzić,
 przed rozpoczęciem pętli $\kw{while}$
 zmienna $u$ ma wartość $r_{P,R}^{(0)}(A)$,
 a zmienna $v$ ma wartość $r_{P,R}^{(1)}(A)$.
 
+\noindent
 Po zakończeniu $k$-tego przebiegu pętli
 zmienna $u$ ma wartość $r_{P,R}^{(m)}(A)$,
 gdzie $m = \sum_{l=0}^k n_l2^l$,
 a zmienna $v$ ma wartość $r_{P,R}^{(2^k)}(A)$.
 
+\noindent
 Widać stąd, że po zakończeniu $(\lfloor\log_2 n\rfloor+1)$-szego kroku pętli
 zmienna $u$ będzie miała żądaną wartość $r_{P,R}^{(n)}$.
 \end{proof}
@@ -192,6 +201,7 @@ nie miałoby w punkcie $S$ ani $Q+S$ miejsca zerowego ani bieguna.
 Procedura $\proc{Compute-Value}$ przerywa jednak obliczenia w takiej sytuacji,
 ponieważ przeprowadza obliczenia na wartościach, a nie wyrażeniach.
 
+\noindent
 Aby obliczenie $\proc{Compute-Value}(E, n, P, R, A)$ powiodło się,
 punkt $A$ nie może pokryć się z żadnym z następujących punktów:
 $R, P, 2P, 4P, 8P, \ldots, 2^{\lfloor\log_2 n\rfloor}P,
@@ -199,6 +209,7 @@ T_1, T_2, T_3, \ldots, T_{\lfloor\log_2 n\rfloor}$,
 gdzie $T_k = \left(\sum_{l=0}^k n_l2^l\right)P$.
 Widać, że łącznie punktów tych jest $O(\log n)$.
 
+\noindent
 Wniosek stąd, że obliczenie każdej z wartości $a$, $b$, $c$, $d$
 w jednym przebiegu pętli $\kw{while}$ w procedurze $\proc{Weil-Pairing}$
 zakończy się błędem
@@ -207,6 +218,7 @@ gdzie $q$ to rozmiar ciała skończonego, nad którym dana jest krzywa $E$.
 Zatem jeden przebieg tej pętli nie zakończy się sukcesem
 również z prawdopodobieństwem niewiększym niż $O(\frac{\log n}{q})$.
 
+\noindent
 Przyjmijmy teraz, że $q = p^e$.
 Jeżeli prawdopodobieństwo wystąpienia błędu jest zbyt duże,
 możemy losować punkty $R$ i $S$ z odpowiednio większego ciała
@@ -220,6 +232,7 @@ a oczekiwana liczba przebiegów pętli wynosi $2$.
 
 \subsection*{Złożoność czasowa i pamięciowa}
 
+\noindent
 Oszacujemy teraz złożoność asymptotyczną algorytmu Millera.
 W sytuacji tej natrualne jest mierzenie złożoności
 w zależności od dwóch parametrów:
@@ -235,6 +248,7 @@ rozmiar ciała skończonego, nad którym zdefiniowana jest krzywa
 oraz numer podgrupy torsyjnej tej krzywej.
 \end{remark}
 
+\noindent
 Rozpoczniemy od ustalenia złożoności przyjętych operacji elementarnych.
 
 \begin{remark}
@@ -274,6 +288,7 @@ wynika stąd,
 nie pojawiają się liczby większe niż $n$.
 \end{remark}
 
+\noindent
 Teraz podamy złożoność procedur, które uznajemy za dane:
 
 \begin{remark}
@@ -300,6 +315,7 @@ $O(\log q)$ operacji na bitach i $O(\log q)$ bitów pamięci;
 \end{itemize}
 \end{remark}
 
+\noindent
 W przypadku większości ogólnych procedur, których pseudokod podaliśmy,
 łatwo jest policzyć złożoność.
 
@@ -377,6 +393,7 @@ w których przechowywane są elementy ciała,
 stąd wymaga $O(\log q)$ bitów pamięci.
 \end{proof}
 
+\noindent
 Obliczymy teraz złożoność algorytmu Millera.
 
 \begin{fact}

@@ -1,9 +1,11 @@
 \section{Algorytm Millera}
 
+\noindent
 Opiszemy teraz algorytm Millera,
 obliczający wartości iloczynu Weila,
 poprzez podanie jego pseudokodu.
 
+\noindent
 Aby nie doszło do nieporozumień przy odczytywaniu
 prezentowanego pseudokodu,
 musimy najpierw poczynić szereg ustaleń.
@@ -70,6 +72,7 @@ linię o na krzywej $E$ współczynnikach $a$, $b$ i $c$.
 \end{itemize}
 \end{remark}
 
+\noindent
 Ponieważ wybraliśmy bardzo ubogi zestaw operacji elementarnych,
 przed opisem procedur związanych bezpośrednio z algorytmem Millera
 musimy w postaci pseudokodu przedstawić
@@ -77,6 +80,7 @@ ogólne algorytmy związane z krzywymi eliptycznymi.
 Część z nich to ujęte w postaci pseudokodu
 wzory wyprowadzone wcześniej w pracy.
 
+\noindent
 Rozpoczniemy od procedury obliczającej
 wartość linii w punkcie krzywej eliptycznej.
 Jest ona trywialna, ale nie uznaliśmy jej za operację elementarną,
@@ -99,6 +103,7 @@ wartość $l(P)$:
 \end{codebox}
 \end{algorithm}
 
+\noindent
 Podamy teraz procedury wyznaczające linie przechodzące przez zadane punkty.
 Najpierw rozważymy przypadki szczególne,
 dla których wyprowadziliśmy wcześniej odpowiednie wzory.
@@ -199,6 +204,7 @@ linię styczną do krzywej $E$ przechodzącą przez punkt $P$:
 \end{codebox}
 \end{algorithm}
 
+\noindent
 Podane procedury zbierzemy teraz w jedną całość --
 procedurę, która wyznacza linię przechodzącą przez dowolne dwa punkty krzywej.
 
@@ -245,6 +251,7 @@ linię przechodzącą przez punkty $P$ i $Q$
 \end{codebox}
 \end{algorithm}
 
+\noindent
 Kolejną ogólną procedurą jest dodawanie dwóch punktów krzywej,
 a w następstwie mnożenie punktu przez liczbę naturalną.
 
@@ -378,6 +385,7 @@ punkt $nP$:
 \end{codebox}
 \end{algorithm}
 
+\noindent
 Ostatnią ogólną procedurą jest losowanie punktu na krzywej eliptycznej.
 
 \begin{algorithm}
@@ -430,6 +438,7 @@ punkt krzywej $E$:
 \end{codebox}
 \end{algorithm}
 
+\noindent
 Możemy teraz przejść do opisania algorytmu Millera.
 
 \begin{algorithm}\label{miller_alg}

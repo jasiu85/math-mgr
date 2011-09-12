@@ -1,11 +1,13 @@
 \section{Opis implementacji}
 
+\noindent
 Część niniejszej pracy stanowi implementacja
 opisanego w tym rozdziale algorytmu Millera,
 którą teraz krótko omówimy.
 
 \subsection*{Język programowania}
 
+\noindent
 Do implementacji został użyty język Python \cite{python}.
 Podsumujmy krótko jego najważniejsze cechy.
 \begin{itemize}
@@ -62,6 +64,7 @@ Oznacza to, że z Pythona można korzystać bezpłatnie
 w praktycznie dowolnych zastosowaniach, w tym akademickich i komercyjnych.
 \end{itemize}
 
+\noindent
 Wybór języka Python do zaimplementowania algorytmu Millera
 podyktowany był następującymi względami:
 \begin{itemize}
@@ -85,6 +88,7 @@ Dzięki temu implementacja algorytmu Millera powstała bardzo szybko.
 
 \subsection*{Struktura implementacji}
 
+\noindent
 Pełna komputerowa implementacja algorytmu Millera
 obejmuje nie tylko przedstawione w tym rozdziale algorytmy,
 ale także pewną ilość dodatkowych elementów.
@@ -160,9 +164,11 @@ w tym procedury $\proc{Weil-Pairing}(E, n, P, Q)$.
 
 \subsection*{Wydajność}
 
+\noindent
 Wydajność otrzymanej implementacji algorytmu Millera jest niska.
 Fakt ten jest wywołany kilkoma czynnikami.
 
+\noindent
 Po pierwsze, zastosowany język Python oprócz wszystkich wymienionych zalet
 ma też jedną zasadniczą wadę -- nie jest szybki.
 Przyczyną tego stanu rzeczy jest przede wszystkim to,
@@ -170,6 +176,7 @@ Przyczyną tego stanu rzeczy jest przede wszystkim to,
 W zależności od zastosowań może on być kilka do kilkudziesięciu razy
 wolniejszy od języków kompilowanych, np. od C++.
 
+\noindent
 Po drugie, sposób zastosowany przy implementacji ciał skończonych
 nie jest wydajny.
 Przedstawienie ciał skończonych jako pierścieni ilorazowych powoduje,
@@ -179,16 +186,19 @@ a w konsekwencji na jeszcze więcej operacji na liczbach całkowitych.
 Mimo niskiej wydajności ten sposób reprezentacji został zastosowany,
 ponieważ jest przejrzysty i ogólny.
 
+\noindent
 Po trzecie, sam algorytm Millera w postaci podanej w niniejszej pracy
 charakteryzuje się dużą stałą w złożoności asymptotycznej.
 Uważna analiza pozwala wyeliminować losowość z algorytmu (por. \cite{miller}).
 
+\noindent
 W związku z powyższym należy uznać, że stanowiąca część niniejszej pracy
 implementacja algorytmu Millera ma charakter poglądowy
 i nie nadaje się do zastosowań praktycznych.
 
 \subsection*{System Sage}
 
+\noindent
 Narzędziem, które okazało się niezwykle pomocne podczas implementacji,
 jest system Sage \cite{sage}.
 Jest to wolny odpowiednik systemów
