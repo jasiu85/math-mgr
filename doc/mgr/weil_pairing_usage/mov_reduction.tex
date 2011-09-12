@@ -1,10 +1,9 @@
 \section{Redukcja MOV}
 
-Pierwsze zastosowanie iloczynu Weila
-związane jest
+\noindent
+Pierwsze zastosowanie iloczynu Weila związane jest
 z problemem logarytmu dyskretnego oraz protokołem Diffiego-Hellmana.
-
-Podajmy najpierw definicje obu problemów.
+Podamy najpierw definicje obu problemów.
 
 \begin{problem}[Logarytm dyskretny]
 Dana jest grupa cykliczna $\G$,
@@ -43,6 +42,7 @@ Problem logarytmu dyskretnego w grupie multiplikatywnej ciała $\GF(p^e)$
 jest obecnie uważany za problem trudny obliczeniowo.
 \end{remark}
 
+\noindent
 Jak wiemy, grupa multiplikatywna ciała $\GF(p^e)$
 jest izomorficzna z grupą $\Z / (p^e-1)\Z$.
 Mimo to problemy logarytmu dyskretnego w tych grupach
@@ -51,6 +51,7 @@ co jest spowodowane różnicą w sposobie,
 w jaki reprezentujemy elementy obu grup
 oraz obliczamy wyniki działania grupowego.
 
+\noindent
 Problemem spokrewnionym z problemem logarytmu dyskretnego
 jest zagadnienie złamania protokołu Difiego-Hellmana,
 zwane w skrócie ,,problemem Diffiego-Hellmana''.
@@ -72,6 +73,7 @@ możemy stosować zapis addytywny (szukamy wówczas wartości $klg$)
 oraz rozpatrywać problem w dowolnej grupie.
 \end{remark}
 
+\noindent
 Pokrewieństwo obu problemów polega na tym,
 że jeden można zredukować do drugiego.
 
@@ -96,6 +98,7 @@ Jak widać, aby rozwiązać egzemplarz problemu Diffiego-Hellmana
 wystarczy dwa razy zastosować rozwiązanie problemu logarytmu dyskretnego.
 \end{proof}
 
+\noindent
 Czy problem Diffiego-Hellmana można rozwiązać inaczej?
 Być może wystarczy odpowiednio wykorzystać inne operacje,
 które daje się efektywnie obliczać.
@@ -108,6 +111,7 @@ Wydaje się, że oba problemy są równoważne (por. \cite{maurer}),
 a to oznacza trudność problemu Diffiego-Hellmana,
 a zatem bezpieczeństwo używanych protokołów.
 
+\noindent
 Oba podane problemy zostały przedstawione w wersji obliczeniowej.
 W teorii złożoności obliczeniowej często rozpatruje się wersje decyzyjne
 problemów. Problem Diffiego-Hellmana przybiera wówczas następującą postać.
@@ -123,9 +127,11 @@ kl \equiv m \quad (\mathrm{mod}\ \abs{\G})
 \end{equation}
 \end{problem}
 
+\noindent
 Jest jasne, że problem decyzyjny można zredukować do problemu obliczeniowego,
 zatem jest on nietrudniejszy. Może się zdarzyć, że jest dużo prostszy.
 
+\noindent
 W przypadku krzywych eliptycznych obie wersje problemu Diffiego-Hellmana
 są następujące.
 
@@ -151,6 +157,7 @@ kl \equiv m \quad (\mathrm{mod}\ n)
 \end{equation}
 \end{problem}
 
+\noindent
 Czy problem Diffiego-Hellmana na krzywej eliptycznej jest trudny?
 Okazuje się, że iloczyn Weila ma wpływ na tę kwestię.
 
@@ -206,6 +213,7 @@ Niech $\xi$ oznacza pierwiastek trzeciego stopnia z jedności w ciele $\GF(p^2)$
 Jak wiemy, punkt $H = (\xi a, b)$ również ma rząd $n$
 i razem z punktem $G$ generuje grupę $E[n]$.
 
+\noindent
 Oznaczmy odwzorowanie $(x, y) \to (\xi x, y)$ przez $f$.
 Zauważmy, że zachodzą następujące zależności:
 \begin{eqnarray*}

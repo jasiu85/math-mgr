@@ -1,5 +1,6 @@
 \section{Szczególne krzywe eliptyczne}
 
+\noindent
 Krzywe eliptyczne, które są używane w systemach kryptograficznych,
 są dobierane ze szczególną starannością.
 Wskażemy pewien szczególny rodzaj krzywych eliptycznych,
@@ -20,6 +21,7 @@ Inną rodziną krzywych superosobliwych są krzywe postaci $E_{1,0}(\F(p))$,
 gdzie $p \equiv 3\ (\mathrm{mod}\ 4)$.
 \end{remark}
 
+\noindent
 Krzywe superosobliwe są interesujące,
 struktura grupy na takich krzywych jest prosta,
 co pokazują następujące twierdzenia.
@@ -40,6 +42,7 @@ Ponieważ liczba $p-1$ jest względnie pierwsza z $3$,
 otrzymujemy $p-1 \mid k-l$.
 Stąd $a = b$.
 
+\noindent
 Z rozważań tych wynika następujący wniosek:
 funkcja $x^3 + 1$ jest bijekcją w zbiorze $\F(p)$,
 w jej obrazie znajdują się wszystkie reszty kwadratowe,
@@ -60,6 +63,7 @@ zatem $l = 1$ lub $l = 2$.
 W pierwszym przypadku twierdzenie jest udowodnione.
 Pokażemy, że drugi jest niemożliwy.
 
+\noindent
 Przyjmijmy, że $l = 2$.
 Jeżeli $2 \nmid k$,
 to grupa $(\Z / k\Z) \times (\Z / l\Z)$ jest izomoriczna
@@ -70,6 +74,7 @@ To jest niemożliwe, bo wielomian ten jest bijekcją w zbiorze $\F(p)$,
 jak zauważyliśmy wcześniej.
 \end{proof}
 
+\noindent
 W kontekście iloczynu Weila krzywe superosobliwe są ważne dlatego,
 że łatwo wskazywać ich podgrupy $n$-torsyjne.
 
@@ -87,6 +92,7 @@ Oznaczmy go przez $\xi$.
 Zauważmy teraz, że odwzorowanie $(x, y) \to (\xi x, y)$
 jest automorfizmem krzywej $E_{0,1}(\GF(p^2))$.
 
+\noindent
 Niech $P = (a, b)$ będzie takim punktem krzywej $E_{0,1}(\F(p))$,
 że $nP = \ecident$.
 Teraz, punkt $Q = (\xi a, b) \in E_{0,1}(\GF(p^2))$ również ma rząd $n$,
@@ -94,6 +100,7 @@ bo jest obrazem punktu $P$ poprzez opisany automorfizm.
 Zauważmy przy tym, że $Q \notin E_{0,1}(\F(p))$,
 bo $\xi \notin \F(p)$.
 
+\noindent
 Wynika stąd już, że podgrupa $n$-torsyjna krzywej $E_{0,1}(\GF(p^2))$
 ma żądaną postać. Co więcej, punkty $P$ i $Q$ są jej generatorami.
 \end{proof}
