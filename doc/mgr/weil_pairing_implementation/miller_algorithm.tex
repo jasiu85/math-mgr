@@ -1,18 +1,16 @@
 \section{Algorytm Millera}
 
 \noindent
-Opiszemy teraz algorytm Millera,
-obliczający wartości iloczynu Weila,
-poprzez podanie jego pseudokodu.
-
-\noindent
-Aby nie doszło do nieporozumień przy odczytywaniu
-prezentowanego pseudokodu,
-musimy najpierw poczynić szereg ustaleń.
+Przedstawimy teraz pseudokod algorytmu Millera,
+który oblicza wartości iloczynu Weila
+na podstawie wzoru \ref{base_formula_eqn}.
+Najpierw opiszemy zasady obowiązujące przy zapisywaniu pseudokodu,
+a następnie podamy treść procedur pomocniczych
+oraz właściwego algorytmu.
 
 \begin{remark}
-Przyjmujemy, że przy prezentowaniu pseudokodu w niniejszej pracy
-obowiązują następujące konwencje:
+Aby uniknąć niejasności przy zapisywaniu pseudokodu,
+przyjmujemy następujące ustalenia:
 \begin{itemize}
 \item pseudokod będziemy zapisywać w formie podobnej do tej
 stosowanej w książce \cite{clrs};
@@ -34,9 +32,9 @@ uznajemy za elementarne;
 \item ustalamy, że notacja $p[o]$ oznacza odczytanie cechy $p$ obiektu $o$,
 w szczególności:
 \begin{itemize}
-\item $\id{zero}[\K]$, $\id{one}[\K]$ itd.
+\item $\id{zero}[K]$, $\id{one}[K]$ itd.
 oznaczają odpowiednio
-zero, jedynkę itd. w ciele $\K$;
+zero, jedynkę itd. w ciele $K$;
 \item $A[E]$, $B[E]$, $\id{field}[E]$, $\id{identity}[E]$
 oznaczają odpowiednio
 parametry krzywej $E$, ciało, nad którym krzywa $E$ jest zdefiniowana
@@ -49,31 +47,31 @@ i wyraz wolny linii $l$;
 \end{itemize}
 \item zakładamy, że dysponujemy następującymi procedurami:
 \begin{itemize}
-\item $\proc{Random-Integer}(n)$, 
-która wybiera losowo z rozkładem jednostajnym
-liczbę całkowitą $a$ taką, że $0 \leq a < n$;
-\item $\proc{Random-Finite-Field-Element}(\K)$,
-która wybiera losowo z rozkładem jednostajnym
-element ciała skończonego $\K$;
-\item $\proc{Finite-Field-Element-Square-Root}(\K, a)$,
-która oblicza
-dowolny pierwiastek kwadratowy elementu $a \in \K$
-lub przekazuje stałą $\const{error}$, jeśli taki pierwiastek nie istnieje;
-\item $\proc{Curve-Finite-Point}(E, a, b)$,
-która konstruuje
+\item \proc{Random-Integer}$(n)$, 
+która wybiera losowo z rozkładem jednostajnym i przekazuje jako wynik
+liczbę całkowitą $a$ z przedziału $[0; n)$, tzn. $0 \leq a < n$;
+\item \proc{Random-Finite-Field-Element}$(K)$,
+która wybiera losowo z rozkładem jednostajnym i przekazuje jako wynik
+element ciała skończonego $K$;
+\item \proc{Finite-Field-Element-Square-Root}$(K, a)$,
+która oblicza i przekazuje jako wynik
+dowolny pierwiastek kwadratowy elementu $a \in K$
+lub stałą \const{error}, jeśli taki pierwiastek nie istnieje;
+\item \proc{Curve-Finite-Point}$(E, a, b)$,
+która konstruuje i przekazuje jako wynik
 punkt skończony krzywej $E$ o współrzędnych $a$ i $b$;
-\item $\proc{Curve-Point-Conjugate}(E, P)$,
-która oblicza
+\item \proc{Curve-Point-Conjugate}$(E, P)$,
+która oblicza i przekazuje jako wynik
 punkt sprzężony do punktu $P \in E$;
-\item $\proc{Line-On-Curve}(E, a, b, c)$,
-która konstruuje
-linię o na krzywej $E$ współczynnikach $a$, $b$ i $c$.
+\item \proc{Line-On-Curve}$(E, a, b, c)$,
+która konstruuje i przekazuje jako wynik
+linię na krzywej $E$ o współczynnikach $a$, $b$ i $c$.
 \end{itemize}
 \end{itemize}
 \end{remark}
 
 \noindent
-Ponieważ wybraliśmy bardzo ubogi zestaw operacji elementarnych,
+Ponieważ wybraliśmy dosyć ubogi zestaw operacji elementarnych,
 przed opisem procedur związanych bezpośrednio z algorytmem Millera
 musimy w postaci pseudokodu przedstawić
 ogólne algorytmy związane z krzywymi eliptycznymi.
@@ -87,299 +85,218 @@ Jest ona trywialna, ale nie uznaliśmy jej za operację elementarną,
 dlatego wypada ją zdefiniować.
 
 \begin{algorithm}
-Dana jest krzywa eliptyczna $E$,
-linia $l$ na krzywej $E$ oraz punkt skończony $P \in E$.
+Dana jest linia $l$ oraz punkt skończony $P$ na krzywej $E$.
 Następująca procedura
 na podstawie wartości $E$, $l$ i $P$
-oblicza
+oblicza i przekazuje jako wynik
 wartość $l(P)$:
 
 \begin{codebox}
 \Procname{$\proc{Line-Value-At-Curve-Finite-Point}(E, l, P)$}
-\li
-    \Assert $P \neq \id{identity}[E]$
-\li
-    \Return $a[l]\cdot x[P] + b[l]\cdot y[P] + c[l]$
+\li \Assert $P \neq \id{identity}[E]$
+\li \Return $a[l]\cdot x[P] + b[l]\cdot y[P] + c[l]$
 \end{codebox}
 \end{algorithm}
 
 \noindent
-Podamy teraz procedury wyznaczające linie przechodzące przez zadane punkty.
+Teraz podamy procedury wyznaczające linie przechodzące przez zadane punkty.
 Najpierw rozważymy przypadki szczególne,
 dla których wyprowadziliśmy wcześniej odpowiednie wzory.
 
 \begin{algorithm}
-Dana jest krzywa eliptyczna $E$
-oraz punkt $P \in E$.
+Dany jest punkt $P$ na krzywej $E$.
 Następująca procedura
 na podstawie wartości $E$ i $P$
-oblicza
+oblicza i przekazuje jako wynik
 linię pionową przechodzącą przez punkt $P$:
 
 \begin{codebox}
 \Procname{$\proc{Vertical-Line-Through-Curve-Point}(E, P)$}
-\li
-    $K \gets \id{field}(E)$
-\li
-    \If $P = \id{identity}[E]$
-\li
-        \Then
+\li $K \gets \id{field}(E)$
+\li \If $P = \id{identity}[E]$
+\li     \Then
             \Return $\proc{Line-On-Curve}(E, \id{zero}[K], \id{zero}[K], \id{one}[K])$
-\li
-        \Else
+\li     \Else
             $a \gets x[P]$
-\li
-            \Return $\proc{Line-On-Curve}(E, \id{one}[K], \id{zero}[K], -a)$
+\li         \Return $\proc{Line-On-Curve}(E, \id{one}[K], \id{zero}[K], -a)$
         \End
 \end{codebox}
 \end{algorithm}
 
 \begin{algorithm}
-Dana jest krzywa eliptyczna $E$
-oraz dwa różne punkty skończone $A, B \in E$.
+Dane są dwa różne punkty skończone $P$ i $Q$ na krzywej $E$.
 Następująca procedura
 na podstawie wartości $E$, $P$ i $Q$
-oblicza
+oblicza i przekazuje jako wynik
 linię przechodzącą przez punkty $P$ i $Q$:
 
 \begin{codebox}
 \Procname{$\proc{Line-Through-Different-Curve-Finite-Points}(E, P, Q)$}
-\li
-    \Assert $P \neq \id{identity}[E] \kw{ and } P \neq \id{identity}[E]$
-\li
-    \Assert $P \neq Q$
-\li
-    $K \gets \id{field}[E]$
-\li
-    $a \gets x[P]$
-\li
-    $b \gets y[P]$
-\li
-    $c \gets x[Q]$
-\li
-    $d \gets y[Q]$
-\li
-    \If $a = c$
-\li
-        \Then
+\li \Assert $P \neq \id{identity}[E] \kw{ and } P \neq \id{identity}[E]$
+\li \Assert $P \neq Q$
+\li $K \gets \id{field}[E]$
+\li $a \gets x[P]$
+\li $b \gets y[P]$
+\li $c \gets x[Q]$
+\li $d \gets y[Q]$
+\li \If $a = c$
+\li     \Then
             \Return $\proc{Line-On-Curve}(E, \id{one}[K], \id{zero}[K], -a)$
-\li
-        \Else
+\li     \Else
             $\lambda \gets (d-b)/(c-a)$
-\li
-            \Return $\proc{Line-On-Curve}(E, \lambda, -\id{one}[K], -(\lambda\cdot a - b))$
+\li         \Return $\proc{Line-On-Curve}(E, \lambda, -\id{one}[K], -(\lambda\cdot a - b))$
         \End
 \end{codebox}
 \end{algorithm}
 
 \begin{algorithm}
-Dana jest krzywa eliptyczna $E$
-oraz punkt skończony $P \in E$.
+Dany jest punkt skończony $P$ na krzywej eliptycznej $E$.
 Następująca procdeura
 na podstawie wartości $E$ i $P$
-oblicza
+oblicza i przekazuje jako wynik
 linię styczną do krzywej $E$ przechodzącą przez punkt $P$:
 
 \begin{codebox}
 \Procname{$\proc{Tangent-Line-Through-Curve-Finite-Point}(E, P)$}
-\li
-    \Assert $P \neq \id{identity}[E]$
-\li
-    $K \gets \id{field}[E]$
-\li
-    $a \gets x[P]$
-\li
-    $b \gets y[P]$
-\li
-    \If $b = \id{zero}[K]$
-\li
-        \Then
+\li \Assert $P \neq \id{identity}[E]$
+\li $K \gets \id{field}[E]$
+\li $a \gets x[P]$
+\li $b \gets y[P]$
+\li \If $b = \id{zero}[K]$
+\li     \Then
             \Return $\proc{Line-On-Curve}(E, \id{one}[K], \id{zero}[K], -a)$
-\li
-        \Else
+\li     \Else
             $\lambda \gets (\id{three}[K]\cdot a \cdot a + A[E])/(\id{two}[K]\cdot b)$
-\li
-            \Return $\proc{Line-On-Curve}(E, \lambda, -\id{one}[K], -(\lambda\cdot a - b))$
+\li         \Return $\proc{Line-On-Curve}(E, \lambda, -\id{one}[K], -(\lambda\cdot a - b))$
         \End
 \end{codebox}
 \end{algorithm}
 
 \noindent
-Podane procedury zbierzemy teraz w jedną całość --
+Podane procedury zbierzemy teraz w jedną całość:
 procedurę, która wyznacza linię przechodzącą przez dowolne dwa punkty krzywej.
 
 \begin{algorithm}
-Dana jest krzywa eliptyczna $E$
-oraz punkty $P, Q \in E$.
+Dane są punkty $P$ i $Q$ na krzywej eliptycznej $E$.
 Następująca procedura
 na podstawie wartości $E$, $P$ i $Q$
-oblicza
+oblicza i przekazuje jako wynik
 linię przechodzącą przez punkty $P$ i $Q$
 (lub styczną do krzywej w punkcie $P$, gdy $P = Q$):
 
 \begin{codebox}
 \Procname{$\proc{Line-Through-Curve-Points}(E, P, Q)$}
-\li
-    $K \gets \id{field}[E]$
-\li
-    \If $P = \id{identity}[E] \kw{ and } Q = \id{identity}[E]$
-\li
-        \Then
+\li $K \gets \id{field}[E]$
+\li \If $P = \id{identity}[E] \kw{ and } Q = \id{identity}[E]$
+\li     \Then
             \Return $\proc{Line-On-Curve}(E, \id{zero}[K], \id{zero}[K], \id{one}[K])$
         \End
-\li
-    \If $P = \id{identity}[E]$
-\li
-        \Then
+\li \If $P = \id{identity}[E]$
+\li     \Then
             \Return $\proc{Vertical-Line-Through-Curve-Point}(E, Q)$
         \End
-\li
-    \If $Q = \id{identity}[E]$
-\li
-        \Then
+\li \If $Q = \id{identity}[E]$
+\li     \Then
             \Return $\proc{Vertical-Line-Trough-Curve-Point}(E, P)$
         \End
-\li
-    \If $P \neq Q$
-\li
-        \Then
+\li \If $P \neq Q$
+\li     \Then
             \Return $\proc{Line-Through-Different-Curve-Finite-Points}(E, P, Q)$
-\li
-        \Else
+\li     \Else
             \Return $\proc{Tangent-Line-Through-Curve-Finite-Point}(E, P)$
         \End
 \end{codebox}
 \end{algorithm}
 
 \noindent
-Kolejną ogólną procedurą jest dodawanie dwóch punktów krzywej,
-a w następstwie mnożenie punktu przez liczbę naturalną.
+Kolejne ogólne procedury to dodawanie dwóch punktów krzywej
+oraz mnożenie punktu przez liczbę całkowitą.
 
 \begin{algorithm}
-Dana jest krzywa eliptyczna $E$
-oraz punkty $P, Q \in E$.
+Dane są punkty $P$ i $Q$ na krzywej eliptycznej $E$.
 Następująca procedura
 na podstawie wartości $E$, $P$ i $Q$
-oblicza
+oblicza i przekazuje jako wynik
 punkt $P + Q$:
 
 \begin{codebox}
 \Procname{$\proc{Add-Curve-Points}(E, P, Q)$}
-\li
-    $K \gets \id{field}[E]$
-\li
-    \If $P = \id{identity}[E]$
-\li
-        \Then
+\li $K \gets \id{field}[E]$
+\li \If $P = \id{identity}[E]$
+\li     \Then
             \Return $Q$
         \End
-\li
-    \If $Q = \id{identity}[E]$
-\li
-        \Then
+\li \If $Q = \id{identity}[E]$
+\li     \Then
             \Return $P$
         \End
-\li
-    \If $P = \proc{Curve-Point-Conjugate}(E, Q)$
-\li
-        \Then
+\li \If $P = \proc{Curve-Point-Conjugate}(E, Q)$
+\li     \Then
             \Return $\id{identity}[E]$
         \End
-\li
-    $a \gets x[P]$
-\li
-    $b \gets y[P]$
-\li
-    $c \gets x[Q]$
-\li
-    $d \gets y[Q]$
-\li
-    \If $P \neq Q$
-\li
-        \Then
+\li $a \gets x[P]$
+\li $b \gets y[P]$
+\li $c \gets x[Q]$
+\li $d \gets y[Q]$
+\li \If $P \neq Q$
+\li     \Then
             $\lambda \gets (d - b)/(c - a)$
-\li
-        \Else
+\li     \Else
             $\lambda \gets (\id{three}[K]\cdot a\cdot a + A[E])/(\id{two}[K]\cdot b)$
         \End
-\li
-    $e \gets \lambda\cdot\lambda - a - c$
-\li
-    $f \gets -\lambda\cdot(e - a) - b$
-\li
-    \Return $\proc{Curve-Finite-Point}(E, e, f)$
+\li $e \gets \lambda\cdot\lambda - a - c$
+\li $f \gets -\lambda\cdot(e - a) - b$
+\li \Return $\proc{Curve-Finite-Point}(E, e, f)$
 \end{codebox}
 \end{algorithm}
 
 \begin{algorithm}
-Dana jest krzywa eliptyczna $E$,
-punkt $P \in E$ oraz liczba całkowita $n$.
+Dany jest punkt $P$ na krzywej eliptycznej $E$ oraz liczba całkowita $n$.
 Następująca procedura
 na podstawie wartości $E$, $P$ i $n$
-oblicza
+oblicza i przekazuje jako wynik
 punkt $nP$:
 
 \begin{codebox}
 \Procname{$\proc{Multiply-Curve-Point}(E, P, n)$}
-\li
-    $K \gets \id{field}[E]$
-\li
-    \If $P = \id{identity}[E]$
-\li
-        \Then
+\li $K \gets \id{field}[E]$
+\li \If $P = \id{identity}[E]$
+\li     \Then
             \Return $\id{identity}[E]$
         \End
-\li
-    \If $y[P] = \id{zero}[K]$
-\li
-        \Then
+\li \If $y[P] = \id{zero}[K]$
+\li     \Then
             \If $n \kw{ mod } 2 = 0$
-\li
-                \Then
+\li             \Then
                     \Return $\id{identity}[E]$
-\li
-                \Else
+\li             \Else
                     \Return $P$
                 \End
         \End
-\li
-    \If $n = 0$
-\li
-        \Then
+\li \If $n = 0$
+\li     \Then
             \Return $\id{identity}[E]$
         \End
-\li
-    \If $n > 0$
-\li
-        \Then
+\li \If $n > 0$
+\li     \Then
             $m \gets n$
-\li
-        \Else
+\li     \Else
             $m \gets -n$
         \End
-\li
-    $R \gets \id{identity}[E]$
-\li
-    \While $m > 0$
-\li
-        \Do
+\li $R \gets \id{identity}[E]$
+\li \While $m > 0$
+\li     \Do
             \If $m \kw{ mod } 2 \neq 0$
-\li
-                \Then
+\li             \Then
                     $R \gets \proc{Add-Curve-Points}(R, P)$
                 \End
-\li
-            $P \gets \proc{Add-Curve-Points}(P, P)$
-\li
-            $m \gets m \kw{ div } 2$
+\li         $P \gets \proc{Add-Curve-Points}(P, P)$
+\li         $m \gets m \kw{ div } 2$
         \End
-\li
-    \If $n > 0$
-\li
-        \Then
+\li \If $n > 0$
+\li     \Then
             \Return $R$
-\li
-        \Else
+\li     \Else
             \Return $\proc{Curve-Point-Conjugate}(E, R)$
         \End
 \end{codebox}
@@ -392,45 +309,31 @@ Ostatnią ogólną procedurą jest losowanie punktu na krzywej eliptycznej.
 Dana jest krzywa eliptyczna $E$ nad ciałem skończonym.
 Następująca procedura
 na podstawie wartości $E$
-wybiera losowo z rozkładem jednostajnym
-punkt krzywej $E$:
+wybiera losowo z rozkładem jednostajnym i przekazuje jako wynik
+punkt skończony na krzywej $E$:
 
 \begin{codebox}
 \Procname{$\proc{Random-Curve-Finite-Point}(E)$}
-\li
-    $K \gets \id{field}[E]$
-\li
-    $c \gets \id{cardinality}[K]$
-\li
-    \While $\const{true}$
-\li
-        \Do
+\li $K \gets \id{field}[E]$
+\li \While $\const{true}$
+\li     \Do
             $a \gets \proc{Random-Finite-Field-Element}(K)$
-\li
-            $d \gets a \cdot a \cdot a + A[E] \cdot a + B[E]$
-\li
-            \If $d = \id{zero}[K]$
-\li
-                \Then
+\li         $d \gets a \cdot a \cdot a + A[E] \cdot a + B[E]$
+\li         \If $d = \id{zero}[K]$
+\li             \Then
                     \If $\proc{Random-Integer}(2) = 0$
-\li
-                        \Then
-                                    \Return $\proc{Curve-Finite-Point}(E, a, \id{zero}[K])$
+\li                     \Then
+                            \Return $\proc{Curve-Finite-Point}(E, a, \id{zero}[K])$
                         \End
-\li
-                \Else
+\li             \Else
                     $b \gets \proc{Finite-Field-Element-Square-Root}(K, d)$
-\li
-                    \If $b \neq \const{error}$
-\li
-                        \Then
+\li                 \If $b \neq \const{error}$
+\li                     \Then
                             \If $\proc{Random-Integer}(2) = 0$
-\li
-                                \Then
+\li                             \Then
                                     \Return $\proc{Curve-Finite-Point}(E, a, b)$
-\li
-                                \Else
-                                    \Return $\proc{Curve-Finite-Point}(E, a, -b)$
+\li                             \Else
+                                        \Return $\proc{Curve-Finite-Point}(E, a, -b)$
                                 \End
                         \End
                 \End
@@ -442,135 +345,86 @@ punkt krzywej $E$:
 Możemy teraz przejść do opisania algorytmu Millera.
 
 \begin{algorithm}\label{miller_alg}
-Dana jest krzywa eliptyczna $E$ nad ciałem skończonym,
-liczba całkowita $n$
-oraz punkty $P, Q \in E$ takie, że $nP = \ecident$ i $nQ = \ecident$.
+Dane są punkty $P$ i $Q$ rzędu $n$
+na krzywej eliptycznej $E$ nad ciałem skończonym.
 Następujące procedury
 na podstawie wartości $E$, $n$, $P$ i $Q$
-obliczają
+obliczają i przekazują jako wynik
 wartość $w(P, Q)$:
 
 \begin{codebox}
 \Procname{$\proc{Combine-Partial-Values}(E, A, U, V, u, v)$}
-\li
-    $K \gets \id{field}[E]$
-\li
-    $g \gets \proc{Line-Through-Curve-Points}(E, U, V)$
-\li
-    $h \gets \proc{Vertical-Line-Through-Curve-Point}(\proc{Add-Curve-Points}(E, U, V))$
-\li
-    $s \gets \proc{Line-Value-At-Curve-Finite-Point}(E, g, A)$
-\li
-    $t \gets \proc{Line-Value-At-Curve-Finite-Point}(E, h, A)$
-\li
-    \If $s = \id{zero}[K]$ \kw{or} $t = \id{zero}[K]$
-\li
-        \Then \Return $\const{error}$
+\li $K \gets \id{field}[E]$
+\li $g \gets \proc{Line-Through-Curve-Points}(E, U, V)$
+\li $h \gets \proc{Vertical-Line-Through-Curve-Point}(\proc{Add-Curve-Points}(E, U, V))$
+\li $s \gets \proc{Line-Value-At-Curve-Finite-Point}(E, g, A)$
+\li $t \gets \proc{Line-Value-At-Curve-Finite-Point}(E, h, A)$
+\li \If $s = \id{zero}[K]$ \kw{or} $t = \id{zero}[K]$
+\li     \Then \Return $\const{error}$
     \End
-\li
-    \Return $u \cdot v \cdot (s / t)$
+\li \Return $u \cdot v \cdot (s / t)$
 \end{codebox}
 
 \begin{codebox}
 \Procname{$\proc{Compute-Value}(E, n, P, R, A)$}
-\li
-    $K \gets \id{field}[E]$
-\li
-    $g \gets \proc{Line-Through-Curve-Points}(E, P, R)$
-\li
-    $h \gets \proc{Vertical-Line-Through-Curve-Point}(E, \proc{Add-Curve-Points}(E, P, R))$
-\li
-    $s \gets \proc{Line-Value-At-Curve-Finite-Point}(E, g, A)$
-\li
-    $t \gets \proc{Line-Value-At-Curve-Finite-Point}(E, h, A)$
-\li
-    \If $s = \id{zero}[K] \kw{ or } t = \id{zero}[K]$
-\li
-    \Then
+\li $K \gets \id{field}[E]$
+\li $g \gets \proc{Line-Through-Curve-Points}(E, P, R)$
+\li $h \gets \proc{Vertical-Line-Through-Curve-Point}(E, \proc{Add-Curve-Points}(E, P, R))$
+\li $s \gets \proc{Line-Value-At-Curve-Finite-Point}(E, g, A)$
+\li $t \gets \proc{Line-Value-At-Curve-Finite-Point}(E, h, A)$
+\li \If $s = \id{zero}[K] \kw{ or } t = \id{zero}[K]$
+\li \Then
         \Return $\const{error}$
     \End
-\li
-    $U \gets \id{identity}[E]$
-\li
-    $V \gets P$
-\li
-    $u \gets \id{one}[K]$
-\li
-    $v \gets t / s$
-\li
-    \While $n > 0$
-\li
-        \Do
+\li $U \gets \id{identity}[E]$
+\li $V \gets P$
+\li $u \gets \id{one}[K]$
+\li $v \gets t / s$
+\li \While $n > 0$
+\li     \Do
             \If $v = \const{error}$
-\li
-                \Then
+\li             \Then
                     \Return $\const{error}$
                 \End
-\li
-            \If $n \kw{ mod } 2 \neq 0$
-\li
-                \Then
+\li         \If $n \kw{ mod } 2 \neq 0$
+\li             \Then
                     $u \gets \proc{Combine-Partial-Values}(E, A, U, V, u, v)$
-\li
-                    $U \gets \proc{Add-Curve-Points}(U, V)$
-\li
-                    \If $u = \const{error}$
-\li
-                        \Then
+\li                 $U \gets \proc{Add-Curve-Points}(U, V)$
+\li                 \If $u = \const{error}$
+\li                     \Then
                             \Return $\const{error}$
                         \End
                 \End
-\li
-            $v \gets \proc{Combine-Partial-Values}(E, A, V, V, v, v)$
-\li
-            $V \gets \proc{Add-Curve-Points}(E, V, V)$
-\li
-            $n \gets n \kw{ div } 2$
+\li         $v \gets \proc{Combine-Partial-Values}(E, A, V, V, v, v)$
+\li         $V \gets \proc{Add-Curve-Points}(E, V, V)$
+\li         $n \gets n \kw{ div } 2$
         \End
-\li
-    \Return $u$
+\li \Return $u$
 \end{codebox}
 
 \begin{codebox}
 \Procname{$\proc{Weil-Pairing}(E, n, P, Q)$}
-\li
-    \Assert $\proc{MultiplyCurvePoint}(E, P, n) = \id{identity}[E]$
-\li
-    \Assert $\proc{MultiplyCurvePoint}(E, Q, n) = \id{identity}[E]$
-\li
-    $K \gets \id{field}[E]$
-\li
-    \If $P = Q \kw{ or } P = \id{identity}[E] \kw{ or } Q = \id{identity}[E]$
-\li
-        \Then
+\li \Assert $\proc{MultiplyCurvePoint}(E, P, n) = \id{identity}[E]$
+\li \Assert $\proc{MultiplyCurvePoint}(E, Q, n) = \id{identity}[E]$
+\li $K \gets \id{field}[E]$
+\li \If $P = Q \kw{ or } P = \id{identity}[E] \kw{ or } Q = \id{identity}[E]$
+\li     \Then
             \Return $\id{one}[K]$
         \End
-\li
-    \While $\const{true}$
-\li
-        \Do
+\li \While $\const{true}$
+\li     \Do
             $R \gets \proc{Random-Curve-Finite-Point(E)}$
-\li
-            $S \gets \proc{Random-Curve-Finite-Point(E)}$
-\li
-            $R' \gets \proc{Add-Curve-Points}(E, P, R)$
-\li
-            $S' \gets \proc{Add-Curve-Points}(E, Q, S)$
-\li
-            \If $R' \neq \id{identity}[E] \kw{ and } S' \neq \id{identity}[E]$
-\li
-                \Then
+\li         $S \gets \proc{Random-Curve-Finite-Point(E)}$
+\li         $R' \gets \proc{Add-Curve-Points}(E, P, R)$
+\li         $S' \gets \proc{Add-Curve-Points}(E, Q, S)$
+\li         \If $R' \neq \id{identity}[E] \kw{ and } S' \neq \id{identity}[E]$
+\li             \Then
                     $a \gets \proc{Compute--Value}(E, n, P, R, S')$
-\li
-                    $b \gets \proc{Compute--Value}(E, n, P, R, S)$
-\li
-                    $c \gets \proc{Compute--Value}(E, n, Q, S, R')$
-\li
-                    $d \gets \proc{Compute--Value}(E, n, Q, S, R)$
-\li
-                    \If $a \neq \const{error} \kw{ and } b \neq \const{error} \kw{ and } c \neq \const{error} \kw{ and } d \neq \const{error}$
-\li
-                        \Then
+\li                 $b \gets \proc{Compute--Value}(E, n, P, R, S)$
+\li                 $c \gets \proc{Compute--Value}(E, n, Q, S, R')$
+\li                 $d \gets \proc{Compute--Value}(E, n, Q, S, R)$
+\li                 \If $a \neq \const{error} \kw{ and } b \neq \const{error} \kw{ and } c \neq \const{error} \kw{ and } d \neq \const{error}$
+\li                     \Then
                             \Return $(a / b)\cdot(d / c)$
                         \End
                 \End

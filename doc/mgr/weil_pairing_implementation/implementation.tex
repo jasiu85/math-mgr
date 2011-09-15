@@ -1,7 +1,7 @@
 \section{Opis implementacji}
 
 \noindent
-Część niniejszej pracy stanowi implementacja
+Częścią niniejszej pracy jest implementacja
 opisanego w tym rozdziale algorytmu Millera,
 którą teraz krótko omówimy.
 
@@ -22,7 +22,7 @@ niż kod otaczający.
 Python jest językiem interpretowanym,
 tzn. instrukcje pythonowe nie są kompilowane do języka niższego poziomu
 (np. do kodu maszynowego),
-lecz wykonywane bezpośrednio przez ,,interpreter''.
+lecz każdorazowo parsowane i wykonywane bezpośrednio przez ,,interpreter''.
 \item
 Python pozwala stosować wiele paradygmatów programowania:
 imperatywny, obiektowy i funkcyjny (częściowo).
@@ -30,8 +30,7 @@ imperatywny, obiektowy i funkcyjny (częściowo).
 Python jest językiem dynamicznie typowanym,
 tzn. wszelkiego rodzaju kontrola typów
 (np. sprawdzanie, że argumentami operacji dodawania są liczby)
-jest wykonywana w trakcie interpretowania programu --
-nie ma przecież żadnej fazy kompilacji.
+jest wykonywana w trakcie interpretowania programu.
 \item
 Python dostarcza mechanizm automatycznego zarządzania pamięcią
 oparty o zliczanie referencji.
@@ -42,7 +41,7 @@ która oprócz usług dostępnych we wszystkich językach programowania
 dostarcza mechanizmy służące
 do prowadzenia wysokopoziomowej komunikacji sieciowej
 (protokoły HTTP, SMTP, FTP itp.);
-obsługi plików skompresowanych (TAR, GZip, BZip2);
+obsługi plików skompresowanych (TAR, GZIP, BZIP2);
 tworzenia interfejsów graficznych (Tk);
 prowadzenia komunikacji międzyprocesowej;
 przetwarzania danych multimedialnych itd.
@@ -70,7 +69,7 @@ podyktowany był następującymi względami:
 \begin{itemize}
 \item
 Składnia języka Python jest niezwykle podobna
-do zastosowanego w pracy sposobu prezentowania pseudokodu.
+do zastosowanego w pracy sposobu zapisywania pseudokodu.
 Dzięki temu wszystkie przedstawione algorytmy
 można było bez wysiłku przetłumaczyć
 na składnię Pythona.
@@ -110,15 +109,15 @@ Przyjęto obiektowy model reprezentacji danych.
 Warstwę tę można podzielić na mniejsze warstwy.
 \begin{itemize}
 \item
-Implementacja pierścienia liczb całkowitych to po prostu przedstawienie
-dostępnych w Pythonie ,,długich'' liczb całkowitych w postaci obiektowej.
+Implementacja pierścienia liczb całkowitych polega na opakowaniu
+dostępnych w Pythonie ,,długich'' liczb całkowitych w postać obiektowej.
 \item
 Implementacja pierścienia ilorazowego nad zadanym pierścieniem bazowym
-polega na zaimplementowaniu
-operacji dzielenia z resztą oraz algorytmu Euklidesa w pierścieniu bazowym.
-Operacje w pierścieniu ilorazowym polegają teraz
+polega na zaimplementowaniu w pierścieniu bazowym
+operacji dzielenia z resztą oraz rozszerzonego algorytmu Euklidesa.
+Operacje w pierścieniu ilorazowym polegają
 na wykonywaniu operacji w pierścieniu bazowym modulo zadany element.
-Odwrotności w pierścieniu ilorazowym obliczamy
+Odwrotności w pierścieniu ilorazowym obliczane są
 za pomocą algorytmu Euklidesa.
 \item
 Implementacja pierścienia wielomianów nad zadanym pierścieniem bazowym
@@ -144,21 +143,24 @@ stanowi implementacja procedur przedstawionych w tym rodziale.
 Tę warstwę również można podzielić na części.
 \begin{itemize}
 \item
-Implementacja konstruktorów
-(np. $\proc{Curve-Finite-Point}(E, a, b)$, $\proc{Line-On-Curve}(E, a, b, c)$)
-i akcesorów (np. $x[P]$, $\id{identity}[E]$, $a[l]$).
-Polega ona na odpowiednim odwoływaniu się
+Implementacja akcesorów (np. $x[P]$, $\id{identity}[E]$, $a[l]$)
+polega ona na odpowiednim odwoływaniu się
 do modelu obiektowego z warstwy trzeciej.
 \item
-Implementacja procedur uznanych za dane
-(np. $\proc{Finite-Field-Element-Square-Root}(K, a)$).
+Implementacja procedur uznanych za dane,
+w tym konstruktorów
+(np. \proc{Curve-Finite-Point},
+\proc{Line-On-Curve}),
+które korzystają z modelu obiektowego z warstwy trzeciej
+oraz algorytmów
+(np. \proc{Finite-Field-Element-Square-Root}).
 \item
 Implementacja ogólnych procedur przedstawionych w tym rozdziale
-(np. $\proc{Line-Through-Curve-Points}(E, P, Q)$,
-$\proc{Add-Curve-Points}(E, P, Q)$).
+(np. \proc{Line-Through-Curve-Points},
+\proc{Add-Curve-Points}).
 \item
 Implementacja algorytmu Millera,
-w tym procedury $\proc{Weil-Pairing}(E, n, P, Q)$.
+w tym procedury \proc{Weil-Pairing}.
 \end{itemize}
 \end{enumerate}
 

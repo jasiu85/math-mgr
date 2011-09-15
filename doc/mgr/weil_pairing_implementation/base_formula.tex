@@ -5,26 +5,26 @@ Algorytm będzie obliczał wartości iloczynu Weila
 na podstawie definicji alternatywnej.
 Niestety, fragmentem wzoru \ref{weil_pairing_alt_eqn}
 jest wyrażenie $\frac{f_Q'}{f_P'}(\ecident)$,
-które zawiera elementy niewygodne z obliczeniowego punktu widzenia --
-miejsca zerowe i bieguny oraz punkt w nieskończoności.
+które zawiera elementy niewygodne z obliczeniowego punktu widzenia:
+miejsca zerowe, bieguny i punkt w nieskończoności.
 Dlatego ,,przesuniemy'' licznik i mianownik
 we wzorze \ref{weil_pairing_alt_eqn} tak,
 aby operować tylko na wartościach skończonych.
 
 \begin{definition}\label{base_formula_def}
-Dana jest krzywa eliptyczna $E$ nad ciałem $\K$
-oraz punkty $P, Q \in E[n]$.
-Niech $R, S \in E$ będą dowolnymi punktami krzywej $E$ takimi,
+Dane są punkty $P$ i $Q$ rzędu $n$ na krzywej eliptycznej $E$ nad ciałem $\K$.
+Niech $R$ i $S$ będą dowolnymi punktami na krzywej $E$ takimi,
 że punkty $P$, $Q$, $R$, $S$, $P+R$, $Q+S$ i $\ecident$ są parami różne.
-Funkcje wymierne $f_P'', f_Q'' \in K(E)$
-określamy poprzez podanie ich dywizorów
-następująco:
+Niech $f_P''$ i $f_Q''$ będą funkcjami wymiernymi na krzywej $E$
+określonymi z dokładnością do niezerowego czynnika stałego
+poprzez następujące dywizory:
 \begin{eqnarray*}
 \rdiv(f_P'') & = & n\divi{P+R} - n\divi{R} \\
 \rdiv(f_Q'') & = & n\divi{Q+S} - n\divi{S}
 \end{eqnarray*}
-Określamy funkcję $w''(P, Q)\colon E[n] \to \K$
-następującym wzorem:
+\emph{Druga alternatywna postać iloczynu Weila}
+to funkcja $w''(P, Q)\colon E[n] \to \K$
+określona następująco:
 \begin{equation}\label{base_formula_eqn}
 w''(P, Q) = (-1)^n\frac{f_P''(Q+S)}{f_P''(S)}\frac{f_Q''(R)}{f_Q''(P+R)}
 \end{equation}
@@ -32,15 +32,17 @@ w''(P, Q) = (-1)^n\frac{f_P''(Q+S)}{f_P''(S)}\frac{f_Q''(R)}{f_Q''(P+R)}
 
 \begin{remark}
 Podobnie jak w przypadku funkcji
-$f_P''$ i $f_Q''$ z definicji \ref{weil_pairing_alt_def},
-funkcje $f_P''$ i $f_Q''$
+$f_P'$ i $f_Q'$ z definicji \ref{weil_pairing_alt_def},
+funkcje $f_P''$ i $f_Q''$ w definicji \ref{base_formula_def}
 są określone z dokładnością do czynnika stałego.
-Nie wpływa to na wartość funkcji $w''(P, Q)$.
+Nie wpływa to na wartość funkcji $w''(P, Q)$,
+zatem jest ona dobrze określona.
 \end{remark}
 
 \begin{remark}
 Ze względu na wybór punktów $R$ i $S$
-we wzorze \ref{base_formula_eqn} nie pojawia się zero ani nieskończoność.
+żaden z czynników występujących we wzorze \ref{base_formula_eqn}
+nie jest zerem ani nieskończonością.
 \end{remark}
 
 \noindent
@@ -48,8 +50,8 @@ Pokażemy teraz, że funkcje $w'(P, Q)$ i $w''(P, Q)$ są równe.
 Głównym narzędziem użytym w dowodzie będzie prawo wzajemności Weila.
 
 \begin{theorem}
-Dana jest krzywa eliptyczna $E$ oraz punkty $P, Q \in E[n]$.
-Wówczas:
+Dane są punkty $P$ i $Q$ rzędu $n$ na krzywej eliptycznej $E$.
+Wówczas zachodzi następująca zależność:
 \begin{equation}
 w'(P, Q) = w''(P, Q)
 \end{equation}
@@ -57,13 +59,15 @@ w'(P, Q) = w''(P, Q)
 
 \begin{proof}
 Z postaci dywizorów określających funkcje $f_P''$ i $f_Q''$
-łatwo zauważyć, że $f_P'' = f_P' \circ t_R$ oraz $f_P'' = f_Q' \circ t_S$.
-Potrzebna nam będzie jednak inna reprezentacja.
+łatwo zauważyć, że $f_P'' = f_P' \circ t_R$ oraz $f_Q'' = f_Q' \circ t_S$.
+Jest jeszcze inna zależność łącząca te funkcje.
+
+\noindent
 Z lematu \ref{divi_reduction_lemma} wiemy,
 że dywizor $\divi{P+R} - \divi{P} - \divi{R} + \divi{\ecident}$ jest główny,
 podobnie dywizor $\divi{Q+S} - \divi{Q} - \divi{S} + \divi{\ecident}$.
-Niech $r_P$ i $r_Q$ będą określone za pomocą tych dywizorów,
-to znaczy:
+Niech więc funkcje wymierne $r_P$ i $r_Q$
+będą określone poprzez te dywizory:
 \begin{eqnarray*}
 \rdiv(r_P) & = & \divi{P+R} - \divi{P} - \divi{R} + \divi{\ecident} \\
 \rdiv(r_Q) & = & \divi{Q+S} - \divi{Q} - \divi{S} + \divi{\ecident}
@@ -87,6 +91,8 @@ Otrzymujemy:
 & = & \frac{1}{r_Q^n(P)}\frac{f_P'(Q+S)}{f_P'(Q)f_P'(S)}
       (-1)^{-n}\left(\frac{f_P'}{r_Q^{-n}}\right)(\ecident)
 \end{eqnarray}
+
+\noindent
 W analogiczny sposób stosujemy prawo wzajemności Weila
 do funkcji $r_P$ i $f_Q'$:
 \begin{eqnarray}
@@ -100,7 +106,9 @@ do funkcji $r_P$ i $f_Q'$:
 & = & r_P^n(Q)\frac{f_Q'(P)f_Q'(R)}{f_Q'(P+R)}
       (-1)^{-n}\left(\frac{r_P^{-n}}{f_Q'}\right)(\ecident)
 \end{eqnarray}
-Stosujemy prawo wzajemności Weila jeszcze raz do funkcji $h_P$ i $h_Q$:
+
+\noindent
+Stosujemy prawo wzajemności Weila jeszcze raz do funkcji $r_P$ i $r_Q$:
 \begin{eqnarray}
 1
 & = & \prod_{T \in E} \lsym{r_P}{r_Q}{T}
@@ -112,13 +120,16 @@ Stosujemy prawo wzajemności Weila jeszcze raz do funkcji $h_P$ i $h_Q$:
 &   & \lsym{r_P}{r_Q}{Q+S}
       \lsym{r_P}{r_Q}{Q}
       \lsym{r_P}{r_Q}{S}
-      \lsym{r_P}{r_Q}{\ecident}
+\nonumber \\
+&   & \lsym{r_P}{r_Q}{\ecident}
 \nonumber \\
 & = & \frac{r_P(Q+S)}{r_P(S)}
       \frac{r_Q(R)}{r_Q(P+R)}
       \frac{r_P(Q)}{r_Q(P)}
       \left(\frac{r_P}{r_Q}\right)(\ecident)
 \end{eqnarray}
+
+\noindent
 Ostatnią równość podnosimy do $n$-tej potęgi i otrzymujemy:
 \begin{equation}\label{reciprocity_3_eqn}
 1 =
@@ -129,14 +140,12 @@ Ostatnią równość podnosimy do $n$-tej potęgi i otrzymujemy:
 \end{equation}
 
 \noindent
-Dzięki prawu wzajemności Weila lewe strony równości
+Równości
 \ref{reciprocity_1_eqn}, \ref{reciprocity_2_eqn} i \ref{reciprocity_3_eqn}
-możemy domnożyć do wzoru \ref{weil_pairing_alt_eqn}
-nie zmieniając wyniku.
+domnażamy do wzoru \ref{weil_pairing_alt_eqn}.
 Otrzymujemy:
 \begin{eqnarray*}
 w'(P,Q)
-& = & \frac{f_P'(Q)}{f_Q'(P)}(-1)^n\left(\frac{f_Q'}{f_P'}\right)(\ecident) \\
 & = & \frac{f_P'(Q)}{f_Q'(P)}(-1)^n\left(\frac{f_Q'}{f_P'}\right)(\ecident) \\
 &   & \frac{1}{r_Q^n(P)}\frac{f_P'(Q+S)}{f_P'(Q)f_P'(S)}
       (-1)^{-n}\left(\frac{f_P'}{r_Q^{-n}}\right)(\ecident) \\

@@ -1,8 +1,11 @@
 \section{Dowód poprawności i oszacowanie złożoności}
 
 \noindent
-Udowodnimy teraz poprawność algorytmu Millera
-oraz oszacujemy jego złożoność.
+Zajmiemy się teraz analizą algorytmu Millera:
+udowodnimy jego poprawność
+oraz oszacujemy złożoność czasową i pamięciową.
+Analizę poprzedzimy krótkim wyjaśnieniem
+idei stojącej za algorytmem.
 
 \subsection*{Wyjaśnienie}
 
@@ -11,18 +14,21 @@ Podstawę, na której opiera się algorytm Millera,
 stanowi następująca definicja i płynące z niej wnioski.
 
 \begin{definition}
-Dana jest krzywa eliptyczna $E$ nad ciałem $\K$,
-punkt $P \in E[n]$ oraz punkt $R \in E$.
-Rodzina funkcji $r_{P,R}^{(k)} \in \K(E)$, gdzie $k = 0, 1, \ldots, n$,
-jest określona za pomocą dywizorów
-w następujący sposób:
+Dany jest punkt $P$ rzędu $n$ na krzywej eliptycznej $E$.
+Niech $R$ będzie dowolnym punktem na krzywej $E$.
+\emph{Cząstkowe wartości iloczynu Weila}
+to rodzina funkcji wymiernych $r_{P,R}^{(m)}$ na krzywej $E$,
+gdzie $m = 0, 1, \ldots, n$,
+określona z dokładnością do niezerowego czynnika stałego
+poprzez następujące dywizory:
 \begin{equation}
-\rdiv(r_{P,R}^{(k)}) = k\divi{P+R} - k\divi{R} - \divi{kP} + \divi{\ecident}
+\rdiv(r_{P,R}^{(m)}) = m\divi{P+R} - m\divi{R} - \divi{mP} + \divi{\ecident}
 \end{equation}
 \end{definition}
 
 \noindent
-Związek tej definicji z iloczynem Weila pokazuje następujący fakt.
+Następujący fakt motywuje nazwę oraz pokazuje związek
+cząstkowych wartości iloczynu Weila z samym iloczynem Weila.
 
 \begin{fact}\label{rn_eq_fp_fact}
 Zachodzi następująca zależność:
@@ -32,10 +38,13 @@ Zachodzi następująca zależność:
 \end{fact}
 
 \noindent
-Funkcje $r_{P,R}^{(k)}$ spełniają następującą zależność.
+Cząstkowe wartości iloczynu Weila
+mają następującą kluczową własność.
 
 \begin{lemma}\label{dbl_add_lemma}
-Dane są liczby naturalne $1 < k,l < n$.
+Dane są cząstkowe wartości iloczynu Weila $r_{P,R}^{(m)}$
+oraz liczby naturalne $k$ i $l$ takie,
+że $0 \leq k, l \leq n$ i $0 \leq k+l \leq n$.
 Niech $g$ będzie linią przechodzącą przez punkty $kP$ i $lP$,
 a $h$ będzie linią pionową przechodzącą przez punkt $(k+l)P$.
 Wówczas zachodzi następująca zależność:
@@ -83,11 +92,11 @@ tzn. że rzeczywiście oblicza wartości ilczynu Weila
 i że ma własność stopu.
 
 \begin{lemma}
-Procedura $\proc{Combine-Values}$ w algorytmie \ref{miller_alg}
+Procedura \proc{Combine-Partial-Values}
 na podstawie wartości
-$A$, $U = kP$, $V = lP$, $u = r_{P,R}^{(k)}(A)$ i $v = r_{P,R}^{(k)}(A)$
-oblicza
-wartość $r_{P,R}^{(k)}(A)$.
+$E$, $A$, $U = kP$, $V = lP$, $u = r_{P,R}^{(k)}(A)$ i $v = r_{P,R}^{(l)}(A)$
+oblicza i przekazuje jako wynik
+wartość $r_{P,R}^{(k+l)}(A)$.
 \end{lemma}
 
 \begin{proof}
@@ -96,19 +105,19 @@ wniosku \ref{dbl_add_coro}.
 \end{proof}
 
 \begin{remark}
-Jest możliwe, że procedura Procedura $\proc{Combine-Function-Values}$
-przekaże jako wynik specjalną stałą $\const{error}$.
+Jest możliwe, że procedura Procedura \proc{Combine-Function-Values}
+przekaże jako wynik specjalną stałą \const{error}.
 Sytuację tę omówimy niebawem.
 \end{remark}
 
 \begin{lemma}\label{compute_value_correct_lemma}
-Procedura $\proc{Compute-Value}$ w algorytmie \ref{miller_alg}
+Procedura \proc{Compute-Value} w algorytmie \ref{miller_alg}
 na podstawie wartości
-$n$, $P$, $R$ i $A$
-oblicza
+$E$, $n$, $P$, $R$ i $A$
+oblicza i przekazuje jako wynik
 wartość $r_{P,R}^{(n)}(A)$,
 o ile nie kończy się błędem
-(tzn. nie przekazuje jako wyniku stałej $\const{error}$).
+(tzn. nie przekazuje jako wyniku stałej \const{error}).
 \end{lemma}
 
 \begin{proof}
@@ -121,14 +130,14 @@ n = \sum_{k = 0}^{\lfloor\log_2 n\rfloor} n_k2^k
 
 \noindent
 Jak łatwo sprawdzić,
-przed rozpoczęciem pętli $\kw{while}$
+przed rozpoczęciem pętli \kw{while}
 zmienna $u$ ma wartość $r_{P,R}^{(0)}(A)$,
 a zmienna $v$ ma wartość $r_{P,R}^{(1)}(A)$.
 
 \noindent
 Po zakończeniu $k$-tego przebiegu pętli
-zmienna $u$ ma wartość $r_{P,R}^{(m)}(A)$,
-gdzie $m = \sum_{l=0}^k n_l2^l$,
+zmienna $u$ ma wartość $r_{P,R}^{(m_k)}(A)$,
+gdzie $m_k = \sum_{l=0}^k n_l2^l$,
 a zmienna $v$ ma wartość $r_{P,R}^{(2^k)}(A)$.
 
 \noindent
@@ -137,122 +146,126 @@ zmienna $u$ będzie miała żądaną wartość $r_{P,R}^{(n)}$.
 \end{proof}
 
 \begin{remark}
-Istotą procedury $\proc{Compute-Value}$ jest to,
+Istotą procedury \proc{Compute-Value} jest to,
 że pozwala ona obliczyć wartość funkcji $r_{P,R}^{(n)}$ w zadanym punkcie $A$
 bez konieczności obliczania wyrażenia wymiernego
 określającego funkcję $r_{P,R}^{(n)}$.
 Obliczenie tego wyrażenia byłoby możliwe --
-wystarczy mnożyć formalnie funkcje $g$ i $h$
-wyliczane w procedurze $\proc{Combine-Values}$.
+wystarczy w procedurze \proc{Combine-Partial-Values}
+zastąpić mnożenie elementów ciała skończonego
+formalnym mnożeniem wyrażeń wymiernych.
 Jest to jednak mniej efektywne podejście.
 \end{remark}
 
-\begin{remark}
-Zarówno procedura $\proc{Combine-Values}$,
-jak i procedura $\proc{Compute-Value}$
-mogą zakończyć się błędem, tzn. przekazać jako wynik stałą $\const{error}$.
-Znaczenie tej sytuacji jest następujące.
-Algorytm Millera oblicza iloczyn Weila mnożąc różne wartości.
-Jeżeli którakolwiek z mnożonych wartości jest równa zero lub jest nieskończona,
-to nie jest możliwe kontynuowanie takich obliczeń.
-Należałoby zacząć śledzić krotności zer i biegunów
+\begin{remark}\label{return_error_case_remark}
+Procedury \proc{Combine-Partial-Values} i \proc{Compute-Value}
+mogą zakończyć się błędem, tzn. przekazać jako wynik stałą \const{error}.
+Sytuacja ta występuje wtedy,
+gdy pewne wartości wyliczone w tych procedurach są równe zero.
+Kontynuowanie obliczeń w tej sytuacji nie ma sensu,
+ponieważ doprowadziłoby to do mnożenia lub dzielenia przez zero
+i nie byłoby wówczas możliwe poprawne obliczenie wartości iloczynu Weila,
+ponieważ są one niezerowe.
+Aby rozwiązać ten problem,
+należałoby potencjalne mnożenie lub dzielenie przez zero
+zastąpić śledzeniem krotności pojawiających się zer i biegunów
 (co jest dosyć żmudne)
-lub przeprowadzać obliczenia na bezpośrednio na wyrażeniach wymiernych
+lub zamienić operacje arytmetyczne na elementach ciała skończonego
+na operacje arytmetyczne na wyrażeniach wymiernych nad tym ciałem
 (co nie jest efektywne).
 \end{remark}
 
 \begin{theorem}
-Jeżeli procedura $\proc{Weil-Pairing}$ w algorytmie \ref{miller_alg}
+Jeżeli procedura \proc{Weil-Pairing} w algorytmie \ref{miller_alg}
 zatrzymuje się,
 to jako wynik przekazuje wartość $w(P, Q)$.
 \end{theorem}
 
 \begin{proof}
 Jest to jasne. Jeżeli żadna z wartości $a$, $b$, $c$, $d$
-obliczanych w tej procedurze nie jest równa stałej $\const{error}$,
+obliczanych w tej procedurze nie jest równa stałej \const{error},
 to widzimy, że wyrażenie $(a/b)\cdot(d/c)$ przekazywane przez procedurę
 faktycznie jest równe $w(P, Q)$,
-co wynika z poprawności procedury $\proc{Compute-Value}$
-(lemat \ref{compute_value_correct_lemma})
-i z faktu \ref{rn_eq_fp_fact}.
+co wynika z poprawności procedury \proc{Compute-Value}
+(lemat \ref{compute_value_correct_lemma}),
+faktu \ref{rn_eq_fp_fact}
+i wzoru \ref{base_formula_eqn}.
 \end{proof}
 
 \begin{theorem}
-Procedura $\proc{Weil-Pairing}$ w algorytmie \ref{miller_alg}
-prawie na pewno kończy się,
-jeżeli krzywa $E$ i parametr $n$ są dobrze dobrane.
+Procedura \proc{Weil-Pairing} w algorytmie \ref{miller_alg}
+prawie na pewno kończy się.
 \end{theorem}
 
 \begin{proof}
-Nawet jeżeli punkty $R$ i $S$ wylosowane w procedurze $\proc{Weil-Pairing}$
+Nawet jeżeli punkty $R$ i $S$ wylosowane w procedurze \proc{Weil-Pairing}
 są takie, że punkty $P$, $R$, $P+R$, $Q$, $S$, $Q+S$ i $\ecident$
 są parami różne
 i wyrażenie \ref{base_formula_eqn} jest dobrze określone,
-to procedura $\proc{Compute-Value}$ wciąż może zakończyć się błędem.
+to procedura \proc{Compute-Value} wciąż może zakończyć się błędem.
 Dzieje się tak dlatego,
-że podczas obliczania wartości $\proc{Compute-Value}(E, n, P, R, A)$,
+że podczas obliczania wartości \proc{Compute-Value}$(E, n, P, R, A)$,
 gdzie $A = S$ lub $A = Q+S$,
-punkt $A$ może pokryć się z jednym z punktów postaci $mP$
-pojawiających się w procedurze $\proc{Combine-Values}$.
+punkt $A$ może pokryć się z jednym z punktów
+występujących w procedurach
+\proc{Combine-Partial-Values} i \proc{Compute-Value}.
 Gdyby przeprowadzać obliczenia symbolicznie,
-tzn. konstruować wyrażenia wymierne określające funkcje $r_{P,R}^{(k)}$,
+tzn. konstruować wyrażenia wymierne określające funkcje $r_{P,R}^{(m)}$,
 to obliczone ostatecznie wyrażenie $r_{P,R}^{(n)}$
-nie miałoby w punkcie $S$ ani $Q+S$ miejsca zerowego ani bieguna.
-Procedura $\proc{Compute-Value}$ przerywa jednak obliczenia w takiej sytuacji,
-ponieważ przeprowadza obliczenia na wartościach, a nie wyrażeniach.
+nie miałoby w punkcie $S$ ani $Q+S$ miejsca zerowego ani bieguna
+i możnaby obliczyć wartość $r_{P,R}^{(n)}(A)$.
+Procedura \proc{Compute-Value} nie prowadzi jednak obliczeń symbolicznych,
+więc może wystąpić błąd opisany w uwadze \ref{return_error_case_remark}.
 
 \noindent
-Aby obliczenie $\proc{Compute-Value}(E, n, P, R, A)$ powiodło się,
-punkt $A$ nie może pokryć się z żadnym z następujących punktów:
-$R, P, 2P, 4P, 8P, \ldots, 2^{\lfloor\log_2 n\rfloor}P,
-T_1, T_2, T_3, \ldots, T_{\lfloor\log_2 n\rfloor}$,
+Obliczenie wartości \proc{Compute-Value}$(E, n, P, R, A)$ powiedzie się,
+jeżeli punkt $A$ nie pokryje się z żadnym z punktów
+$R$, $P, 2P, 4P, 8P, \ldots, 2^{\lfloor\log_2 n\rfloor}P$,
+$T_1, T_2, T_3, \ldots, T_{\lfloor\log_2 n\rfloor}$,
 gdzie $T_k = \left(\sum_{l=0}^k n_l2^l\right)P$.
-Widać, że łącznie punktów tych jest $O(\log n)$.
+Punktów tych jest łącznie $O(\log n)$.
 
 \noindent
 Wniosek stąd, że obliczenie każdej z wartości $a$, $b$, $c$, $d$
-w jednym przebiegu pętli $\kw{while}$ w procedurze $\proc{Weil-Pairing}$
+w jednym przebiegu pętli \kw{while} w procedurze \proc{Weil-Pairing}
 zakończy się błędem
 z prawdopodobieństwem niewiększym niż $O(\frac{\log n}{q})$,
 gdzie $q$ to rozmiar ciała skończonego, nad którym dana jest krzywa $E$.
-Zatem jeden przebieg tej pętli nie zakończy się sukcesem
-również z prawdopodobieństwem niewiększym niż $O(\frac{\log n}{q})$.
 
 \noindent
 Przyjmijmy teraz, że $q = p^e$.
 Jeżeli prawdopodobieństwo wystąpienia błędu jest zbyt duże,
 możemy losować punkty $R$ i $S$ z odpowiednio większego ciała
 o rozmiarze $q' = p^{e'}$, gdzie $e' = ef$ i $f > 1$.
-W pewnym momencie prawdopodobieństwo porażki
+Dla odpowiednio dużej wartości $q'$
+prawdopodobieństwo wystąpienia błędu
 stanie się mniejsze niż $\frac{1}{2}$,
 co będzie oznaczać,
-że procedura $\proc{Weil-Pairing}$ prawie na pewno kończy się,
-a oczekiwana liczba przebiegów pętli wynosi $2$.
+że procedura \proc{Weil-Pairing} prawie na pewno kończy się,
+a oczekiwana liczba przebiegów pętli \kw{while} jest stała.
 \end{proof}
 
 \subsection*{Złożoność czasowa i pamięciowa}
 
 \noindent
 Oszacujemy teraz złożoność asymptotyczną algorytmu Millera.
-W sytuacji tej natrualne jest mierzenie złożoności
-w zależności od dwóch parametrów:
-rozmiaru ciała, nad którym zdefiniowana jest krzywa
-i rozmiaru podgrupy torsyjnej,
-dla której rozpatrujemy iloczyn Weila.
 Złożoność czasową będziemy mierzyć ilością niezbędnych operacji na bitach,
 a pamięciową -- ilością wymaganych dodatkowych bitów pamięci.
 
 \begin{remark}
-Przyjmujemy, że $q$ i $n$ oznaczają odpowiednio
-rozmiar ciała skończonego, nad którym zdefiniowana jest krzywa
-oraz numer podgrupy torsyjnej tej krzywej.
+Złożoność asymptotyczną będziemy mierzyć
+w zależności od dwóch naturalnych w tej sytuacji parametrów:
+rozmiaru $q$ ciała skończonego, nad którym dana jest krzywa eliptyczna
+oraz liczby $n$ oznaczającej rząd punktów w podgrupie torsyjnej,
+w której rozpatrujemy iloczyn Weila.
 \end{remark}
 
 \noindent
-Rozpoczniemy od ustalenia złożoności przyjętych operacji elementarnych.
+Rozpoczniemy od ustalenia złożoności operacji elementarnych
+i procedur, które uznaliśmy za dane.
 
 \begin{remark}
-Ustalamy, że przyjęte operacje elementarne mają następującą złożoność:
+Złożoność asymptotyczna operacji uznanych za elementarne jest następująca:
 \begin{itemize}
 \item
 addytywne operacje arytmetyczne na liczbach całkowitych wymagają
@@ -276,7 +289,7 @@ $O(\log q)$ operacji na bitach i $O(1)$ bitów pamięci;
 porównania punktów na krzywej eliptycznej wymagają
 $O(\log q)$ operacji na bitach i $O(1)$ bitów pamięci;
 \item
-operacje $p[o]$, czyli odczytanie cechy $p$ obiektu $o$, wymagają
+operacje typu $p[o]$, czyli odczytanie cechy $p$ obiektu $o$, wymagają
 $O(1)$ operacji na bitach i $O(1)$ bitów pamięci.
 \end{itemize}
 \end{remark}
@@ -288,75 +301,73 @@ wynika stąd,
 nie pojawiają się liczby większe niż $n$.
 \end{remark}
 
-\noindent
-Teraz podamy złożoność procedur, które uznajemy za dane:
-
 \begin{remark}
-Ustalamy, co następuje:
+Złożoność asymptotyczna procedur uznanych za dane jest następująca:
 \begin{itemize}
 \item
-procedura $\proc{Random-Integer}(m)$ wymaga
-$O(\log m)$ operacji na bitach i $O(\log m)$ bitów pamięci;
+wykonanie procedury \proc{Random-Integer}
+wymaga $O(\log n)$ operacji na bitach i $O(\log n)$ bitów pamięci;
 \item
-procedura $\proc{Random-Finite-Field-Element}(\K)$ wymaga
-$O(\log q)$ operacji na bitach i $O(\log q)$ bitów pamięci;
+wykonanie procedury \proc{Random-Finite-Field-Element}
+wymaga $O(\log q)$ operacji na bitach i $O(\log q)$ bitów pamięci;
 \item
-procedura $\proc{Finite-Field-Square-Root}(\K, a)$ wymaga
-$O(\log^3 q)$ operacji na bitach i $O(\log q)$ bitów pamięci;
+wykonanie procedury \proc{Finite-Field-Square-Root}
+wymaga średnio $O(\log^3 q)$ operacji na bitach i $O(\log q)$ bitów pamięci;
 \item
-procedura $\proc{Curve-Finite-Point}(E, a, b)$ wymaga
-$O(\log q)$ operacji na bitach i $O(\log q)$ bitów pamięci;
+wykonanie procedury \proc{Curve-Finite-Point}
+wymaga $O(\log q)$ operacji na bitach i $O(\log q)$ bitów pamięci;
 \item
-procedura $\proc{Curve-Point-Conjugate}(E, P)$ wymaga
-$O(\log q)$ operacji na bitach \linebreak i $O(\log q)$ bitów pamięci;
+wykonanie procedury \proc{Curve-Point-Conjugate}
+wymaga $O(\log q)$ operacji na bitach i $O(\log q)$ bitów pamięci;
 \item
-procedura $\proc{Line-On-Curve}(E, a, b, c)$ wymaga
-$O(\log q)$ operacji na bitach i $O(\log q)$ bitów pamięci;
+wykonanie procedury \proc{Line-On-Curve}
+wymaga $O(\log q)$ operacji na bitach i $O(\log q)$ bitów pamięci;
 \end{itemize}
 \end{remark}
 
 \noindent
-W przypadku większości ogólnych procedur, których pseudokod podaliśmy,
-łatwo jest policzyć złożoność.
+Podamy teraz złożoność ogólnych procedur
+zaprezentowanych w tym rozdziale.
 
 \begin{fact}
-Procedura $\proc{Line-Value-At-Finite-Point}(E, l, P)$ wymaga
-$O(\log^2 q)$ operacji na bitach i $O(\log q)$ bitów pamięci.
+Wykonanie procedury \proc{Line-Value-At-Finite-Point}
+wymaga $O(\log^2 q)$ operacji na bitach i $O(\log q)$ bitów pamięci.
 \end{fact}
 
 \begin{fact}
-Procedura $\proc{Vertical-Line-Through-Curve-Point}(E, P)$ wymaga
-$O(\log q)$ operacji na bitach i $O(\log q)$ bitów pamięci.
+Wykonanie procedury \proc{Vertical-Line-Through-Curve-Point}
+wymaga \linebreak $O(\log q)$ operacji na bitach i $O(\log q)$ bitów pamięci.
 \end{fact}
 
 \begin{fact}
-Procedura $\proc{Line-Through-Different-Curve-Finite-Points}(E, P, Q)$ wymaga
-$O(\log^2 q)$ operacji na bitach i $O(\log q)$ bitów pamięci.
+Wykonanie procedury \proc{Line-Through-Different-Curve-Finite-Points}
+wymaga $O(\log^2 q)$ operacji na bitach i $O(\log q)$ bitów pamięci.
 \end{fact}
 
 \begin{fact}
-Procedura $\proc{Tangent-Line-Curve-Finite-Point}(E, P)$ wymaga
-$O(\log^2 q)$ operacji na bitach i $O(\log q)$ bitów pamięci.
+Wykonanie procedury \proc{Tangent-Line-Curve-Finite-Point}
+wymaga $O(\log^2 q)$ operacji na bitach i $O(\log q)$ bitów pamięci.
 \end{fact}
 
 \begin{fact}
-Procedura $\proc{Line-Through-Curve-Points}(E, P, Q)$ wymaga
-$O(\log^2 q)$ operacji na bitach i $O(\log q)$ bitów pamięci.
+Wykonanie procedury \proc{Line-Through-Curve-Points}
+wymaga $O(\log^2 q)$ operacji na bitach i $O(\log q)$ bitów pamięci.
 \end{fact}
 
 \begin{fact}
-Procedura $\proc{Add-Curve-Points}(E, P, Q)$ wymaga
-$O(\log^2 q)$ operacji na bitach i $O(\log q)$ bitów pamięci.
+Wykonanie procedury \proc{Add-Curve-Points}
+wymaga $O(\log^2 q)$ operacji na bitach i $O(\log q)$ bitów pamięci.
 \end{fact}
 
 \begin{lemma}
-Procedura $\proc{Multiply-Curve-Points}(E, P, n)$ wymaga
-$O(\log n \log^2 q)$ operacji na bitach i $O(\log n + \log q)$ bitów pamięci.
+Wykonanie procedury \proc{Multiply-Curve-Points}
+wymaga $O(\log n \log^2 q)$ operacji na bitach
+i $O(\log n + \log q)$ bitów pamięci.
 \end{lemma}
 
 \begin{proof}
 Procedura ta realizuje schemat ,,podwajaj-i-dodawaj''.
-Pojedyńczy przebieg pętli $\kw{while}$ wymaga
+Pojedyńczy przebieg pętli \kw{while} wymaga
 $O(\log^2 q)$ operacji na bitach,
 a przebiegów takich jest $O(\log n)$.
 Procedura potrzebuje dodatkowej pamięci na stałą ilość
@@ -364,79 +375,92 @@ punktów krzywej i liczb całkowitych.
 \end{proof}
 
 \begin{lemma}
-Procedura $\proc{Random-Curve-Finite-Point}(E)$ wymaga
-średnio $O(\log^3 q)$ operacji na bitach i $O(\log q)$ bitów pamięci.
+Wykonanie procedury \proc{Random-Curve-Finite-Point}
+wymaga średnio \linebreak
+$O(\log^3 q)$ operacji na bitach i $O(\log q)$ bitów pamięci.
 \end{lemma}
 
 \begin{proof}
 Procedura ta jest zrandomizowana.
-Obliczenie wartości $d$ w jednym przebiegu pętli wymaga
-$O(\log^2 q)$ operacji na bitach.
-Wykonanie pierwiastkowania, aby obliczyć wartość $b$, wymaga
-$O(\log^3 q)$ operacji na bitach.
-Tak więc pojedyńczy przebieg pętli $\kw{while}$ wymaga
-$O(\log^3 q)$ operacji na bitach.
+Obliczenie wartości $d$ w jednym przebiegu pętli
+wymaga $O(\log^2 q)$ operacji na bitach.
+Wykonanie pierwiastkowania, aby obliczyć wartość $b$,
+wymaga średnio $O(\log^3 q)$ operacji na bitach.
+Tak więc pojedyńczy przebieg pętli \kw{while}
+wymaga średnio $O(\log^3 q)$ operacji na bitach.
+
+\noindent
 Policzmy oczekiwaną liczbę przebiegów potrzebną do znalezienia punktu krzywej.
-Jak wiadomo, krzywa składa się z $q \pm O(\sqrt{q})$ punktów skończonych.
+Krzywa składa się z $q \pm O(\sqrt{q})$ punktów skończonych.
 Jeśli pominąć punkty rzędu dwa,
 to punkty skończone krzywej można połączyć w pary postaci
 punkt i punkt sprzężony.
 Z tego wniosek, że dla $\frac{q}{2} \pm O(\sqrt{q})$ elementów ciała $\K$
 wartość $d$ będzie kwadratem pewnego elementu ciała.
-Zatem, prawdopodobieństwo zakończenia się pętli w dowolnym kroku
-wynosi $\frac{1}{2} \pm O(\frac{1}{\sqrt{q}})$.
+
+\noindent
+Prawdopodobieństwo zakończenia się pętli w danym kroku
+wynosi zatem $\frac{1}{2} \pm O(\frac{1}{\sqrt{q}})$.
 Stąd procedura ta prawie na pewno kończy się,
-a oczekiwana liczba przebiegów pętli $\kw{while}$ wynosi $2$,
-zatem oczekiwana liczba wymaganych operacji na bitach to $O(\log^3 q)$.
+a oczekiwana liczba przebiegów pętli \kw{while} wynosi $2$,
+zatem oczekiwana liczba wymaganych operacji na bitach
+to średnio $O(\log^3 q)$.
 Ponadto, procedura potrzebuje stałej ilości zmiennych pomocniczych,
 w których przechowywane są elementy ciała,
 stąd wymaga $O(\log q)$ bitów pamięci.
 \end{proof}
 
 \noindent
-Obliczymy teraz złożoność algorytmu Millera.
+Przejdziemy teraz do obliczenia złożoności asymptotycznej algorytmu Millera.
 
 \begin{fact}
-Procedura $\proc{Combine-Partial-Values}(E, A, U, V, u, v)$ wymaga średnio
-\linebreak $O(\log^2 q)$ operacji na bitach i $O(\log q)$ bitów pamięci.
+Wykonanie procedury \proc{Combine-Partial-Values}
+wymaga $O(\log^2 q)$ operacji na bitach i $O(\log q)$ bitów pamięci.
 \end{fact}
 
-\begin{lemma}
-Procedura $\proc{Compute-Value}(E, n, P, R, A)$ wymaga
-$O(\log n \log^2 q)$ operacji na bitach i $O(\log n + \log q)$ bitów pamięci.
-\end{lemma}
-
-\begin{proof}
-Obliczenia wstępne przed pętlą $\kw{while}$ mają złożoność czasową $O(\log^2 q)$.
-Każdy krok pętli $\kw{while}$ również ma złożoność czasową $O(\log^2 q)$.
-Procedura ta realizuje schemat ,,podwajaj-i-dodawaj'',
-zatem przebiegów pętli jest maksymalnie $O(\log n)$.
-Stąd łączna złożoność czasowa to $O(\log n \log^2q)$.
-Procedura potrzebuje stałą ilość zmiennych pomocniczych,
-które przechowują liczby całkowite i elementy ciała $\K$,
-zatem potrzebuje $O(\log n + \log q)$ bitów pamięci.
-\end{proof}
-
 \begin{theorem}
-Procedura $\proc{Weil-Pairing}(E, n, P, Q)$ wymaga średnio
-$O((\log_q^3 n \log^3 q)$ operacji na bitach i $O(\log_q n \log q)$ bitów pamięci.
+Wykonanie procedury \proc{Compute-Value}
+wymaga $O(\log n \log^2 q)$ operacji na bitach
+i $O(\log n + \log q)$ bitów pamięci.
 \end{theorem}
 
 \begin{proof}
-Losowanie punktu krzywej ma złożoność $O(\log^3 q)$,
-a procedura $\proc{Compute-Value}$ złożoność $O(\log n \log^2 q)$.
-Stąd pojedyńczy przebieg pętli $\kw{while}$ ma złożoność
-$O((\log n + \log q)\log^2 q)$.
-Policzmy ilość wykonań pętli.
-Weźmy najmniejszą liczbę $q' = q^f$ taką, że $q' > n$.
-Wiemy, że $\GF(q) \subset \GF(q')$, zatem możemy obliczać iloczyn Weila
-nad ciałem $\GF(q')$.
-Zauważmy, że $n = O(q')$, zatem pojedyńczy przebieg pętli będzie trwał
-$O(\log^3 q)$.
-Pojedyńczy przebieg pętli kończy się porażką z prawdopodobieństwem
-$O(\frac{\log n}{q'}) = O(\frac{\log q'}{q'})$.
-Prawdopodobieństwo to szybko staje się mniejsze od $\frac{1}{2}$,
-zatem niezbędna do uzyskania sukcesu liczba przebiegów pętli jest stała.
-Stąd czas działania całej procedury to
-$O(\log^3 q') = O(f^3 \log^3 q) = O(\log_q^3 n \log^3 q)$.
+Obliczenia wstępne przed pętlą \kw{while}
+mają złożoność czasową $O(\log^2 q)$.
+Każdy krok pętli \kw{while} również ma złożoność czasową $O(\log^2 q)$.
+Procedura ta realizuje schemat ,,podwajaj-i-dodawaj'',
+przebiegów pętli jest maksymalnie $O(\log n)$.
+Stąd łączna złożoność czasowa to $O(\log n \log^2 q)$.
+Procedura potrzebuje stałą ilość zmiennych pomocniczych,
+które przechowują liczby całkowite i elementy ciała,
+zatem potrzebuje $O(\log n + \log q)$ bitów pamięci.
 \end{proof}
+
+\begin{corollary}
+Wykonanie jednego przebiegu pętli w procedurze \proc{Weil-Pairing}
+wymaga $O((\log q + \log n) \log^2 q)$ operacji na bitach
+i $O(\log q + \log n)$ bitów pamięci.
+\end{corollary}
+
+\begin{remark}
+Oczekiwana liczba przebiegów pętli w procedurze \proc{Weil-Pairing}
+zależy od relacji między wielkością parametrów $q$ i $n$.
+
+\noindent
+Jeżeli $q \geq n$, to oczekiwana liczba przebiegów pętli jest stała.
+Prawdopodobieństwo wystąpienia błędu w jednym przebiegu pętli wynosi
+$O(\frac{\log n}{q}) = O(\frac{\log q}{q}) < \frac{1}{2}$,
+zatem oczekiwana liczba przebiegów pętli jest stała.
+
+\noindent
+Jeżeli $q < n$, to przeprowadzamy obliczenia w ciele $\GF(q')$,
+a nie w ciele $\GF(q)$.
+Wielkość $q'$ należy dobrać tak, aby zachodziła zależność $q' \geq n$.
+Niech $q' = q^f$.
+Wystarczy teraz przyjąć, że $f = \lceil\log_2 n\rceil$.
+Wówczas $q' = q^f > 2^f = n$.
+Oczekiwana liczba przebiegów pętli jest wtedy stała,
+a jeden przebieg wymaga
+$O((\log q' + \log n)\log^2 q') = O(\log^3 q \log^3 n)$ operacji na bitach
+i $O(\log q' + \log n) = Q(\log q \log n)$ bitów pamięci.
+\end{remark}
