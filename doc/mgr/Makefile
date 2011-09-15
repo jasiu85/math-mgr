@@ -1,5 +1,5 @@
 all:
-	pdflatex -interaction batchmode mgr.tex
+	pdflatex -shell-escape -interaction batchmode mgr.tex
 	cp mgr.pdf mj219450.pdf
 
 clean:
@@ -7,6 +7,7 @@ clean:
 	rm -f mgr.aux
 	rm -f mgr.toc
 	rm -f mgr.out
+	rm -f mgr_mp*
 
 mrproper: clean
 	rm -f mgr.pdf
