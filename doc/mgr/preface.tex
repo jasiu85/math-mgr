@@ -1,30 +1,32 @@
 \chapter*{Wstęp}
 \addcontentsline{toc}{chapter}{Wstęp}
 
-Matematyka uważana jest za naukę oderwaną od rzeczywistości,
-mającą niewielki wpływ na życie ludzi.
+\noindent
+Matematyka uważana jest za naukę oderwaną od rzeczywistości
+i mającą niewielki wpływ na życie ludzi.
 Jest jednak zupełnie odwrotnie:
 codziennie korzystamy z różnych zdobyczy cywilizacyjnych
-takich jak komputery, telefony komórkowe, nowoczesne leki;
+takich jak komputery i telefony komórkowe;
 przemieszczamy się za pomocą samochodów, statków i samolotów;
 leczymy się za pomocą nowoczesnych leków;
 mieszkamy w zaawansowanych technicznie budynkach.
 Wszystko to jest wynikiem postępu różnych nauk,
-a te, od fizyki i chemii
+a te, od nauk ścisłych
 aż do ,,niematematycznych'' nauk społecznych i humanistycznych,
-korzystają z narzędzi matematycznych.
+potrzebują narzędzi matematycznych.
 Jesteśmy zatem zależni od matematyki w każdej dziedzinie życia,
 nawet jeśli nieświadomie.
 Z tego właśnie powodu matematyka nazywana jest królową nauk.
 
+\noindent
 Różne nauki w różnym stopniu korzystają ze zdobyczy
 poszczególnych działów matematyki.
 I tak na przykład
 mechanika klasyczna opiera się na analizie,
 głównie na rachunku różniczkowym i całkowym;
-równania różniczkowe cząstkowe służą dziś
+równania różniczkowe cząstkowe służą
 do opisywania i symulowania wielu zjawisk,
-w tym prognozowania pogody, projektowania powierzchni aerodynamicznych
+w tym prognozowania pogody czy projektowania powierzchni aerodynamicznych
 (kadłubów samolotów, karoserii samochodów itp.);
 rachunek prawdopodobieństwa i statystyka
 znajdują zastosowanie w ekonomii i przy różnego rodzaju grach losowych,
@@ -34,6 +36,7 @@ współczesne problemy fizyki
 związane z ogólną teorią względności oraz mechaniką kwantową
 formułowane są w języku zaawansowanej algebry.
 
+\noindent
 Jednym z działów matematyki jest teoria liczb.
 Przez długi czas była ona uważana za gałąź matematyki,
 która, chociaż ma niemały wpływ na matematykę samą w sobie,
@@ -41,6 +44,7 @@ to znajduje niewiele zastosowań poza nią.
 Znaczenie teorii liczb w życiu codziennym
 niesamowicie wzrosło wraz z pojawieniem się komputerów.
 
+\noindent
 W obecnych czasach komputery wspomagają nas w wykonywaniu wielu czynności,
 w tym pozwalają nam komunikować się drogą elektroniczną.
 To spowodowało, że należało rozwiązać komputerowe odpowiedniki
@@ -51,6 +55,7 @@ Problem zaprojektowania systemu komputerowego,
 który miałby te dwie cechy,
 dał początek współczesnej kryptografii.
 
+\noindent
 Komputerowe systemy kryptograficzne bazują na fakcie,
 że pewne problemy są trudne obliczeniowo.
 Egzemplarz takiego problemu spreparowany w taki sposób,
@@ -60,19 +65,59 @@ Jest to komputerowy odpowiednik kłódki i klucza,
 którym dysponują tylko dwie osoby.
 Tak się przy tym składa,
 że problemy, które dają podstawę systemom kryptograficznym,
-bardzo często związane są z teorią liczb,
-skąd wynika wzrost jej znaczenia.
+bardzo często związane są z teorią liczb.
 Przykładowo, problem rozkładu na czynniki pierwsze leży u podstaw systemu RSA,
 a na problemie logarytmu dyskretnego opiera się protokół Diffiego-Hellmana.
 
-Celem niniejszej pracy jest przedstawienie procesu,
-na skutek którego pojęcie matematyczne
-może poprzez teorię liczb i kryptografię oraz techniki komputerowe
-trafić do codziennego (nawet jeśli nieświadomego) użytku.
-Proces ten zostanie zobrazowany na przykładzie iloczynu Weila --
-pewnej dwuargumentowej operacji
-działającej na punktach krzywej eliptycznej.
+\noindent
+Teoria liczb i kryptografia stanowią zatem furtkę,
+poprzez którą pozornie abstrakcyjne obiekty matematyczne
+mogą trafić do codziennego (nawet jeśli nieświadomego) użytku.
+W ten sposób zastosowanie praktyczne znalalazły
+np. ciała skończone czy krzywe eliptyczne,
+a także wiele pojęć z nimi stowarzyszonych,
+w tym pojęcie kluczowe w niniejszej pracy: iloczyn Weila.
 
+\noindent
+Iloczyn Weila to pewna dwuargumentowa operacja działająca
+na punktach zadanego, skończonego rzędu na krzywej eliptycznej
+i prowadząca w zbiór pierwiastków z jedności.
+Dwie kluczowe cechy iloczynu Weila to niezdegenerowanie
+oraz dwuliniowość.
+W kontekście iloczynu Weila niezdegenerowanie oznacza,
+że jego wartościami są również pierwiastki pierwotne.
+Dwuliniowość zaś to odpowiednik pojęcia znanego z algebry liniowej
+przeniesiony na grupy abelowe.
+Z punktu widzenia krpytografii
+szczególnie dwuliniowość jest istotna, ponieważ powoduje,
+że pewne problemy decyzyjne na krzywych eliptycznych stają się łatwe.
+
+\noindent
+Celem niniejszej pracy jest przedstawienie na przykładzie iloczynu Weila
+procesu wdrażania za pomocą teorii liczb i kryptografii
+pojęcia matematycznego do codziennego użytku
+oraz pokazanie, że proces ten może być względnie nieskomplikowany.
+Wybór iloczynu Weila na pojęcie centralne w całej pracy
+podyktowany jest dwoma czynnikami.
+Po pierwsze, na podstawie iloczynu Weila udało się skonstruować
+wiele ciekawych kryptosystemów,
+które wykazują niespotykane wcześniej cechy.
+Po drugie, za pomocą iloczynu Weila można przeprowadzać
+ataki na istniejące kryptosystemy oparte na krzywych eliptycznych.
+Widać więc, że jest iloczyn Weila pojęciem niezwykle interesującym
+z kryptograficznego punktu widzenia.
+
+\noindent
+Decydującym czynnikiem,
+który umożliwia zastosowanie iloczynu Weila w praktyce,
+jest algorytm Millera, który pozwala obliczać jego wartości w wydajny sposób.
+Częścią niniejszej pracy jest autorska implementacja tego algorytmu.
+Przejrzystość powstałego kodu źródłowego
+oraz to, że powstał on szybko i bez większych trudności,
+jest dodatkowym potwierdzeniem tezy,
+że zaawansowane pojęcia matematyczne mogą łatwo trafić ,,pod strzechy''.
+
+\noindent
 Praca składa się z pięciu rozdziałów.
 W rozdziale pierwszym znajduje się krótkie wprowadzenie
 do tematyki krzywych eliptycznych.
@@ -81,6 +126,6 @@ wyjątkowo ważnego pojęcia związanego z krzywymi eliptycznymi:
 struktury grupy abelowej na krzywej eliptycznej.
 Celem rozdziału trzeciego
 jest zdefiniowanie i zanalizowanie własności iloczynu Weila.
-Rozdział czwarty opisuje algorytm Millera,
-który pozwala efektywnie obliczać wartości iloczynu Weila.
+Rozdział czwarty zawiera omówienie algorytmu Millera
+oraz jego autorskiej implementacji.
 Wreszcie, rozdział piąty opisuje zastosowania iloczynu Weila w kryptografii.
