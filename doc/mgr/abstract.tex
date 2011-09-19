@@ -10,9 +10,9 @@ krótkie wprowadzenie do krzywych eliptycznych.
 \noindent
 Iloczyn Weila to funkcja $w\colon E[n] \times E[n] \to \K$,
 która prowadzi z podgrupy $n$-torsyjnej $E[n]$
-krzywej eliptycznej $E$ nad ciałem $\K$
-(czyli podgrupy składającej się z tych punktów $P$ krzywej $E$,
-dla których zachodzi $nP = \ecident$)
+na krzywej eliptycznej $E$ nad ciałem $\K$
+(czyli podgrupy składającej się z tych punktów $P$ na krzywej $E$,
+które spełniają zależność $nP = \ecident$)
 w grupę pierwiastków $n$-tego stopnia z jedności w ciele $\K$.
 Cechy charakterystyczne iloczynu Weila
 to dwuliniowość, antysymetria oraz niezdegenerowanie.
@@ -23,15 +23,17 @@ został zaproponowany przez Millera.
 Algorytm ten realizuje schemat ,,podwajaj-i-dodawaj''
 podobny do tego występującego
 w algorytmie szybkiego podnoszenia do $n$-tej potęgi.
+Częścią pracy jest autorska implementacja tego algorytmu.
 
 \noindent
 Zastosowania iloczynu Weila zaprezentowane w pracy obejmują
-konstrukcje kryptosystemów pozwalających
-na szyfrowanie i podpisywanie wiadomości oparte o tożsamość
-(tzn. pozwalające na użycie dowolnego ciągu bitów,
-np. adresu e-mail, jako klucza)
-oraz redukcję MOV (Menezes-Okamoto-Vanstone),
+redukcję MOV (Menezes-Okamoto-Vanstone),
 która umożliwia przeprowadzanie ataków
-na systemy kryptograficzne oparte na krzywych eliptycznych.
+na systemy kryptograficzne oparte na krzywych eliptycznych;
+konstrukcje kryptosystemów opartych o tożsamość,
+(tzn. pozwalających na takie szyfrowanie i podpisywanie wiadomości,
+że jednym z kluczy jest dowolny ciąg bitów, np. adres poczty elektronicznej)
+oraz konstrukcje kryptosystemów opartych o politykę,
+które są uogólnieniem kryptosystemów opartych o tożsamość.
 
 \end{abstract}
