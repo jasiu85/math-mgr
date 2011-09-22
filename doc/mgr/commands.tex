@@ -1,6 +1,7 @@
-% define AMS theorems
+% setup theorems, definitions, figures etc.
 
 \numberwithin{equation}{section}
+\numberwithin{figure}{section}
 
 \theoremstyle{plain}
 \newtheorem{fact}[equation]{Fakt}
@@ -16,6 +17,10 @@
 
 \theoremstyle{remark}
 \newtheorem{remark}[equation]{Uwaga}
+
+\makeatletter
+\let\c@equation\c@figure
+\makeatother
 
 
 % codebox keywords
