@@ -1,13 +1,17 @@
 all:
-	pdflatex -shell-escape -interaction batchmode mgr.tex
+	mpost -interaction=errorstopmode mgr.mp
+	pdflatex -interaction=errorstopmode mgr.tex
 	cp mgr.pdf mj219450.pdf
 
 clean:
-	rm -f mgr.log
-	rm -f mgr.aux
-	rm -f mgr.toc
-	rm -f mgr.out
-	rm -f mgr_mp*
+	rm -f *.log
+	rm -f *.aux
+	rm -f *.toc
+	rm -f *.out
+	rm -f *.mps
+	rm -f *.mpx
+	rm -f mptextmp.*
+	rm -f mpxerr.tex
 
 mrproper: clean
 	rm -f mgr.pdf
