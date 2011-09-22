@@ -2,9 +2,14 @@
 
 *.pyc
 
-doc/mgr/mgr.aux
-doc/mgr/mgr.log
-doc/mgr/mgr.toc
-doc/mgr/mgr.out
+doc/mgr/*.log
+doc/mgr/*.aux
+doc/mgr/*.toc
+doc/mgr/*.out
+doc/mgr/*.mps
+doc/mgr/*.mpx
+doc/mgr/mptextmp.*
+doc/mgr/mpxerr.tex
+
 doc/mgr/mgr.pdf
 doc/mgr/mj219450.pdf
