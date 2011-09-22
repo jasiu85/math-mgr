@@ -4,15 +4,25 @@
 \noindent
 Zgodnie z postawioną na początku pracy tezą
 zobaczyliśmy na przykładzie iloczynu Weila,
-w jaki sposób pozornie abstrakcyjne matematyczne pojęcie
-może mieć bardzo realny wpływ na życie codzienne.
+że pozornie abstrakcyjne matematyczne pojęcie
+może odnaleźć drogę do zastosowania w praktyce
+i że droga ta nie musi być ani długa, ani trudna:
+kryptosystemy wykorzystujące iloczyn Weila
+nie odbiegają poziomem skomplikowania
+od najpopularniejszych obecnie kryptosystemów,
+a implementacja algorytmu Millera również nie nastręcza trudności.
 
 \noindent
-Możliwości, które daje iloczyn Weila,
-nie są wykorzystywane w praktyce.
-Wszystkie popularne systemy kryptograficzne
-oparte na krzywych eliptycznych
-wykorzystują je tylko w podstawowym zakresie.
+Kryptosystemy oparte na iloczynie Weila nie są jeszcze tak rozpowszechnione,
+jak np. kryptosystem RSA czy protokół Diffiego-Hellmana.
+Za adekwatne kryterium popularności można uznać pytanie,
+czy istnieje kryptosystem oparty na iloczynie Weila taki,
+że istnieje jego wolna, otwartoźródłowa implementacja,
+która jest częścią jednej z wiodących dystrybucji systemu Linuks,
+lub taki,
+który jest objęty jednym ze standardów regulujących działanie
+sieci Internet (np. RFC \cite{rfc}).
+W chwili pisania niniejszej pracy odpowiedź na to pytanie jest negatywna.
 Aby ten stan rzeczy zmienił się,
 należy podjąć następujące kroki:
 \begin{itemize}
@@ -21,14 +31,16 @@ udoskonalić implementację algorytmu Millera;
 \item
 zmodyfikować sam algorytm tak, aby wyeliminować z niego losowość;
 \item
-zaproponować takie modyfikacje protokołów
+zaproponować takie modyfikacje standardów internetowych
 powiązanych z szyfrowaniem,
 infrastrukturą kluczy publicznych
 i pocztą elektroniczną,
-które umożliwią użycie kryptosystemów opartych na iloczynie Weila;
+które umożliwią użycie kryptosystemów opartych na iloczynie Weila
+na szeroką skalę;
 \item
 zaimplementować kryptosystemy oparte na iloczynie Weila
-w bibliotekach szyfrujących oraz serwerach i programach pocztowych.
+w popularnych wolnoźródłowych bibliotekach szyfrujących
+oraz serwerach i przeglądarkach poczty elektronicznej.
 \end{itemize}
 
 \noindent
@@ -47,12 +59,16 @@ przeprowadzanie ataków kryptograficznych za pomocą iloczynu Weila;
 \item
 analiza odporności istniejących systemów kryptograficznych
 opartych na krzywych eliptycznych
-na potencjalny atak oparty na iloczynie Weila.
+na potencjalny atak oparty na iloczynie Weila;
+\item
+projektowanie systemów kryptograficznych odpornych na ataki
+wykorzystujące iloczyn Weila.
 \end{itemize}
 
 \noindent
 Miejmy nadzieję, że iloczyn Weila,
 opierające się na nim kryptosystemy
 oraz wszelkie inne ciekawe zdobycze kryptografii
-staną się kiedyś popularne i użyteczne,
-a dzięki nim matematyka stanie się nauką bardziej lubianą i docenianą.
+trafią kiedyś do codziennego użytku,
+a dzięki nim matematyka będzie postrzegana jako bardziej przydatna
+i stanie się bardziej lubiana.
