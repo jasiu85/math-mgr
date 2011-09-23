@@ -70,13 +70,13 @@ vardef ygrid(expr xmin, xmax, ymin, ymax, spacing, offset) =
     result
 enddef;
 
-vardef xaxis(expr xmin, xmax) =
-    path result; result = (xmin*u, 0*u)--(xmax*u, 0*u);
+vardef xaxis(expr xmin, xmax, length) =
+    path result; result = (xmin*u, 0*u)--(xmax*u+length, 0*u);
     result
 enddef;
 
-vardef yaxis(expr ymin, ymax) =
-    path result; result = (0*u, ymin*u)--(0*u, ymax*u);
+vardef yaxis(expr ymin, ymax, length) =
+    path result; result = (0*u, ymin*u)--(0*u, ymax*u+length);
     result
 enddef;
 
@@ -85,7 +85,7 @@ vardef xscale(expr xmin, xmax, spacing, offset, length) =
     numeric xfirst; xfirst = ceiling((xmin-offset)/spacing)*spacing+offset;
     numeric xlast; xlast = floor((xmax-offset)/spacing)*spacing+offset;
     for x = xfirst step spacing until xlast:
-        addto result doublepath (x*u, 0*u)--(x*u, -length*u);
+        addto result doublepath (x*u, 0*u)--(x*u, -length);
     endfor;
     result
 enddef;
@@ -95,7 +95,7 @@ vardef yscale(expr ymin, ymax, spacing, offset, length) =
     numeric yfirst; yfirst = ceiling((ymin-offset)/spacing)*spacing+offset;
     numeric ylast; ylast = floor((ymax-offset)/spacing)*spacing+offset;
     for y = yfirst step spacing until ylast:
-        addto result doublepath (0*u, y*u)--(-length*u, y*u);
+        addto result doublepath (0*u, y*u)--(-length, y*u);
     endfor;
     result
 enddef;
@@ -131,16 +131,16 @@ outputtemplate := "elliptic_curves_%c.mps";
 beginfig(1);
     numeric u; u := 1cm;
 
-    draw xgrid(-2, +2, -2, +2, 1.0, 0.0) dashed dashpattern(off 0.05u on 0 off 0.05u) withpen pencircle scaled 0.25pt;
-    draw ygrid(-2, +2, -2, +2, 1.0, 0.0) dashed dashpattern(off 0.05u on 0 off 0.05u) withpen pencircle scaled 0.25pt;
-    drawarrow xaxis(-2, 2.2) withpen pencircle scaled 0.5pt;
-    drawarrow yaxis(-2, 2.2) withpen pencircle scaled 0.5pt;
-    draw xscale(-2, +2, 1.0, 0.0, 0.15) withpen pencircle scaled 0.5pt;
-    draw xscale(-2, +2, 0.5, 0.0, 0.10) withpen pencircle scaled 0.5pt;
-    draw xscale(-2, +2, 0.1, 0.0, 0.05) withpen pencircle scaled 0.5pt;
-    draw yscale(-2, +2, 1.0, 0.0, 0.15) withpen pencircle scaled 0.5pt;
-    draw yscale(-2, +2, 0.5, 0.0, 0.10) withpen pencircle scaled 0.5pt;
-    draw yscale(-2, +2, 0.1, 0.0, 0.05) withpen pencircle scaled 0.5pt;
+    draw xgrid(-2, +2, -2, +2, 1.0, 0.0) dashed dashpattern(on 0.0005u off 0.099u on 0.0005u) withpen pencircle scaled 0.25pt;
+    draw ygrid(-2, +2, -2, +2, 1.0, 0.0) dashed dashpattern(on 0.0005u off 0.099u on 0.0005u) withpen pencircle scaled 0.25pt;
+    drawarrow xaxis(-2, 2, 0.25cm) withpen pencircle scaled 0.5pt;
+    drawarrow yaxis(-2, 2, 0.25cm) withpen pencircle scaled 0.5pt;
+    draw xscale(-2, +2, 1.0, 0.0, 0.15cm) withpen pencircle scaled 0.5pt;
+    draw xscale(-2, +2, 0.5, 0.0, 0.10cm) withpen pencircle scaled 0.5pt;
+    draw xscale(-2, +2, 0.1, 0.0, 0.05cm) withpen pencircle scaled 0.5pt;
+    draw yscale(-2, +2, 1.0, 0.0, 0.15cm) withpen pencircle scaled 0.5pt;
+    draw yscale(-2, +2, 0.5, 0.0, 0.10cm) withpen pencircle scaled 0.5pt;
+    draw yscale(-2, +2, 0.1, 0.0, 0.05cm) withpen pencircle scaled 0.5pt;
     draw originlabel shifted (-0.05u, -0.05u);
     draw xlabel(+1, +2, 1.0, 0.0) shifted (-0.05u, -0.05u);
     draw xlabel(-1, -1, 1.0, 0.0) shifted (-0.05u, -0.05u);
@@ -152,16 +152,16 @@ endfig;
 beginfig(2);
     numeric u; u := 1cm;
 
-    draw xgrid(-2, +2, -2, +2, 1.0, 0.0) dashed dashpattern(off 0.05u on 0 off 0.05u) withpen pencircle scaled 0.25pt;
-    draw ygrid(-2, +2, -2, +2, 1.0, 0.0) dashed dashpattern(off 0.05u on 0 off 0.05u) withpen pencircle scaled 0.25pt;
-    drawarrow xaxis(-2, 2.2) withpen pencircle scaled 0.5pt;
-    drawarrow yaxis(-2, 2.2) withpen pencircle scaled 0.5pt;
-    draw xscale(-2, +2, 1.0, 0.0, 0.15) withpen pencircle scaled 0.5pt;
-    draw xscale(-2, +2, 0.5, 0.0, 0.10) withpen pencircle scaled 0.5pt;
-    draw xscale(-2, +2, 0.1, 0.0, 0.05) withpen pencircle scaled 0.5pt;
-    draw yscale(-2, +2, 1.0, 0.0, 0.15) withpen pencircle scaled 0.5pt;
-    draw yscale(-2, +2, 0.5, 0.0, 0.10) withpen pencircle scaled 0.5pt;
-    draw yscale(-2, +2, 0.1, 0.0, 0.05) withpen pencircle scaled 0.5pt;
+    draw xgrid(-2, +2, -2, +2, 1.0, 0.0) dashed dashpattern(on 0.0005u off 0.099u on 0.0005u) withpen pencircle scaled 0.25pt;
+    draw ygrid(-2, +2, -2, +2, 1.0, 0.0) dashed dashpattern(on 0.0005u off 0.099u on 0.0005u) withpen pencircle scaled 0.25pt;
+    drawarrow xaxis(-2, 2, 0.25cm) withpen pencircle scaled 0.5pt;
+    drawarrow yaxis(-2, 2, 0.25cm) withpen pencircle scaled 0.5pt;
+    draw xscale(-2, +2, 1.0, 0.0, 0.15cm) withpen pencircle scaled 0.5pt;
+    draw xscale(-2, +2, 0.5, 0.0, 0.10cm) withpen pencircle scaled 0.5pt;
+    draw xscale(-2, +2, 0.1, 0.0, 0.05cm) withpen pencircle scaled 0.5pt;
+    draw yscale(-2, +2, 1.0, 0.0, 0.15cm) withpen pencircle scaled 0.5pt;
+    draw yscale(-2, +2, 0.5, 0.0, 0.10cm) withpen pencircle scaled 0.5pt;
+    draw yscale(-2, +2, 0.1, 0.0, 0.05cm) withpen pencircle scaled 0.5pt;
     draw originlabel;
     draw xlabel(+1, +2, 1.0, 0.0);
     draw xlabel(-1, -1, 1.0, 0.0);
@@ -173,37 +173,37 @@ endfig;
 beginfig(3);
     numeric u; u := 1cm;
 
-    draw xgrid(-2, +2, -2, +2, 1.0, 0.0) dashed dashpattern(off 0.05u on 0 off 0.05u) withpen pencircle scaled 0.25pt;
-    draw ygrid(-2, +2, -2, +2, 1.0, 0.0) dashed dashpattern(off 0.05u on 0 off 0.05u) withpen pencircle scaled 0.25pt;
-    drawarrow xaxis(-2, 2.2) withpen pencircle scaled 0.5pt;
-    drawarrow yaxis(-2, 2.2) withpen pencircle scaled 0.5pt;
-    draw xscale(-2, +2, 1.0, 0.0, 0.15) withpen pencircle scaled 0.5pt;
-    draw xscale(-2, +2, 0.5, 0.0, 0.10) withpen pencircle scaled 0.5pt;
-    draw xscale(-2, +2, 0.1, 0.0, 0.05) withpen pencircle scaled 0.5pt;
-    draw yscale(-2, +2, 1.0, 0.0, 0.15) withpen pencircle scaled 0.5pt;
-    draw yscale(-2, +2, 0.5, 0.0, 0.10) withpen pencircle scaled 0.5pt;
-    draw yscale(-2, +2, 0.1, 0.0, 0.05) withpen pencircle scaled 0.5pt;
+    draw xgrid(-2, +2, -2, +2, 1.0, 0.0) dashed dashpattern(on 0.0005u off 0.099u on 0.0005u) withpen pencircle scaled 0.25pt;
+    draw ygrid(-2, +2, -2, +2, 1.0, 0.0) dashed dashpattern(on 0.0005u off 0.099u on 0.0005u) withpen pencircle scaled 0.25pt;
+    drawarrow xaxis(-2, 2, 0.25cm) withpen pencircle scaled 0.5pt;
+    drawarrow yaxis(-2, 2, 0.25cm) withpen pencircle scaled 0.5pt;
+    draw xscale(-2, +2, 1.0, 0.0, 0.15cm) withpen pencircle scaled 0.5pt;
+    draw xscale(-2, +2, 0.5, 0.0, 0.10cm) withpen pencircle scaled 0.5pt;
+    draw xscale(-2, +2, 0.1, 0.0, 0.05cm) withpen pencircle scaled 0.5pt;
+    draw yscale(-2, +2, 1.0, 0.0, 0.15cm) withpen pencircle scaled 0.5pt;
+    draw yscale(-2, +2, 0.5, 0.0, 0.10cm) withpen pencircle scaled 0.5pt;
+    draw yscale(-2, +2, 0.1, 0.0, 0.05cm) withpen pencircle scaled 0.5pt;
     draw originlabel;
     draw xlabel(+1, +2, 1.0, 0.0);
     draw xlabel(-1, -1, 1.0, 0.0);
     draw ylabel(+1, +2, 1.0, 0.0);
     draw ylabel(-1, -1, 1.0, 0.0);
-    draw real_curve(-1, -1, -2, +2, -2, +2, 0.01) withpen pencircle scaled 1pt;
+    draw real_curve(0, -1, -2, +2, -2, +2, 0.01) withpen pencircle scaled 1pt;
 endfig;
 
 beginfig(4);
     numeric u; u := 1cm;
 
-    draw xgrid(-2, +2, -2, +2, 1.0, 0.0) dashed dashpattern(off 0.05u on 0 off 0.05u) withpen pencircle scaled 0.25pt;
-    draw ygrid(-2, +2, -2, +2, 1.0, 0.0) dashed dashpattern(off 0.05u on 0 off 0.05u) withpen pencircle scaled 0.25pt;
-    drawarrow xaxis(-2, 2.2) withpen pencircle scaled 0.5pt;
-    drawarrow yaxis(-2, 2.2) withpen pencircle scaled 0.5pt;
-    draw xscale(-2, +2, 1.0, 0.0, 0.15) withpen pencircle scaled 0.5pt;
-    draw xscale(-2, +2, 0.5, 0.0, 0.10) withpen pencircle scaled 0.5pt;
-    draw xscale(-2, +2, 0.1, 0.0, 0.05) withpen pencircle scaled 0.5pt;
-    draw yscale(-2, +2, 1.0, 0.0, 0.15) withpen pencircle scaled 0.5pt;
-    draw yscale(-2, +2, 0.5, 0.0, 0.10) withpen pencircle scaled 0.5pt;
-    draw yscale(-2, +2, 0.1, 0.0, 0.05) withpen pencircle scaled 0.5pt;
+    draw xgrid(-2, +2, -2, +2, 1.0, 0.0) dashed dashpattern(on 0.0005u off 0.099u on 0.0005u) withpen pencircle scaled 0.25pt;
+    draw ygrid(-2, +2, -2, +2, 1.0, 0.0) dashed dashpattern(on 0.0005u off 0.099u on 0.0005u) withpen pencircle scaled 0.25pt;
+    drawarrow xaxis(-2, 2, 0.25cm) withpen pencircle scaled 0.5pt;
+    drawarrow yaxis(-2, 2, 0.25cm) withpen pencircle scaled 0.5pt;
+    draw xscale(-2, +2, 1.0, 0.0, 0.15cm) withpen pencircle scaled 0.5pt;
+    draw xscale(-2, +2, 0.5, 0.0, 0.10cm) withpen pencircle scaled 0.5pt;
+    draw xscale(-2, +2, 0.1, 0.0, 0.05cm) withpen pencircle scaled 0.5pt;
+    draw yscale(-2, +2, 1.0, 0.0, 0.15cm) withpen pencircle scaled 0.5pt;
+    draw yscale(-2, +2, 0.5, 0.0, 0.10cm) withpen pencircle scaled 0.5pt;
+    draw yscale(-2, +2, 0.1, 0.0, 0.05cm) withpen pencircle scaled 0.5pt;
     draw originlabel;
     draw xlabel(+1, +2, 1.0, 0.0);
     draw xlabel(-1, -1, 1.0, 0.0);
@@ -215,16 +215,16 @@ endfig;
 beginfig(5);
     numeric u; u := 1cm;
 
-    draw xgrid(-2, +2, -2, +2, 1.0, 0.0) dashed dashpattern(off 0.05u on 0 off 0.05u) withpen pencircle scaled 0.25pt;
-    draw ygrid(-2, +2, -2, +2, 1.0, 0.0) dashed dashpattern(off 0.05u on 0 off 0.05u) withpen pencircle scaled 0.25pt;
-    drawarrow xaxis(-2, 2.2) withpen pencircle scaled 0.5pt;
-    drawarrow yaxis(-2, 2.2) withpen pencircle scaled 0.5pt;
-    draw xscale(-2, +2, 1.0, 0.0, 0.15) withpen pencircle scaled 0.5pt;
-    draw xscale(-2, +2, 0.5, 0.0, 0.10) withpen pencircle scaled 0.5pt;
-    draw xscale(-2, +2, 0.1, 0.0, 0.05) withpen pencircle scaled 0.5pt;
-    draw yscale(-2, +2, 1.0, 0.0, 0.15) withpen pencircle scaled 0.5pt;
-    draw yscale(-2, +2, 0.5, 0.0, 0.10) withpen pencircle scaled 0.5pt;
-    draw yscale(-2, +2, 0.1, 0.0, 0.05) withpen pencircle scaled 0.5pt;
+    draw xgrid(-2, +2, -2, +2, 1.0, 0.0) dashed dashpattern(on 0.0005u off 0.099u on 0.0005u) withpen pencircle scaled 0.25pt;
+    draw ygrid(-2, +2, -2, +2, 1.0, 0.0) dashed dashpattern(on 0.0005u off 0.099u on 0.0005u) withpen pencircle scaled 0.25pt;
+    drawarrow xaxis(-2, 2, 0.25cm) withpen pencircle scaled 0.5pt;
+    drawarrow yaxis(-2, 2, 0.25cm) withpen pencircle scaled 0.5pt;
+    draw xscale(-2, +2, 1.0, 0.0, 0.15cm) withpen pencircle scaled 0.5pt;
+    draw xscale(-2, +2, 0.5, 0.0, 0.10cm) withpen pencircle scaled 0.5pt;
+    draw xscale(-2, +2, 0.1, 0.0, 0.05cm) withpen pencircle scaled 0.5pt;
+    draw yscale(-2, +2, 1.0, 0.0, 0.15cm) withpen pencircle scaled 0.5pt;
+    draw yscale(-2, +2, 0.5, 0.0, 0.10cm) withpen pencircle scaled 0.5pt;
+    draw yscale(-2, +2, 0.1, 0.0, 0.05cm) withpen pencircle scaled 0.5pt;
     draw originlabel;
     draw xlabel(+1, +2, 1.0, 0.0);
     draw xlabel(-1, -1, 1.0, 0.0);
@@ -234,16 +234,16 @@ beginfig(5);
 endfig;
 
 beginfig(6);
-    numeric u; u := 0.5cm;
+    numeric u; u := 0.333cm;
 
     draw xgrid(0, 12, 0, 12, 1.0, 0.0) dashed dashpattern(on 0 off 1u) withpen pencircle scaled 0.25pt;
     draw ygrid(0, 12, 0, 12, 1.0, 0.0) dashed dashpattern(on 0 off 1u) withpen pencircle scaled 0.25pt;
-    drawarrow xaxis(0, 12.5) withpen pencircle scaled 0.5pt;
-    drawarrow yaxis(0, 12.5) withpen pencircle scaled 0.5pt;
-    draw xscale(0, 12, 3.0, 0.0, 0.3) withpen pencircle scaled 0.5pt;
-    draw xscale(0, 12, 1.0, 0.0, 0.1) withpen pencircle scaled 0.5pt;
-    draw yscale(0, 12, 3.0, 0.0, 0.3) withpen pencircle scaled 0.5pt;
-    draw yscale(0, 12, 1.0, 0.0, 0.1) withpen pencircle scaled 0.5pt;
+    drawarrow xaxis(0, 12, 0.25cm) withpen pencircle scaled 0.5pt;
+    drawarrow yaxis(0, 12, 0.25cm) withpen pencircle scaled 0.5pt;
+    draw xscale(0, 12, 3.0, 0.0, 0.15cm) withpen pencircle scaled 0.5pt;
+    draw xscale(0, 12, 1.0, 0.0, 0.05cm) withpen pencircle scaled 0.5pt;
+    draw yscale(0, 12, 3.0, 0.0, 0.15cm) withpen pencircle scaled 0.5pt;
+    draw yscale(0, 12, 1.0, 0.0, 0.05cm) withpen pencircle scaled 0.5pt;
     draw originlabel;
     draw xlabel(1, 12, 3.0, 0.0);
     draw ylabel(1, 12, 3.0, 0.0);
@@ -251,16 +251,16 @@ beginfig(6);
 endfig;
 
 beginfig(7);
-    numeric u; u := 0.5cm;
+    numeric u; u := 0.333cm;
 
     draw xgrid(0, 12, 0, 12, 1.0, 0.0) dashed dashpattern(on 0 off 1u) withpen pencircle scaled 0.25pt;
     draw ygrid(0, 12, 0, 12, 1.0, 0.0) dashed dashpattern(on 0 off 1u) withpen pencircle scaled 0.25pt;
-    drawarrow xaxis(0, 12.5) withpen pencircle scaled 0.5pt;
-    drawarrow yaxis(0, 12.5) withpen pencircle scaled 0.5pt;
-    draw xscale(0, 12, 3.0, 0.0, 0.3) withpen pencircle scaled 0.5pt;
-    draw xscale(0, 12, 1.0, 0.0, 0.1) withpen pencircle scaled 0.5pt;
-    draw yscale(0, 12, 3.0, 0.0, 0.3) withpen pencircle scaled 0.5pt;
-    draw yscale(0, 12, 1.0, 0.0, 0.1) withpen pencircle scaled 0.5pt;
+    drawarrow xaxis(0, 12, 0.25cm) withpen pencircle scaled 0.5pt;
+    drawarrow yaxis(0, 12, 0.25cm) withpen pencircle scaled 0.5pt;
+    draw xscale(0, 12, 3.0, 0.0, 0.15cm) withpen pencircle scaled 0.5pt;
+    draw xscale(0, 12, 1.0, 0.0, 0.05cm) withpen pencircle scaled 0.5pt;
+    draw yscale(0, 12, 3.0, 0.0, 0.15cm) withpen pencircle scaled 0.5pt;
+    draw yscale(0, 12, 1.0, 0.0, 0.05cm) withpen pencircle scaled 0.5pt;
     draw originlabel;
     draw xlabel(1, 12, 3.0, 0.0);
     draw ylabel(1, 12, 3.0, 0.0);
