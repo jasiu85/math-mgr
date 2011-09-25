@@ -1,18 +1,23 @@
 \section{Redukcja MOV}
 
 \noindent
-Pierwsze zastosowanie iloczynu Weila
-to redukcja Menezesa-Okamoto-Vanstone'a \cite{menezesokamotovanstone}.
-Jest to zastosowanie ,,złe'',
-ponieważ pozwala przeprowadzać atak kryptograficzny
-na systemy oparte na krzywych eliptycznych.
-Odkrycie redukcji MOV spowodowało,
-że niebezpieczne stało się budowanie systemów kryptograficznych
+Zagadnieniem, od którego rozpoczniemy omawianie zastosowań iloczynu Weila,
+jest twierdzenie
+udowodnione przez Menezesa, Okamoto i Vanstone'a \cite{menezesokamotovanstone},
+zwane w skrócie ,,redukcją MOV''.
+
+\noindent
+Redukcja MOV daje podstawy teoretyczne
+do przeprowadzenia pewnego specyficznego ataku
+na kryptosystemy oparte na krzywych eliptycznych.
+Dzięki algorytmowi Millera teoria może zmienić się w praktykę,
+dlatego odkrycie redukcji MOV spowodowało,
+że niebezpieczne stało się wykorzystywanie systemów kryptograficznych
 opartych na superosobliwych krzywych eliptycznych.
 Jest to o tyle niefortunne,
 że krzywe superosobliwe wyjątkowo dobrze nadają się do
 realizacji komputerowej
-i wiązano z nimi nadzieje na praktyczne, wydajne kryptosystemy.
+i wiązano z nimi nadzieje stworzenie praktycznych, wydajnych kryptosystemów.
 
 \noindent
 Redukcja MOV związana jest
@@ -216,22 +221,24 @@ jest łatwy.
 Niech punkt $G$ rzędu $n$ na krzywej $E$
 oraz punkty $P$, $Q$ i $R$ będące wielokrotnościami punktu $G$
 będą instancją decyzyjnego problemu Diffiego-Hellmana na krzywej $E$.
-Oznaczmy $G = (a, b)$.
-Niech $\xi$ oznacza pierwiastek trzeciego stopnia z jedności w ciele $\GF(p^2)$.
-Jak wiemy, punkt $H = (\xi a, b)$ również ma rząd $n$
-i razem z punktem $G$ generuje grupę $E[n]$.
-
-\noindent
-Oznaczmy odwzorowanie $(x, y) \to (\xi x, y)$ przez $f$.
 Oznaczmy $P = kG$, $Q = lG$ i $R = mG$.
-Zauważmy, że zachodzą następujące zależności:
+Oznaczmy $H = \phi(G)$,
+gdzie $\phi$ jest automorfizmem określonym
+równaniem \ref{supersingular_curve_automorphism_eqn}.
+Punkty $G$ i $H$ są generatorami grupy $E[n]$,
+zatem wartość $w(G, H)$
+jest pierwiastkiem pierwotnym $n$-tego stopnia z jedności.
+Ponadto, zachodzą następujące zależności:
 \begin{eqnarray*}
 w(P, f(Q)) & = & w(G, H)^{kl} \\
 w(R, f(G)) & = & w(G, H)^m
 \end{eqnarray*}
-Ponieważ $w(G, H)$ to pierwiastek pierwotny $n$-tego stopnia z jedności,
-widzimy, że $kl \equiv m \quad (\mathrm{mod}\ n)$ wtedy i tylko wtedy, gdy
-$w(P, f(Q)) = w(R, f(G))$.
+
+\noindent
+Zależność $kl \equiv m \quad (\mathrm{mod}\ n)$
+zachodzi wtedy i tylko wtedy,
+gdy $w(P, f(Q)) = w(R, f(G))$,
+bo wartość $w(G, H)$ jest pierwiastkiem pierwotnym.
 \end{proof}
 
 \begin{remark}
