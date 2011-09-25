@@ -1,16 +1,394 @@
-\section{Kryptosystemy bazujące na tożsamości}
+\section{Szyfrowanie oparte na tożsamości}
+
+\noindent
+Opiszemy teraz system szyfrujący
+opracowany przez Boneha i Franklina \cite{bonehfranklin}.
+Iloczyn Weila odgrywa w tym systemie kluczową rolę.
+
+\noindent
+System pozwala szyfrować wiadomości w sposób asymetryczny,
+tzn. występują w nim klucze publiczne do szyfrowania wiadomości
+oraz klucze prywatne do ich odczytywania.
+W skład systemu wchodzą cztery algorytmy,
+których przeznaczenie jest następujące.
+
+\begin{itemize}
+\item
+Algorytm tworzenia parametrów systemu
+jest wykorzystywany przez zarządcę systemu raz,
+podczas tworzenia instancji systemu.
+Wynikiem jego działania są parametry systemu,
+które zarządca powinien udostępnić
+wszystkim użytkownikom chcącym korzystać z systemu
+oraz klucz główny, którego nie powinien ujawniać.
+
+\item
+Algorytm tworzenia klucza prywatnego
+jest wykorzystywany przez zarządcę wtedy,
+gdy nowy użytkownik chce rozpocząć korzystanie z systemu.
+Za pomocą tego algorytmu zarządca
+tworzy dla nowego użytkownika klucz prywatny,
+którego użytkownik nie powinien ujawniać.
+Klucz prywatny jest wyznaczany jednoznacznie
+na podstawie parametrów systemu, klucza głównego
+i dowolnie wybranego ciągu bitów.
+Ciąg ten będzie identyfikatorem nowego użytkownika,
+który inni użytkownicy będą wykorzystywać,
+aby wysyłać do niego zaszyfrowane wiadomości.
+
+\item
+Wiadomości są szyfrowane za pomocą algorytmu wykorzystującego
+parametry systemu i identyfikator odbiorcy.
+Dodatkowo, w procesie szyfrowania używany jest losowo wybrany parametr,
+dlatego w wyniku wielokrotnego zaszyfrowania tej samej wiadomości
+można otrzymać różne kryptogramy.
+
+\item
+Kryptogramy odczytywane są za pomocą algorytmu wykorzystującego
+parametry systemu i klucz prywatny odbiorcy.
+\end{itemize}
+
+\noindent
+Jak widać, kluczową cechą odróżniającą ten system od innych rozwiązań
+jest możliwość użycia dowolnego ciągu bitów jako klucza publicznego.
+O systemie mającym tę cechę mówimy, że jest ,,oparty na tożsamości''.
+Takie podejście, jak zaraz zobaczymy, oferuje możliwości,
+których nie dają inne kryptosystemy.
 
 \subsection*{Motywacja}
 
 \noindent
-\todo{Motywacja.}
+Przedstawiamy dwa typy problemów,
+których rozwiązanie za pomocą kryptosystemów
+nieopierających się na tożsamości
+jest albo niemożliwe,
+albo bardzo trudne.
+Natomiast łatwo jest rozwiązać je za pomocą systemu Boneha-Franklina.
 
-\subsection*{Schemat}
+\begin{itemize}
+\item
+Dana jest grupa użytkowników (np. instytucja państwowa lub korporacja),
+którzy chcą przesyłać między sobą zaszyfrowane wiadomości.
+Zastosowanie w tym celu systemu Boneha-Franklina daje następujące korzyści.
+
+\begin{itemize}
+\item
+Użytkownicy nie muszą przechowywać kluczy publicznych innych użytkowników.
+Ułatwia to nawiązanie korespondencji z nową osobą,
+bo łatwiej jest przekazać innym kanałem (np. za pomocą wizytówki)
+swój identyfikator (np. adres poczty elektronicznej)
+niż swój klucz publiczny.
+Dalej, nie ma ryzyka utracenia listy kluczy publicznych innych użytkowników.
+Listę taką zawsze można odtworzyć, ale może być to bardziej żmudne
+niż odtworzenie listy adresów poczty elektronicznej.
+
+\item
+Użytkownicy nie muszą przechowywać nawet swojego klucza prywatnego --
+zawsze można ponownie poprosić zarządcę systemu o jego wygenerowanie
+(uprzednio potwierdzając swoją tożsamość innymi metodami).
+Utrata klucza prywatnego w innych systemach może spowodować
+nieodwracalne konsekwencje.
+
+\item
+Można wysyłać wiadomości do przyszłych członków grupy,
+dla których nie został jeszcze utworzony klucz prywatny.
+Wystarczy, że znany jest identyfikator, którym będą się posługiwać.
+
+\item
+Łatwo jest wykluczać użytkowników z grupy.
+Wystarczy, że kluczem publicznym będzie ciąg bitów będący wynikiem
+połączenia identyfikatora odbiorcy z rokiem (odpowiednio, rokiem i miesiącem)
+wysłania wiadomości.
+W ten sposób każdy członek grupy musi co rok (odpowiednio, co miesiąc)
+poprosić zarządcę o wygenerowanie nowego klucza prywatnego,
+który będzie ważny przez kolejny rok (odpowiednio, miesiąc).
+
+\item
+Można wysyłać wiadomości, które będą mogły być odczytane dopiero w przyszłości.
+Wystarczy zmodyfikować poprzedni pomysł:
+zamiast bieżącej daty można do identyfikatora odbiorcy
+dokleić datę przyszłą, która określa,
+kiedy wiadomość będzie mogła być odczytana.
+
+\item
+Członkom grupy można nadawać poziomy uprawnień do odczytywania wiadomości.
+W tym celu kluczem publicznym powinien być ciąg bitów składający się
+z identyfikatora odbiorcy, daty oraz nazwy uprawnienia,
+które jest wymagane do odczytu nadawanej wiadomości.
+Jest to uogólnienie poprzednich dwóch pomysłów.
+\end{itemize}
 
 \noindent
-\todo{Schemat.}
-
-\subsection*{Zastosowanie iloczynu Weila}
+Ponieważ nie trzeba przechowywać kluczy publicznych,
+szyfrowanie elektronicznej korespondencji staje się bardziej dostępne
+dla przeciętnego użytkownika poczty elektronicznej.
+Zauważmy przy tym, że nierozwiązany pozostaje problem przesyłania
+zaszyfrowanych wiadomości między członkami różnych grup,
+np. między użytkownikami dwóch różnych serwerów poczty elektronicznej.
+Dlatego też nie można do końca zrezygnować
+z infrastruktury klucza publicznego.
 
 \noindent
-\todo{Zastosowanie iloczynu Weila.}
+Zauważmy, że zastosowanie systemu Boneha i Franklina w opisany sposób
+prowadzi do następującego problemu: zarządca systemu może odczytać
+dowolną zaszyfrowaną wiadomość.
+Z kryptograficznego punktu widzenia jest to zjawisko zdecydowanie niepożądane,
+jednak obecnie praktykuje się właśnie takie rozwiązania:
+administrator serwera poczty elektronicznej ma dostęp do wszystkich wiadomości.
+
+\item
+Przypuśćmy, że pewien użytkownik
+systemu opartego na infrastrukturze klucza publicznego
+chce zabezpieczyć się przed ujawnieniem swojego klucza prywatnego.
+Sytuacja taka może mieć miejsce,
+jeżeli będzie przechowywał klucz prywatny na niezaufanych urządzeniach
+(np. laptopie lub telefonie komórkowym, które mogą zostać skradzione)
+lub powierzy go niezaufanym osobom
+(np. swoim asystentom, których zadaniem jest
+pomoc w prowadzeniu korespondencji).
+W tym celu może wykorzystać system Boneha-Franklina.
+Powinien utworzyć własną instancję systemu
+i poprosić wszystkich, którzy wysyłają do niego wiadomości,
+żeby szyfrowali je kluczem,
+który powstaje z połączenia daty wysłania wiadomości
+z kategorią tematyczną wiadomości.
+Opisane problemy można wówczas rozwiązać następująco.
+
+\begin{itemize}
+\item
+Użytkownik ma dostęp do całej swojej korespondencji,
+ponieważ jest w posiadaniu klucza głównego
+i może z jego pomocą odszyfrować dowolną wiadomość.
+
+\item
+Swoim asystentom może wydać klucze prywatne,
+które pozwalają na odczytanie wiadomości jedynie z tej kategorii tematycznej,
+za którą są odpowiedzialni.
+
+\item
+Na zagrożone kradzieżą urządzenie
+użytkownik może nagrać klucze prywatne pozwalające na odczytywanie wiadomości
+wysłanych tylko w zadanym okresie czasu (np. jeden tydzień).
+Jeżeli urządzenie zostanie skradzione,
+złodziej nie będzie w stanie odczytać
+wiadomości wysłanych po upływie zadanego okresu.
+\end{itemize}
+\end{itemize}
+
+\subsection*{Szczegółowy opis działania systemu}
+
+\noindent
+Przedstawimy teraz działanie wszystkich algorytmów
+wchodzących w skład systemu Boneha-Franklina.
+Opiszemy również rodzaje danych pojawiających się w systemie.
+
+\begin{algorithm}[Tworzenie parametrów systemu]
+Następujący algorytm wybiera i przekazuje jako wynik
+parametry instancji systemu Boneha-Franklina
+i jej klucz główny.
+
+\begin{codebox}
+\Procname{$\proc{BF-Create-Instance}()$}
+\li
+Wybieramy
+liczbę pierwszą $q$.
+\li
+Wybieramy grupy $\G_1$ i $\G_2$ rzędu $q$.
+\li
+Wybieramy odwzorowanie dwuliniowe $b\colon \G_1 \times \G_1 \to G_2$.
+\li
+Wybieramy liczbę naturalną $m$.
+\li
+Ustalamy, że przestrzenią wiadomości $\mathcal{M}$
+jest zbiór $\{0, 1\}^m$.
+\li
+Ustalamy, że przestrzenią kryptogramów $\mathcal{C}$
+jest zbiór $\G_1^\star \times \mathcal{M}$.
+\li
+Ustalamy, że przestrzenią identyfikatorów użytkowników $\mathcal{I}$
+jest zbiór $\{0, 1\}^\star$.
+\li
+Wybieramy funkcje haszujące
+$H_1\colon \mathcal{I} \to \G_1^\star$
+i $H_2\colon \G_2 \to \mathcal{M}$.
+\li
+Wybieramy generator $P$ grupy $\G_1$.
+\li
+Wybieramy element $s$ z grupy $(\Z / q\Z)^\star$.
+\li
+Obliczamy wartość $Q = sP$.
+\li
+Parametry systemu to krotka
+$\left\langle q, \G_1, \G_2, b, m, H_1, H_2, P, Q \right\rangle$.
+\li
+Klucz główny to element $s$.
+\end{codebox}
+\end{algorithm}
+
+\begin{algorithm}[Tworzenie klucza prywatnego]
+Dany jest identyfikator $\const{id}$.
+Następujący algorytm na podstawie wartości $\const{id}$
+oraz klucza głównego $s$ instancji systemu Boneha-Franklina i jej parametrów
+oblicza i przekazuje jako wynik
+klucz prywatny odpowiadający identyfikatorowi $\const{id}$.
+
+\begin{codebox}
+\Procname{$\proc{BF-Create-Private-Key}(
+    \const{id},
+    s,
+    \left\langle q, \G_1, \G_2, b, m, H_1, H_2, P, Q \right\rangle
+)$}
+\li
+Obliczamy wartość $R = H_1(\const{id})$.
+\li
+Obliczamy wartość $S = sR$.
+\li
+Klucz prywatny to wartość $S$.
+\end{codebox}
+\end{algorithm}
+
+\begin{algorithm}[Szyfrowanie wiadomości]
+Dana jest wiadomość $M$ i identyfikator adrestata $\const{id}$.
+Następujący algorytm na podstawie wartości $M$ i $\const{id}$
+oraz parametrów instancji systemu Boneha-Franklina
+oblicza i przekazuje jako wynik
+kryptogram odpowiadający wiadomości $M$.
+
+\begin{codebox}
+\Procname{$\proc{BF-Encrypt}(
+    M,
+    \const{id},
+    \left\langle q, \G_1, \G_2, b, m, H_1, H_2, P, Q \right\rangle
+)$}    
+\li
+Obliczamy wartość $R = H_1(\const{id})$.
+\li
+Wybieramy element $r$ z grupy $(\Z / q\Z)^\star$.
+\li
+Obliczamy wartość $U = rP$.
+\li
+Obliczamy wartość $V = M\ \kw{xor}\ b(R, Q)^r$.
+\li
+Kryptogram to para
+$\left\langle U, V \right\rangle$.
+\end{codebox}
+\end{algorithm}
+
+\begin{algorithm}[Odczytywanie kryptogramu]
+Dany jest kryptogram $C$ w postaci $C = \left\langle U, V \right\rangle$
+i klucz prywatny $S$ odpowiadający identyfikatorowi $\const{id}$.
+Następujący algorytm
+na podstawie wartości $C$ i $S$
+oraz parametrów instancji systemu Boneha-Franklina
+oblicza i przekazuje jako wynik
+wiadomość odpowiadającą kryptogramowi $C$.
+
+\begin{codebox}
+\Procname{$\proc{BF-Decrypt}(
+    \left\langle U, V \right\rangle,
+    S,
+    \left\langle q, \G_1, \G_2, b, m, H_1, H_2, P, Q \right\rangle
+)$}
+\li
+Obliczamy wartość $M = V\ \kw{xor}\ b(S, U)$.
+\li
+Wiadomość to wartość $M$.
+\end{codebox}
+\end{algorithm}
+
+\begin{remark}
+Zauważmy, że nie sprecyzowaliśmy, jaka jest struktura grup $\G_1$ i $\G_2$.
+Kwestię tę omówimy za chwilę.
+\end{remark}
+
+Pokażmy przede wszystkim, że w systemie Boneha-Franklina
+prawidłowo działa szyfrowanie i odczytywanie wiadomości.
+
+\begin{theorem}
+Dana jest wiadomość $M$,
+identyfikator adresata $\const{id}$,
+odpowiadający mu klucz prywatny $S$,
+i parametry $\mathcal{P}$ instancji systemu Boneha-Franklina.
+Wówczas zachodzi następująca zależność:
+\begin{equation*}
+\proc{BF-Decrypt}(
+    \proc{BF-Encrypt}(
+        M,
+        \const{id},
+        \mathcal{P}
+    ),
+    S,
+    \mathcal{P}
+) = M
+\end{equation*}
+\end{theorem}
+
+\begin{proof}
+Wiadomość $M$ jest szyfrowana symetrycznie za pomocą operacji \kw{xor}.
+Wystarczy zatem sprawdzić,
+że klucze użyte przy szyfrowaniu i odczytywaniu wiadomości są takie same.
+Istotnie:
+\begin{eqnarray*}
+b(S, U)
+& = & b(sR, U) \\
+& = & b(R, U)^s \\
+& = & b(R, rP)^s \\
+& = & b(R, P)^{sr} \\
+& = & b(R, sP)^r \\
+& = & b(R, Q)^r
+\end{eqnarray*}
+\end{proof}
+
+\noindent
+Sednem sposobu szyfrowania w systemie Boneha-Franklina
+jest wykorzystanie prostego algorytmu symetrycznego do szyfrowania wiadomości,
+stosowanie w tym algorytmie kluczy jednorazowych
+oraz sprytny sposób przekazania informacji o użytym kluczu.
+Sekretną informacją potrzebną do odczytania wiadomości
+jest losowa wartość $r$, którą nadawca ,,rozdziela'' na dwie części.
+Jedynie odbiorca jest w stanie połączyć je z powrotem w całość
+i odczytać wiadomość.
+Złączenie to odbywa się za pomocą operacji dwuliniowej $b$.
+Sposób, w jaki sekret jest rozdzielony i przekazany w częściach,
+koncepcyjnie przypomina działanie protokołu Diffiego-Hellmana.
+
+\noindent
+Konkretna realizacja systemu Boneha-Franklina
+wymaga wybrania konkretnych grup $\G_1$ i $\G_2$
+oraz odwzorowania dwuliniowego $b$.
+W swojej pracy Boneh i Franklin opisują następującą realizację systemu
+opartą na superosobliwych krzywych eliptycznych.
+\begin{itemize}
+\item
+Podstawą systemu jest superosobliwa krzywa eliptyczna $E_{0,1}(\F(p))$,
+przy czym $q \mid p+1$.
+Zauważmy, że w tej sytuacji $E[q] \subset E_{0,1}(\GF(p^2))$.
+\item
+Rolę grupy $\G_1$ pełni grupa generowana
+przez punkt $P$ rzędu $q$ na krzywej $E$.
+\item
+Grupa $\G_2$ to grupa pierwiastków $q$-tego stopnia z jedności
+w ciele $\GF(p^2)$.
+\item
+Niech $\phi$ będzie funkcją określoną
+równaniem \ref{supersingular_curve_automorphism_eqn}.
+Odwzorowanie dwuliniowe $b$ używane w systemie
+jest określone następująco:
+\begin{equation*}
+b(P, Q) = w(P, \phi(Q))
+\end{equation*}
+\end{itemize}
+
+\begin{remark}
+Zauważmy, że iloczyn Weila jest zdegenerowany na krzywej $E_{0,1}(\F(p))$,
+dlatego w definicji funkcji $b$ jeden z argumentów jest zmodyfikowany
+za pomocą automorfizmu $\phi$.
+Można sprawdzić, że uzyskane w ten sposób odwzorowanie jest dwuliniowe.
+\end{remark}
+
+\noindent
+W pracy Boneha i Franklina można znaleźć analizę bezpieczeństwa systemu.
+Zaznaczmy, że aby uzyskać gwarancje bezpieczeństwa na tyle rozsądne,
+żeby można było korzystać z systemu w praktyce,
+należy zastosować zmodyfikowaną wersję opisanego tutaj schematu.
+Opis tej modyfikacji można znaleźć w pracy \cite{fujisakiokamoto}.
