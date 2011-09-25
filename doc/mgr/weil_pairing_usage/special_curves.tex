@@ -1,11 +1,8 @@
-\section{Szczególne krzywe eliptyczne}
+\section{Superosobliwe krzywe eliptyczne}
 
 \noindent
-Krzywe eliptyczne, które są używane w systemach kryptograficznych,
-są dobierane ze szczególną starannością.
-Wskażemy pewien szczególny rodzaj krzywych eliptycznych,
-które wyjątkowo dobrze nadają się do zastosowań
-związanych z iloczynem Weila.
+Opiszemy najpierw pewien szczególny rodzaj krzywych eliptycznych,
+które dobrze nadają do się zastosowań związanych z iloczynem Weila.
 
 \begin{definition}
 Dana jest liczba pierwsza $p$ taka, że $p \equiv 2\ (\mathrm{mod}\ 3)$.
@@ -88,18 +85,18 @@ jest izomorficzna z grupą $(\Z / n\Z) \times (\Z / n\Z)$.
 Ponieważ $3 \mid p^2-1$, w ciele $\GF(p^2)$
 istnieje nietrywialny pierwiastek trzeciego stopnia z jedności.
 Oznaczmy go przez $\xi$.
-Zauważmy teraz, że odwzorowanie $(x, y) \to (\xi x, y)$
-jest automorfizmem grupy na krzywej $E_{0,1}(\GF(p^2))$.
+Wówczas automorfizmem krzywej $E_{0,1}(\GF(p^2))$ jest
+odwzorowanie $\phi\colon E_{0,1}(\F(p^2)) \to E_{0,1}(\GF(p^2))$
+określone następująco:
+\begin{equation}\label{supersingular_curve_automorphism_eqn}
+\phi(x, y) = (\xi x, y)
+\end{equation}
 
 \noindent
-Niech $P = (a, b)$ będzie takim punktem krzywej $E_{0,1}(\F(p))$,
-że $nP = \ecident$.
-Teraz, punkt $Q = (\xi a, b) \in E_{0,1}(\GF(p^2))$ również ma rząd $n$,
-bo jest obrazem punktu $P$ poprzez opisany automorfizm.
-Zauważmy przy tym, że $Q \notin E_{0,1}(\F(p))$,
+Niech $P$ będzie takim punktem krzywej $E_{0,1}(\F(p))$, że $nP = \ecident$.
+Punkt $\phi(P)$ również ma rząd $n$.
+Zauważmy przy tym, że $\phi(P) \notin E_{0,1}(\F(p))$,
 bo $\xi \notin \F(p)$.
-
-\noindent
 Wynika stąd już, że podgrupa $n$-torsyjna krzywej $E_{0,1}(\GF(p^2))$
-ma żądaną postać. Co więcej, punkty $P$ i $Q$ są jej generatorami.
+ma żądaną postać, a jej generatorami są punkty $P$ i $\phi(P)$.
 \end{proof}
