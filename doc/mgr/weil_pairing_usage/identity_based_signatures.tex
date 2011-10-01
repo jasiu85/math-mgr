@@ -1,0 +1,341 @@
+\section{Podpisy cyfrowe oparte na tożsamości}
+
+\noindent
+Zagadnieniem blisko spokrewnionym z szyfrowaniem są podpisy cyfrowe.
+Szyfrowanie gwarantuje,
+że wiadomość elektroniczną odczyta tylko wybrany przez nadawcę odbiorca,
+zaś podpisy cyfrowe pozwalają odbiorcy stwierdzić,
+czy wiadomość jest autentyczna.
+
+\noindent
+W przypadku niektórych kryptosystemów
+szyfrowanie i wystawianie podpisów cyfrowych jest tak samo skomplikowane.
+Przykładowo,
+w systemie RSA operacje szyfrowania i odczytywania wiadomości są przemienne,
+dzięki czemu podpis cyfrowy można wystawić
+poprzez zaszyfrowanie wiadomości kluczem prywatnym, a nie publicznym.
+
+\noindent
+W przypadku systemów opartych na tożamości,
+które wykorzystują odwzorowania dwuliniowe,
+sytuacja nie jest aż taka prosta.
+System Boneha i Franklina jest swego rodzaju kamieniem milowym
+w swojej dziedzinie --
+trudno wskazać bardziej popularny system szyfrujący oparty na tożsamości.
+Niestety, system ten nie pozwala na wystawianie podpisów cyfrowych.
+
+\noindent
+Udało się opracować wiele różnych rozwiązań
+korzystających z odwzorowań dwuliniowych,
+dzięki którym można wystawiać podpisy cyfrowe oparte na tożsamości,
+jednak o żadnym z nich nie można powiedzieć,
+że jest ono tak istotne dla kryptografii,
+jak system Boneha i Franklina.
+
+\noindent
+Omówimy teraz jedno z takich rozwiązań
+opracowane przez Yi \cite{yi}.
+Wybór tego konkretnego rozwiązania na obiekt naszych rozważań
+jest podyktowany tym,
+że rozwiązanie to jest najbliższe systemowi Boneha-Franklina.
+Dzięki występowaniu wielu elementów wspólnych
+oba systemy można potraktować niemalże jak części jednego większego systemu.
+
+\subsection*{Motywacja}
+
+\noindent
+Podpis cyfrowy oparty na tożsamości można zweryfikować
+bez znajomości klucza publicznego domniemanego nadawcy.
+Bardzo często tożsamość domniemanego nadawcy
+jest wskazana w treści weryfikowanej wiadomości.
+Dzięki temu weryfikowanie podpisów jest bardzo łatwe.
+
+\noindent
+Rozwiązanie takie może być przydatne w dużych instytucjach,
+w których w obiegu pozostaje wiele dokumentów.
+Często jest tak, że dokumenty krążą między osobami,
+które nie miały wcześniej ze sobą styczności
+i nie wymieniły się swoimi kluczami publicznymi.
+Systemy oparte na infrastrukturze klucza publicznego
+prowadzą centralny rejestr kluczy publicznych
+wszystkich członków organizacji.
+W rozwiązaniu korzystające z podpisów opartych na tożsamości
+nie występuje punkt centralny,
+zatem jest ono bardziej wydajne i skalowalne.
+
+\noindent
+Systemy podpisów cyfrowych opartych na tożsamości
+mogą też wpłynąć na popularyzację kryptografii
+w systemach światowej poczty elektronicznej,
+ponieważ znacząco obniżają trud i skomplikowanie
+czynności niezbędnych do sprawdzenia autentyczności wiadomości.
+
+\subsection*{Szczegółowy opis działania systemu}
+
+\noindent
+Podobnie jak w przypadku systemu Boneha-Franklina,
+w skład systemu wchodzą cztery algorytmy:
+tworzenie parametrów systemu, tworzenie klucza prywatnego,
+podpisywanie wiadomości i weryfikowanie podpisu.
+
+\begin{algorithm}[Tworzenie parametrów systemu]
+Następujący algorytm wybiera i przekazuje jako wynik
+parametry instancji systemu Yi
+i jej klucz główny.
+
+\begin{codebox}
+\Procname{$\proc{YI-Create-Instance}()$}
+\li
+Wybieramy liczby pierwsze $p$ i $q$ takie,
+że $p+1 = 12q$.
+\li
+Ustalamy, że $\G_1$ oznacza podgrupę rzędu $q$ krzywej $E_{0,1}(\F(p))$.
+\li
+Ustalamy, że $\G_2$ oznacza grupę pierwiastków $q$-tego stopnia w ciele $\GF(p^2)$.
+\li
+Ustalamy, że odwzorowanie dwuliniowe $b\colon \G_1 \times \G_1 \to \G_2$
+jest określone wzorem \ref{modified_weil_pairing_eqn}.
+\li
+Wybieramy liczbę naturalną $m$.
+\li
+Ustalamy, że przestrzenią wiadomości $\mathcal{M}$
+jest zbiór $\{0, 1\}^m$.
+\li
+Ustalamy, że przestrzenią podpisów $\mathcal{S}$
+jest zbiór $\F(p) \times \F(p)$.
+\li
+Ustalamy, że przstrzenią identyfikatorów użytkowników $\mathcal{I}$
+jest zbiór $\{0, 1\}^\star$.
+\li
+Wybieramy funkcje haszujące
+$H_1\colon \mathcal{I} \times \Z \to \F(p)$
+i $H_2\colon \mathcal{M} \times \G_1^\star \to \Z$.
+\li
+Wybieramy generator $P$ grupy $\G_1$.
+\li
+Wybieramy element $s$ z grupy $(\Z/q\Z)^\star$.
+\li
+Obliczamy wartość $Q = sP$.
+\li
+Parametry systemu to krotka
+$\left\langle p, q, \G_1, \G_2, b, m, H_1, H_2, P, Q \right\rangle$.
+\li
+Klucz główny to element $s$.
+\end{codebox}
+\end{algorithm}
+
+\begin{algorithm}[Tworzenie klucza prywatnego]
+Dany jest identyfikator podpisującego $\const{id}$.
+Następujący algorytm na podstawie wartości $\const{id}$
+oraz klucza głównego $s$ instancji systemu Yi i jej parametrów
+oblicza i przekazuje jako wynik
+klucz prywatny odpowiadający identyfikatorowi $\const{id}$.
+
+\begin{codebox}
+\Procname{$\proc{YI-Create-Private-Key}(
+    \const{id},
+    s,
+    \left\langle p, q, \G_1, \G_2, b, m, H_1, H_2, P, Q \right\rangle
+)$}
+\li
+Przyjmujemy $k = 0$.
+\li
+Obliczamy $a = H_1(\const{id}, k)^3 + 1$.
+\li
+Jeżeli $a^{\frac{p-1}{2}} \neq 1$, to powiększamy wartość $k$ o $1$ i wracamy do kroku 2.
+\li
+Obliczamy $b = a^{\frac{p+1}{4}}$.
+\li
+Jeżeli $b > -b\ (\text{mod}\ p)$, to zmieniamy znak wartości $b$.
+\li
+Obliczamy $U = 12(a, b)$.
+\li
+Obliczamy $S = sU$.
+\li
+Kluczem prywatny to punkt $S$.
+\end{codebox}
+\end{algorithm}
+
+\begin{algorithm}[Podpisywanie wiadomości]
+Dana jest wiadomość $M$
+i klucz prywatny podpisującego $S$.
+Następujący algorytm na podstawie wartości $M$ i $S$
+oraz parametrów instancji systemu Yi
+oblicza i przekazuje jako wynik
+podpis wiadomości $M$ odpowiadający kluczowi $S$.
+
+\begin{codebox}
+\Procname{$\proc{YI-Sign}(
+    M,
+    S,
+    \left\langle p, q, \G_1, \G_2, b, m, H_1, H_2, P, Q \right\rangle
+)$}
+\li
+Wybieramy element $r$ z grupy $(\Z/q\Z)^\star$.
+\li
+Obliczamy $R = rP$.
+\li
+Jeżeli $y(R) \geq -y(R)\ (\text{mod}\ p)$,
+to obliczamy $T = rQ + H_2(M, R)S$.
+\li
+W przeciwnym razie obliczamy $T = -rQ + H_2(M, -R)S$.
+\li
+Podpis to para $\left\langle x(R), x(T) \right\rangle$.
+\end{codebox}
+\end{algorithm}
+
+\begin{algorithm}[Weryfikowanie podpisu]
+Dana jest wiadomość $M$,
+podpis $V$ w postaci $V = \left\langle a, c \right\rangle$
+i identyfikator podpisującego $\const{id}$.
+Następujący algorytm na podstawie wartości $M$, $V$ i $\const{id}$
+oraz parametrów instancji systemu Yi
+stwierdza, czy podpis $V$ jest autentyczny,
+tzn. został utworzony dla wiadomości $M$
+przez podpisującego dysponującego kluczem prywatnym
+odpowiadającym identyfikatorowi $\const{id}$.
+
+\begin{codebox}
+\Procname{$\proc{YI-Verify}(
+    M,
+    \left\langle a, c \right\rangle,
+    \const{id},
+    \left\langle p, q, \G_1, \G_2, b, m, H_1, H_2, P, Q \right\rangle
+)$}
+\li
+Obliczamy $b = (a^3 + 1)^{\frac{p+1}{4}}$.
+\li
+Obliczamy $d = (c^3 + 1)^{\frac{p+1}{4}}$.
+\li
+Jeżeli $b \geq -b\ (\text{mod}\ p)$, to przyjmujemy $R' = (a, b)$.
+\li
+W przeciwnym razie przyjmujemy $R' = (a, -b)$.
+\li
+Przyjmujemy $T' = (c, d)$.
+\li
+Obliczamy wartość $U$ tak samo jak w algorytmie tworzenia klucza prywatnego.
+\li
+Obliczamy $u = b(T', P)$.
+\li
+Obliczamy $v = b(R' + H_2(M, R')U, Q)$.
+\li
+Jeżeli $u = v$ lub $u = v^{-1}$, to podpis jest autentyczny.
+\end{codebox}
+\end{algorithm}
+
+\noindent
+Zauważmy, że system Yi nie jest aż tak ogólny, jak system Boneha i Franklina --
+jest oparty na superosobliwej krzywej eliptycznej,
+nie zaś na dowolnej grupie.
+Ponadto, w zaproponowanej przez Boneha i Franklina
+konretnej realizacji systemu
+liczba $q$ mogła być dowolnym dzielnikiem liczby $p+1$.
+W systemie Yi dodatkowo musi być spełniony warunek $12q = p+1$.
+Obostrzenia te wprowadzone są po to,
+żeby można było łatwo pierwiastkować w ciele $\F(p)$.
+
+\begin{remark}
+Jeżeli $p \equiv 3\ (\text{mod}\ 4)$,
+to element $a$ z grupy $(\Z/p\Z)^\star$
+jest resztą kwadratową wtedy i tylko wtedy,
+gdy $a^{\frac{p-1}{2}} \equiv 1\ (\text{mod}\ p)$.
+Pondato, jeżeli element $a$ jest resztą kwadratową,
+to wartość $a^{\frac{p+1}{4}}$ jest jego pierwiastkiem.
+\end{remark}
+
+\begin{remark}
+Zmienna $k$ w procedurze \proc{YI-Create-Private-Key}
+jest powiększana tak długo,
+aż wartość $H_1(\const{id}, k)^3 + 1$ będzie resztą kwadratową.
+Prawdopodobieństwo zajścia tej sytuacji w jednym kroku wynosi $\frac{1}{2}$,
+zatem algorytm generowania klucza prywatnego
+prawie na pewno kończy się sukcesem.
+\end{remark}
+
+\noindent
+Sprawdźmy teraz, że weryfikacja autentycznego podpisu
+faktycznie kończy się stwierdzeniem jego autentyczności.
+
+\begin{theorem}
+Dana jest wiadomość $M$, identyfikator nadawcy $\const{id}$,
+odpowiadający mu klucz prywatny $S$
+i parametry $\mathcal{P}$ instancji systemu Yi.
+Wówczas zachodzi następująca zależność:
+
+\begin{equation*}
+\proc{YI-Verify}(
+    M,
+    \proc{YI-Sign}(
+        M,
+        S,
+        \mathcal{P}
+    ),
+    \const{id},
+    \mathcal{P}
+) = \const{true}
+\end{equation*}
+\end{theorem}
+
+\begin{proof}
+Zauważmy, że punkt $T'$ obliczany w procedurze $\proc{YI-Verify}$
+jest równy punktowi $T$ (obliczanemu w procedurze $\proc{YI-Sign}$
+lub punktowi $-T$.
+Podobnie jest z punktem $R'$.
+Rozważmy dwa przypadki.
+
+\begin{enumerate}
+\item
+Jeżeli $y(R) \geq -y(R)\ (\text{mod}\ p)$, to $R' = R$ i $T' = \pm T$.
+Wówczas:
+
+\begin{eqnarray*}
+u
+& = & b(T', P)
+\\
+& = & b(\pm T', P)
+\\
+& = & b(T, P)^{\pm 1}
+\\
+& = & b(rQ + H_2(M, R)S, P)^{\pm 1}
+\\
+& = & b(rsP + sH_2(M, R)U, P)^{\pm 1}
+\\
+& = & b(rP + H_2(M, R)U, P)^{\pm s}
+\\
+& = & b(R + H_2(M, R)U, Q)^{\pm 1}
+\\
+& = & b(R' + H_2(M, R')U, Q)^{\pm 1}
+\\
+& = & v^{\pm 1}
+\end{eqnarray*}
+
+\item
+Jeżeli $y(R) < -y(R)\ (\text{mod}\ p)$, to $R' = -R$ i $T' = \pm T$.
+Wówczas:
+
+\begin{eqnarray*}
+u
+& = & b(T', P)
+\\
+& = & b(\pm T', P)
+\\
+& = & b(T, P)^{\pm 1}
+\\
+& = & b(-rQ + H_2(M, -R)S, P)^{\pm 1}
+\\
+& = & b(-rsP + sH_2(M, -R)U, P)^{\pm 1}
+\\
+& = & b(-rP + H_2(M, -R)U, P)^{\pm s}
+\\
+& = & b(-R + H_2(M, -R)U, Q)^{\pm 1}
+\\
+& = & b(R' + H_2(M, R')U, Q)^{\pm 1}
+\\
+& = & v^{\pm 1}
+\end{eqnarray*}
+\end{enumerate}
+\end{proof}
+
+\noindent
+We wspomnianej wcześniej pracy Yi znajduje się analiza bezpieczeństwa
+opisanego systemu.
