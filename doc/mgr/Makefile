@@ -1,6 +1,12 @@
-all:
+all: mpost latex copy
+
+mpost:
 	mpost -interaction=errorstopmode mgr.mp
+
+latex:
 	pdflatex -interaction=errorstopmode mgr.tex
+
+copy:
 	cp mgr.pdf mj219450.pdf
 
 clean:
