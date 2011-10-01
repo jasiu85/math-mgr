@@ -6,13 +6,13 @@ input TEX;
 vardef real_curve(expr a, b, xmin, xmax, ymin, ymax, dx) =
     picture result; result = nullpicture;
     for x = xmin step dx until xmax:
-        xa := x - dx/2;
-        xb := x + dx/2;
-        ka := xa*xa*xa + a*xa + b;
-        kb := xb*xb*xb + a*xb + b;
+        numeric xa; xa = x - dx/2;
+        numeric xb; xb = x + dx/2;
+        numeric ka; ka = xa*xa*xa + a*xa + b;
+        numeric kb; kb = xb*xb*xb + a*xb + b;
         if (ka >= 0) and (kb >= 0):
-            ya := sqrt(ka);
-            yb := sqrt(kb);
+            numeric ya; ya = sqrt(ka);
+            numeric yb; yb = sqrt(kb);
             if (xmin <= xa) and (xb <= xmax):
                 if (ymin <= +ya) and (+ya <= ymax) and (ymin <= +yb) and (+yb <= ymax):
                     addto result doublepath (xa*u,+ya*u)--(xb*u,+yb*u);
@@ -23,13 +23,13 @@ vardef real_curve(expr a, b, xmin, xmax, ymin, ymax, dx) =
             fi;
         fi;
         if (ka >= 0) and (kb < 0):
-            ya := sqrt(ka);
+            numeric ya; ya = sqrt(ka);
             if (xmin <= xa) and (ymin <= -ya) and (ya <= ymax):
                 addto result doublepath (xa*u,-ya*u)--(xa*u,+ya*u);
             fi;
         fi;
         if (ka < 0) and (kb >= 0):
-            yb := sqrt(kb);
+            numeric yb; yb = sqrt(kb);
             if (xb <= xmax) and (ymin <= -yb) and (yb <= ymax):
                 addto result doublepath (xb*u,-yb*u)--(xb*u,+yb*u);
             fi;
@@ -126,10 +126,10 @@ vardef ylabel(expr ymin, ymax, spacing, offset) =
 enddef;
 
 
-outputtemplate := "elliptic_curves_%c.mps";
+outputtemplate := "elliptic_curve_groups_%c.mps";
 
 beginfig(1);
-    numeric u; u := 1cm;
+    numeric u; u = 1cm;
 
     draw xgrid(-2, +2, -2, +2, 1.0, 0.0) dashed dashpattern(on 0.0005u off 0.099u on 0.0005u) withpen pencircle scaled 0.25pt;
     draw ygrid(-2, +2, -2, +2, 1.0, 0.0) dashed dashpattern(on 0.0005u off 0.099u on 0.0005u) withpen pencircle scaled 0.25pt;
@@ -150,7 +150,7 @@ beginfig(1);
 endfig;
 
 beginfig(2);
-    numeric u; u := 1cm;
+    numeric u; u = 1cm;
 
     draw xgrid(-2, +2, -2, +2, 1.0, 0.0) dashed dashpattern(on 0.0005u off 0.099u on 0.0005u) withpen pencircle scaled 0.25pt;
     draw ygrid(-2, +2, -2, +2, 1.0, 0.0) dashed dashpattern(on 0.0005u off 0.099u on 0.0005u) withpen pencircle scaled 0.25pt;
@@ -171,7 +171,7 @@ beginfig(2);
 endfig;
 
 beginfig(3);
-    numeric u; u := 1cm;
+    numeric u; u = 1cm;
 
     draw xgrid(-2, +2, -2, +2, 1.0, 0.0) dashed dashpattern(on 0.0005u off 0.099u on 0.0005u) withpen pencircle scaled 0.25pt;
     draw ygrid(-2, +2, -2, +2, 1.0, 0.0) dashed dashpattern(on 0.0005u off 0.099u on 0.0005u) withpen pencircle scaled 0.25pt;
@@ -192,7 +192,7 @@ beginfig(3);
 endfig;
 
 beginfig(4);
-    numeric u; u := 1cm;
+    numeric u; u = 1cm;
 
     draw xgrid(-2, +2, -2, +2, 1.0, 0.0) dashed dashpattern(on 0.0005u off 0.099u on 0.0005u) withpen pencircle scaled 0.25pt;
     draw ygrid(-2, +2, -2, +2, 1.0, 0.0) dashed dashpattern(on 0.0005u off 0.099u on 0.0005u) withpen pencircle scaled 0.25pt;
@@ -213,7 +213,7 @@ beginfig(4);
 endfig;
 
 beginfig(5);
-    numeric u; u := 1cm;
+    numeric u; u = 1cm;
 
     draw xgrid(-2, +2, -2, +2, 1.0, 0.0) dashed dashpattern(on 0.0005u off 0.099u on 0.0005u) withpen pencircle scaled 0.25pt;
     draw ygrid(-2, +2, -2, +2, 1.0, 0.0) dashed dashpattern(on 0.0005u off 0.099u on 0.0005u) withpen pencircle scaled 0.25pt;
@@ -234,7 +234,7 @@ beginfig(5);
 endfig;
 
 beginfig(6);
-    numeric u; u := 0.333cm;
+    numeric u; u = 0.333cm;
 
     draw xgrid(0, 12, 0, 12, 1.0, 0.0) dashed dashpattern(on 0 off 1u) withpen pencircle scaled 0.25pt;
     draw ygrid(0, 12, 0, 12, 1.0, 0.0) dashed dashpattern(on 0 off 1u) withpen pencircle scaled 0.25pt;
@@ -251,7 +251,7 @@ beginfig(6);
 endfig;
 
 beginfig(7);
-    numeric u; u := 0.333cm;
+    numeric u; u = 0.333cm;
 
     draw xgrid(0, 12, 0, 12, 1.0, 0.0) dashed dashpattern(on 0 off 1u) withpen pencircle scaled 0.25pt;
     draw ygrid(0, 12, 0, 12, 1.0, 0.0) dashed dashpattern(on 0 off 1u) withpen pencircle scaled 0.25pt;
@@ -265,6 +265,177 @@ beginfig(7);
     draw xlabel(1, 12, 3.0, 0.0);
     draw ylabel(1, 12, 3.0, 0.0);
     draw finite_curve(7, 3, 13, 0, 12, 0, 12) withpen pencircle scaled 4pt;
+endfig;
+
+
+outputtemplate := "elliptic_curve_groups_%c.mps";
+
+beginfig(1);
+    numeric u; u = 1cm;
+
+    draw xgrid(-2, +2, -2, +2, 1.0, 0.0) dashed dashpattern(on 0.0005u off 0.099u on 0.0005u) withpen pencircle scaled 0.25pt;
+    draw ygrid(-2, +2, -2, +2, 1.0, 0.0) dashed dashpattern(on 0.0005u off 0.099u on 0.0005u) withpen pencircle scaled 0.25pt;
+    drawarrow xaxis(-2, 2, 0.25cm) withpen pencircle scaled 0.5pt;
+    drawarrow yaxis(-2, 2, 0.25cm) withpen pencircle scaled 0.5pt;
+    draw xscale(-2, +2, 1.0, 0.0, 0.15cm) withpen pencircle scaled 0.5pt;
+    draw xscale(-2, +2, 0.5, 0.0, 0.10cm) withpen pencircle scaled 0.5pt;
+    draw xscale(-2, +2, 0.1, 0.0, 0.05cm) withpen pencircle scaled 0.5pt;
+    draw yscale(-2, +2, 1.0, 0.0, 0.15cm) withpen pencircle scaled 0.5pt;
+    draw yscale(-2, +2, 0.5, 0.0, 0.10cm) withpen pencircle scaled 0.5pt;
+    draw yscale(-2, +2, 0.1, 0.0, 0.05cm) withpen pencircle scaled 0.5pt;
+    draw originlabel shifted (-0.05u, -0.05u);
+    draw xlabel(+1, +2, 1.0, 0.0) shifted (-0.05u, -0.05u);
+    draw xlabel(-1, -1, 1.0, 0.0) shifted (-0.05u, -0.05u);
+    draw ylabel(+1, +2, 1.0, 0.0) shifted (-0.05u, -0.05u);
+    draw ylabel(-1, -1, 1.0, 0.0) shifted (-0.05u, -0.05u);
+
+    numeric a; a = -3;
+    numeric b; b = +1.5;
+
+    draw real_curve(a, b, -2, +2, -2, +2, 0.01) withpen pencircle scaled 1pt;
+
+    x1 = -1.75;
+    y1 = sqrt(x1*x1*x1 + a*x1 + b);
+
+    draw (x1*u, y1*u)--cycle withpen pencircle scaled 4pt;
+
+    label.lrt(btex $P$ etex, (x1*u, y1*u));
+endfig;
+
+beginfig(2);
+    numeric u; u = 1cm;
+
+    draw xgrid(-2, +2, -2, +2, 1.0, 0.0) dashed dashpattern(on 0.0005u off 0.099u on 0.0005u) withpen pencircle scaled 0.25pt;
+    draw ygrid(-2, +2, -2, +2, 1.0, 0.0) dashed dashpattern(on 0.0005u off 0.099u on 0.0005u) withpen pencircle scaled 0.25pt;
+    drawarrow xaxis(-2, 2, 0.25cm) withpen pencircle scaled 0.5pt;
+    drawarrow yaxis(-2, 2, 0.25cm) withpen pencircle scaled 0.5pt;
+    draw xscale(-2, +2, 1.0, 0.0, 0.15cm) withpen pencircle scaled 0.5pt;
+    draw xscale(-2, +2, 0.5, 0.0, 0.10cm) withpen pencircle scaled 0.5pt;
+    draw xscale(-2, +2, 0.1, 0.0, 0.05cm) withpen pencircle scaled 0.5pt;
+    draw yscale(-2, +2, 1.0, 0.0, 0.15cm) withpen pencircle scaled 0.5pt;
+    draw yscale(-2, +2, 0.5, 0.0, 0.10cm) withpen pencircle scaled 0.5pt;
+    draw yscale(-2, +2, 0.1, 0.0, 0.05cm) withpen pencircle scaled 0.5pt;
+    draw originlabel shifted (-0.05u, -0.05u);
+    draw xlabel(+1, +2, 1.0, 0.0) shifted (-0.05u, -0.05u);
+    draw xlabel(-1, -1, 1.0, 0.0) shifted (-0.05u, -0.05u);
+    draw ylabel(+1, +2, 1.0, 0.0) shifted (-0.05u, -0.05u);
+    draw ylabel(-1, -1, 1.0, 0.0) shifted (-0.05u, -0.05u);
+
+    numeric a; a = -3;
+    numeric b; b = +1.5;
+
+    draw real_curve(a, b, -2, +2, -2, +2, 0.01) withpen pencircle scaled 1pt;
+
+    x1 = -1.75;
+    y1 = sqrt(x1*x1*x1 + a*x1 + b);
+
+    draw (x1*u, y1*u)--cycle withpen pencircle scaled 4pt;
+    draw (x1*u, -y1*u)--cycle withpen pencircle scaled 4pt;
+
+    label.lrt(btex $P$ etex, (x1*u, y1*u));
+    label.urt(btex $\overline{P}$ etex, (x1*u, -y1*u));
+
+    draw (x1*u,-2u)--(x1*u,2u) dashed dashpattern(off 0.05u on 0.15u off 0.05u) withpen pencircle scaled 0.75pt;
+endfig;
+
+beginfig(3);
+    numeric u; u = 1cm;
+
+    draw xgrid(-2, +2, -2, +2, 1.0, 0.0) dashed dashpattern(on 0.0005u off 0.099u on 0.0005u) withpen pencircle scaled 0.25pt;
+    draw ygrid(-2, +2, -2, +2, 1.0, 0.0) dashed dashpattern(on 0.0005u off 0.099u on 0.0005u) withpen pencircle scaled 0.25pt;
+    drawarrow xaxis(-2, 2, 0.25cm) withpen pencircle scaled 0.5pt;
+    drawarrow yaxis(-2, 2, 0.25cm) withpen pencircle scaled 0.5pt;
+    draw xscale(-2, +2, 1.0, 0.0, 0.15cm) withpen pencircle scaled 0.5pt;
+    draw xscale(-2, +2, 0.5, 0.0, 0.10cm) withpen pencircle scaled 0.5pt;
+    draw xscale(-2, +2, 0.1, 0.0, 0.05cm) withpen pencircle scaled 0.5pt;
+    draw yscale(-2, +2, 1.0, 0.0, 0.15cm) withpen pencircle scaled 0.5pt;
+    draw yscale(-2, +2, 0.5, 0.0, 0.10cm) withpen pencircle scaled 0.5pt;
+    draw yscale(-2, +2, 0.1, 0.0, 0.05cm) withpen pencircle scaled 0.5pt;
+    draw originlabel shifted (-0.05u, -0.05u);
+    draw xlabel(+1, +2, 1.0, 0.0) shifted (-0.05u, -0.05u);
+    draw xlabel(-1, -1, 1.0, 0.0) shifted (-0.05u, -0.05u);
+    draw ylabel(+1, +2, 1.0, 0.0) shifted (-0.05u, -0.05u);
+    draw ylabel(-1, -1, 1.0, 0.0) shifted (-0.05u, -0.05u);
+
+    numeric a; a = -3;
+    numeric b; b = +1.5;
+
+    draw real_curve(a, b, -2, +2, -2, +2, 0.01) withpen pencircle scaled 1pt;
+
+    x1 = -1.75;
+    y1 = sqrt(x1*x1*x1 + a*x1 + b);
+    x2 = +0.25;
+    y2 = sqrt(x2*x2*x2 + a*x2 + b);
+
+    numeric lambda; lambda = (y2 - y1)/(x2 - x1);
+
+    x3 = lambda*lambda - x2 - x1;
+    y3 = -lambda*(x3 - x1) - y1;
+
+    draw (x1*u, y1*u)--cycle withpen pencircle scaled 4pt;
+    draw (x2*u, y2*u)--cycle withpen pencircle scaled 4pt;
+    draw (x3*u, y3*u)--cycle withpen pencircle scaled 4pt;
+    draw (x3*u, -y3*u)--cycle withpen pencircle scaled 4pt;
+
+    label.lrt(btex $P$ etex, (x1*u, y1*u));
+    label.urt(btex $Q$ etex, (x2*u, y2*u));
+    label.llft(btex $R$ etex, (x3*u, y3*u));
+    label.ulft(btex $\overline{R}$ etex, (x3*u, -y3*u));
+
+    x4 = -2;
+    z4 = whatever[z1,z2];
+    x5 = 2;
+    z5 = whatever[z1,z2];
+    draw (z4*u)--(z5*u) dashed dashpattern(off 0.05u on 0.15u off 0.05u) withpen pencircle scaled 0.75pt;
+    draw (x3*u,-2u)--(x3*u,2u) dashed dashpattern(off 0.05u on 0.15u off 0.05u) withpen pencircle scaled 0.75pt;
+endfig;
+
+beginfig(4);
+    numeric u; u = 1cm;
+
+    draw xgrid(-2, +2, -2, +2, 1.0, 0.0) dashed dashpattern(on 0.0005u off 0.099u on 0.0005u) withpen pencircle scaled 0.25pt;
+    draw ygrid(-2, +2, -2, +2, 1.0, 0.0) dashed dashpattern(on 0.0005u off 0.099u on 0.0005u) withpen pencircle scaled 0.25pt;
+    drawarrow xaxis(-2, 2, 0.25cm) withpen pencircle scaled 0.5pt;
+    drawarrow yaxis(-2, 2, 0.25cm) withpen pencircle scaled 0.5pt;
+    draw xscale(-2, +2, 1.0, 0.0, 0.15cm) withpen pencircle scaled 0.5pt;
+    draw xscale(-2, +2, 0.5, 0.0, 0.10cm) withpen pencircle scaled 0.5pt;
+    draw xscale(-2, +2, 0.1, 0.0, 0.05cm) withpen pencircle scaled 0.5pt;
+    draw yscale(-2, +2, 1.0, 0.0, 0.15cm) withpen pencircle scaled 0.5pt;
+    draw yscale(-2, +2, 0.5, 0.0, 0.10cm) withpen pencircle scaled 0.5pt;
+    draw yscale(-2, +2, 0.1, 0.0, 0.05cm) withpen pencircle scaled 0.5pt;
+    draw originlabel shifted (-0.05u, -0.05u);
+    draw xlabel(+1, +2, 1.0, 0.0) shifted (-0.05u, -0.05u);
+    draw xlabel(-1, -1, 1.0, 0.0) shifted (-0.05u, -0.05u);
+    draw ylabel(+1, +2, 1.0, 0.0) shifted (-0.05u, -0.05u);
+    draw ylabel(-1, -1, 1.0, 0.0) shifted (-0.05u, -0.05u);
+
+    numeric a; a = -3;
+    numeric b; b = +1.5;
+
+    draw real_curve(a, b, -2, +2, -2, +2, 0.01) withpen pencircle scaled 1pt;
+
+    x1 = 0.0;
+    y1 = sqrt(x1*x1*x1 + a*x1 + b);
+
+    numeric lambda; lambda = (3*x1*x1 + a)/(2*y1);
+
+    x2 = lambda*lambda - 2*x1;
+    y2 = -lambda*(x2 - x1) - y1;
+
+    draw (x1*u, y1*u)--cycle withpen pencircle scaled 4pt;
+    draw (x2*u, y2*u)--cycle withpen pencircle scaled 4pt;
+    draw (x2*u, -y2*u)--cycle withpen pencircle scaled 4pt;
+
+    label.urt(btex $P$ etex, (x1*u, y1*u));
+    label.ulft(btex $Q$ etex, (x2*u, y2*u));
+    label.llft(btex $\overline{Q}$ etex, (x2*u, -y2*u));
+
+    y3 = 2;
+    z3 = whatever[(x1,y1),(x2,-y2)];
+    x4 = 2;
+    z4 = whatever[(x1,y1),(x2,-y2)];
+    draw (z3*u)--(z4*u) dashed dashpattern(off 0.05u on 0.15u off 0.05u) withpen pencircle scaled 0.75pt;
+    draw (x2*u,-2u)--(x2*u,2u) dashed dashpattern(off 0.05u on 0.15u off 0.05u) withpen pencircle scaled 0.75pt;
 endfig;
 
 
