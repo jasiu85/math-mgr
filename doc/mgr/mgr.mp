@@ -126,7 +126,7 @@ vardef ylabel(expr ymin, ymax, spacing, offset) =
 enddef;
 
 
-outputtemplate := "elliptic_curve_groups_%c.mps";
+outputtemplate := "elliptic_curves_%c.mps";
 
 beginfig(1);
     numeric u; u = 1cm;
@@ -146,7 +146,7 @@ beginfig(1);
     draw xlabel(-1, -1, 1.0, 0.0) shifted (-0.05u, -0.05u);
     draw ylabel(+1, +2, 1.0, 0.0) shifted (-0.05u, -0.05u);
     draw ylabel(-1, -1, 1.0, 0.0) shifted (-0.05u, -0.05u);
-    draw real_curve(-1, 1, -2, +2, -2, +2, 0.01) withpen pencircle scaled 1pt;
+    draw real_curve(-1, 1, -2, +2, -2, +2, 0.001) withpen pencircle scaled 1pt;
 endfig;
 
 beginfig(2);
@@ -167,7 +167,7 @@ beginfig(2);
     draw xlabel(-1, -1, 1.0, 0.0);
     draw ylabel(+1, +2, 1.0, 0.0);
     draw ylabel(-1, -1, 1.0, 0.0);
-    draw real_curve(-1, 0, -2, +2, -2, +2, 0.01) withpen pencircle scaled 1pt;
+    draw real_curve(-1, 0, -2, +2, -2, +2, 0.001) withpen pencircle scaled 1pt;
 endfig;
 
 beginfig(3);
@@ -188,7 +188,7 @@ beginfig(3);
     draw xlabel(-1, -1, 1.0, 0.0);
     draw ylabel(+1, +2, 1.0, 0.0);
     draw ylabel(-1, -1, 1.0, 0.0);
-    draw real_curve(0, -1, -2, +2, -2, +2, 0.01) withpen pencircle scaled 1pt;
+    draw real_curve(0, -1, -2, +2, -2, +2, 0.001) withpen pencircle scaled 1pt;
 endfig;
 
 beginfig(4);
@@ -209,7 +209,7 @@ beginfig(4);
     draw xlabel(-1, -1, 1.0, 0.0);
     draw ylabel(+1, +2, 1.0, 0.0);
     draw ylabel(-1, -1, 1.0, 0.0);
-    draw real_curve(-3, 2, -2, +2, -2, +2, 0.01) withpen pencircle scaled 1pt;
+    draw real_curve(-3, 2, -2, +2, -2, +2, 0.001) withpen pencircle scaled 1pt;
 endfig;
 
 beginfig(5);
@@ -230,7 +230,7 @@ beginfig(5);
     draw xlabel(-1, -1, 1.0, 0.0);
     draw ylabel(+1, +2, 1.0, 0.0);
     draw ylabel(-1, -1, 1.0, 0.0);
-    draw real_curve(0, 0, -2, +2, -2, +2, 0.01) withpen pencircle scaled 1pt;
+    draw real_curve(0, 0, -2, +2, -2, +2, 0.001) withpen pencircle scaled 1pt;
 endfig;
 
 beginfig(6);
@@ -292,7 +292,7 @@ beginfig(1);
     numeric a; a = -3;
     numeric b; b = +1.5;
 
-    draw real_curve(a, b, -2, +2, -2, +2, 0.01) withpen pencircle scaled 1pt;
+    draw real_curve(a, b, -2, +2, -2, +2, 0.001) withpen pencircle scaled 1pt;
 
     x1 = -1.75;
     y1 = sqrt(x1*x1*x1 + a*x1 + b);
@@ -324,7 +324,7 @@ beginfig(2);
     numeric a; a = -3;
     numeric b; b = +1.5;
 
-    draw real_curve(a, b, -2, +2, -2, +2, 0.01) withpen pencircle scaled 1pt;
+    draw real_curve(a, b, -2, +2, -2, +2, 0.001) withpen pencircle scaled 1pt;
 
     x1 = -1.75;
     y1 = sqrt(x1*x1*x1 + a*x1 + b);
@@ -360,7 +360,7 @@ beginfig(3);
     numeric a; a = -3;
     numeric b; b = +1.5;
 
-    draw real_curve(a, b, -2, +2, -2, +2, 0.01) withpen pencircle scaled 1pt;
+    draw real_curve(a, b, -2, +2, -2, +2, 0.001) withpen pencircle scaled 1pt;
 
     x1 = -1.75;
     y1 = sqrt(x1*x1*x1 + a*x1 + b);
@@ -412,7 +412,7 @@ beginfig(4);
     numeric a; a = -3;
     numeric b; b = +1.5;
 
-    draw real_curve(a, b, -2, +2, -2, +2, 0.01) withpen pencircle scaled 1pt;
+    draw real_curve(a, b, -2, +2, -2, +2, 0.001) withpen pencircle scaled 1pt;
 
     x1 = 0.0;
     y1 = sqrt(x1*x1*x1 + a*x1 + b);
