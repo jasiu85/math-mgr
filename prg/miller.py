@@ -12,21 +12,6 @@ from line import Line
 
 ERROR = None
 
-INDENT = 0
-
-def log_fun(name):
-    def wrapper(fun):
-        def wrapped_fun(*list_args, **dict_args):
-            #global INDENT
-            #print ' '*INDENT + 'Entering ' + name
-            #INDENT += 1
-            ret = fun(*list_args, **dict_args)
-            #INDENT -= 1
-            #print ' '*INDENT + 'leaving ' + name
-            return ret
-        return wrapped_fun
-    return wrapper
-
 
 
 ########################################
@@ -36,68 +21,54 @@ def log_fun(name):
 
 # Fields
 
-@log_fun('zero(K)')
 def zero(K):
     return K(0)
 
-@log_fun('one(K)')
 def one(K):
     return K(1)
 
-@log_fun('two(K)')
 def two(K):
     return K(2)
 
-@log_fun('three(K)')
 def three(K):
     return K(3)
 
-@log_fun('cardinality(K)')
 def cardinality(K):
     return K.cardinality()
 
 
 # Curves
 
-@log_fun('A(E)')
 def A(E):
     return E.A()
 
-@log_fun('B(E)')
 def B(E):
     return E.B()
 
-@log_fun('identity(E)')
 def identity(E):
     return E({})
 
-@log_fun('field(E)')
 def field(E):
     return E.base_field()
 
 
 # Curve points
 
-@log_fun('x(P)')
 def x(P):
     return P._['x']
 
-@log_fun('y(P)')
 def y(P):
     return P._['y']
 
 
 # Lines on curves
 
-@log_fun('a(l)')
 def a(l):
     return l._['a']
 
-@log_fun('b(l)')
 def b(l):
     return l._['b']
 
-@log_fun('c(l)')
 def c(l):
     return l._['c']
 
@@ -110,29 +81,24 @@ def c(l):
 
 # Integers
 
-@log_fun('RandomInteger(n)')
 def RandomInteger(n):
     return IntegerRing(random.randrange(n))
 
 
 # Finite fields
 
-@log_fun('RandomFiniteFieldElement(K)')
 def RandomFiniteFieldElement(K):
     return K.random_element()
 
-@log_fun('FiniteFieldElementSquareRoot(K, a)')
 def FiniteFieldElementSquareRoot(K, a):
     return K.sqrt(a)
 
 
 # Curve points
 
-@log_fun('CurveFinitePoint(E, a, b)')
 def CurveFinitePoint(E, a, b):
     return E({'x':a, 'y':b})
 
-@log_fun('CurvePointConjugate(E, P)')
 def CurvePointConjugate(E, P):
     if P._['x'] is None and P._['y'] is None:
         return E({})
@@ -142,7 +108,6 @@ def CurvePointConjugate(E, P):
 
 # Lines on curves
 
-@log_fun('LineOnCurve(E, a, b, c)')
 def LineOnCurve(E, a, b, c):
     return Line({'a':a, 'b':b, 'c':c})
 
@@ -155,7 +120,6 @@ def LineOnCurve(E, a, b, c):
 
 # Line evaluation
 
-@log_fun('LineValueAtCurveFinitePoint(E, l, P)')
 def LineValueAtCurveFinitePoint(E, l, P):
     assert P != identity(E)
     return a(l)*x(P) + b(l)*y(P) + c(l)
@@ -163,7 +127,6 @@ def LineValueAtCurveFinitePoint(E, l, P):
 
 # Line creation
 
-@log_fun('VerticalLineThroughCurvePoint(E, P)')
 def VerticalLineThroughCurvePoint(E, P):
     K = field(E)
     if P == identity(E):
@@ -172,7 +135,6 @@ def VerticalLineThroughCurvePoint(E, P):
         a = x(P)
         return LineOnCurve(E, one(K), zero(K), -a)
 
-@log_fun('LineThroughDifferentCurveFinitePoints(E, P, Q)')
 def LineThroughDifferentCurveFinitePoints(E, P, Q):
     assert P != identity(E) and Q != identity(E)
     assert P != Q
@@ -187,7 +149,6 @@ def LineThroughDifferentCurveFinitePoints(E, P, Q):
         lambda_ = (d - b)/(c - a)
         return LineOnCurve(E, lambda_, -one(K), -(lambda_*a - b))
 
-@log_fun('TangentLineThroughCurveFinitePoint(E, P)')
 def TangentLineThroughCurveFinitePoint(E, P):
     assert P != identity(E)
     K = field(E)
@@ -199,7 +160,6 @@ def TangentLineThroughCurveFinitePoint(E, P):
         lambda_ = (three(K)*a*a + A(E))/(two(K)*b)
         return LineOnCurve(E, lambda_, -one(K), -(lambda_*a - b))
 
-@log_fun('LineThroughCurvePoints(E, P, Q)')
 def LineThroughCurvePoints(E, P, Q):
     K = field(E)
     if P == identity(E) and Q == identity(E):
@@ -216,7 +176,6 @@ def LineThroughCurvePoints(E, P, Q):
 
 # Curve point arithmetic
 
-@log_fun('AddCurvePoints(E, P, Q)')
 def AddCurvePoints(E, P, Q):
     K = field(E)
     if P == identity(E):
@@ -237,7 +196,6 @@ def AddCurvePoints(E, P, Q):
     f = -lambda_*(e - a) - b
     return CurveFinitePoint(E, e, f)
 
-@log_fun('MultiplyCurvePoint(E, P, n)')
 def MultiplyCurvePoint(E, P, n):
     K = field(E)
     if P == identity(E):
@@ -260,7 +218,6 @@ def MultiplyCurvePoint(E, P, n):
 
 # Random curve point
 
-@log_fun('RandomCurveFinitePoint(E)')
 def RandomCurveFinitePoint(E):
     K = field(E)
     while True:
@@ -283,7 +240,6 @@ def RandomCurveFinitePoint(E):
 # Miller algorithm                     #
 ########################################
 
-@log_fun('CombinePartialValues(E, A, U, V, u, v)')
 def CombinePartialValues(E, A, U, V, u, v):
     K = field(E)
     g = LineThroughCurvePoints(E, U, V)
@@ -294,7 +250,6 @@ def CombinePartialValues(E, A, U, V, u, v):
         return ERROR
     return u*v*(s/t)
 
-@log_fun('ComputeValue(E, n, P, R, A)')
 def ComputeValue(E, n, P, R, A):
     K = field(E)
     g = LineThroughCurvePoints(E, P, R)
@@ -320,7 +275,6 @@ def ComputeValue(E, n, P, R, A):
         n = n // 2
     return u
 
-@log_fun('WeilPairing(E, n, P, Q)')
 def WeilPairing(E, n, P, Q):
     assert MultiplyCurvePoint(E, P, n) == identity(E)
     assert MultiplyCurvePoint(E, Q, n) == identity(E)

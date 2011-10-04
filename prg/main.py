@@ -12,8 +12,7 @@ def ec_point_coords(E, P):
     return (x(P)._._, y(P)._._)
 
 
-def example(K, A, B, n):
-    E = EllipticCurve(K, A, B)
+def example(E, n):
     L = [P for P in E.all_elements() if MultiplyCurvePoint(E, P, n) == identity(E)]
     L.sort(key=lambda P: ec_point_coords(E, P))
     l = len(L)
@@ -37,33 +36,9 @@ def example(K, A, B, n):
         print
     print
 
-def example_finder():
-    for q in xrange(200):
-        if q % 2 == 0 or q % 3 == 0:
-            continue
-        try:
-            K = FiniteField(q, 't')
-        except ValueError:
-            continue
-        print "trying field", K
-        for A in K:
-            for B in K:
-                try:
-                    E = EllipticCurve(K, [A, B])
-                except ArithmeticError:
-                    continue
-                print "trying curve", E
-                for P in E:
-                    for Q in E:
-                        n = lcm(P.order(), Q.order())
-                        w = P.weil_pairing(Q, n)
-                        if w.multiplicative_order() > 2:
-                            print "found", P, Q, n, w.multiplicative_order(), w
 
-F13 = FiniteField(13)
-#example(13, 0, 3, 3)
-example(F13, 0, 5, 4)
-#example(13, 7, 0, 6)
-#example(19, 0, 16, 9)
-#example(19, 3, 12, 6)
-#example_finder()
+example(EllipticCurve(FiniteField(13), 0, 5), 4)
+example(EllipticCurve(FiniteField(13), 7, 0), 6)
+example(EllipticCurve(FiniteField(17), 16, 0), 2)
+example(EllipticCurve(FiniteField(19), 0, 16), 9)
+example(EllipticCurve(FiniteField(19), 3, 12), 6)
