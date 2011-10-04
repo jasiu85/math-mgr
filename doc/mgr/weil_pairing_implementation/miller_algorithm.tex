@@ -406,8 +406,8 @@ wartość $w(P, Q)$:
 
 \begin{codebox}
 \Procname{$\proc{Weil-Pairing}(E, n, P, Q)$}
-\li \Assert $\proc{MultiplyCurvePoint}(E, P, n) = \id{identity}[E]$
-\li \Assert $\proc{MultiplyCurvePoint}(E, Q, n) = \id{identity}[E]$
+\li \Assert $\proc{Multiply-Curve-Point}(E, P, n) = \id{identity}[E]$
+\li \Assert $\proc{Multiply-Curve-Point}(E, Q, n) = \id{identity}[E]$
 \li $K \gets \id{field}[E]$
 \li \If $P = Q \kw{ or } P = \id{identity}[E] \kw{ or } Q = \id{identity}[E]$
 \li     \Then
@@ -421,10 +421,10 @@ wartość $w(P, Q)$:
 \li         $S' \gets \proc{Add-Curve-Points}(E, Q, S)$
 \li         \If $R' \neq \id{identity}[E] \kw{ and } S' \neq \id{identity}[E]$
 \li             \Then
-                    $a \gets \proc{Compute--Value}(E, n, P, R, S')$
-\li                 $b \gets \proc{Compute--Value}(E, n, P, R, S)$
-\li                 $c \gets \proc{Compute--Value}(E, n, Q, S, R')$
-\li                 $d \gets \proc{Compute--Value}(E, n, Q, S, R)$
+                    $a \gets \proc{Compute-Value}(E, n, P, R, S')$
+\li                 $b \gets \proc{Compute-Value}(E, n, P, R, S)$
+\li                 $c \gets \proc{Compute-Value}(E, n, Q, S, R')$
+\li                 $d \gets \proc{Compute-Value}(E, n, Q, S, R)$
 \li                 \If $a \neq \const{error} \kw{ and } b \neq \const{error} \kw{ and } c \neq \const{error} \kw{ and } d \neq \const{error}$
 \li                     \Then
                             \Return $(a / b)\cdot(d / c)$
