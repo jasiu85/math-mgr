@@ -88,7 +88,7 @@ który pozwala obliczać wartości funkcji $r_{P,R}^{(n)}$.
 
 \noindent
 Pokażemy teraz, że algorytm \ref{miller_alg} jest poprawny,
-tzn. że rzeczywiście oblicza wartości ilczynu Weila
+tzn. że rzeczywiście oblicza wartości iloczynu Weila
 i że ma własność stopu.
 
 \begin{lemma}
@@ -213,7 +213,7 @@ Gdyby przeprowadzać obliczenia symbolicznie,
 tzn. konstruować wyrażenia wymierne określające funkcje $r_{P,R}^{(m)}$,
 to obliczone ostatecznie wyrażenie $r_{P,R}^{(n)}$
 nie miałoby w punkcie $S$ ani $Q+S$ miejsca zerowego ani bieguna
-i możnaby obliczyć wartość $r_{P,R}^{(n)}(A)$.
+i można by obliczyć wartość $r_{P,R}^{(n)}(A)$.
 Procedura \proc{Compute-Value} nie prowadzi jednak obliczeń symbolicznych,
 więc może wystąpić błąd opisany w uwadze \ref{return_error_case_remark}.
 
@@ -367,7 +367,7 @@ i $O(\log n + \log q)$ bitów pamięci.
 
 \begin{proof}
 Procedura ta realizuje schemat ,,podwajaj-i-dodawaj''.
-Pojedyńczy przebieg pętli \kw{while} wymaga
+Pojedynczy przebieg pętli \kw{while} wymaga
 $O(\log^2 q)$ operacji na bitach,
 a przebiegów takich jest $O(\log n)$.
 Procedura potrzebuje dodatkowej pamięci na stałą ilość
@@ -386,7 +386,7 @@ Obliczenie wartości $d$ w jednym przebiegu pętli
 wymaga $O(\log^2 q)$ operacji na bitach.
 Wykonanie pierwiastkowania, aby obliczyć wartość $b$,
 wymaga średnio $O(\log^3 q)$ operacji na bitach.
-Tak więc pojedyńczy przebieg pętli \kw{while}
+Tak więc pojedynczy przebieg pętli \kw{while}
 wymaga średnio $O(\log^3 q)$ operacji na bitach.
 
 \noindent
