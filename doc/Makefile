@@ -7,7 +7,7 @@ latex:
 	pdflatex -interaction=errorstopmode mgr.tex
 
 copy:
-	cp mgr.pdf ../mj219450.pdf
+	cp mgr.pdf ../mj219450-mgr.pdf
 
 clean:
 	rm -f *.log
