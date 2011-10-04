@@ -74,21 +74,21 @@ Teoria liczb i kryptografia stanowią zatem furtkę,
 poprzez którą pozornie abstrakcyjne obiekty matematyczne
 mogą trafić do codziennego (nawet jeśli nieświadomego) użytku.
 W ten sposób zastosowanie praktyczne znalalazły
-np. ciała skończone czy krzywe eliptyczne,
-a także wiele pojęć z nimi stowarzyszonych,
-w tym pojęcie kluczowe w niniejszej pracy: iloczyn Weila.
+m.in. krzywe eliptyczne
+oraz pojęcie z nimi stowarzyszone,
+które jest kluczowe w niniejszej pracy: iloczyn Weila.
 
 \noindent
 Iloczyn Weila to pewna dwuargumentowa operacja działająca
-na punktach zadanego, skończonego rzędu na krzywej eliptycznej
-i prowadząca w zbiór pierwiastków z jedności.
+na punktach zadanego skończonego rzędu na krzywej eliptycznej
+i prowadząca w zbiór pierwiastków z jedności w ciele.
 Dwie kluczowe cechy iloczynu Weila to niezdegenerowanie
 oraz dwuliniowość.
 W kontekście iloczynu Weila niezdegenerowanie oznacza,
 że jego wartościami są również pierwiastki pierwotne.
 Dwuliniowość zaś to odpowiednik pojęcia znanego z algebry liniowej
 przeniesiony na grupy abelowe.
-Z punktu widzenia krpytografii
+Z punktu widzenia kryptografii
 szczególnie dwuliniowość jest istotna, ponieważ powoduje,
 że pewne problemy decyzyjne na krzywych eliptycznych stają się łatwe.
 
@@ -98,24 +98,18 @@ procesu wdrażania za pomocą teorii liczb i kryptografii
 pojęcia matematycznego do codziennego użytku
 oraz pokazanie, że proces ten może być względnie nieskomplikowany.
 Wybór iloczynu Weila na pojęcie centralne w całej pracy
-podyktowany jest dwoma czynnikami.
+podyktowany jest trzema czynnikami.
 Po pierwsze, na podstawie iloczynu Weila udało się skonstruować
 wiele ciekawych kryptosystemów,
 które wykazują niespotykane wcześniej cechy.
 Po drugie, za pomocą iloczynu Weila można przeprowadzać
 ataki na istniejące kryptosystemy oparte na krzywych eliptycznych.
+Po trzecie, istnieje wydajny algorytm,
+który pozwala obliczać wartości iloczynu Weila,
+dzięki czemu wszystkie teoretyczne konstrukcje oparte na iloczynie Weila
+można zrealizować w praktyce.
 Widać więc, że jest iloczyn Weila pojęciem niezwykle interesującym
 z kryptograficznego punktu widzenia.
-
-\noindent
-Decydującym czynnikiem,
-który umożliwia zastosowanie iloczynu Weila w praktyce,
-jest algorytm Millera, który pozwala obliczać jego wartości w wydajny sposób.
-Częścią niniejszej pracy jest autorska implementacja tego algorytmu.
-Przejrzystość powstałego kodu źródłowego
-oraz to, że powstał on szybko i bez większych trudności,
-jest dodatkowym potwierdzeniem tezy,
-że zaawansowane pojęcia matematyczne mogą łatwo trafić ,,pod strzechy''.
 
 \noindent
 Praca składa się z pięciu rozdziałów.
@@ -126,6 +120,7 @@ wyjątkowo ważnego pojęcia związanego z krzywymi eliptycznymi:
 struktury grupy abelowej na krzywej eliptycznej.
 Celem rozdziału trzeciego
 jest zdefiniowanie i zanalizowanie własności iloczynu Weila.
-Rozdział czwarty zawiera omówienie algorytmu Millera
-oraz jego autorskiej implementacji.
+Rozdział czwarty zawiera omówienie algorytmu Millera.
 Wreszcie, rozdział piąty opisuje zastosowania iloczynu Weila w kryptografii.
+Ponadto, w ramach pracy powstała autorska implementacja algorytmu Millera,
+którą można znaleźć na dołączonej do pracy płycie kompaktowej.

@@ -15,8 +15,8 @@ czym jest abelowa grupa wolna.
 \begin{definition}
 Dany jest zbiór $S$,
 liczba naturalna $n$,
-parami różne elementy $s_1, \ldots, s_n \in S$
-oraz liczby całkowite $a_1, \ldots, a_n \in \Z$.
+parami różne elementy $s_1, \ldots, s_n$ zbioru $S$
+oraz liczby całkowite $a_1, \ldots, a_n$.
 \emph{Skończona suma formalna nad zbiorem $S$ długości $n$
 o składnikach $s_1, \ldots s_n$ i współczynnikach $a_1, \ldots, a_n$}
 to następujące wyrażenie:
@@ -24,6 +24,7 @@ to następujące wyrażenie:
 \sum_{k=1}^n a_k\divi{s_k}
 \end{equation*}
 
+\noindent
 \emph{Abelowa grupa wolna generowana przez zbiór $S$}
 to zbiór złożony ze wszystich skończonych sum formalnych nad zbiorem $S$
 wyposażony w działanie polegające na formalnym dodaniu dwóch sum
@@ -82,6 +83,12 @@ to następująca wielkość:
 \end{equation*}
 \end{definition}
 
+\begin{example}
+Dana jest krzywa eliptyczna $E_{3, 4}(\F(13))$.
+Dywizor $3\divi{(0, 2)} - 2\divi{(12, 0)}$ na tej krzywej
+ma stopień równy $1$ i normę równą $5$.
+\end{example}
+
 \subsection*{Dywizory i funkcje wymierne}
 
 \noindent
@@ -100,6 +107,19 @@ to dywizor na krzywej $E$ określony następująco:
 \end{equation*}
 \end{definition}
 
+\begin{example}
+Dana jest krzywa eliptyczna $E_{3, 4}(\F(13^2))$.
+Funkcja wymierna $\frac{x^3}{y^2}$ na tej krzywej
+ma dywizor równy
+$3\divi{(0, 2)}
++ 3\divi{(0, 11)}
+- 2\divi{(12, 0)}
+- 2\divi{(\alpha, 0)}
+- 2\divi{(\beta, 0)}$,
+gdzie $\alpha$ i $\beta$ to pierwiastki wielomianu $x^2 - x + 4$
+w ciele $\F(13^2)$.
+\end{example}
+
 \noindent
 Okazuje się, że dywizor niosący informacje o miejscach zerowych i biegunach
 funkcji wymiernej wyznacza ją niemalże jednoznacznie.
@@ -110,7 +130,7 @@ różniące się o czynnik stały mają taki sam dywizor.
 \end{fact}
 
 \begin{theorem}
-Dane są funkcje wymierne $r$ i $s$ na krzywej eliptycznej.
+Dane są funkcje wymierne $r$ i $s$ na krzywej eliptycznej $E$.
 Zależność $\rdiv(r) = \rdiv(s)$ zachodzi wtedy i tylko wtedy,
 gdy iloraz $\frac{r}{s}$ jest stały i niezerowy.
 \end{theorem}

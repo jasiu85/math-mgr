@@ -37,13 +37,15 @@ oznaczają odpowiednio
 zero, jedynkę itd. w ciele $K$;
 \item $A[E]$, $B[E]$, $\id{field}[E]$, $\id{identity}[E]$
 oznaczają odpowiednio
-parametry krzywej $E$, ciało, nad którym krzywa $E$ jest zdefiniowana
+parametry krzywej eliptycznej $E$,
+ciało, nad którym krzywa $E$ jest zdefiniowana
 i punkt w nieskończoności krzywej $E$;
-\item $x[P]$ i $y[P]$ oznaczają współrzędne skończonego punktu $P$ krzywej;
+\item $x[P]$ i $y[P]$ oznaczają współrzędne skończonego punktu $P$
+na krzywej eliptycznej;
 \item $a[l]$ $b[l]$ i $c[l]$ oznaczają odpowiednio
-współczynnik stojący przy zmiennej $x$ w linii $l$,
-współczynnik stojący przy zmiennej $y$ w linii $l$
-i wyraz wolny linii $l$;
+współczynnik stojący przy zmiennej $x$,
+współczynnik stojący przy zmiennej $y$
+i wyraz wolny linii $l$ na krzywej eliptycznej;
 \end{itemize}
 \item zakładamy, że dysponujemy następującymi procedurami:
 \begin{itemize}
@@ -59,13 +61,13 @@ dowolny pierwiastek kwadratowy elementu $a \in K$
 lub stałą \const{error}, jeśli taki pierwiastek nie istnieje;
 \item \proc{Curve-Finite-Point}$(E, a, b)$,
 która konstruuje i przekazuje jako wynik
-punkt skończony krzywej $E$ o współrzędnych $a$ i $b$;
+punkt skończony na krzywej eliptycznej $E$ o współrzędnych $a$ i $b$;
 \item \proc{Curve-Point-Conjugate}$(E, P)$,
 która oblicza i przekazuje jako wynik
-punkt sprzężony do punktu $P \in E$;
+punkt sprzężony do punktu $P$ na krzywej eliptycznej $E$;
 \item \proc{Line-On-Curve}$(E, a, b, c)$,
 która konstruuje i przekazuje jako wynik
-linię na krzywej $E$ o współczynnikach $a$, $b$ i $c$.
+linię na krzywej eliptycznej $E$ o współczynnikach $a$, $b$ i $c$.
 \end{itemize}
 \end{itemize}
 \end{remark}
@@ -85,7 +87,7 @@ Jest ona trywialna, ale nie uznaliśmy jej za operację elementarną,
 dlatego wypada ją zdefiniować.
 
 \begin{algorithm}
-Dana jest linia $l$ oraz punkt skończony $P$ na krzywej $E$.
+Dana jest linia $l$ oraz punkt skończony $P$ na krzywej eliptycznej $E$.
 Następująca procedura
 na podstawie wartości $E$, $l$ i $P$
 oblicza i przekazuje jako wynik
@@ -104,7 +106,7 @@ Najpierw rozważymy przypadki szczególne,
 dla których wyprowadziliśmy wcześniej odpowiednie wzory.
 
 \begin{algorithm}
-Dany jest punkt $P$ na krzywej $E$.
+Dany jest punkt $P$ na krzywej eliptycznej $E$.
 Następująca procedura
 na podstawie wartości $E$ i $P$
 oblicza i przekazuje jako wynik
@@ -124,7 +126,7 @@ linię pionową przechodzącą przez punkt $P$:
 \end{algorithm}
 
 \begin{algorithm}
-Dane są dwa różne punkty skończone $P$ i $Q$ na krzywej $E$.
+Dane są dwa różne punkty skończone $P$ i $Q$ na krzywej eliptycznej $E$.
 Następująca procedura
 na podstawie wartości $E$, $P$ i $Q$
 oblicza i przekazuje jako wynik

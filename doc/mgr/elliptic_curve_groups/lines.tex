@@ -14,18 +14,16 @@ Przyjmujemy następującą definicję linii na krzywej eliptycznej.
 
 \begin{definition}
 Dana jest krzywa eliptyczna $E$ nad ciałem $\K$
-oraz trzy elementy $a$, $b$ i $c$ ciała $\K$ takie,
-że $a$ i $b$ nie są jednocześnie równe $0$.
+oraz trzy elementy $a$, $b$ i $c$ ciała $\K$.
 \emph{Linia na krzywej eliptycznej $E$ o współczynnikach $a$, $b$ i $c$}
 to wielomian $ax + by + c$.
 Jeżeli $b = 0$, to mówimy, że linia $l$ jest \emph{pionowa}.
-Zbiór wszystkich linii na krzywej eliptycznej $E$
-oznaczamy symbolem $\Lines(E)$.
+Jeżeli $a = 0$ i $b = 0$, to mówimy, że linia $l$ jest \emph{zdegenerowana}.
 \end{definition}
 
 \begin{definition}
 Dana jest linia $l$ na krzywej eliptycznej $E$
-oraz punkt $P \in E$.
+oraz punkt $P$ na krzywej $E$.
 \emph{Linia $l$ przecina krzywą $E$ w punkcie $P$},
 jeżeli $l(P) = 0$.
 \end{definition}
@@ -37,6 +35,16 @@ oraz punkt $P \in E$.
 jeżeli $\ord_P(l) > 1$.
 \end{definition}
 
+\begin{example}
+Dana jest krzywa eliptyczna $E_{3, 4}(\F(13))$.
+Linia $l_1 = 2x + 3y + 6$ na tej krzywej
+przecina ją w punktach $(0, 11)$, $(5, 12)$ i $(7, 2)$.
+Nie jest ona styczna do krzywej w żadnym z tych punktów.
+Linia pionowa $l_2 = x + 1$
+przecina krzywą w punkcie $(12, 0)$
+i jest w tym punkcie styczna.
+\end{example}
+
 \subsection*{Własności}
 
 \noindent
@@ -44,13 +52,15 @@ Następujące własności są to po prostu podane wcześniej fakty
 zastosowane do przypadku linii.
 
 \begin{fact}\label{line_deg_fact}
-Dana jest linia $l$ na krzywej eliptycznej postaci $l = ax + by + c$.
+Dana jest niezdegenerowana linia $l$ na krzywej eliptycznej $E$
+postaci $l = ax + by + c$.
 Jeżeli $b \neq 0$, to $\deg(l) = 3$,
 w przeciwnym razie $\deg(l) = 2$.
 \end{fact}
 
 \begin{fact}\label{line_divisor_norm_fact}
-Dana jest linia $l$ na krzywej eliptycznej postaci $l = ax + by + c$.
+Dana jest niezdegenerowana linia $l$ na krzywej eliptycznej $E$
+postaci $l = ax + by + c$.
 Jeżeli $b \neq 0$, to $\abs{\rdiv(l)} = 3$,
 w przeiwnym razie $\abs{\rdiv(l)} = 2$.
 \end{fact}
@@ -61,7 +71,7 @@ dlatego musimy uściślić wyniki,
 które przedstawia fakt \ref{line_divisor_norm_fact}.
 
 \begin{fact}\label{possible_line_divisors_fact}
-Dana jest linia $l$ na krzywej eliptycznej $E$.
+Dana jest niezdegenerowana linia $l$ na krzywej eliptycznej $E$.
 Niech $P$, $Q$ i $R$ będą
 trzema parami różnymi punktami skończonymi krzywej $E$.
 Wówczas dywizor $\rdiv(l)$ może mieć jedną z następujących postaci:
@@ -73,6 +83,34 @@ Wówczas dywizor $\rdiv(l)$ może mieć jedną z następujących postaci:
 \item $\rdiv(l) = 2\divi{P} - 2\divi{\ecident}$.
 \end{itemize}
 \end{fact}
+
+\begin{example}
+Dana jest krzywa eliptyczna $E_{2,3}(\F(13))$.
+Wówczas dywizory następujących linii nad tą krzywą
+wyczerpują wszystkie przypadki wymienione w fakcie
+\ref{possible_line_divisors_fact}:
+\begin{eqnarray*}
+\rdiv(5x + 12y + 4)
+& = &
+\divi{(0, 4)} + \divi{(3, 6)} + \divi{(9, 10)} - 3\divi{\ecident}
+\\
+\rdiv(3x + y + 9)
+& = &
+2\divi{(0, 4)} + \divi{(9, 3)} - 3\divi{\ecident}
+\\
+\rdiv(3x + y + 11)
+& = &
+3\divi{(3, 6)} - 3\divi{\ecident}
+\\
+\rdiv(x)
+& = &
+\divi{(0, 4)} + \divi{(0, 9)} - 2\divi{\ecident}
+\\
+\rdiv(x + 1)
+& = &
+2\divi{(12, 0)} - 2\divi{\ecident}
+\end{eqnarray*}
+\end{example}
 
 \begin{remark}\label{possible_line_divisors_remark}
 Składniki dywizorów wymienionych w fakcie \ref{possible_line_divisors_fact}
@@ -94,13 +132,16 @@ Następujące twierdzenia pokazują,
 w jaki sposób linie przecinają się z krzywymi eliptycznymi.
 
 \begin{theorem}\label{line_through_two_points_theorem}
-Dane są dwa różne punkty skończone $P$ i $Q$ na krzywej eliptycznej.
+Dane są dwa różne punkty skończone $P$ i $Q$
+na krzywej eliptycznej $E$ nad ciałem $\K$.
 Wówczas przez punkty $P$ i $Q$
 przechodzi jedna (z dokładnością do czynnika stałego) linia.
 \end{theorem}
 
 \begin{proof}
-Oznaczmy $P = (a, b)$, $Q = (c, d)$ i rozważmy dwa przypadki.
+Oznaczmy $P = (a, b)$, $Q = (c, d)$,
+gdzie $a, b, c, d \in \K$
+i rozważmy dwa przypadki.
 \begin{enumerate}
 \item
 Jeżeli $P = \overline{Q}$,
@@ -135,14 +176,15 @@ ponieważ układ równań jest jednorodny.
 \end{proof}
 
 \begin{theorem}
-Dane są dwa różne punkty skończone $P$ i $Q$ na krzywej eliptycznej.
+Dane są dwa różne punkty skończone $P$ i $Q$
+na krzywej eliptycznej $E$ nad ciałem $\K$.
 Niech $l$ będzie linią przechodzącą przez punkty $P$ i $Q$.
 Wówczas:
 \begin{itemize}
 \item jeżeli $P = \overline{Q}$,
 to $\rdiv(l) = \divi{P} + \divi{Q} - 2\divi{\ecident}$;
 \item jeżeli $P \neq \overline{Q}$,
-to istnieje punkt skończony $R \in E$ taki,
+to istnieje punkt skończony $R$ na krzywej $E$ taki,
 że $\rdiv(l) = \divi{P} + \divi{Q} + \divi{R} - 3\divi{\ecident}$,
 może przy tym zdarzyć się, że $R = P$ lub $R = Q$.
 \end{itemize}
@@ -176,10 +218,11 @@ W pozostałych przypadkach można dobrać punkt skończony $R$
 
 \begin{theorem}
 Dane są dwa różne, niesprzężone do siebie
-punkty skończone $P$ i $Q$ na krzywej eliptycznej
-postaci $P = (a, b)$ i $Q = (c, d)$.
+punkty skończone $P$ i $Q$ na krzywej eliptycznej $E$ nad ciałem $\K$
+postaci $P = (a, b)$ i $Q = (c, d)$, gdzie $a, b, c, d \in \K$.
 Niech $l$ będzie linią przechodzącą przez punkty $P$ i $Q$.
-Niech $R$ będzie punktem skończonym krzywej postaci $R = (e, f)$ takim,
+Niech $R$ będzie punktem skończonym na krzywej $E$
+postaci $R = (e, f)$, gdzie $e, f \in \K$, takim,
 że $\rdiv(l) = \divi{P} + \divi{Q} + \divi{R} - 3\divi{\ecident}$.
 Wówczas:
 \begin{eqnarray}
@@ -214,13 +257,14 @@ f & = & b + \left(\frac{d-b}{c-a}\right)(e-a)
 \end{proof}
 
 \begin{theorem}\label{line_tangent_at_point_theorem}
-Dany jest punkt skończony $P$ na krzywej eliptycznej.
+Dany jest punkt skończony $P$ na krzywej eliptycznej $E$ nad ciałem $\K$.
 Wówczas przez punkt $P$ przechodzi jedna (z dokładnością do czynnika stałego)
-linia styczna do krzywej w punkcie $P$.
+linia styczna do krzywej $E$ w punkcie $P$.
 \end{theorem}
 
 \begin{proof}
-Oznaczmy $P = (a, b)$ i rozważmy dwa przypadki.
+Oznaczmy $P = (a, b)$, gdzie $a, b \in \K$
+i rozważmy dwa przypadki.
 \begin{enumerate}
 \item
 Jeżeli $P$ jest punktem rzędu dwa, tzn. $P = \overline{P}$ i $b = 0$,
@@ -272,8 +316,8 @@ $s(P) = (\frac{l}{u})(P) = 0$
 \end{proof}
 
 \begin{theorem}
-Dany jest punkt skończony $P$ na krzywej eliptycznej.
-Niech $l$ będzie linią styczną do krzywej w punkcie $P$.
+Dany jest punkt skończony $P$ na krzywej eliptycznej $E$ nad ciałem $\K$.
+Niech $l$ będzie linią styczną do krzywej $E$ w punkcie $P$.
 Wówczas:
 \begin{itemize}
 \item jeśli $P = \overline{P}$,
@@ -312,10 +356,12 @@ W pozostałych przypadkach można dobrać punkt skończony $Q$
 \end{proof}
 
 \begin{theorem}
-Dany jest punkt skończony $P$ na krzywej eliptycznej postaci $P = (a, b)$
+Dany jest punkt skończony $P$ na krzywej eliptycznej $E$ nad ciałem $\K$
+postaci $P = (a, b)$, gdzie $a, b \in \K$,
 niebędący punktem rzędu dwa.
-Niech $l$ będzie linią styczną do krzywej w punkcie $P$.
-Niech $Q$ będzie punktem skończonym krzywej postaci $Q = (c, d)$ takim,
+Niech $l$ będzie linią styczną do krzywej $E$ w punkcie $P$.
+Niech $Q$ będzie punktem skończonym krzywej
+postaci $Q = (c, d)$, gdzie $c, d \in \K$, takim,
 że $\rdiv(l) = 2\divi{P} + \divi{Q} - 3\divi{\ecident}$.
 Wówczas:
 \begin{eqnarray}
@@ -351,6 +397,16 @@ d & = & b + \left(\frac{3a^2 + A}{2b}\right)(c - a)
 \end{eqnarray*}
 \end{proof}
 
+\begin{example}
+Dana jest krzywa eliptyczna $E_{3,4}(\F(13))$.
+Przez punkty $(3, 1)$ i $(7, 2)$ na tej krzywej
+przechodzi linia $10x + 12y + 10$,
+której trzecim miejscem zerowym jest punkt $(12, 0)$.
+Przez punkt $(11, 4)$ na tej krzywej
+przechodzi linia styczna $10x +12y + 11$,
+której drugim miejscem zerowym jest punkt $(0, 11)$.
+\end{example}
+
 \noindent
 Niezwykle istotny jest fakt,
 że współczynniki linii przechodzącej przez dwa punkty
@@ -362,7 +418,7 @@ jako nieskomplikowane wyrażenia wymierne.
 \begin{fact}
 Dana jest krzywa eliptyczna $E$ nad ciałem $\fieldL$
 o parametrach z ciała $\K \subset \fieldL$
-oraz dwa różne punkty skończone $P, Q \in E$.
+oraz dwa różne punkty skończone $P$ i $Q$ na krzywej $E$.
 Niech $l$ będzie linią przechodzącą przez punkty $P$ i $Q$,
 a $R$ będzie trzecim punktem przecięcia linii $l$ z krzywą $E$,
 tzn. $\rdiv(l) = \divi{P} + \divi{Q} + \divi{R} - 3\divi{\ecident}$.
@@ -374,7 +430,7 @@ a współczynniki linii $l$ są elementami ciała $\K$.
 \begin{fact}
 Dana jest krzywa eliptyczna $E$ nad ciałem $\fieldL$
 o parametrach z ciała $\K \subset \fieldL$
-oraz punkt skończony $P \in E$ niebędący punktem rzędu dwa.
+oraz punkt skończony $P$ na krzywej $E$ niebędący punktem rzędu dwa.
 Niech $l$ będzie linią styczną do krzywej $E$ w punkcie $P$,
 a $Q$ będzie drugim punktem przecięcia linii $l$ z krzywą $E$,
 tzn. $\rdiv(l) = 2\divi{P} + \divi{Q} - 3\divi{\ecident}$.

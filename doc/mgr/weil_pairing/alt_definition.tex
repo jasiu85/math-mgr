@@ -5,7 +5,7 @@ Na podstawie podanej definicji iloczynu Weila
 udało nam się udowodnić szereg jego własności.
 Definicja ta nie nadaje się jednak do tego,
 aby skonstruować na jej podstawie
-efektywny algorytm obliczający wartości iloczynu Weila.
+wydajny algorytm obliczający wartości iloczynu Weila.
 Dlatego podamy teraz alternatywną definicję,
 która lepiej nada się do celów obliczeniowych.
 
@@ -145,11 +145,11 @@ Dalej, przyjmijmy, że $P', Q' \in E$ są takimi punktami,
 że $P = nP'$ oraz $Q = nQ'$.
 Rozważmy następujący dywizor:
 \begin{equation*}
-(n-1)\divi{Q'} + \divi{Q' - Q} + n\divi{\ecident}
+(n-1)\divi{Q'} + \divi{Q' - Q} - n\divi{\ecident}
 \end{equation*}
 Stosując lemat \ref{divi_reduction_lemma} sprawdzamy,
 że jest to dywizor główny.
-Niech więc $r \in \K(E)$ będzie funkcją wymierną o takim dywizorze:
+Niech więc $r$ będzie funkcją wymierną na krzywej $E$ o takim dywizorze:
 \begin{equation*}
 \rdiv(r) = (n-1)\divi{Q'} + \divi{Q' - Q} - n\divi{\ecident}
 \end{equation*}
@@ -219,7 +219,7 @@ Stąd otrzymujemy:
 & = & \rdiv(f_Q' \circ [n])
 \end{eqnarray*}
 Wybraliśmy funkcję $r$ dowolnie, więc przyjmijmy teraz,
-że została wybrana tak, żeby zachodziło:
+że została wybrana tak, żeby zachodziła następująca zależność:
 \begin{equation*}
 \widehat{r} = f_Q' \circ [n]
 \end{equation*}

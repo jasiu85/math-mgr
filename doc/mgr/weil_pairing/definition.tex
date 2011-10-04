@@ -18,7 +18,7 @@ które stanowią dziedzinę iloczynu Weila.
 \begin{definition}
 Dana jest krzywa eliptyczna $E$
 oraz liczba całkowita $n$.
-\emph{Mnożenie punktu na krzywej przez liczbę całkowitą $n$}
+\emph{Mnożenie punktu na krzywej $E$ przez liczbę całkowitą $n$}
 to funkcja $[n] \colon E \to E$
 określona następująco:
 \begin{equation}
@@ -37,7 +37,7 @@ jest zmotywowane przez własności funkcji $[n]$,
 które przypominają cechy operacji mnożenia liczb całkowitych.
 
 \begin{fact}
-Dla dowolnych punktów $P$ i $Q$ na krzywej eliptycznej
+Dla dowolnych punktów $P$ i $Q$ na krzywej eliptycznej $E$
 oraz liczb całkowitych $m$ i $n$
 zachodzą następujące zależności:
 \begin{eqnarray*}
@@ -60,13 +60,31 @@ oraz liczba naturalna $n$.
 \emph{Podgrupa $n$-torsyjna na krzywej $E$},
 oznaczana symbolem $E[n]$,
 to podgrupa grupy na krzywej $E$
-złożona ze wszystkich punktów $P \in E$,
+złożona ze wszystkich punktów $P$ na krzywej $E$,
 które spełniają zależność:
 \begin{equation}
 nP = \ecident
 \end{equation}
 Elementy grupy $E[n]$ nazywamy \emph{punktami rzędu $n$ na krzywej $E$}.
 \end{definition}
+
+\begin{example}
+Rozważmy krzywą $E_1$ nad ciałem $\F(17)$ o parametrach $16$ i $0$.
+Wszystkie punkty na tej krzywej są rzędu cztery,
+zatem $E_1 = E_1[4]$.
+Można sprawdzić,
+że grupa na krzywej $E_1$ jest generowana przez punkty $(5, 1)$ i $(13, 5)$
+oraz że ma strukturę $(\Z / 4\Z)\times(\Z / 4\Z)$.
+Ponadto, podgrupa $2$-torsyjna na krzywej $E_1$
+ma strukturę $(\Z / 2\Z)\times(\Z / 2\Z)$
+i składa się z czterech punktów:
+$\ecident$, $(0, 0)$, $(1, 0)$ i $(16, 0)$.
+
+\noindent
+Weźmy teraz krzywą $E_2$ nad ciałem $\F(19)$ o parametrach $14$ i $12$.
+Jej podgrupa $3$-torsyjna ma strukturę $(\Z / 3\Z)\times(\Z / 3\Z)$
+i jest generowana przez punkty $(3, 10)$ i $(13, 15)$.
+\end{example}
 
 \noindent
 Podajemy bez dowodu kilka podstawowych własności podgrup $n$-torsyjnych.
@@ -107,14 +125,12 @@ Doprowadzi nas to do definicji pewnego rodzaju dywizorów,
 które pojawiają się w definicji iloczynu Weila.
 
 \begin{theorem}
-Dana jest krzywa eliptyczna $E$,
-liczba naturalna $n$
-oraz punkt $P \in E[n]$.
+Dany jest punkt $P$ rzędu $n$ na krzywej eliptycznej $E$.
 Wówczas:
 \begin{itemize}
-\item istnieje taki punkt $Q_0 \in E[n^2]$, że $nQ_0 = P$;
-\item każdy punkt $Q \in E[n^2]$ spełniający równanie
-$nQ = P$ można przedstawić w postaci $Q = Q_0 + R$,
+\item istnieje taki punkt $Q_0$ rzędu $n^2$ na krzywej $E$, że $nQ_0 = P$;
+\item każdy punkt $Q$ spełniający równanie $nQ = P$
+można przedstawić w postaci $Q = Q_0 + R$,
 gdzie $R \in E[n]$.
 \end{itemize}
 \end{theorem}
@@ -130,8 +146,8 @@ jest zanurzona w grupie $(\Z/n^2\Z)\times(\Z/n^2\Z)$.
 \end{proof}
 
 \begin{corollary}\label{point_division_corollary}
-Jest $n^2$ punktów $Q \in E$ spełniających równanie $P = nQ$,
-gdzie $P \in E[n]$.
+Jest $n^2$ punktów $Q$ na krzywej eliptycznej $E$
+spełniających równanie $P = nQ$, gdzie $P \in E[n]$.
 Zbiór tych punktów można przedstawić w postaci $\{Q_0 + R \mid R \in E[n]\}$,
 gdzie $Q_0$ jest dowolnym takim punktem.
 \end{corollary}
@@ -146,13 +162,25 @@ Zbiór ten będziemy reprezentować za pomocą dywizora.
 \begin{definition}
 Dana jest krzywa eliptyczna $E$
 oraz liczba całkowita $n$.
-\emph{Dzielenie punktu krzywej przez liczbę całkowitą $n$}
+\emph{Dzielenie punktu na krzywej $E$ przez liczbę całkowitą $n$}
 to funkcja $[n]^{-1} \colon E[n] \to \Div(E)$
-określona następującym wzorem:
+określona następująco:
 \begin{equation}
 [n]^{-1}(P) = \sum_{nQ = P} \divi{Q}
 \end{equation}
 \end{definition}
+
+\begin{example}
+Niech $(0, 0)$ będzie punktem na krzywej eliptycznej $E_{16,0}(\F(17))$.
+Wówczas:
+\begin{equation*}
+[2]^{-1}((0, 0)) =
+    \divi{(4, 3)} + \divi{(4, 14)} + \divi{(13, 5)} + \divi{(13, 12)}
+\end{equation*}
+Zauważmy też, że zbiór $\{(4, 3), (4, 14), (13, 5), (13, 12)\}$
+można przedstawić w postaci
+\linebreak $\{(4, 3) + R \mid R \in E_{16,0}(\F(17))[2]\}$.
+\end{example}
 
 \noindent
 Następujące twierdzenie przedstawia własność tego rodzaju dywizorów,
@@ -160,7 +188,7 @@ która będzie nas najbardziej interesować.
 
 \begin{theorem}\label{point_division_divisor_principle_theorem}
 Dany jest punkt $P$ rzędu $n$ na krzywej eliptycznej $E$.
-Wówczas:
+Wówczas zachodzi następująca zależność:
 \begin{eqnarray*}
 [n]^{-1}(P) \sim n^2\divi{\ecident}
 \end{eqnarray*}
@@ -170,7 +198,7 @@ Wówczas:
 Dowód tego twierdzenia poprzedzimy bardzo użytecznym lematem.
 
 \begin{lemma}\label{divi_reduction_lemma}
-Dane są punkty $P$ i $Q$ na krzywej eliptycznej.
+Dane są punkty $P$ i $Q$ na krzywej eliptycznej $E$.
 Wówczas dywizor $\divi{P+Q} - \divi{P} - \divi{Q} + \divi{\ecident}$
 jest główny.
 \end{lemma}
@@ -185,7 +213,7 @@ $\rdiv(\frac{r}{s}) = \divi{P+Q} - \divi{P} - \divi{Q} + \divi{\ecident}$.
 \end{proof}
 
 \begin{corollary}\label{divi_sum_reduction_coro}
-Dane są punkty $P$ i $Q$ na krzywej eliptycznej.
+Dane są punkty $P$ i $Q$ na krzywej eliptycznej $E$.
 Wówczas $\divi{P} + \divi{Q} \sim \divi{P+Q} + \divi{\ecident}$.
 \end{corollary}
 
@@ -380,3 +408,39 @@ Natychmiastowy na podstawie
 lematu \ref{weil_pairing_ignore_const_lemma}
 i wniosku \ref{weil_pairing_fun_const_coro}.
 \end{proof}
+
+\begin{example}
+Policzymy wartość iloczynu Weila
+dla punktów $P = (1, 0)$ i $Q = (16, 0)$ rzędu dwa
+na krzywej eliptycznej $E_{16,0}(\F(17))$.
+
+\noindent
+Zacznijmy od znalezienia funkcji $f_P$.
+W tym celu obliczmy dywizory $[2]^{-1}(P)$ i $[2]^{-1}(\ecident)$:
+\begin{eqnarray*}
+[2]^{-1}(P) 
+& = &
+\divi{(7, 8)} + \divi{(7, 9)} + \divi{(12, 4)} + \divi{(12, 13)}
+\\{}
+[2]^{-1}(\ecident)
+& = &
+\divi{\ecident} + \divi{(0, 0)} + \divi{(1, 0)} + \divi{(16, 0)}
+\end{eqnarray*}
+
+\noindent
+Zauważmy teraz,
+że wielomian $(x - 7)(x - 12)$
+ma dywizor równy $[2]^{-1}(P) - 4\divi{\ecident}$,
+a wielomian $y$ ma dywizor równy
+$[2]^{-1}(\ecident) - 4\divi{\ecident}$.
+Iloraz tych dwóch wielomianów ma szukany dywizor,
+przyjmijmy zatem, że funkcja $f_P$ jest równa $\frac{(x - 7)(x - 12)}{y}$.
+
+\noindent
+Teraz wystarczy wybrać taki punkt $R$,
+żeby wartości $f_P(R + Q)$ i $f_P(R)$ były skończone i niezerowe.
+Weźmy $R = (10, 2)$.
+Wtedy $R + Q = (10, 15)$, zatem $f_P(R + Q) = -4$.
+Z kolei $f_P(R) = 4$.
+Otrzymujemy $w(P, Q) = 16$.
+\end{example}

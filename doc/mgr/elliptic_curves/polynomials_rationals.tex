@@ -5,7 +5,8 @@ Nasze rozważania w dalszej części pracy
 będą często dotyczyć
 wielomianów i funkcji wymiernych na krzywych eliptycznych,
 dlatego też przeanalizujemy teraz te pojęcia.
-Wykazują one podobieństwo do wielomianów i funkcji wymiernych jednej zmiennej,
+Wykazują one wiele podobieństw
+do wielomianów i funkcji wymiernych jednej zmiennej,
 są też pewne różnice.
 
 \subsection*{Definicja wyrażenia wielomianowego}
@@ -47,23 +48,34 @@ w jaki sposób wybrać reprezentantów klas abstrakcji
 do dalszych rozważań.
 
 \begin{theorem}
-Dane jest wyrażenie wielomianowe $f$ na krzywej eliptycznej nad ciałem $\K$.
-Wówczas istnieją wyrażenia wielomianowe $u, v \in \K[x]$ takie,
-że $f = u + yv$.
+Dane jest wyrażenie wielomianowe $f$ na krzywej eliptycznej $E$ nad ciałem $\K$.
+Wówczas istnieją wyrażenia wielomianowe $u$ i $v$ z pierścienia $\K[x]$ takie,
+że $u + yv \in f$.
 Wyrażenia $u$ i $v$ są wyznaczone jednoznacznie.
 \end{theorem}
+
+\begin{example}
+Dane jest wyrażenie wielomianowe $f$
+na krzywej eliptycznej $E_{4,7}(\F(13))$ takie,
+że $x^3 + y^3 + x^2 + y^2 \in f$.
+Niech $u = 2x^3 + x^2 + 4x + 7$ i $v = x^3 + 4x + 7$
+będą wyrażeniami wielomianowymi
+z pierścienia $\F(13)[x]$.
+Wówczas $u + yv \in f$.
+\end{example}
 
 \begin{remark}
 Zbiór wyrażeń wielomianowych na krzywej eliptycznej nad ciałem $\K$
 będziemy odtąd utożsamiać ze zbiorem
-złożonym z wielomianów postaci $u + yv$,
+złożonym z wyrażeń wielomianowych postaci $u + yv$,
 gdzie $u, v \in \K[x]$.
 Zbiór ten będziemy oznaczać $(1 + y)\K[x]$.
 \end{remark}
 
 \noindent
-Zwróćmy uwagę, że zbiór $(1 + y)\K[x]$ nie ma struktury pierścienia,
-ponieważ nie jest określone mnożenie.
+Zauważmy, że zbiór $(1 + y)\K[x]$ nie ma struktury pierścienia --
+w naturalny sposób jest w nim określone dodawanie,
+ale nie można wykonywać mnożenia.
 Nie jest to problem,
 ponieważ z kontekstu zawsze będzie wynikało,
 na jakiej krzywej rozpatrywane są wyrażenia wielomianowe.
@@ -71,12 +83,6 @@ Co więcej, czasami wystarczy,
 że w miejsce powstałego podczas mnożenia czynnika $y^2$
 będziemy podstawiać symbol $\kappa$
 i nie będzie nam potrzebna dokładna znajomość parametrów $A$ i $B$ krzywej.
-
-\begin{remark}
-W zależności od kontekstu wielomian charakterystyczny krzywej eliptycznej
-będziemy traktować jak wielomian jednej zmiennej, wielomian dwóch zmiennych
-lub jak wyrażenie wielomianowe na krzywej eliptycznej.
-\end{remark}
 
 \subsection*{Definicja wyrażenia wymiernego}
 
@@ -94,17 +100,16 @@ oznaczamy symbolem $\K(E)$.
 
 \noindent
 Sens tej definicji jest taki sam,
-jak w przypadku każdego innego ciała ułamków --
+jak w przypadku każdego innego ciała ułamków:
 bierzemy zbiór ułamków formalnych $\frac{f}{g}$,
-gdzie $f$ i $g$ to wielomiany na krzywej eliptycznej,
+gdzie $f$ i $g$ to wyrażenia wielomianowe na krzywej eliptycznej,
 po czym utożsamiamy ułamki $\frac{f_1}{g_1}$ oraz $\frac{f_2}{g_2}$,
-jeżeli zachodzi następująca równość wyrażeń wielomianowych:
-$f_1g_2 = f_2g_1$.
+jeżeli zachodzi równość $f_1g_2 = f_2g_1$.
 
 \begin{fact}
 Zbiór wyrażeń wielomianowych na krzywej eliptycznej
 można zanurzyć w zbiór wyrażeń wymiernych na tej krzywej,
-przypisując wyrażeniu wielomianowemu $f$ wyrażenie wymierne $\frac{f}{1}$
+przypisując wyrażeniu wielomianowemu $f$ wyrażenie wymierne $\frac{f}{1}$.
 \end{fact}
 
 \begin{remark}
@@ -118,17 +123,35 @@ wyrażenia wymierne są klasami abstrakcji pewnej relacji równoważności,
 co nie jest wygodne.
 
 \begin{theorem}
-Dane jest wyrażenie wymierne $r$ na krzywej eliptycznej nad ciałem $\K$.
-Wówczas istnieją wyrażenia wymierne $u, v \in \K(x)$ takie,
-że $r = u + yv$.
+Dane jest wyrażenie wymierne $r$ na krzywej eliptycznej $E$ nad ciałem $\K$.
+Wówczas istnieją wyrażenia wymierne $u$ i $v$ z ciała $\K(x)$ takie,
+że $u + yv = r$.
 Wyrażenia $u$ i $v$ są wyznaczone jednoznacznie.
 \end{theorem}
+
+\begin{example}
+Dane jest wyrażenie wymiene $r$
+na krzywej eliptycznej $E_{4,7}(\F(13))$ takie,
+że $(x^2 + y^2, y^3 + x^3) \in r$.
+Niech $u$ i $v$ będą wyrażeniami wymiernymi z ciała $\F(13)(x)$
+określonymi następująco:
+\begin{eqnarray*}
+u & = & \frac
+    {x^6 + x^5 +4x^4 + 7x^3}
+    {12x^9 + x^7 + 6x^6 + 4x^5 + x^4 + 10x^3 + 2x^2 + 10x + 8}
+\\
+v & = & \frac
+    {12x^6 + 12x^5 + 5x^4 + 8x^3 + 3x^2 + 9x + 3}
+    {12x^9 + x^7 + 6x^6 + 4x^5 + x^4 + 10x^3 + 2x^2 + 10x + 8}
+\end{eqnarray*}
+Wówczas $u + yv = r$.
+\end{example}
 
 \begin{remark}
 Zbiór wyrażeń wymiernych na krzywej eliptycznej nad ciałem $\K$
 będziemy odtąd utożsamiać ze zbiorem
 złożonym z wyrażeń wymiernych postaci $u + yv$,
-gdzie $u,v \in \K(x)$.
+gdzie $u$ i $v$ to wyrażenia wymierne z ciała $\K(x)$.
 Zbiór ten będziemy oznaczać $(1 + y)\K(x)$.
 \end{remark}
 
@@ -145,10 +168,20 @@ Wyrażenia wymierne możemy również przedstawiać w postaci ilorazu
 elementów zbioru $(1 + y)\K[x]$.
 
 \begin{theorem}
-Dane jest wyrażenie wymierne $r$ na krzywej eliptycznej nad ciałem $\K$.
-Wówczas istnieją wyrażenia wielomianowe $f, g \in (1 + y)\K[x]$ takie,
-że $r = \frac{f}{g}$.
+Dane jest wyrażenie wymierne $r$ na krzywej eliptycznej $E$ nad ciałem $\K$.
+Wówczas istnieją wyrażenia wielomianowe $f$ i $g$
+ze zbioru $(1 + y)\K[x]$ takie,
+że $\frac{f}{g} = r$.
 \end{theorem}
+
+\begin{example}
+Dane jest wyrażenie wymierne $r$
+na krzywej eliptycznej $E_{4,7}(\F(13))$ takie,
+że $(x^2 + y^2, y^3 + x^3) \in r$.
+Niech $f = x^3 + x^2 + 4x + 7$ i $g = x^3 + y(x^3 + 4x + 7)$
+będą wyrażeniami wielomianowymi ze zbioru $(1 + y)\F(13)[x]$.
+Wówczas $\frac{f}{g} = r$.
+\end{example}
 
 \subsection*{Funkcje wielomianowe i wymierne}
 
@@ -162,22 +195,20 @@ którym można by je wspólnie nazwać,
 będziemy więc posługiwać się określeniem \emph{funkcja wymierna}.
 
 \begin{remark}
-Funkcję wymierną wyznaczoną przez wyrażenie wymierne $r$
-oznaczać będziemy symbolem $r(x, y)$,
-gdzie $x$ oraz $y$ to współrzędne punktu skończonego krzywej,
-lub symbolem $r(P)$, gdzie $P$ to punkt skończony krzywej.
+Jest jasne, jak obliczyć wartość funkcji wymiernej w punkcie skończonym $P$
+postaci $P = (a, b)$.
+Wartość tę oznaczać będziemy symbolem $r(a, b)$ lub $r(P)$.
 \end{remark}
 
 \noindent
-Jest jasne, jak na podstawie wyrażenia wymiernego
-obliczyć wartość odpowiadającej mu funkcji wymiernej
-w dowolnym punkcie skończonym krzywej.
-Jedyna ewentualna trudność pojawia się,
+Jedyna ewentualna trudność
+związana z obliczaniem wartości funkcji wymiernej
+w punkcie skończonym pojawia się,
 gdy wartość mianownika jest równa zero.
 
 \begin{definition}
 Dana jest funkcja wymierna $r$ na krzywej eliptycznej $E$
-oraz punkt skończony $P \in E$.
+oraz punkt skończony $P$ na krzywej $E$.
 Funkcja $r$ ma w punkcie $P$ \emph{wartość nieskończoną},
 co zapisujemy jako $r(P) = \infty$,
 jeżeli istnieją wielomiany $f$ i $g$ na krzywej $E$ takie,
@@ -186,7 +217,7 @@ jeżeli istnieją wielomiany $f$ i $g$ na krzywej $E$ takie,
 
 \begin{theorem}
 Dana jest funkcja wymierna $r$ na krzywej eliptycznej $E$
-oraz punkt skończony $P \in E$.
+oraz punkt skończony $P$ na tej krzywej.
 Niech $f$ i $g$ będą dowolnymi wielomianami na krzywej $E$ takimi,
 że $r = \frac{f}{g}$.
 Wówczas jeżeli $r(P) = 0$, to $f(P) = 0$.
@@ -194,7 +225,7 @@ Wówczas jeżeli $r(P) = 0$, to $f(P) = 0$.
 
 \begin{theorem}
 Dana jest funkcja wymierna $r$ na krzywej eliptycznej $E$
-oraz punkt skończony $P \in E$.
+oraz punkt skończony $P$ na tej krzywej.
 Niech $f$ i $g$ będą dowolnymi wielomianami na krzywej $E$ takimi,
 że $r = \frac{f}{g}$.
 Wówczas jeżeli $r(P) = \infty$, to $g(P) = 0$.
@@ -209,7 +240,7 @@ zagadnienie dotyczące wielomianów i funkcji wymiernych na krzywej eliptycznej
 do przypadku wyrażeń jednej zmiennej.
 
 \begin{definition}
-Dana jest funkcja wymierna $r$ na krzywej eliptycznej nad ciałem $\K$
+Dana jest funkcja wymierna $r$ na krzywej eliptycznej $E$ nad ciałem $\K$
 postaci $r = u + yv$, gdzie $u, v \in \K(x)$.
 \emph{Funkcja wymierna sprzężona do funkcji $r$},
 oznaczana symbolem $\overline{r}$,
@@ -217,13 +248,22 @@ to funkcja $u - yv$.
 \end{definition}
 
 \begin{definition}
-Dana jest funkcja wymierna $r$ na krzywej eliptycznej nad ciałem $\K$
+Dana jest funkcja wymierna $r$ na krzywej eliptycznej $E$ nad ciałem $\K$
 postaci $r = u + yv$, gdzie $u, v \in \K(x)$.
 \emph{Norma funkcji wymiernej $r$},
 oznaczana symbolem $N(r)$,
 to funkcja wymierna jednej zmiennej
 $r\overline{r} = (u + yv)(u - yv) = u^2 - y^2v^2 = u^2 - \kappa v^2$.
 \end{definition}
+
+\begin{example}\label{poly_conj_norm_ex}
+Dany jest wielomian $f$ na krzywej eliptycznej $E_{4,7}(\F(13))$ taki,
+że $y^3 + x^3 \in r$.
+Wielomian $f$ można przedstawić w postaci $f = x^3 + y(x^3 + 4x + 7)$.
+Wielomian sprzężony $\overline{f}$ jest równy $x^3 - y(x^3 + 4x + 7)$.
+Norma $N(f)$ jest równa
+$12x^9 + x^7 + 6x^6 + 4x^5 + x^4 + 10x^3 + 2x^2 + 10x + 8$.
+\end{example}
 
 \begin{fact}
 Dla dowolnych funkcji wymiernych $r$ i $s$ na krzywej eliptycznej
@@ -238,24 +278,35 @@ oraz $N(rs) = N(r)N(s)$.
 Przyjmujemy następującą definicję stopnia wielomianu na krzywej eliptycznej.
 
 \begin{definition}
-Dany jest wielomian $f$ na krzywej eliptycznej.
+Dany jest wielomian $f$ na krzywej eliptycznej $E$.
 \emph{Stopień wielomianu $f$},
 oznaczany symbolem $\deg(f)$,
 to stopień jego normy $N(f)$ traktowanej jak wielomian jednej zmiennej.
 \end{definition}
 
+\begin{example}
+Dany jest wielomian $f$ na krzywej eliptycznej $E_{4,7}(\F(13))$ taki,
+że $y^3 + x^3 \in f$.
+Jego norma została policzona w przykładzie \ref{poly_conj_norm_ex},
+skąd widzimy, że jego stopień $\deg(f)$ jest równy $9$.
+\end{example}
+
 \noindent
 Sens tej definicji jest następujący.
-W pierścieniu $\K[x, y]$ wielomiany $x$ i $y$ mają stopień równy $1$.
-Na tej podstawie można obliczyć stopień dowolnego innego wielomianu.
-Tę koncepcję przenosimy na wielomiany na krzywej eliptycznej,
-ale w taki sposób, żeby uwzględnić równanie krzywej.
-Zatem wielomianowi $x$ przypisujemy stopień $2$,
-a wielomianowi $y$ stopień $3$,
-dzięki czemu stopień wielomianów po obu stronach równania krzywej jest taki sam.
+W pierścieniu $\K[x]$ stopień dowolnego wielomianu
+wyznaczamy na podstawie stopnia wielomianu $x$,
+zaś wielomianowi $x$ przypisujemy stopień równy $1$,
+aby zachować związek stopnia wielomianu z m.in. ilością miejsc zerowych.
+Tę koncepcję przenosimy na wielomiany na krzywej eliptycznej:
+wielomianowi $x$ przypisujemy stopień $2$,
+a wielomianowi $y$ stopień $3$.
+Dzięki temu stopnie wielomianów
+występujących po obu stronach równania krzywej są równe
+oraz, jak się przekonamy,
+stopień wielomianu ma związek z ilością jego miejsc zerowych.
 Ponadto, do obliczania stopnia wielomianu $f$
-wybieramy reprezentanta klasy abstrakcji $f$ w postaci $u + yv$,
-gdzie $u$ i $v$ to wielomiany zmiennej $x$.
+wybieramy z klasy abstrakcji, którą jest wielomian $f$,
+reprezentanta w postaci $u + yv$, gdzie $u, v \in \K[x]$.
 
 \begin{remark}
 Aby uniknąć nieporozumień,
@@ -264,26 +315,38 @@ oznaczać będziemy symbolem $\deg_x$.
 \end{remark}
 
 \begin{fact}
-Dla dowolnego wielomianu $f$ na krzywej eliptycznej
-zachodzi zależność $\deg(f) = \max(2\deg_x(u), 3 + 2\deg_x(v))$,
-gdzie $u$ i $v$ są takimi wielomianami zmiennej $x$, że $f = u + yv$.
+Dla dowolnego wielomianu $f$ na krzywej eliptycznej $E$
+postaci $f = u + yv$, gdzie $u, v \in \K[x]$,
+zachodzi zależność $\deg(f) = \max(2\deg_x(u), 3 + 2\deg_x(v))$.
 \end{fact}
 
 \noindent
 Dysponując stopniem wielomianu możemy określić stopień funkcji wymiernej.
 
 \begin{definition}
-Dana jest funkcja wymierna $r$ na krzywej eliptycznej nad ciałem $\K$
-postaci $r = \frac{f}{g}$, gdzie $f, g \in \K[E]$.
+Dana jest funkcja wymierna $r$ na krzywej eliptycznej $E$ nad ciałem $\K$
+postaci $r = \frac{f}{g}$,
+gdzie $f$ i $g$ to wielomiany na krzywej $E$.
 \emph{Stopień funkcji wymiernej $r$},
 oznaczany symbolem $\deg(r)$,
 to wielkość $\deg(f) - \deg(g)$.
 \end{definition}
 
+\begin{example}
+Dana jest funkcja wymierna $r$ na krzywej eliptycznej $E_{4,7}(\F(13))$ taka,
+że $(x^2 + y^2, x^3 + y^3) \in r$.
+Stopień wielomianu $x^2 + y^2$ jest równy $6$,
+a stopień wielomianu $x^3 + y^3$ jest równy $9$.
+Stąd stopień funkcji $r$ jest równy $-3$.
+\end{example}
+
+\noindent
+Stopień funkcji wymiernej jest dobrze określony,
+tzn. nie zależy od wyboru reprezentacji.
+
 \begin{theorem}
 Dana jest funkcja wymierna $r$ na krzywej eliptycznej $E$.
-Wówczas stopień funkcji $r$ jest dobrze określony,
-tzn. dla dowolnych wielomianów $f_1, g_1, f_2, g_2$ na krzywej $E$ takich,
+Wówczas dla dowolnych wielomianów $f_1, g_1, f_2, g_2$ na krzywej $E$ takich,
 że $\frac{f_1}{g_1} = r = \frac{f_2}{g_2}$,
 zachodzi $\deg(f_1) - \deg(g_1) = \deg(f_2) - \deg(g_2)$.
 \end{theorem}
@@ -293,7 +356,7 @@ Na stopnie wielomianów i funkcji wymiernych na krzywej eliptycznej
 przenosi się zasadnicza własność znana z teorii wyrażeń jednej zmiennej.
 
 \begin{theorem}
-Dane są funkcje wymierne $r$ i $s$ na krzywej eliptycznej.
+Dane są funkcje wymierne $r$ i $s$ na krzywej eliptycznej $E$.
 Wówczas $\deg(rs) = \deg(r) + \deg(s)$.
 \end{theorem}
 
@@ -312,14 +375,14 @@ Dzięki tej obserwacji możemy w analogiczny sposób określić
 wartość funkcji wymiernej w punkcie w nieskończoności.
 
 \begin{definition}
-Dana jest funkcja wymierna $r$ na krzywej eliptycznej.
+Dana jest funkcja wymierna $r$ na krzywej eliptycznej $E$.
 Wartość funkcji $r$ w punkcie $\ecident$ ustalamy następująco:
 \begin{itemize}
 \item jeżeli $\deg(r) < 0$, to $r(\ecident) = 0$;
 \item jeżeli $\deg(r) > 0$, to $r(\ecident) = \infty$;
 \item jeżeli $\deg(r) = 0$,
 to przedstawiamy funkcję $r$ w postaci $\frac{f}{g}$,
-gdzie $f$ i $g$ to wielomiany na krzywej i wówczas:
+gdzie $f$ i $g$ to wielomiany na krzywej $E$ i wówczas:
 \begin{itemize}
 \item jeżeli stopnie wielomianów $f$ i $g$ są parzyste,
 to ich wiodące składniki mają postać odpowiednio $ax^d$ i $bx^d$,
@@ -331,13 +394,21 @@ wówczas również $r(\ecident) = \frac{a}{b}$.
 \end{itemize}
 \end{definition}
 
+\begin{example}
+Dana jest krzywa eliptyczna $E_{4,7}(\F(13))$.
+Wówczas $\left(\frac{x^3 + y^3}{x^2 + y^2}\right)(\ecident) = \infty$;
+$\left(\frac{x^2 + y^2}{x^3 + y^3}\right)(\ecident) = 0$;
+$\left(\frac{x^3}{2x^2 + y^2}\right)(\ecident) = 1$;
+$\left(\frac{y^3}{2x^3 + y^3}\right)(\ecident) = 1$.
+\end{example}
+
 \noindent
 Pod wieloma względami funkcje wymierne zachowują się
 w punkcie $\ecident$ i punktach skończonych podobnie,
 co pokazuje następujące twierdzenie.
 
 \begin{theorem}
-Dane są funkcje wymierne $r$ i $s$ na krzywej eliptycznej.
+Dane są funkcje wymierne $r$ i $s$ na krzywej eliptycznej $E$.
 Jeżeli $r(\ecident) \neq \infty$ oraz $s(\ecident) \neq \infty$,
 to $(r + s)(\ecident) = r(\ecident) + s(\ecident)$
 oraz $(rs)(\ecident) = r(\ecident)s(\ecident)$.
@@ -352,8 +423,16 @@ miejsca zerowego oraz bieguna funkcji wymiernej na krzywej eliptycznej.
 \begin{definition}
 Dana jest funkcja wymierna $r$ na krzywej eliptycznej $E$.
 \emph{Miejsce zerowe funkcji $r$} (odpowiednio, \emph{biegun funkcji $r$})
-to taki punkt $P \in E$, że $r(P) = 0$ (odpowiednio, $r(P) = \infty$).
+to taki punkt $P$ na krzywej $E$, że $r(P) = 0$ (odpowiednio, $r(P) = \infty$).
 \end{definition}
+
+\begin{example}
+Dana jest krzywa eliptyczna $E_{4,7}(\F(13))$.
+Wówczas punkt $(6, 0)$ jest biegunem funkcji $\frac{1}{y}$,
+a punkt $\ecident$ jest biegunem funkcji $x$.
+Punkt $(1, 5)$ jest miejscem zerowym funkcji $x-1$,
+a punkt $\ecident$ jest miejscem zerowym funkcji $\frac{x}{y}$.
+\end{example}
 
 \begin{fact}
 Jeżeli punkt skończony $P$
@@ -380,11 +459,11 @@ Podczas badania miejsc zerowych i biegunów
 funkcji wymiernych na krzywej eliptycznej
 będziemy chcieli uwolnić się od konieczności pilnowania
 czy ciało, nad którym zdefiniowana jest krzywa,
-jest algebraicznie domknięte czy nie.
+jest algebraicznie domknięte.
 
 \begin{fact}
 Dane są dwa ciała $\K$ i $\fieldL$ takie, że $\K \subset \fieldL$
-oraz parametry $A,B \in \K$.
+oraz parametry $A$ i $B$ z ciała  $\K$.
 Wówczas $E_{A,B}(\K) \subset E_{A,B}(\fieldL)$.
 \end{fact}
 
@@ -415,32 +494,17 @@ chcemy wprowadzić pojęcie krotności miejsca zerowego i bieguna.
 
 \begin{theorem}\label{uniformizer_existence_theorem}
 Dana jest krzywa eliptyczna $E$ nad ciałem $\K$
-oraz punkt $P \in E$.
-Wówczas istnieje funkcja wymierna $u \in \K(E)$ taka, że $u(P) = 0$
-oraz dla każdej funkcji wymiernej $r \in \K(E)$
-istnieje liczba całkowita $d \in \Z$
-oraz funkcja wymierna $s \in \K(E)$ taka,
-że $s(P) \neq 0$ oraz zachodzi następująca równość:
+oraz punkt $P$ na krzywej $E$.
+Wówczas istnieje funkcja wymierna $u$ na krzywej $E$ taka, że $u(P) = 0$
+oraz dla każdej funkcji wymiernej $r$ na krzywej $E$
+istnieje liczba całkowita $d$
+oraz funkcja wymierna $s$ na krzywej $E$ taka,
+że $s(P) \neq 0$, $s(P) \neq \infty$ oraz zachodzi następująca równość:
 \begin{equation}\label{uniformizer_decomposition_eqn}
 r = u^ds
 \end{equation}
 Liczba $d$ nie zależy od wyboru funkcji $u$.
-
-\noindent
-Przykładowymi funkcjami, które spełniają powyższy warunek, są:
-\begin{itemize}
-\item jeżeli $P = (a, 0)$, to $u(x, y) = y$;
-\item jeżeli $P = (a, b)$, gdzie $b \neq 0$, to $u(x, y) = x - a$;
-\item jeżeli $P = \ecident$, to $u(x, y) = \frac{y}{x}$.
-\end{itemize}
 \end{theorem}
-
-\noindent
-Twierdzenie to ukazuje pewną wspólną cechę
-funkcji wymiernych na krzywej eliptycznej
-oraz zwykłych funkcji wymiernych,
-dzięki czemu może posłużyć do przeniesienia na krzywe eliptyczne
-pojęcia krotności miejsca zerowego lub bieguna.
 
 \begin{definition}
 Dany jest punkt $P$ na krzywej eliptycznej $E$.
@@ -449,9 +513,23 @@ to dowolna funkcja wymierna $u$ na krzywej $E$,
 której istnienie postuluje twierdzenie \ref{uniformizer_existence_theorem}.
 \end{definition}
 
+\begin{example}
+Dla dowolnej krzywej eliptycznej $E$ i punktu $P$ na krzywej $E$
+unifikatorami są następujące funkcje:
+\begin{itemize}
+\item jeżeli $P = (a, 0)$, to $u = y$;
+\item jeżeli $P = (a, b)$, gdzie $b \neq 0$, to $u = x - a$;
+\item jeżeli $P = \ecident$, to $u = \frac{x}{y}$.
+\end{itemize}
+\end{example}
+
+\noindent
+Unifikatory posłużą nam do przeniesienia na krzywe eliptyczne
+pojęcia krotności miejsca zerowego lub bieguna.
+
 \begin{definition}
 Dana jest funkcja wymierna $r$ na krzywej eliptycznej $E$
-oraz punkt $P \in E$.
+oraz punkt $P$ na krzywej $E$.
 Niech $u$ będzie dowolnym unifikatorem w punkcie $P$.
 \emph{Rząd funkcji $r$ w punkcie $P$},
 oznaczany symbolem $\ord_P(r)$,
@@ -468,13 +546,21 @@ to funkcja $r$ nie ma w punkcie $P$ ani miejsca zerowego, ani bieguna;
 \end{itemize}
 \end{definition}
 
+\begin{example}
+Dana jest krzywa eliptyczna $E_{3, 4}(\F(13))$.
+Funkcja wymierna $\frac{x^3}{y^2}$ na tej krzywej
+ma w punkcie $(0, 2)$ trzykrotne miejsce zerowe,
+a w punkcie $(12, 0)$ dwukrotny biegun.
+W punkcie $\ecident$ ma rząd równy $0$.
+\end{example}
+
 \noindent
 Rząd funkcji wymiernej spełnia zależność
 podobną do tej związanej ze stopniem funkcji.
 
 \begin{theorem}
 Dane są funkcje wymierne $r$ i $s$ na krzywej eliptycznej $E$
-oraz punkt skończony $P \in E$.
+oraz punkt skończony $P$ na krzywej $E$.
 Wówczas $\ord_P(rs) = \ord_P(r) + \ord_P(s)$.
 \end{theorem}
 
@@ -485,7 +571,7 @@ związanych z miejscami zerowymi i biegunami.
 
 \begin{theorem}\label{polynomial_ord_deg_theorem}
 Dany jest wielomian $f$ na krzywej eliptycznej $E$.
-Wówczas:
+Wówczas zachodzi następująca zależność:
 \begin{equation*}
 \sum_{P \in E\setminus \{\ecident\}} \ord_P(f) = \deg(f)
 \end{equation*}
@@ -493,7 +579,7 @@ Wówczas:
 
 \begin{corollary}\label{function_order_sum_zero_corollary}
 Dana jest funkcja wymiena $r$ na krzywej eliptycznej $E$.
-Wówczas:
+Wówczas zachodzi następująca zależność:
 \begin{equation*}
 \sum_{P \in E} \ord_P(r) = 0
 \end{equation*}
@@ -515,6 +601,6 @@ Ze względu na definicję stopnia wielomianu na krzywej eliptycznej
 możemy jeszcze wysnuć następujący wniosek.
 
 \begin{corollary}\label{poly_no_single_zero_corollary}
-Wielomian ma krzywej eliptycznej nie może mieć stopnia równego $1$,
+Wielomian na krzywej eliptycznej nie może mieć stopnia równego $1$,
 zatem nie może mieć jednego jednokrotnego miejsca zerowego.
 \end{corollary}

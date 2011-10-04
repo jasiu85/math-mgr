@@ -92,7 +92,7 @@ Otrzymujemy:
 \rdiv\left(\frac{f_{P_1 + P_2}}{f_{P_1}f_{P_2}}\right) =
 [n]^{-1}(P_1 + P_2) - [n]^{-1}(P_1) - [n]^{-1}(P_2) + [n]^{-1}(\ecident)
 \end{equation*}
-Niech $r \in \K(E)$ będzie dowolną funkcją wymierną,
+Niech $r$ będzie dowolną funkcją wymierną na krzywej $E$,
 której dywizor jest równy
 $\divi{P_1 + P_2} - \divi{P_1} - \divi{P_2} + \divi{\ecident}$.
 Rozważmy funkcję $r \circ [n]$.
@@ -140,8 +140,8 @@ w(P_1 + P_2, Q)
 \end{proof}
 
 \begin{lemma}
-Dana jest krzywa eliptyczna $E$ oraz punkty $P, Q_1, Q_2 \in E[n]$.
-Wówczas:
+Dane są punkty $P, Q_1$ i $Q_2$ rzędu $n$ na krzywej eliptycznej $E$.
+Wówczas zachodzi następująca zależność:
 \begin{equation}
 w(P, Q_1 + Q_2) = w(P, Q_1)w(P, Q_2)
 \end{equation}
@@ -154,7 +154,7 @@ we wzorze na $w(P, Q_1 + Q_2)$:
 w(P, Q_1 + Q_2)
 & = & \frac{f_P \circ t_{Q_1 + Q_2}}{f_P} \\
 & = & \frac{f_P \circ (t_{Q_1} \circ t_{Q_2})}{f_P} \\
-& = & \frac{(f_P \circ t_{Q_1}) \circ t_{Q_2})}{f_P} \\
+& = & \frac{(f_P \circ t_{Q_1}) \circ t_{Q_2}}{f_P} \\
 & = & \frac{((w(P,Q_1)f_P) \circ t_{Q_2})}{f_P} \\
 & = & w(P, Q_1)\frac{f_P \circ t_{Q_2}}{f_P} \\
 & = & w(P, Q_1)w(P, Q_2)
@@ -242,8 +242,10 @@ która jest wolnym modułem wymiaru dwa nad pierścieniem $\Z/n\Z$.
 
 \begin{theorem}
 Dane są punkty $P$ i $Q$ rzędu $n$ na krzywej eliptycznej $E$.
-Jeżeli istnieje punkt $R \in E[n]$ oraz liczby całkowite $k$ i $l$
-takie, że $P = kR$ i $Q = lR$, to $w(P, Q) = 1$.
+Jeżeli istnieje punkt $R$ rzędu $n$ na krzywej $E$
+oraz liczby całkowite $k$ i $l$
+takie, że $P = kR$ i $Q = lR$,
+to zachodzi zależność $w(P, Q) = 1$.
 \end{theorem}
 
 \begin{proof}
@@ -262,7 +264,8 @@ Następujące twierdzenie jest w pewnym sensie odwrotne do poprzedniego wyniku.
 
 \begin{theorem}\label{weil_pairing_one_p_ecident}
 Dany jest punkt $P$ rzędu $n$ na krzywej eliptycznej $E$.
-Jeżeli $w(P, Q) = 1$ dla każdego punktu $Q \in E[n]$, to $P = \ecident$.
+Jeżeli $w(P, Q) = 1$ dla każdego punktu $Q$ rzędu $n$ na krzywej $E$,
+to zachodzi zależność $P = \ecident$.
 \end{theorem}
 
 \noindent
@@ -271,7 +274,7 @@ W dowodzie tego twierdzenia kluczową rolę odegra następujący lemat.
 \begin{lemma}
 Dana jest funkcja wymierna $r$ na krzywej eliptycznej $E$.
 Jeżeli funkcja $r$ jest niezmiennicza ze względu na przesunięcie
-o dowolny punkt $Q \in E[n]$, tzn. $r = r \circ t_Q$,
+o dowolny punkt $Q$ rzędu $n$ na krzywej $E$, tzn. $r = r \circ t_Q$,
 to funkcję $r$ można przedstawić w postaci $r = s \circ [n]$,
 gdzie $s$ jest pewną funkcją wymierną na krzywej $E$.
 \end{lemma}
@@ -297,11 +300,11 @@ Pokażemy teraz, że tak nie jest.
 \begin{theorem}
 Dane są punkty $P$ i $Q$ rzędu $n$ na krzywej eliptycznej $E$.
 Jeżeli punkty $P$ i $Q$ są generatorami grupy $E[n]$,
-to $w(P, Q)$ jest pierwiastkiem pierwotnym $n$-tego stopnia z jedności.
+to wartość $w(P, Q)$ jest pierwiastkiem pierwotnym $n$-tego stopnia z jedności.
 \end{theorem}
 
 \begin{proof}
-Skoro $P$ i $Q$ są generatorami grupy $E[n]$,
+Skoro punkty $P$ i $Q$ są generatorami grupy $E[n]$,
 to $\ord(P) = n$ oraz $\ord(Q) = n$.
 Dalej, każdy punkt $R \in E[n]$ można przedstawić w postaci $R = kP + lQ$.
 Niech $\ord(w(P,Q)) = m$,
@@ -332,7 +335,7 @@ Z dwuliniowości łatwo pokazać, że iloczyn Weila jest antysymetryczny.
 
 \begin{theorem}
 Dane są punkty $P$ i $Q$ rzędu $n$ na krzywej eliptycznej $E$.
-Wówczas $w(P, Q) = w(Q, P)^{-1}$.
+Wówczas zachodzi zależność $w(P, Q) = w(Q, P)^{-1}$.
 \end{theorem}
 
 \begin{proof}

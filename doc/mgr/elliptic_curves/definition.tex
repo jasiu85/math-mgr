@@ -5,12 +5,12 @@ Na potrzeby niniejszej pracy przyjmujemy
 następującą definicję krzywej eliptycznej.
 
 \begin{definition}\label{elliptic_curve_definition}
-Dane jest ciało $\K$ oraz dwa jego elementy $A, B \in \K$.
+Dane jest ciało $\K$ oraz dwa jego elementy $A$ i $B$.
 \emph{Krzywa eliptyczna nad ciałem $\K$ o parametrach $A$ i $B$},
 oznaczana symbolem $E_{A,B}(\K)$ (w skrócie $E(\K)$ lub $E$),
 to zbiór składający się
-ze wszystkich par $(x, y) \in \K \times \K$,
-które spełniają następującą równość:
+ze wszystkich elementów $(x, y)$ zbioru $\K \times \K$,
+dla których zachodzi następująca zależność:
 \begin{equation}\label{elliptic_curve_equation}
 y^2 = x^3 + Ax + B
 \end{equation}
@@ -23,13 +23,35 @@ Ustalamy ponadto następujące określenia.
 
 \begin{definition}
 Dana jest krzywa eliptyczna $E$.
-Element $\ecident \in E$ zwany jest
+Element $\ecident$ krzywej $E$ zwany jest
 \emph{punktem w nieskończoności na krzywej $E$} lub jej \emph{identycznością}.
-Pozostałe elementy $P \in E$
+Pozostałe elementy krzywej $E$
 zwane są \emph{punktami skończonymi na krzywej $E$}.
-Punkty skończone $P \in E$ postaci $P = (a, 0)$
+\end{definition}
+
+\begin{definition}
+Dana jest krzywa eliptyczna $E$.
+Punkty skończone $P$ na krzywej $E$ postaci $P = (a, 0)$
 zwane są \emph{punktami rzędu dwa na krzywej $E$}.
 \end{definition}
+
+\begin{definition}
+Dany jest punkt skończony $P$ na krzywej eliptycznej $E$ postaci $P = (a, b)$.
+\emph{Punkt sprzężony do punktu $P$},
+oznaczany symbolem $\overline{P}$,
+to punkt skończony $(a, -b)$.
+Ponadto, punkt w nieskończoności na krzywej eliptycznej
+uznajemy za sprzężony do samego siebie.
+\end{definition}
+
+\begin{fact}\label{conjugate_exists_fact}
+Dla każdego punktu na krzywej eliptycznej istnieje dokładnie jeden
+punkt sprzężony do niego.
+\end{fact}
+
+\begin{fact}
+Punkty rzędu dwa na krzywej eliptycznej są sprzężone do samych siebie.
+\end{fact}
 
 \begin{definition}
 Dana jest krzywa eliptyczna $E$.
@@ -38,32 +60,6 @@ Wielomian $x^3 + Ax + B$ występujący po jego prawej stronie,
 oznaczany symbolem $\kappa(E)$ (w skrócie $\kappa$),
 zwany jest \emph{wielomianem charakterystycznym krzywej $E$}.
 \end{definition}
-
-\noindent
-Pochodzenie określeń
-,,punkt w nieskończoności'', ,,identyczność'' oraz ,,punkt rzędu dwa''
-stanie się jasne w dalszej części pracy.
-
-\noindent
-Oprócz powyższych określeń
-wprowadzamy jeszcze następujące oznaczenie,
-którego będziemy często używać.
-
-\begin{definition}
-Dany jest punkt skończony $P$ na krzywej eliptycznej postaci $P = (a, b)$.
-\emph{Punkt sprzężony do punktu $P$},
-oznaczany symbolem $\overline{P}$,
-to punkt skończony $(a, -b)$.
-\end{definition}
-
-\begin{fact}
-Każdy punkt skończonej na krzywej eliptycznej ma punkt sprzężony.
-\end{fact}
-
-\begin{fact}
-Punkty rzędu dwa na krzywej eliptycznej są sprzężone do samych siebie,
-tzn. jeżeli $P = (a, 0)$, to $P = \overline{P}$.
-\end{fact}
 
 \noindent
 W definicji \ref{elliptic_curve_definition} ciało $\K$ może być dowolne,
@@ -85,8 +81,8 @@ którym nie będziemy zajmować się w niniejszej pracy.
 
 \begin{definition}
 Dana jest krzywa eliptyczna $E$ nad ciałem $\K$.
-Mówimy, że jest ona \emph{zdegenerowana},
-jeżeli jej wielomian charakterystyczny $\kappa(E)$
+Jest ona \emph{zdegenerowana},
+jeżeli jej wielomian charakterystyczny $\kappa$
 ma w domknięciu algebraicznym $\overline{\K}$ ciała $\K$
 pierwiastek wielokrotny.
 Jeżeli krzywa nie jest zdegenerowana,
@@ -101,7 +97,8 @@ są niezdegenerowane.
 
 \begin{theorem}
 Dane jest ciało $\K$ o charakterystyce różnej od $2$ i $3$.
-Wówczas krzywa eliptyczna $E_{A,B}(\K)$ jest zdegenerowana wtedy i tylko wtedy,
+Wówczas krzywa eliptyczna $E$ nad ciałem $\K$ o parametrach $A$ i $B$
+jest zdegenerowana wtedy i tylko wtedy,
 gdy $\frac{A^3}{27} + \frac{B^2}{4} = 0$.
 \end{theorem}
 

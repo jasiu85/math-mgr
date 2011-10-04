@@ -1,7 +1,7 @@
 \section{Własności}
 
 \noindent
-Przytoczymy teraz bez dowodu najważniejsze własności
+Przytoczymy teraz bez dowodu kilka najważniejszych własności
 grup na krzywych eliptycznych.
 
 \noindent
@@ -22,9 +22,8 @@ ma nieskończenie wiele elementów.
 W przypadku ciał skończonych sytuacja wygląda zupełnie inaczej.
 
 \begin{theorem}[Hasse]
-Rząd grupy na dowolnej krzywej eliptycznej $E$
-nad dowolnym ciałem skończonym $\GF(q)$,
-gdzie $q = p^n$ oraz $p$ jest liczbą pierwszą,
+Rząd grupy na krzywej eliptycznej $E$
+nad ciałem skończonym $\GF(q)$,
 spełnia następującą nierówność:
 \begin{equation}
 q + 1 - 2\sqrt{q} \leq \abs{E} \leq q + 1 + 2\sqrt{q}
@@ -37,7 +36,7 @@ zaś intuicyjne wyjaśnienie jest następujące.
 Wielomian charakterystyczny $\kappa$ rzadko przyjmuje tę samą wartość
 więcej niż raz, zatem możemy uznać, że jest on ,,prawie''
 permutacją zbioru $\GF(q)$.
-Stąd dla mniej-więcej połowy elementów $a \in \GF(q)$
+Stąd dla mniej-więcej połowy elementów $a$ z ciała $\GF(q)$
 można z wartości $\kappa(a)$ wyciągnąć pierwiastek kwadratowy.
 Zatem krzywa eliptyczna $E(\GF(q))$ ma około $2\frac{q}{2}$ punktów skończonych.
 Doliczając punkt w nieskończoności otrzymujemy około $q + 1$ punktów.
@@ -46,11 +45,11 @@ Doliczając punkt w nieskończoności otrzymujemy około $q + 1$ punktów.
 Choć nie ma jawnego wzoru
 na rząd grupy na krzywej eliptycznej nad ciałem skończonym,
 następujące twierdzenie,
-którego dowód można odnaleźć w książce \cite{silverman},
+którego dowód można odnaleźć w książce \cite{tsfasmanvladutnogin},
 charakteryzuje ogólną strukturę takiej grupy.
 
 \begin{theorem}\label{finite_curve_structure_theorem}
-Grupa na krzywej eliptycznej nad ciałem $\GF(q)$
+Grupa na krzywej eliptycznej $E$ nad ciałem $\GF(q)$
 jest izomorficzna z grupą $(\Z/m\Z) \times (\Z/n\Z)$,
 przy czym $n \mid \gcd(m, q-1)$.
 \end{theorem}
@@ -62,6 +61,7 @@ rząd grupy na krzywej nad ciałem skończonym.
 Został on opublikowany po raz pierwszy w pracy \cite{schoof}.
 
 \begin{theorem}[Schoof]
-Istnieje algorytm, który pozwala obliczyć rząd grupy na krzywej eliptycznej
-nad ciałem $\GF(q)$ za pomocą $O(\log^8 q)$ operacji na bitach.
+Istnieje algorytm, który pozwala obliczyć rząd grupy
+na krzywej eliptycznej $E$ nad ciałem $\GF(q)$
+za pomocą $O(\log^8 q)$ operacji na bitach.
 \end{theorem}

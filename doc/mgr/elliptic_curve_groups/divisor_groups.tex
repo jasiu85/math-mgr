@@ -24,17 +24,17 @@ wyróżnioną pozycję zajmują te,
 które są dywizorami funkcji wymiernych.
 
 \begin{definition}
-Dany jest dywizor $\Delta$ na krzywej eliptycznej.
+Dany jest dywizor $\Delta$ na krzywej eliptycznej $E$.
 Dywizor $\Delta$ jest \emph{główny},
-jeżeli jest on dywizorem pewnej funkcji wymiernej na tej krzywej.
+jeżeli jest on dywizorem pewnej funkcji wymiernej na krzywej $E$.
 \end{definition}
 
 \noindent
 Następujące twierdzenie pokazuje, że dywizory główne tworzą grupę.
 
 \begin{theorem}\label{fun_mul_divi_add_theorem}
-Dane są funkcje wymierne $r$ oraz $s$ na krzywej eliptycznej.
-Wówczas $\rdiv(rs) = \rdiv(r) + \rdiv(s)$.
+Dane są funkcje wymierne $r$ oraz $s$ na krzywej eliptycznej $E$.
+Wówczas zachodzi zależność $\rdiv(rs) = \rdiv(r) + \rdiv(s)$.
 \end{theorem}
 
 \begin{definition}
@@ -57,14 +57,13 @@ to grupa ilorazowa $\Div(E)/\Prin(E)$.
 \end{definition}
 
 \noindent
-Jak łatwo się przekonać,
-dwa dywizory $\Delta_1$ i $\Delta_2$ należą do tej samej warstwy
+Dwa dywizory $\Delta_1$ i $\Delta_2$ należą do tej samej warstwy
 będącej elementem grupy $\Pic(E)$
 wtedy i tylko wtedy, gdy ich różnica jest dywizorem głównym.
 Fakt ten prowadzi nas do następującej definicji.
 
 \begin{definition}
-Dane są dywizory $\Delta_1$ i $\Delta_2$ na krzywej eliptycznej.
+Dane są dywizory $\Delta_1$ i $\Delta_2$ na krzywej eliptycznej $E$.
 Dywizory $\Delta_1$ i $\Delta_2$ są \emph{równoważne},
 co oznaczamy symbolem $\Delta_1 \sim \Delta_2$,
 jeżeli ich różnica $\Delta_1 - \Delta_2$ jest dywizorem głównym.
@@ -72,7 +71,7 @@ jeżeli ich różnica $\Delta_1 - \Delta_2$ jest dywizorem głównym.
 
 \noindent
 Wniosek \ref{function_order_sum_zero_corollary}
-daje następującą częściową charakteryzację dywizorów głównych.
+daje częściową charakteryzację dywizorów głównych.
 
 \begin{fact}\label{prin_divi_zero_deg_fact}
 Jeżeli $\Delta$ jest dywizorem głównym,
@@ -91,10 +90,12 @@ składająca się ze wszystich dywizorów stopnia zero na krzywej $E$.
 \end{definition}
 
 \noindent
-Inkluzja $\Prin(E) \subset \Div^0(E) \subset \Div(E)$
-Grupa ilorazowa $\Div(E) / \Div^0(E)$
+Zachodzi następujący ciąg inkluzji:
+$\Prin(E) \subset \Div^0(E) \subset \Div(E)$.
+Zbadajmy wobec tego grupy ilorazowe.
+Grupa $\Div(E) / \Div^0(E)$
 nie jest specjalnie interesująca,
-ponieważ jest równa grupie liczb całkowitych $\Z$.
+ponieważ jest izomorficzna z grupą liczb całkowitych $\Z$.
 Za to grupa $\Div^0(E) / \Prin(E)$
 będzie dla nas bardzo ważna.
 
@@ -105,22 +106,22 @@ oznaczana symbolem $\Pic^0(E)$,
 to grupa ilorazowa $\Div^0(E) / \Prin(E)$.
 \end{definition}
 
-\subsection*{Redukcje liniowe}
+\subsection*{Liniowe redukcje dywizorów}
 
 \noindent
 Konstrukcja różnych grup na krzywej eliptycznej opiera się
-o równoważność dywizorów. Dwa dywizory są równoważne,
+na równoważności dywizorów. Dwa dywizory są równoważne,
 gdy różnią się o dywizor główny, czyli o dywizor pewnej funkcji wymiernej.
-Jak wskazać funkcję wymierną, która ,,jest różnicą'' między dwoma dywizorami?
+Jak wskazać funkcję wymierną, która jest ,,różnicą'' między dwoma dywizorami?
 Następujące dwa twierdzenia pokazują, że taką funkcję wymierną
 można skonstruować, mnożąc i dzieląc odpowiednie linie.
 
 \begin{theorem}\label{divisor_linear_reduction_theorem}
 Dany jest dywizor $\Delta$ na krzywej eliptycznej $E$.
-Wówczas istnieje dywizor $\tilde{\Delta} \in \Div(E)$ taki,
-że $\Delta \sim \tilde{\Delta}$, $\deg(\Delta) = \deg(\tilde{\Delta})$
-oraz $\tilde{\Delta} = \divi{P} + n\divi{\ecident}$,
-gdzie $P \in E$.
+Wówczas istnieje dywizor $\tilde{\Delta}$ na krzywej $E$
+postaci $\tilde{\Delta} = \divi{P} + n\divi{\ecident}$,
+gdzie $P \in E$ i $n \in \Z$, taki,
+że $\Delta \sim \tilde{\Delta}$ oraz $\deg(\Delta) = \deg(\tilde{\Delta})$.
 \end{theorem}
 
 \begin{proof}
@@ -207,7 +208,7 @@ zatem $\Delta_k + \rdiv(l) = \divi{\overline{P}} + (n-2)\divi{\ecident}$.
 \end{proof}
 
 \begin{lemma}\label{sim_pq_eq_pq_lemma}
-Dane są punkty $P$ i $Q$ na krzywej eliptycznej.
+Dane są punkty $P$ i $Q$ na krzywej eliptycznej $E$.
 Jeżeli $\divi{P} \sim \divi{Q}$,
 to $P = Q$.
 \end{lemma}
@@ -250,10 +251,9 @@ skąd $\overline{Q} = \overline{P}$, czyli $Q = P$.
 
 \begin{theorem}\label{zerodeg_divisor_linear_reduction_theorem}
 Dany jest dywizor zerowego stopnia $\Delta$ na krzywej eliptycznej $E$.
-Wówczas istnieje dokładnie jeden dywizor $\tilde{\Delta} \in \Div^0(E)$ taki,
-że $\Delta \sim \tilde{\Delta}$, $\deg(\Delta) = \deg(\tilde{\Delta})$
-oraz $\tilde{\Delta} = \divi{P} - \divi{\ecident}$,
-gdzie $P \in E$.
+Wówczas istnieje dokładnie jeden dywizor $\tilde{\Delta}$ na krzywej $E$
+postaci $\tilde{\Delta} = \divi{P} - \divi{\ecident}$, gdzie $P \in E$, taki,
+że $\Delta \sim \tilde{\Delta}$ oraz $\deg(\Delta) = \deg(\tilde{\Delta})$.
 \end{theorem}
 
 \begin{proof}
@@ -266,6 +266,28 @@ to musi zachodzić $n = -1$, czyli $\tilde{\Delta} = \divi{P} - \divi{\ecident}$
 Jednoznaczność otrzymujemy udowodnionego przed chwilą lematu
 \ref{sim_pq_eq_pq_lemma}.
 \end{proof}
+
+\begin{example}
+Dana jest krzywa eliptyczna $E_{3,4}(\F(13))$.
+Redukcja dywizora
+$\divi{(0,2)} + \divi{(5,1)} - \divi{(7, 11)} - \divi{(12,0)} + \divi{\ecident}$
+przebiega następująco.
+\begin{enumerate}
+\item
+Redukujemy za pomocą linii $5x + 12y + 10$
+i otrzymujemy dywizor
+$-2\divi{(7, 11)} - \divi{(12,0)} + 4\divi{\ecident}$.
+\item
+Redukujemy za pomocą linii $8x + 12y + 7$
+i otrzymujemy dywizor
+$\divi{(11,4)} - \divi{(12,0)} + \divi{\ecident}$.
+\item
+Redukujemy za pomocą linii $x + 2$,
+a następnie za pomocą linii $4x + 10y + 4$
+i otrzymujemy dywizor
+$\divi{(6,2)}$.
+\end{enumerate}
+\end{example}
 
 \subsection*{Zerowa grupa Picarda}
 
@@ -319,7 +341,7 @@ przeprowadzamy następująco.
 \begin{enumerate}
 \item
 Jeżeli $P = \ecident$ (odpowiednio $Q = \ecident$),
-to wynik dodawania jest równy
+to wynik dodawania jest równy warstwie zawierającej dywizor
 $\divi{Q} - \divi{\ecident}$ (odpowiednio $\divi{P} - \divi{\ecident}$).
 \item
 W przeciwnym razie dodajemy dywizory
